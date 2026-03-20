@@ -1,0 +1,84 @@
+name: factory/page-hero
+title: Page Hero
+description: A responsive hero for your pages.
+category: factory
+icon: content-text
+fields:
+  - identifier: headline
+    type: Text
+    label: Headline
+    description: The headline displayed above the title.
+  - identifier: title
+    type: Text
+    label: Title
+    description: The main title of the hero.
+  - identifier: description
+    type: Text
+    label: Description
+    description: The description text below the title.
+  - identifier: links
+    type: Collection
+    label: Links
+    description: Buttons or links to display under the description.
+    fields:
+      - identifier: label
+        type: Text
+        label: Label
+      - identifier: to
+        type: Link
+        label: Link
+      - identifier: color
+        type: Select
+        label: Color
+        options:
+          - { label: Primary, value: primary }
+          - { label: Secondary, value: secondary }
+          - { label: Neutral, value: neutral }
+          - { label: Success, value: success }
+          - { label: Info, value: info }
+          - { label: Warning, value: warning }
+          - { label: Error, value: error }
+      - identifier: variant
+        type: Select
+        label: Variant
+        options:
+          - { label: Solid, value: solid }
+          - { label: Outline, value: outline }
+          - { label: Soft, value: soft }
+          - { label: Subtle, value: subtle }
+          - { label: Ghost, value: ghost }
+          - { label: Link, value: link }
+      - identifier: size
+        type: Select
+        label: Size
+        options:
+          - { label: Extra Small, value: xs }
+          - { label: Small, value: sm }
+          - { label: Medium, value: md }
+          - { label: Large, value: lg }
+          - { label: Extra Large, value: xl }
+      - identifier: icon
+        type: Text
+        label: Icon
+        description: Iconify icon name (e.g., i-heroicons-arrow-right)
+      - identifier: trailing
+        type: Checkbox
+        label: Trailing Icon
+        description: Display the icon on the right side
+  - identifier: image
+    type: File
+    label: Image
+    description: The image to display in the hero.
+    allowedFileExtensions: ['jpg', 'jpeg', 'png', 'webp', 'svg']
+    maxItems: 1
+  - identifier: orientation
+    type: Select
+    label: Orientation
+    options:
+      - { label: Vertical, value: vertical }
+      - { label: Horizontal, value: horizontal }
+    default: vertical
+  - identifier: reverse
+    type: Checkbox
+    label: Reverse
+    description: Reverse the order of the content and image.

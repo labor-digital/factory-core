@@ -1,0 +1,26 @@
+name: factory/blog-posts
+title: Blog Posts
+description: A list of blog posts.
+category: factory
+icon: content-news
+fields:
+  - identifier: category
+    type: Record
+    label: Category
+    description: Select categories to filter the news records.
+    table: sys_category
+    maxItems: 99
+  - identifier: limit
+    type: Number
+    label: Limit
+    description: Maximum number of posts to display.
+    default: 3
+  - identifier: hidePagination
+    type: Checkbox
+    label: Hide Pagination
+    description: Do not show pagination even if there are more posts.
+  - identifier: storage
+    type: Folder
+    label: Storage Folders
+    description: Select folders containing the news records. If none selected, all posts are displayed.
+    maxItems: 99

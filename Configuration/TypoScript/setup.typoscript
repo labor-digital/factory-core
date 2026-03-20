@@ -1,0 +1,3 @@
+@import 'EXT:content_blocks/Configuration/TypoScript/setup.typoscript'
+@import 'EXT:nb_headless_content_blocks/Configuration/TypoScript/setup.typoscript'
+@import 'EXT:factory_core/Configuration/TypoScript/ContentElement/BlogPosts.typoscript'
