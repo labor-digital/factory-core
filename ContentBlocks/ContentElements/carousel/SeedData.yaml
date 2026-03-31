@@ -1,0 +1,9 @@
+orientation: horizontal
+arrows: 1
+dots: 1
+loop: 1
+autoplay: 0
+items:
+  - alt: Slide 1
+  - alt: Slide 2
+  - alt: Slide 3

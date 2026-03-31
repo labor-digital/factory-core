@@ -1,0 +1,29 @@
+name: factory/page-logos
+title: Page Logos
+description: A list of logos or images to display on your pages.
+category: factory
+icon: content-text
+fields:
+  - identifier: title
+    type: Text
+    label: Title
+    description: The title displayed above the logos.
+  - identifier: marquee
+    type: Checkbox
+    label: Marquee
+    description: Enable a scrolling marquee effect for the logos.
+  - identifier: items
+    type: Collection
+    label: Logos
+    description: A list of logos to display. Use either an icon name or an image.
+    fields:
+      - identifier: icon
+        type: Text
+        label: Icon
+        description: Iconify icon name (e.g., i-simple-icons-github). Used when no image is provided.
+      - identifier: image
+        type: File
+        label: Image
+        description: Logo image. Takes priority over icon when both are set.
+        allowedFileExtensions: ['jpg', 'jpeg', 'png', 'webp', 'svg']
+        maxItems: 1

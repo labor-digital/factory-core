@@ -1,0 +1,38 @@
+name: factory/page-feature
+title: Page Feature
+description: A component to showcase key features of your application.
+category: factory
+icon: content-text
+fields:
+  - identifier: icon
+    type: Text
+    label: Icon
+    description: Iconify icon name (e.g., i-lucide-swatch-book)
+  - identifier: title
+    type: Text
+    label: Title
+    description: The title of the feature.
+  - identifier: description
+    type: Text
+    label: Description
+    description: The description text of the feature.
+  - identifier: orientation
+    type: Select
+    label: Orientation
+    options:
+      - { label: Horizontal, value: horizontal }
+      - { label: Vertical, value: vertical }
+    default: horizontal
+  - identifier: to
+    type: Link
+    label: Link
+    description: Optional link to navigate to when clicking the feature.
+  - identifier: target
+    type: Select
+    label: Link Target
+    options:
+      - { label: Default, value: '' }
+      - { label: New Window, value: _blank }
+      - { label: Parent, value: _parent }
+      - { label: Self, value: _self }
+      - { label: Top, value: _top }

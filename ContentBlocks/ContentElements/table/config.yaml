@@ -1,0 +1,41 @@
+name: factory/table
+title: Table
+description: A responsive table to display data in rows and columns.
+category: factory
+icon: content-text
+fields:
+  - identifier: caption
+    type: Text
+    label: Caption
+    description: Optional caption displayed above the table.
+  - identifier: sticky
+    type: Select
+    label: Sticky
+    description: Make header or footer stick on scroll.
+    options:
+      - { label: None, value: '' }
+      - { label: Header, value: header }
+      - { label: Footer, value: footer }
+      - { label: Both, value: both }
+  - identifier: columns
+    type: Collection
+    label: Columns
+    description: Define the table columns.
+    fields:
+      - identifier: key
+        type: Text
+        label: Key
+        description: The data key for this column.
+      - identifier: label
+        type: Text
+        label: Label
+        description: The column header label.
+  - identifier: rows
+    type: Collection
+    label: Rows
+    description: Table row data. Each row contains values that match the column keys as a JSON string.
+    fields:
+      - identifier: data
+        type: Text
+        label: Row Data (JSON)
+        description: 'JSON object matching column keys, e.g. {"name":"John","age":"30"}'

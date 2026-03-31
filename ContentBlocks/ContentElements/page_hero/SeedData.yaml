@@ -1,0 +1,13 @@
+headline: Welcome
+title: Factory Headless CMS
+description: Your TYPO3 + Nuxt boilerplate is ready.
+orientation: vertical
+links:
+  - label: Get Started
+    color: primary
+    variant: solid
+    size: md
+  - label: Documentation
+    color: neutral
+    variant: outline
+    size: md

@@ -1,0 +1,12 @@
+caption: Example Table
+columns:
+  - key: name
+    label: Name
+  - key: role
+    label: Role
+  - key: status
+    label: Status
+rows:
+  - data: '{"name":"Alice","role":"Developer","status":"Active"}'
+  - data: '{"name":"Bob","role":"Designer","status":"Active"}'
+  - data: '{"name":"Charlie","role":"Manager","status":"Away"}'

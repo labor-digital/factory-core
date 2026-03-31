@@ -1,0 +1,19 @@
+cards:
+  - icon: i-lucide-layout-dashboard
+    title: Flexible Layout
+    description: Responsive grid system that adapts to any screen size.
+    orientation: vertical
+    variant: outline
+    col_span: '1'
+  - icon: i-lucide-palette
+    title: Themeable
+    description: Fully customizable with Tailwind CSS and Nuxt UI.
+    orientation: vertical
+    variant: outline
+    col_span: '1'
+  - icon: i-lucide-zap
+    title: Performant
+    description: Optimized for speed with SSR and static generation.
+    orientation: vertical
+    variant: outline
+    col_span: '1'

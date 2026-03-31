@@ -1,0 +1,43 @@
+name: factory/carousel
+title: Carousel
+description: A carousel with motion and swipe.
+category: factory
+icon: content-text
+fields:
+  - identifier: orientation
+    type: Select
+    label: Orientation
+    options:
+      - { label: Horizontal, value: horizontal }
+      - { label: Vertical, value: vertical }
+    default: horizontal
+  - identifier: arrows
+    type: Checkbox
+    label: Arrows
+    description: Display prev and next buttons.
+  - identifier: dots
+    type: Checkbox
+    label: Dots
+    description: Display dots to scroll to a specific slide.
+  - identifier: loop
+    type: Checkbox
+    label: Loop
+    description: Enable infinite looping of slides.
+  - identifier: autoplay
+    type: Checkbox
+    label: Autoplay
+    description: Automatically advance slides.
+  - identifier: items
+    type: Collection
+    label: Slides
+    description: A list of slides to display in the carousel.
+    fields:
+      - identifier: image
+        type: File
+        label: Image
+        allowedFileExtensions: ['jpg', 'jpeg', 'png', 'webp', 'svg']
+        maxItems: 1
+      - identifier: alt
+        type: Text
+        label: Alt Text
+        description: Alternative text for the image.

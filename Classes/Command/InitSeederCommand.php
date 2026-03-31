@@ -18,6 +18,7 @@ use TYPO3\CMS\Core\Database\ConnectionPool;
 use TYPO3\CMS\Core\DataHandling\DataHandler;
 use TYPO3\CMS\Core\Registry;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
+use LaborDigital\FactoryCore\Service\ContentBlockSeeder;
 
 #[AsCommand(
     name: 'factory:seed:init',
@@ -25,6 +26,12 @@ use TYPO3\CMS\Core\Utility\GeneralUtility;
 )]
 class InitSeederCommand extends Command
 {
+    public function __construct(
+        private readonly ContentBlockSeeder $contentBlockSeeder,
+    ) {
+        parent::__construct();
+    }
+
     protected function configure(): void
     {
         $this
@@ -47,6 +54,8 @@ class InitSeederCommand extends Command
 
         try {
             $uids = $this->createPageTree($languages, $baseLang, $io);
+            $this->createHomeContent($uids['home'], $io);
+            $this->seedCollectionContent($uids['cb_collection'], $io);
             $this->generateSiteConfiguration($languages, $baseLang, $uids, $io);
             $this->createAdminUser($io);
 
@@ -62,11 +71,24 @@ class InitSeederCommand extends Command
     {
         $io->section('Creating Page Tree');
 
-        // Initialize a fake backend user for DataHandler if not present
-        if (!isset($GLOBALS['BE_USER'])) {
-            $GLOBALS['BE_USER'] = GeneralUtility::makeInstance(BackendUserAuthentication::class);
-            $GLOBALS['BE_USER']->user = ['uid' => 1, 'admin' => 1];
-            $GLOBALS['BE_USER']->workspace = 0;
+        // Bootstrap a real backend admin user for DataHandler
+        if (!isset($GLOBALS['BE_USER']) || empty($GLOBALS['BE_USER']->user['uid'])) {
+            $backendUser = GeneralUtility::makeInstance(BackendUserAuthentication::class);
+            $connectionPool = GeneralUtility::makeInstance(ConnectionPool::class);
+            $queryBuilder = $connectionPool->getQueryBuilderForTable('be_users');
+            $adminRecord = $queryBuilder
+                ->select('*')
+                ->from('be_users')
+                ->where($queryBuilder->expr()->eq('admin', 1))
+                ->setMaxResults(1)
+                ->executeQuery()
+                ->fetchAssociative();
+            if (!$adminRecord) {
+                throw new \RuntimeException('No admin user found in be_users. Run "typo3 setup" first.');
+            }
+            $backendUser->user = $adminRecord;
+            $backendUser->workspace = 0;
+            $GLOBALS['BE_USER'] = $backendUser;
         }
 
         $dataHandler = GeneralUtility::makeInstance(DataHandler::class);
@@ -79,29 +101,33 @@ class InitSeederCommand extends Command
                     'title' => 'Homepage',
                     'doktype' => 1,
                     'is_siteroot' => 1,
+                    'hidden' => 0,
                     'sys_language_uid' => 0,
                 ],
                 'NEW_imprint' => [
-                    'pid' => 0,
+                    'pid' => 'NEW_home',
                     'title' => 'Imprint',
                     'doktype' => 1,
+                    'hidden' => 0,
                     'sys_language_uid' => 0,
                 ],
                 'NEW_privacy' => [
-                    'pid' => 0,
+                    'pid' => 'NEW_home',
                     'title' => 'Privacy Policy',
                     'doktype' => 1,
+                    'hidden' => 0,
                     'sys_language_uid' => 0,
                 ],
                 'NEW_404' => [
-                    'pid' => 0,
+                    'pid' => 'NEW_home',
                     'title' => '404 Error',
                     'doktype' => 1,
                     'nav_hide' => 1,
+                    'hidden' => 0,
                     'sys_language_uid' => 0,
                 ],
                 'NEW_cb_collection' => [
-                    'pid' => 0,
+                    'pid' => 'NEW_home',
                     'title' => 'ContentBlocks-Collection',
                     'doktype' => 1,
                     'hidden' => 1,
@@ -140,32 +166,37 @@ class InitSeederCommand extends Command
                 $translationData = [
                     'pages' => [
                         'NEW_home_' . $lang => [
-                            'pid' => 0,
+                            'pid' => $homeUid,
                             'title' => 'Homepage (' . $lang . ')',
+                            'hidden' => 0,
                             'sys_language_uid' => $languageId,
                             'l10n_parent' => $homeUid,
                         ],
                         'NEW_imprint_' . $lang => [
-                            'pid' => 0,
+                            'pid' => $homeUid,
                             'title' => 'Imprint (' . $lang . ')',
+                            'hidden' => 0,
                             'sys_language_uid' => $languageId,
                             'l10n_parent' => $imprintUid,
                         ],
                         'NEW_privacy_' . $lang => [
-                            'pid' => 0,
+                            'pid' => $homeUid,
                             'title' => 'Privacy Policy (' . $lang . ')',
+                            'hidden' => 0,
                             'sys_language_uid' => $languageId,
                             'l10n_parent' => $privacyUid,
                         ],
                         'NEW_404_' . $lang => [
-                            'pid' => 0,
+                            'pid' => $homeUid,
                             'title' => '404 Error (' . $lang . ')',
+                            'hidden' => 0,
                             'sys_language_uid' => $languageId,
                             'l10n_parent' => $error404Uid,
                         ],
                         'NEW_cb_collection_' . $lang => [
-                            'pid' => 0,
+                            'pid' => $homeUid,
                             'title' => 'ContentBlocks-Collection (' . $lang . ')',
+                            'hidden' => 1,
                             'sys_language_uid' => $languageId,
                             'l10n_parent' => $cbCollectionUid,
                         ],
@@ -188,7 +219,140 @@ class InitSeederCommand extends Command
         return [
             'home' => $homeUid,
             '404' => $error404Uid,
+            'cb_collection' => $cbCollectionUid,
         ];
+    }
+
+    private function createHomeContent(int $homeUid, SymfonyStyle $io): void
+    {
+        $io->section('Seeding Homepage Content');
+
+        $dataHandler = GeneralUtility::makeInstance(DataHandler::class);
+
+        $data = [
+            'tt_content' => [
+                'NEW_hero' => [
+                    'pid' => $homeUid,
+                    'CType' => 'factory_pagehero',
+                    'colPos' => 0,
+                    'sys_language_uid' => 0,
+                    'sorting' => 256,
+                    'factory_pagehero_headline' => 'Welcome',
+                    'factory_pagehero_title' => 'Factory Headless CMS',
+                    'factory_pagehero_description' => 'Your TYPO3 + Nuxt boilerplate is ready.',
+                ],
+                'NEW_header' => [
+                    'pid' => $homeUid,
+                    'CType' => 'factory_header',
+                    'colPos' => 0,
+                    'sys_language_uid' => 0,
+                    'sorting' => 512,
+                    'factory_header_text' => 'Getting Started',
+                    'factory_header_level' => 'h2',
+                ],
+                'NEW_text' => [
+                    'pid' => $homeUid,
+                    'CType' => 'factory_text',
+                    'colPos' => 0,
+                    'sys_language_uid' => 0,
+                    'sorting' => 768,
+                    'factory_text_bodytext' => '<p>Edit this page in the TYPO3 backend to start building your site.</p>',
+                ],
+            ],
+        ];
+
+        $dataHandler->start($data, []);
+        $dataHandler->process_datamap();
+
+        if (!empty($dataHandler->errorLog)) {
+            throw new \RuntimeException('Error seeding homepage content: ' . implode(', ', $dataHandler->errorLog));
+        }
+
+        $newUids = $dataHandler->substNEWwithIDs;
+        $io->writeln('Seeded homepage content (Hero: ' . ($newUids['NEW_hero'] ?? '?') . ', Header: ' . ($newUids['NEW_header'] ?? '?') . ', Text: ' . ($newUids['NEW_text'] ?? '?') . ')');
+    }
+
+    private function seedCollectionContent(int $cbCollectionPid, SymfonyStyle $io): void
+    {
+        $activeComponents = $this->contentBlockSeeder->getActiveComponents();
+        if ($activeComponents === null) {
+            $io->writeln('No factory.json found — skipping ContentBlocks-Collection seeding.');
+            return;
+        }
+
+        if ($activeComponents === []) {
+            $io->writeln('No active components in factory.json — skipping ContentBlocks-Collection seeding.');
+            return;
+        }
+
+        $io->section('Seeding ContentBlocks-Collection');
+
+        $data = [];
+        $sorting = 256;
+        $seeded = [];
+        $componentDirectories = [];
+
+        foreach ($activeComponents as $componentName) {
+            $slug = $this->contentBlockSeeder->toKebabCase($componentName);
+            $directoryName = $this->contentBlockSeeder->toDirectoryName($slug);
+            $newId = 'NEW_cb_' . $directoryName;
+
+            $record = $this->contentBlockSeeder->buildDataHandlerRecord(
+                $directoryName,
+                $cbCollectionPid,
+                $sorting,
+                $newId,
+            );
+
+            if ($record === null) {
+                $io->writeln("  Skipping $componentName — no SeedData.yaml found.");
+                continue;
+            }
+
+            // Merge record data into the combined data array
+            foreach ($record as $table => $records) {
+                if (!isset($data[$table])) {
+                    $data[$table] = [];
+                }
+                $data[$table] = array_merge($data[$table], $records);
+            }
+
+            $componentDirectories[$newId] = $directoryName;
+            $seeded[] = $componentName;
+            $sorting += 256;
+        }
+
+        if ($data === []) {
+            $io->writeln('No seed data found for any active component.');
+            return;
+        }
+
+        // Phase 1: Create parent records via DataHandler (scalar fields only)
+        $dataHandler = GeneralUtility::makeInstance(DataHandler::class);
+        $dataHandler->start($data, []);
+        $dataHandler->process_datamap();
+
+        if (!empty($dataHandler->errorLog)) {
+            throw new \RuntimeException('Error seeding ContentBlocks-Collection: ' . implode(', ', $dataHandler->errorLog));
+        }
+
+        // Phase 2: Insert Collection children via direct SQL
+        $collectionsSeeded = 0;
+        foreach ($componentDirectories as $newId => $directoryName) {
+            $parentUid = (int)($dataHandler->substNEWwithIDs[$newId] ?? 0);
+            if ($parentUid > 0) {
+                $collectionsSeeded += $this->contentBlockSeeder->insertCollectionChildren(
+                    $directoryName,
+                    $parentUid,
+                    $cbCollectionPid,
+                );
+            }
+        }
+
+        $io->writeln('Seeded ' . count($seeded) . ' component(s) on ContentBlocks-Collection: ' . implode(', ', $seeded));
+        if ($collectionsSeeded > 0) {
+            $io->writeln("  Including $collectionsSeeded collection field(s) via direct SQL.");
+        }
     }
 
     private function generateSiteConfiguration(array $languages, string $baseLang, array $uids, SymfonyStyle $io): void
@@ -248,6 +412,10 @@ class InitSeederCommand extends Command
         $config = [
             'rootPageId' => (int)$uids['home'],
             'base' => '/',
+            'headless' => 1,
+            'dependencies' => [
+                'labor-digital/client_sitepackage',
+            ],
             'languages' => $languageConfigs,
             'errorHandling' => [
                 [
@@ -305,6 +473,7 @@ class InitSeederCommand extends Command
                 'tstamp' => $GLOBALS['EXEC_TIME'] ?? time(),
                 'crdate' => $GLOBALS['EXEC_TIME'] ?? time(),
                 'workspace_id' => 0,
+                'TSconfig' => 'options.pageTree.showPageIdWithTitle = 1',
             ])
             ->executeStatement();
 

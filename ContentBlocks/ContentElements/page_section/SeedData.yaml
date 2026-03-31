@@ -1,0 +1,22 @@
+headline: Features
+title: Everything you need
+description: A complete toolkit for building modern headless websites.
+orientation: vertical
+links:
+  - label: Learn More
+    color: primary
+    variant: soft
+    size: md
+features:
+  - title: Headless CMS
+    description: TYPO3 backend with a fully decoupled Nuxt frontend.
+    icon: i-lucide-monitor
+    orientation: horizontal
+  - title: Content Blocks
+    description: Reusable, schema-driven content elements.
+    icon: i-lucide-blocks
+    orientation: horizontal
+  - title: Multi-Language
+    description: Built-in support for multilingual page trees.
+    icon: i-lucide-languages
+    orientation: horizontal

@@ -1,0 +1,63 @@
+name: factory/header
+title: Header
+description: A headline element with optional separator.
+category: factory
+icon: content-text
+fields:
+  - identifier: text
+    type: Text
+    label: Headline
+    description: The headline text.
+  - identifier: level
+    type: Select
+    label: Level
+    description: The heading level.
+    options:
+      - { label: H1, value: h1 }
+      - { label: H2, value: h2 }
+      - { label: H3, value: h3 }
+      - { label: H4, value: h4 }
+      - { label: H5, value: h5 }
+      - { label: H6, value: h6 }
+    default: h2
+  - identifier: alignment
+    type: Select
+    label: Alignment
+    options:
+      - { label: Left, value: left }
+      - { label: Center, value: center }
+      - { label: Right, value: right }
+    default: left
+  - identifier: separator
+    type: Checkbox
+    label: Show Separator
+    description: Display a separator line below the headline.
+  - identifier: separator_color
+    type: Select
+    label: Separator Color
+    options:
+      - { label: Primary, value: primary }
+      - { label: Secondary, value: secondary }
+      - { label: Neutral, value: neutral }
+      - { label: Success, value: success }
+      - { label: Info, value: info }
+      - { label: Warning, value: warning }
+      - { label: Error, value: error }
+  - identifier: separator_type
+    type: Select
+    label: Separator Type
+    options:
+      - { label: Solid, value: solid }
+      - { label: Dashed, value: dashed }
+      - { label: Dotted, value: dotted }
+    default: solid
+  - identifier: separator_size
+    type: Select
+    label: Separator Size
+    options:
+      - { label: Extra Small, value: xs }
+      - { label: Small, value: sm }
+      - { label: Medium, value: md }
+      - { label: Large, value: lg }
+      - { label: Extra Large, value: xl }
+    default: sm

@@ -1,3 +1,16 @@
 @import 'EXT:content_blocks/Configuration/TypoScript/setup.typoscript'
 @import 'EXT:nb_headless_content_blocks/Configuration/TypoScript/setup.typoscript'
 @import 'EXT:factory_core/Configuration/TypoScript/ContentElement/BlogPosts.typoscript'
+
+# Override: rename "data" → "content" so @t3headless/nuxt-typo3 T3Renderer receives the fields.
+# T3Renderer destructures { content } from each element and spreads it as component props.
+lib.contentBlock.fields.data >
+lib.contentBlock.fields {
+    content = TEXT
+    content {
+        dataProcessing {
+            10 = nb-content-blocks-json
+            10.as = content
+        }
+    }
+}

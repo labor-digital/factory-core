@@ -4,12 +4,10 @@ description: A list of blog posts.
 category: factory
 icon: content-news
 fields:
-  - identifier: category
-    type: Record
+  - identifier: categories
+    type: Category
     label: Category
     description: Select categories to filter the news records.
-    table: sys_category
-    maxItems: 99
   - identifier: limit
     type: Number
     label: Limit

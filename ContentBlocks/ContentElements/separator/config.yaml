@@ -1,0 +1,50 @@
+name: factory/separator
+title: Separator
+description: Separates content horizontally or vertically.
+category: factory
+icon: content-text
+fields:
+  - identifier: label
+    type: Text
+    label: Label
+    description: Optional label displayed in the middle.
+  - identifier: icon
+    type: Text
+    label: Icon
+    description: Iconify icon name displayed in the middle.
+  - identifier: color
+    type: Select
+    label: Color
+    options:
+      - { label: Primary, value: primary }
+      - { label: Secondary, value: secondary }
+      - { label: Neutral, value: neutral }
+      - { label: Success, value: success }
+      - { label: Info, value: info }
+      - { label: Warning, value: warning }
+      - { label: Error, value: error }
+  - identifier: size
+    type: Select
+    label: Size
+    options:
+      - { label: Extra Small, value: xs }
+      - { label: Small, value: sm }
+      - { label: Medium, value: md }
+      - { label: Large, value: lg }
+      - { label: Extra Large, value: xl }
+    default: sm
+  - identifier: type
+    type: Select
+    label: Type
+    options:
+      - { label: Solid, value: solid }
+      - { label: Dashed, value: dashed }
+      - { label: Dotted, value: dotted }
+    default: solid
+  - identifier: orientation
+    type: Select
+    label: Orientation
+    options:
+      - { label: Horizontal, value: horizontal }
+      - { label: Vertical, value: vertical }
+    default: horizontal
