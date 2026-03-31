@@ -104,15 +104,22 @@ class InitSeederCommand extends Command
                     'hidden' => 0,
                     'sys_language_uid' => 0,
                 ],
-                'NEW_imprint' => [
+                'NEW_footer' => [
                     'pid' => 'NEW_home',
+                    'title' => 'Footer',
+                    'doktype' => 254,
+                    'hidden' => 0,
+                    'sys_language_uid' => 0,
+                ],
+                'NEW_imprint' => [
+                    'pid' => 'NEW_footer',
                     'title' => 'Imprint',
                     'doktype' => 1,
                     'hidden' => 0,
                     'sys_language_uid' => 0,
                 ],
                 'NEW_privacy' => [
-                    'pid' => 'NEW_home',
+                    'pid' => 'NEW_footer',
                     'title' => 'Privacy Policy',
                     'doktype' => 1,
                     'hidden' => 0,
@@ -130,7 +137,7 @@ class InitSeederCommand extends Command
                     'pid' => 'NEW_home',
                     'title' => 'ContentBlocks-Collection',
                     'doktype' => 1,
-                    'hidden' => 1,
+                    'hidden' => 0,
                     'sys_language_uid' => 0,
                 ],
             ]
@@ -145,12 +152,13 @@ class InitSeederCommand extends Command
 
         $newUids = $dataHandler->substNEWwithIDs;
         $homeUid = $newUids['NEW_home'] ?? null;
+        $footerUid = $newUids['NEW_footer'] ?? null;
         $imprintUid = $newUids['NEW_imprint'] ?? null;
         $privacyUid = $newUids['NEW_privacy'] ?? null;
         $error404Uid = $newUids['NEW_404'] ?? null;
         $cbCollectionUid = $newUids['NEW_cb_collection'] ?? null;
 
-        $io->writeln("Created base pages (Home: $homeUid, Imprint: $imprintUid, Privacy: $privacyUid, 404: $error404Uid, CB-Collection: $cbCollectionUid)");
+        $io->writeln("Created base pages (Home: $homeUid, Footer: $footerUid, Imprint: $imprintUid, Privacy: $privacyUid, 404: $error404Uid, CB-Collection: $cbCollectionUid)");
 
         // Save CB Collection PID to a registry
         $registry = GeneralUtility::makeInstance(Registry::class);
@@ -172,15 +180,22 @@ class InitSeederCommand extends Command
                             'sys_language_uid' => $languageId,
                             'l10n_parent' => $homeUid,
                         ],
-                        'NEW_imprint_' . $lang => [
+                        'NEW_footer_' . $lang => [
                             'pid' => $homeUid,
+                            'title' => 'Footer (' . $lang . ')',
+                            'hidden' => 0,
+                            'sys_language_uid' => $languageId,
+                            'l10n_parent' => $footerUid,
+                        ],
+                        'NEW_imprint_' . $lang => [
+                            'pid' => $footerUid,
                             'title' => 'Imprint (' . $lang . ')',
                             'hidden' => 0,
                             'sys_language_uid' => $languageId,
                             'l10n_parent' => $imprintUid,
                         ],
                         'NEW_privacy_' . $lang => [
-                            'pid' => $homeUid,
+                            'pid' => $footerUid,
                             'title' => 'Privacy Policy (' . $lang . ')',
                             'hidden' => 0,
                             'sys_language_uid' => $languageId,
@@ -218,6 +233,7 @@ class InitSeederCommand extends Command
 
         return [
             'home' => $homeUid,
+            'footer' => $footerUid,
             '404' => $error404Uid,
             'cb_collection' => $cbCollectionUid,
         ];
@@ -359,6 +375,13 @@ class InitSeederCommand extends Command
     {
         $io->section('Generating Site Configuration');
 
+        // Remove the default "main" site config created by "typo3 setup"
+        $defaultSitePath = Environment::getConfigPath() . '/sites/main';
+        if (is_dir($defaultSitePath)) {
+            GeneralUtility::rmdir($defaultSitePath, true);
+            $io->writeln('Removed default "main" site configuration.');
+        }
+
         $siteIdentifier = 'factory_base';
         $configPath = Environment::getConfigPath() . '/sites/' . $siteIdentifier;
 
@@ -437,6 +460,16 @@ class InitSeederCommand extends Command
         file_put_contents($configFile, $yaml);
 
         $io->writeln('Site configuration written to ' . $configFile);
+
+        // Write site settings (separate file for sitesettings: TypoScript access)
+        $settingsFile = $configPath . '/settings.yaml';
+        $settings = [
+            'footerPageUid' => (int)$uids['footer'],
+        ];
+        $settingsYaml = Yaml::dump($settings, 99, 2);
+        file_put_contents($settingsFile, $settingsYaml);
+
+        $io->writeln('Site settings written to ' . $settingsFile);
     }
 
     private function createAdminUser(SymfonyStyle $io): void
