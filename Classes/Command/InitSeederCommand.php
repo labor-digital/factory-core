@@ -435,6 +435,8 @@ class InitSeederCommand extends Command
         $config = [
             'rootPageId' => (int)$uids['home'],
             'base' => '/',
+            'frontendBase' => '%env(APP_FRONTEND_DOMAIN)%',
+            'websiteTitle' => '%env(APP_SITENAME)%',
             'headless' => 1,
             'dependencies' => [
                 'labor-digital/client_sitepackage',
