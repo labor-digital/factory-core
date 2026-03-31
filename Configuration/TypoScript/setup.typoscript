@@ -23,7 +23,7 @@ initialData.10.fields {
             10 = FriendsOfTYPO3\Headless\DataProcessing\MenuProcessor
             10 {
                 special = directory
-                special.value.data = sitesettings:footerPageUid
+                special.value = {$footerPageUid}
                 levels = 1
                 expandAll = 0
                 includeSpacer = 0
