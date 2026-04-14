@@ -1,0 +1,7 @@
+<f:layout name="Preview" />
+<f:section name="Content">
+    <strong>Text</strong>
+    <f:if condition="{data.bodytext}">
+        <br/>{data.bodytext -> f:format.stripTags() -> f:format.crop(maxCharacters: 200, append: '…')}
+    </f:if>
+</f:section>

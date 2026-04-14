@@ -1,0 +1,8 @@
+<f:layout name="Preview" />
+<f:section name="Content">
+    <strong>Button Group</strong>
+    <small>(align: {data.alignment}, {data.buttons -> f:count()} button<f:if condition="{data.buttons -> f:count()} != 1">s</f:if>)</small>
+    <f:if condition="{data.buttons}">
+        <br/><f:for each="{data.buttons}" as="btn" iteration="i"><f:if condition="{i.isFirst} == 0"> · </f:if>[{btn.label}]</f:for>
+    </f:if>
+</f:section>

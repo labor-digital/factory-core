@@ -1,0 +1,14 @@
+<f:layout name="Preview" />
+<f:section name="Content">
+    <strong>Page Hero</strong>
+    <small>(height: {data.height} · {data.slides -> f:count()} slide<f:if condition="{data.slides -> f:count()} != 1">s</f:if><f:if condition="{data.autoplay}"> · autoplay</f:if><f:if condition="{data.loop}"> · loop</f:if>)</small>
+    <f:if condition="{data.slides}">
+        <ul>
+            <f:for each="{data.slides}" as="slide" iteration="i">
+                <f:if condition="{i.cycle} <= 3">
+                    <li>{slide.headline}<f:if condition="{slide.eyebrow}"> <em>({slide.eyebrow})</em></f:if></li>
+                </f:if>
+            </f:for>
+        </ul>
+    </f:if>
+</f:section>
