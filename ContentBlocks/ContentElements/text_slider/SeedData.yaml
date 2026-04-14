@@ -1,0 +1,30 @@
+eyebrow: REFERENZEN
+eyebrow_decoration: bar
+eyebrow_color: primary
+title: Unsere <strong>Projekte</strong>
+description: >-
+  Hier eine Übersicht unserer Projekte. Für ein individuelles Angebot stehen
+  wir jederzeit zur Verfügung.
+text_align: left
+aspect_ratio: '16/9'
+show_arrows: 0
+show_pagination: 1
+autoplay: 0
+loop: 1
+buttons:
+  - label: Alle anzeigen
+    color: primary
+    variant: link
+    size: md
+    icon: i-lucide-arrow-right
+    trailing: 1
+slides:
+  - type: image
+    alt: Bauprojekt
+    caption: Wohnhaus in Nackenheim
+  - type: image
+    alt: Bauprojekt
+    caption: Sanierung Altbau
+  - type: image
+    alt: Bauprojekt
+    caption: Neubau Reihenhaus
