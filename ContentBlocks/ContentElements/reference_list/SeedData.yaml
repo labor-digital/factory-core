@@ -1,0 +1,27 @@
+eyebrow: REFERENZEN
+eyebrow_decoration: bar
+eyebrow_color: primary
+title: Unsere <strong>Projekte</strong>
+description: >-
+  Hier eine Übersicht unserer Projekte. Für ein individuelles Angebot stehen
+  wir jederzeit zur Verfügung.
+text_align: left
+layout: grid
+columns: '3'
+aspect_ratio: '4/3'
+show_arrows: 1
+show_pagination: 0
+autoplay: 0
+loop: 0
+record_type: property
+selection_mode: auto
+auto_filter_listing_type: ''
+auto_limit: 6
+auto_order: 'crdate desc'
+buttons:
+  - label: Alle anzeigen
+    color: primary
+    variant: link
+    size: md
+    icon: i-lucide-arrow-right
+    trailing: 1

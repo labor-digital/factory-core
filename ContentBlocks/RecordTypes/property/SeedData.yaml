@@ -1,0 +1,48 @@
+# SeedData.yaml for Property — a list of demo records (unlike ContentElements
+# which seed a single record). The seeder loops each entry into DataHandler.
+- title: Weingut zum Mehrfamilienhaus
+  slug: weingut-mfh
+  listing_type: buy
+  status: available
+  tag: mfh
+  tag_custom: 'NEUBAU & UMBAU'
+  address_street: Weingartenstraße 12
+  address_zip: '55218'
+  address_city: Ingelheim
+  address_country: Deutschland
+  price: 1200000
+  price_type: total
+  area_m2: 640
+  rooms: 12
+  units: 5
+  year_completed: 2018
+
+- title: Einfamilienhaus Bodenheim
+  slug: efh-bodenheim
+  listing_type: buy
+  status: new
+  tag: neubau
+  address_street: Am Rheinblick 7
+  address_zip: '55294'
+  address_city: Bodenheim
+  address_country: Deutschland
+  price: 690000
+  price_type: total
+  area_m2: 180
+  rooms: 5
+  units: 1
+  year_completed: 2018
+
+- title: Doppelhaus Nackenheim
+  slug: doppelhaus-nackenheim
+  listing_type: buy
+  status: reserved
+  tag: neubau
+  address_city: Nackenheim
+  address_country: Deutschland
+  price: null
+  price_type: total
+  area_m2: 180
+  rooms: 4
+  units: 2
+  year_completed: 2018

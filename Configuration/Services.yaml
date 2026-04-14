@@ -6,3 +6,6 @@ services:
 
   LaborDigital\FactoryCore\:
     resource: '../Classes/*'
+
+  LaborDigital\FactoryCore\DataProcessing\ReferenceListProcessor:
+    public: true

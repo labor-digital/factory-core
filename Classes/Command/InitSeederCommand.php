@@ -36,7 +36,9 @@ class InitSeederCommand extends Command
     {
         $this
             ->addOption('lang', null, InputOption::VALUE_OPTIONAL, 'Comma-separated list of languages (e.g., "de,en")', 'de')
-            ->addOption('base', null, InputOption::VALUE_OPTIONAL, 'Base language (e.g., "de")', 'de');
+            ->addOption('base', null, InputOption::VALUE_OPTIONAL, 'Base language (e.g., "de")', 'de')
+            ->addOption('home-elements', null, InputOption::VALUE_OPTIONAL, 'Comma-separated list of component slugs for the homepage (e.g., "page-hero,header,text")', 'page-hero,header,text')
+            ->addOption('seed-template', null, InputOption::VALUE_OPTIONAL, 'Name of a seed template to use for the homepage (overrides --home-elements)', '');
     }
 
     protected function execute(InputInterface $input, OutputInterface $output): int
@@ -46,16 +48,26 @@ class InitSeederCommand extends Command
 
         $langOption = $input->getOption('lang');
         $baseLang = $input->getOption('base');
+        $homeElementsOption = $input->getOption('home-elements');
+        $seedTemplateName = $input->getOption('seed-template');
 
         $languages = array_map('trim', explode(',', $langOption));
         if (!in_array($baseLang, $languages, true)) {
             array_unshift($languages, $baseLang);
         }
 
+        $homeElements = array_filter(array_map('trim', explode(',', $homeElementsOption)));
+
         try {
             $uids = $this->createPageTree($languages, $baseLang, $io);
-            $this->createHomeContent($uids['home'], $io);
+
+            if (!empty($seedTemplateName)) {
+                $this->createHomeContentFromTemplate($uids['home'], $seedTemplateName, $io);
+            } else {
+                $this->createHomeContent($uids['home'], $homeElements, $io);
+            }
             $this->seedCollectionContent($uids['cb_collection'], $io);
+            $this->seedRecordTypeContent($uids['records'], $io);
             $this->generateSiteConfiguration($languages, $baseLang, $uids, $io);
             $this->createAdminUser($io);
 
@@ -140,6 +152,13 @@ class InitSeederCommand extends Command
                     'hidden' => 0,
                     'sys_language_uid' => 0,
                 ],
+                'NEW_records' => [
+                    'pid' => 'NEW_home',
+                    'title' => 'Records',
+                    'doktype' => 254,
+                    'hidden' => 0,
+                    'sys_language_uid' => 0,
+                ],
             ]
         ];
 
@@ -157,8 +176,9 @@ class InitSeederCommand extends Command
         $privacyUid = $newUids['NEW_privacy'] ?? null;
         $error404Uid = $newUids['NEW_404'] ?? null;
         $cbCollectionUid = $newUids['NEW_cb_collection'] ?? null;
+        $recordsUid = $newUids['NEW_records'] ?? null;
 
-        $io->writeln("Created base pages (Home: $homeUid, Footer: $footerUid, Imprint: $imprintUid, Privacy: $privacyUid, 404: $error404Uid, CB-Collection: $cbCollectionUid)");
+        $io->writeln("Created base pages (Home: $homeUid, Footer: $footerUid, Imprint: $imprintUid, Privacy: $privacyUid, 404: $error404Uid, CB-Collection: $cbCollectionUid, Records: $recordsUid)");
 
         // Save CB Collection PID to a registry
         $registry = GeneralUtility::makeInstance(Registry::class);
@@ -236,47 +256,57 @@ class InitSeederCommand extends Command
             'footer' => $footerUid,
             '404' => $error404Uid,
             'cb_collection' => $cbCollectionUid,
+            'records' => $recordsUid,
         ];
     }
 
-    private function createHomeContent(int $homeUid, SymfonyStyle $io): void
+    private function createHomeContent(int $homeUid, array $homeElements, SymfonyStyle $io): void
     {
         $io->section('Seeding Homepage Content');
 
+        if ($homeElements === []) {
+            $io->writeln('No home elements specified — skipping homepage content seeding.');
+            return;
+        }
+
+        $data = [];
+        $sorting = 256;
+        $componentDirectories = [];
+
+        foreach ($homeElements as $slug) {
+            $directoryName = $this->contentBlockSeeder->toDirectoryName($slug);
+            $newId = 'NEW_home_' . $directoryName;
+
+            $record = $this->contentBlockSeeder->buildDataHandlerRecord(
+                $directoryName,
+                $homeUid,
+                $sorting,
+                $newId,
+            );
+
+            if ($record === null) {
+                $io->writeln("  Skipping $slug — no SeedData.yaml found.");
+                continue;
+            }
+
+            foreach ($record as $table => $records) {
+                if (!isset($data[$table])) {
+                    $data[$table] = [];
+                }
+                $data[$table] = array_merge($data[$table], $records);
+            }
+
+            $componentDirectories[$newId] = $directoryName;
+            $sorting += 256;
+        }
+
+        if ($data === []) {
+            $io->writeln('No seed data found for any home element.');
+            return;
+        }
+
+        // Phase 1: Create parent records via DataHandler (scalar fields only)
         $dataHandler = GeneralUtility::makeInstance(DataHandler::class);
-
-        $data = [
-            'tt_content' => [
-                'NEW_hero' => [
-                    'pid' => $homeUid,
-                    'CType' => 'factory_pagehero',
-                    'colPos' => 0,
-                    'sys_language_uid' => 0,
-                    'sorting' => 256,
-                    'factory_pagehero_headline' => 'Welcome',
-                    'factory_pagehero_title' => 'Factory Headless CMS',
-                    'factory_pagehero_description' => 'Your TYPO3 + Nuxt boilerplate is ready.',
-                ],
-                'NEW_header' => [
-                    'pid' => $homeUid,
-                    'CType' => 'factory_header',
-                    'colPos' => 0,
-                    'sys_language_uid' => 0,
-                    'sorting' => 512,
-                    'factory_header_text' => 'Getting Started',
-                    'factory_header_level' => 'h2',
-                ],
-                'NEW_text' => [
-                    'pid' => $homeUid,
-                    'CType' => 'factory_text',
-                    'colPos' => 0,
-                    'sys_language_uid' => 0,
-                    'sorting' => 768,
-                    'factory_text_bodytext' => '<p>Edit this page in the TYPO3 backend to start building your site.</p>',
-                ],
-            ],
-        ];
-
         $dataHandler->start($data, []);
         $dataHandler->process_datamap();
 
@@ -284,8 +314,118 @@ class InitSeederCommand extends Command
             throw new \RuntimeException('Error seeding homepage content: ' . implode(', ', $dataHandler->errorLog));
         }
 
-        $newUids = $dataHandler->substNEWwithIDs;
-        $io->writeln('Seeded homepage content (Hero: ' . ($newUids['NEW_hero'] ?? '?') . ', Header: ' . ($newUids['NEW_header'] ?? '?') . ', Text: ' . ($newUids['NEW_text'] ?? '?') . ')');
+        // Phase 2: Insert Collection children via direct SQL
+        $collectionsSeeded = 0;
+        foreach ($componentDirectories as $newId => $directoryName) {
+            $parentUid = (int)($dataHandler->substNEWwithIDs[$newId] ?? 0);
+            if ($parentUid > 0) {
+                $collectionsSeeded += $this->contentBlockSeeder->insertCollectionChildren(
+                    $directoryName,
+                    $parentUid,
+                    $homeUid,
+                );
+            }
+        }
+
+        $io->writeln('Seeded ' . count($componentDirectories) . ' element(s) on homepage: ' . implode(', ', $homeElements));
+        if ($collectionsSeeded > 0) {
+            $io->writeln("  Including $collectionsSeeded collection field(s) via direct SQL.");
+        }
+    }
+
+    private function createHomeContentFromTemplate(int $homeUid, string $templateName, SymfonyStyle $io): void
+    {
+        $io->section("Seeding Homepage from Template: $templateName");
+
+        $template = $this->contentBlockSeeder->readSeedTemplate($templateName);
+        if ($template === null) {
+            $io->writeln("Seed template '$templateName' not found — skipping homepage content.");
+            return;
+        }
+
+        $elements = $template['elements'] ?? [];
+        if ($elements === []) {
+            $io->writeln('Template has no elements — skipping homepage content.');
+            return;
+        }
+
+        // Reverse so that TYPO3's default sorting (newest on top) results in correct display order
+        $elements = array_reverse($elements);
+
+        $data = [];
+        $sorting = 256;
+        $componentMeta = []; // newId => ['directory' => ..., 'data' => ...]
+
+        foreach ($elements as $index => $element) {
+            $slug = $element['component'] ?? '';
+            $overrideData = $element['data'] ?? [];
+
+            if ($slug === '') {
+                continue;
+            }
+
+            $directoryName = $this->contentBlockSeeder->toDirectoryName($slug);
+            $newId = 'NEW_tpl_' . $index . '_' . $directoryName;
+
+            $record = $this->contentBlockSeeder->buildDataHandlerRecordWithOverrides(
+                $directoryName,
+                $homeUid,
+                $sorting,
+                $newId,
+                $overrideData,
+            );
+
+            if ($record === null) {
+                $io->writeln("  Skipping $slug — no config.yaml found.");
+                continue;
+            }
+
+            foreach ($record as $table => $records) {
+                if (!isset($data[$table])) {
+                    $data[$table] = [];
+                }
+                $data[$table] = array_merge($data[$table], $records);
+            }
+
+            $componentMeta[$newId] = [
+                'directory' => $directoryName,
+                'data' => $overrideData,
+            ];
+            $sorting += 256;
+        }
+
+        if ($data === []) {
+            $io->writeln('No seed data produced from template.');
+            return;
+        }
+
+        // Phase 1: Create parent records via DataHandler
+        $dataHandler = GeneralUtility::makeInstance(DataHandler::class);
+        $dataHandler->start($data, []);
+        $dataHandler->process_datamap();
+
+        if (!empty($dataHandler->errorLog)) {
+            throw new \RuntimeException('Error seeding homepage from template: ' . implode(', ', $dataHandler->errorLog));
+        }
+
+        // Phase 2: Insert Collection children with override data
+        $collectionsSeeded = 0;
+        foreach ($componentMeta as $newId => $meta) {
+            $parentUid = (int)($dataHandler->substNEWwithIDs[$newId] ?? 0);
+            if ($parentUid > 0) {
+                $collectionsSeeded += $this->contentBlockSeeder->insertCollectionChildrenWithOverrides(
+                    $meta['directory'],
+                    $parentUid,
+                    $homeUid,
+                    $meta['data'],
+                );
+            }
+        }
+
+        $io->writeln('Seeded ' . count($componentMeta) . ' element(s) on homepage from template "' . $templateName . '"');
+        if ($collectionsSeeded > 0) {
+            $io->writeln("  Including $collectionsSeeded collection field(s) via direct SQL.");
+        }
     }
 
     private function seedCollectionContent(int $cbCollectionPid, SymfonyStyle $io): void
@@ -369,6 +509,78 @@ class InitSeederCommand extends Command
         if ($collectionsSeeded > 0) {
             $io->writeln("  Including $collectionsSeeded collection field(s) via direct SQL.");
         }
+    }
+
+    private function seedRecordTypeContent(int $recordsPid, SymfonyStyle $io): void
+    {
+        $activeRecordTypes = $this->contentBlockSeeder->getActiveRecordTypes();
+        if ($activeRecordTypes === []) {
+            $io->writeln('No active record types in factory.json — skipping record seeding.');
+            return;
+        }
+
+        $io->section('Seeding Record Types');
+
+        $data = [];
+        $seeded = [];
+        $sorting = 256;
+
+        foreach ($activeRecordTypes as $recordTypeName) {
+            $slug = $this->contentBlockSeeder->toKebabCase($recordTypeName);
+            $directoryName = $this->contentBlockSeeder->toDirectoryName($slug);
+            $seedList = $this->contentBlockSeeder->readSeedData($directoryName, isRecord: true);
+
+            if (!is_array($seedList)) {
+                $io->writeln("  Skipping $recordTypeName — no SeedData.yaml found.");
+                continue;
+            }
+
+            // SeedData.yaml for record types is a LIST of records, not a map of fields
+            foreach ($seedList as $index => $entry) {
+                if (!is_array($entry)) {
+                    continue;
+                }
+
+                $newId = 'NEW_record_' . $directoryName . '_' . $index;
+                $record = $this->contentBlockSeeder->buildRecordDataHandlerRecord(
+                    $directoryName,
+                    $recordsPid,
+                    $sorting,
+                    $newId,
+                    $entry,
+                );
+
+                if ($record === null) {
+                    continue;
+                }
+
+                foreach ($record as $table => $rows) {
+                    if (!isset($data[$table])) {
+                        $data[$table] = [];
+                    }
+                    $data[$table] = array_merge($data[$table], $rows);
+                }
+
+                $sorting += 256;
+            }
+
+            $seeded[] = $recordTypeName . ' (' . count($seedList) . ')';
+        }
+
+        if ($data === []) {
+            $io->writeln('No record seed data produced.');
+            return;
+        }
+
+        $dataHandler = GeneralUtility::makeInstance(DataHandler::class);
+        $dataHandler->start($data, []);
+        $dataHandler->process_datamap();
+
+        if (!empty($dataHandler->errorLog)) {
+            throw new \RuntimeException('Error seeding records: ' . implode(', ', $dataHandler->errorLog));
+        }
+
+        $io->writeln('Seeded record types: ' . implode(', ', $seeded));
     }
 
     private function generateSiteConfiguration(array $languages, string $baseLang, array $uids, SymfonyStyle $io): void
