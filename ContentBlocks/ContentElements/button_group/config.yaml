@@ -6,8 +6,9 @@ icon: content-text
 fields:
   - identifier: alignment
     type: Select
+    renderType: selectSingle
     label: Alignment
-    options:
+    items:
       - { label: Left, value: left }
       - { label: Center, value: center }
       - { label: Right, value: right }
@@ -25,8 +26,9 @@ fields:
         label: Link
       - identifier: target
         type: Select
+        renderType: selectSingle
         label: Link Target
-        options:
+        items:
           - { label: Default, value: '' }
           - { label: New Window, value: _blank }
           - { label: Parent, value: _parent }
@@ -34,8 +36,9 @@ fields:
           - { label: Top, value: _top }
       - identifier: color
         type: Select
+        renderType: selectSingle
         label: Color
-        options:
+        items:
           - { label: Primary, value: primary }
           - { label: Secondary, value: secondary }
           - { label: Neutral, value: neutral }
@@ -45,8 +48,9 @@ fields:
           - { label: Error, value: error }
       - identifier: variant
         type: Select
+        renderType: selectSingle
         label: Variant
-        options:
+        items:
           - { label: Solid, value: solid }
           - { label: Outline, value: outline }
           - { label: Soft, value: soft }
@@ -55,8 +59,9 @@ fields:
           - { label: Link, value: link }
       - identifier: size
         type: Select
+        renderType: selectSingle
         label: Size
-        options:
+        items:
           - { label: Extra Small, value: xs }
           - { label: Small, value: sm }
           - { label: Medium, value: md }

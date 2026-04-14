@@ -10,9 +10,10 @@ fields:
     description: Optional caption displayed above the table.
   - identifier: sticky
     type: Select
+    renderType: selectSingle
     label: Sticky
     description: Make header or footer stick on scroll.
-    options:
+    items:
       - { label: None, value: '' }
       - { label: Header, value: header }
       - { label: Footer, value: footer }

@@ -10,9 +10,10 @@ fields:
     description: The headline text.
   - identifier: level
     type: Select
+    renderType: selectSingle
     label: Level
     description: The heading level.
-    options:
+    items:
       - { label: H1, value: h1 }
       - { label: H2, value: h2 }
       - { label: H3, value: h3 }
@@ -22,8 +23,9 @@ fields:
     default: h2
   - identifier: alignment
     type: Select
+    renderType: selectSingle
     label: Alignment
-    options:
+    items:
       - { label: Left, value: left }
       - { label: Center, value: center }
       - { label: Right, value: right }
@@ -34,8 +36,9 @@ fields:
     description: Display a separator line below the headline.
   - identifier: separator_color
     type: Select
+    renderType: selectSingle
     label: Separator Color
-    options:
+    items:
       - { label: Primary, value: primary }
       - { label: Secondary, value: secondary }
       - { label: Neutral, value: neutral }
@@ -45,16 +48,18 @@ fields:
       - { label: Error, value: error }
   - identifier: separator_type
     type: Select
+    renderType: selectSingle
     label: Separator Type
-    options:
+    items:
       - { label: Solid, value: solid }
       - { label: Dashed, value: dashed }
       - { label: Dotted, value: dotted }
     default: solid
   - identifier: separator_size
     type: Select
+    renderType: selectSingle
     label: Separator Size
-    options:
+    items:
       - { label: Extra Small, value: xs }
       - { label: Small, value: sm }
       - { label: Medium, value: md }

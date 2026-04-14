@@ -18,8 +18,9 @@ fields:
     description: The description text of the feature.
   - identifier: orientation
     type: Select
+    renderType: selectSingle
     label: Orientation
-    options:
+    items:
       - { label: Horizontal, value: horizontal }
       - { label: Vertical, value: vertical }
     default: horizontal
@@ -29,8 +30,9 @@ fields:
     description: Optional link to navigate to when clicking the feature.
   - identifier: target
     type: Select
+    renderType: selectSingle
     label: Link Target
-    options:
+    items:
       - { label: Default, value: '' }
       - { label: New Window, value: _blank }
       - { label: Parent, value: _parent }

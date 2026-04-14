@@ -6,8 +6,9 @@ icon: content-text
 fields:
   - identifier: orientation
     type: Select
+    renderType: selectSingle
     label: Orientation
-    options:
+    items:
       - { label: Horizontal, value: horizontal }
       - { label: Vertical, value: vertical }
     default: horizontal

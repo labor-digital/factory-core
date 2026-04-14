@@ -6,9 +6,10 @@ icon: content-text
 fields:
   - identifier: type
     type: Select
+    renderType: selectSingle
     label: Type
     description: Whether a single or multiple items can be open at a time.
-    options:
+    items:
       - { label: Single, value: single }
       - { label: Multiple, value: multiple }
     default: single

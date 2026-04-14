@@ -21,8 +21,9 @@ fields:
         label: Description
       - identifier: orientation
         type: Select
+        renderType: selectSingle
         label: Orientation
-        options:
+        items:
           - { label: Vertical, value: vertical }
           - { label: Horizontal, value: horizontal }
         default: vertical
@@ -32,8 +33,9 @@ fields:
         description: Reverse the order of the default slot.
       - identifier: variant
         type: Select
+        renderType: selectSingle
         label: Variant
-        options:
+        items:
           - { label: Outline, value: outline }
           - { label: Solid, value: solid }
           - { label: Soft, value: soft }
@@ -47,8 +49,9 @@ fields:
         description: Display a highlighted border around the card.
       - identifier: highlight_color
         type: Select
+        renderType: selectSingle
         label: Highlight Color
-        options:
+        items:
           - { label: Primary, value: primary }
           - { label: Secondary, value: secondary }
           - { label: Neutral, value: neutral }
@@ -62,8 +65,9 @@ fields:
         description: Display a spotlight effect on hover.
       - identifier: spotlight_color
         type: Select
+        renderType: selectSingle
         label: Spotlight Color
-        options:
+        items:
           - { label: Primary, value: primary }
           - { label: Secondary, value: secondary }
           - { label: Neutral, value: neutral }
@@ -77,8 +81,9 @@ fields:
         description: Optional link for the card.
       - identifier: target
         type: Select
+        renderType: selectSingle
         label: Link Target
-        options:
+        items:
           - { label: Default, value: '' }
           - { label: New Window, value: _blank }
           - { label: Parent, value: _parent }
@@ -92,9 +97,10 @@ fields:
         maxItems: 1
       - identifier: col_span
         type: Select
+        renderType: selectSingle
         label: Column Span
         description: How many grid columns this card should span.
-        options:
+        items:
           - { label: '1', value: '1' }
           - { label: '2', value: '2' }
           - { label: '3', value: '3' }

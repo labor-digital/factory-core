@@ -1,13 +1,24 @@
-headline: Welcome
-title: Factory Headless CMS
-description: Your TYPO3 + Nuxt boilerplate is ready.
-orientation: vertical
-links:
-  - label: Get Started
-    color: primary
-    variant: solid
-    size: md
-  - label: Documentation
-    color: neutral
-    variant: outline
-    size: md
+content_position_x: center
+content_position_y: center
+height: medium
+show_arrows: 0
+show_pagination: 1
+autoplay: 0
+loop: 1
+slides:
+  - eyebrow: BAUGESCHÄFT · NACKENHEIM · SEIT VIER GENERATIONEN
+    headline: Jeder hat eine Leidenschaft.
+    text: Wir bauen Häuser.
+    text_color: light
+    background_type: color
+    background_color: primary
+    overlay: none
+    buttons:
+      - label: Referenzen ansehen
+        color: neutral
+        variant: outline
+        size: md
+      - label: Angebot anfordern
+        color: primary
+        variant: solid
+        size: md
