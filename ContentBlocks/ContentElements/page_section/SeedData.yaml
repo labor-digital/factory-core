@@ -1,22 +1,27 @@
-headline: Features
-title: Everything you need
-description: A complete toolkit for building modern headless websites.
-orientation: vertical
-links:
-  - label: Learn More
+eyebrow: UNSERE VISION
+eyebrow_decoration: bar
+eyebrow_color: primary
+title: "Wir realisieren Ihren <strong>Traum vom Wohnen.</strong>"
+description: >-
+  Durch langjährige Zusammenarbeit mit innovativen Architekten und bewährten
+  Handwerksbetrieben haben wir einen hohen Qualitätsstandard erreicht.
+media_position: right
+media_width: normal
+content_align: left
+text_max_width: normal
+background_type: none
+background_overlay: none
+aspect_ratio: '1/1'
+caption_position: below
+show_arrows: 0
+show_pagination: 1
+enable_lightbox: 1
+buttons:
+  - label: Jetzt Kontakt aufnehmen
     color: primary
-    variant: soft
+    variant: outline
     size: md
-features:
-  - title: Headless CMS
-    description: TYPO3 backend with a fully decoupled Nuxt frontend.
-    icon: i-lucide-monitor
-    orientation: horizontal
-  - title: Content Blocks
-    description: Reusable, schema-driven content elements.
-    icon: i-lucide-blocks
-    orientation: horizontal
-  - title: Multi-Language
-    description: Built-in support for multilingual page trees.
-    icon: i-lucide-languages
-    orientation: horizontal
+media:
+  - type: image
+    alt: Bauprojekt
+    caption: Wohnhaus in Nackenheim
