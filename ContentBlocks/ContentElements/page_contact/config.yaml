@@ -1,0 +1,89 @@
+name: factory/page-contact
+title: Page Contact
+description: A contact section with info and a configurable form.
+category: factory
+icon: content-form
+fields:
+  - identifier: headline
+    type: Text
+    label: Headline
+    description: The headline displayed above the title.
+  - identifier: title
+    type: Text
+    label: Title
+    description: The main title of the contact section.
+  - identifier: description
+    type: Text
+    label: Description
+    description: The description text below the title.
+  - identifier: contact_items
+    type: Collection
+    label: Contact Items
+    description: Contact details like address, phone, and email.
+    fields:
+      - identifier: icon
+        type: Text
+        label: Icon
+        description: Iconify icon name (e.g., i-lucide-map-pin)
+      - identifier: label
+        type: Text
+        label: Label
+      - identifier: value
+        type: Text
+        label: Value
+      - identifier: type
+        type: Select
+        renderType: selectSingle
+        label: Type
+        items:
+          - { label: Address, value: address }
+          - { label: Phone, value: phone }
+          - { label: Email, value: email }
+          - { label: Generic, value: generic }
+  - identifier: form_fields
+    type: Collection
+    label: Form Fields
+    description: Fields to display in the contact form.
+    fields:
+      - identifier: label
+        type: Text
+        label: Label
+      - identifier: name
+        type: Text
+        label: Field Name
+        description: HTML form field name attribute.
+      - identifier: type
+        type: Select
+        renderType: selectSingle
+        label: Type
+        items:
+          - { label: Text, value: text }
+          - { label: Email, value: email }
+          - { label: Phone, value: tel }
+          - { label: Textarea, value: textarea }
+      - identifier: required
+        type: Checkbox
+        label: Required
+      - identifier: placeholder
+        type: Text
+        label: Placeholder
+      - identifier: col_span
+        type: Select
+        renderType: selectSingle
+        label: Column Span
+        description: How many grid columns this field spans.
+        items:
+          - { label: Half, value: "1" }
+          - { label: Full, value: "2" }
+  - identifier: submit_label
+    type: Text
+    label: Submit Button Label
+    description: The label for the form submit button.
+  - identifier: orientation
+    type: Select
+    renderType: selectSingle
+    label: Orientation
+    items:
+      - { label: Vertical, value: vertical }
+      - { label: Horizontal, value: horizontal }
+    default: horizontal
