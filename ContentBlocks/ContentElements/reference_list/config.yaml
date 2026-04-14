@@ -1,7 +1,7 @@
 name: factory/reference-list
 title: Reference List
 description: A polymorphic section that lists records of any active record type (Property, News, …) as a grid or slider.
-category: factory
+group: factory
 icon: content-list
 fields:
   # ------------------------------------------------------------

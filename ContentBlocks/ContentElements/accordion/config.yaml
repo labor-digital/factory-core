@@ -1,7 +1,7 @@
 name: factory/accordion
 title: Accordion
 description: A stacked set of collapsible panels.
-category: factory
+group: factory
 icon: content-text
 fields:
   - identifier: type

@@ -1,7 +1,7 @@
 name: factory/page-grid
 title: Page Grid
 description: A responsive grid of cards to display content in a flexible layout.
-category: factory
+group: factory
 icon: content-text
 fields:
   - identifier: cards

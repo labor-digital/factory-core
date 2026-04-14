@@ -1,7 +1,7 @@
 name: factory/page-cta
 title: Page CTA
 description: A call to action section to display in your pages.
-category: factory
+group: factory
 icon: content-text
 fields:
   - identifier: title

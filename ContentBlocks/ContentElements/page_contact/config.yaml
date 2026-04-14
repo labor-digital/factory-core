@@ -1,7 +1,7 @@
 name: factory/page-contact
 title: Page Contact
 description: A contact section with info and a configurable form.
-category: factory
+group: factory
 icon: content-form
 fields:
   - identifier: headline

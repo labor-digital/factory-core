@@ -1,7 +1,7 @@
 name: factory/page-feature
 title: Page Feature
 description: A component to showcase key features of your application.
-category: factory
+group: factory
 icon: content-text
 fields:
   - identifier: icon

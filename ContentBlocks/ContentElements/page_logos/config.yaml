@@ -1,7 +1,7 @@
 name: factory/page-logos
 title: Page Logos
 description: A list of logos or images to display on your pages.
-category: factory
+group: factory
 icon: content-text
 fields:
   - identifier: title

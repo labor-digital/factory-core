@@ -2,7 +2,20 @@
 
 declare(strict_types=1);
 
+use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
+
 defined('TYPO3') or die();
+
+// Wizard group for all factory ContentBlocks. CBs declare `group: factory` in
+// their config.yaml; this registers the group label and its position in the
+// New Content Element wizard.
+ExtensionManagementUtility::addTcaSelectItemGroup(
+    'tt_content',
+    'CType',
+    'factory',
+    'Factory',
+    'before:default',
+);
 
 // ReferenceList: upgrade `auto_storage_pid` from CB's Text type to a native
 // multi-page picker. See ContentBlocks/ContentElements/reference_list/config.yaml

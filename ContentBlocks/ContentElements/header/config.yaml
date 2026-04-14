@@ -1,7 +1,7 @@
 name: factory/header
 title: Header
 description: A headline element with optional separator.
-category: factory
+group: factory
 icon: content-text
 fields:
   - identifier: text

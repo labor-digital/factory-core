@@ -1,7 +1,7 @@
 name: factory/blog-posts
 title: Blog Posts
 description: A list of blog posts.
-category: factory
+group: factory
 icon: content-news
 fields:
   - identifier: categories

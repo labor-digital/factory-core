@@ -1,7 +1,7 @@
 name: factory/button-group
 title: Button Group
 description: A group of buttons displayed together.
-category: factory
+group: factory
 icon: content-text
 fields:
   - identifier: alignment
