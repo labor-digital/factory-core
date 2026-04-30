@@ -25,7 +25,12 @@ final class FactoryComponentRegistry
     /** @var array{core_version:string,active_components:list<string>,active_record_types:list<string>}|null */
     private static ?array $config = null;
 
+    /** @var array<string,array{core_version:string,active_components:list<string>,active_record_types:list<string>}> */
+    private static array $siteConfigs = [];
+
     /**
+     * Project-root factory.json (dedicated-instance mode).
+     *
      * @return array{core_version:string,active_components:list<string>,active_record_types:list<string>}
      */
     public static function loadConfig(): array
@@ -33,31 +38,98 @@ final class FactoryComponentRegistry
         if (self::$config !== null) {
             return self::$config;
         }
+        return self::$config = self::loadConfigFile(Environment::getProjectPath() . '/factory.json');
+    }
 
-        $path = Environment::getProjectPath() . '/factory.json';
+    /**
+     * Per-site factory.json (shared-tenant mode). Reads
+     * `config/sites/{siteIdentifier}/factory.json`. Returns an empty
+     * config when the file is missing; the caller decides whether to
+     * fall back to the project-root config.
+     *
+     * @return array{core_version:string,active_components:list<string>,active_record_types:list<string>}
+     */
+    public static function loadSiteConfig(string $siteIdentifier): array
+    {
+        if (isset(self::$siteConfigs[$siteIdentifier])) {
+            return self::$siteConfigs[$siteIdentifier];
+        }
+        $path = Environment::getProjectPath() . '/config/sites/' . $siteIdentifier . '/factory.json';
+        return self::$siteConfigs[$siteIdentifier] = self::loadConfigFile($path);
+    }
+
+    /**
+     * True when the given site has its own `factory.json`. Distinguishes
+     * "site not yet onboarded" from "site exists with empty active_components".
+     */
+    public static function hasSiteConfig(string $siteIdentifier): bool
+    {
+        return is_file(Environment::getProjectPath() . '/config/sites/' . $siteIdentifier . '/factory.json');
+    }
+
+    /**
+     * True when a project-root `factory.json` exists (dedicated-instance mode).
+     */
+    public static function hasRootConfig(): bool
+    {
+        return is_file(Environment::getProjectPath() . '/factory.json');
+    }
+
+    /**
+     * True when at least one site under `config/sites/` ships its own
+     * `factory.json`. Used by the legacy TCA strip overrides to no-op
+     * in shared-tenant mode (where gating happens per-request via
+     * TSconfig instead of globally at bootstrap).
+     */
+    public static function hasAnySiteConfig(): bool
+    {
+        $sitesDir = Environment::getProjectPath() . '/config/sites';
+        if (!is_dir($sitesDir)) {
+            return false;
+        }
+        foreach (new \DirectoryIterator($sitesDir) as $info) {
+            if ($info->isDot() || !$info->isDir()) {
+                continue;
+            }
+            if (is_file($info->getPathname() . '/factory.json')) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    /**
+     * @return array{core_version:string,active_components:list<string>,active_record_types:list<string>}
+     */
+    private static function loadConfigFile(string $path): array
+    {
         $config = [
             'core_version' => '',
             'active_components' => [],
             'active_record_types' => [],
         ];
 
-        if (is_file($path)) {
-            try {
-                $decoded = json_decode((string)file_get_contents($path), true, 512, JSON_THROW_ON_ERROR);
-            } catch (\JsonException) {
-                $decoded = null;
-            }
-
-            if (is_array($decoded)) {
-                if (isset($decoded['core_version']) && is_string($decoded['core_version'])) {
-                    $config['core_version'] = $decoded['core_version'];
-                }
-                $config['active_components'] = self::normalizeKeyList($decoded['active_components'] ?? []);
-                $config['active_record_types'] = self::normalizeKeyList($decoded['active_record_types'] ?? []);
-            }
+        if (!is_file($path)) {
+            return $config;
         }
 
-        return self::$config = $config;
+        try {
+            $decoded = json_decode((string)file_get_contents($path), true, 512, JSON_THROW_ON_ERROR);
+        } catch (\JsonException) {
+            return $config;
+        }
+
+        if (!is_array($decoded)) {
+            return $config;
+        }
+
+        if (isset($decoded['core_version']) && is_string($decoded['core_version'])) {
+            $config['core_version'] = $decoded['core_version'];
+        }
+        $config['active_components'] = self::normalizeKeyList($decoded['active_components'] ?? []);
+        $config['active_record_types'] = self::normalizeKeyList($decoded['active_record_types'] ?? []);
+
+        return $config;
     }
 
     /**

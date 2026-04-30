@@ -1,8 +1,32 @@
 {
 	"name": "labor-digital/factory-core",
 	"type": "typo3-cms-extension",
-	"description": "Factory Core TYPO3 Extension",
+	"description": "TYPO3 extension for the LABOR.digital Factory headless CMS boilerplate — ships Content Blocks, record types, tenant-scope enforcement, and provisioning CLIs for single-tenant and shared-tenant installations.",
 	"license": "GPL-2.0-or-later",
+	"version": "0.1.0",
+	"keywords": [
+		"typo3",
+		"typo3-cms",
+		"typo3-cms-extension",
+		"headless",
+		"content-blocks",
+		"factory",
+		"multi-tenant",
+		"labor-digital"
+	],
+	"authors": [
+		{
+			"name": "LABOR.digital",
+			"email": "info@labor.tools",
+			"homepage": "https://labor.digital",
+			"role": "Maintainer"
+		}
+	],
+	"homepage": "https://github.com/labor-digital/lab-factory/tree/main/factory-core/typo3-extension",
+	"support": {
+		"issues": "https://github.com/labor-digital/lab-factory/issues",
+		"source": "https://github.com/labor-digital/lab-factory"
+	},
 	"require": {
 		"php": "^8.4",
 		"typo3/cms-core": "^v13.4.27",
