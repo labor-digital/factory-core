@@ -1,0 +1,8 @@
+<f:layout name="Preview" />
+<f:section name="Content">
+    <strong>Blog Posts</strong>
+    <small>(limit: {data.limit}<f:if condition="{data.hidePagination}">, no pagination</f:if>)</small>
+    <f:if condition="{data.categories}">
+        <br/><em>Categories: <f:for each="{data.categories}" as="cat" iteration="i"><f:if condition="{i.isFirst} == 0">, </f:if>{cat.title}</f:for></em>
+    </f:if>
+</f:section>

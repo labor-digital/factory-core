@@ -1,0 +1,5 @@
+<f:layout name="Preview" />
+<f:section name="Content">
+    <strong>Carousel</strong>
+    <small>({data.orientation}, {data.items -> f:count()} slide<f:if condition="{data.items -> f:count()} != 1">s</f:if><f:if condition="{data.autoplay}">, autoplay</f:if><f:if condition="{data.loop}">, loop</f:if>)</small>
+</f:section>

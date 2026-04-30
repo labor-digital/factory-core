@@ -1,0 +1,9 @@
+<f:layout name="Preview" />
+<f:section name="Content">
+    <strong>Reference List: <f:format.raw>{data.title}</f:format.raw></strong>
+    <f:if condition="{data.eyebrow}"><br/><em>{data.eyebrow}</em></f:if>
+    <br/><small>type: {data.record_type} · {data.layout}<f:if condition="{data.layout} == 'grid'"> · {data.columns} cols</f:if> · {data.selection_mode}</small>
+    <f:if condition="{data.selection_mode} == 'auto'">
+        <br/><small>limit: {data.auto_limit} · order: {data.auto_order}<f:if condition="{data.auto_filter_listing_type}"> · filter: {data.auto_filter_listing_type}</f:if></small>
+    </f:if>
+</f:section>

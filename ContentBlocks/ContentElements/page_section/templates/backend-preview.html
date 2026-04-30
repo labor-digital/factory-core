@@ -1,0 +1,7 @@
+<f:layout name="Preview" />
+<f:section name="Content">
+    <strong>Page Section: <f:format.raw>{data.title}</f:format.raw></strong>
+    <f:if condition="{data.eyebrow}"><br/><em>{data.eyebrow}</em></f:if>
+    <f:if condition="{data.description}"><br/>{data.description -> f:format.crop(maxCharacters: 160, append: '…')}</f:if>
+    <br/><small>media: {data.media_position}/{data.media_width} · {data.media -> f:count()} media · {data.buttons -> f:count()} button<f:if condition="{data.buttons -> f:count()} != 1">s</f:if> · bg: {data.background_type}</small>
+</f:section>

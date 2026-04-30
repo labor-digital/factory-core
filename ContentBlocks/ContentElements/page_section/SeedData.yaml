@@ -1,0 +1,27 @@
+eyebrow: UNSERE VISION
+eyebrow_decoration: bar
+eyebrow_color: primary
+title: "Wir realisieren Ihren <strong>Traum vom Wohnen.</strong>"
+description: >-
+  Durch langjährige Zusammenarbeit mit innovativen Architekten und bewährten
+  Handwerksbetrieben haben wir einen hohen Qualitätsstandard erreicht.
+media_position: right
+media_width: normal
+content_align: left
+text_max_width: normal
+background_type: none
+background_overlay: none
+aspect_ratio: '1/1'
+caption_position: below
+show_arrows: 0
+show_pagination: 1
+enable_lightbox: 1
+buttons:
+  - label: Jetzt Kontakt aufnehmen
+    color: primary
+    variant: outline
+    size: md
+media:
+  - type: image
+    alt: Bauprojekt
+    caption: Wohnhaus in Nackenheim

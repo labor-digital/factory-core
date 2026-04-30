@@ -1,0 +1,12 @@
+type: single
+collapsible: 1
+items:
+  - label: What is Factory?
+    icon: i-lucide-help-circle
+    content: Factory is a headless CMS boilerplate combining TYPO3 and Nuxt for modern web development.
+  - label: How do I add components?
+    icon: i-lucide-plus-circle
+    content: Use the lab factory:add command to activate components in your project.
+  - label: Can I customize the components?
+    icon: i-lucide-settings
+    content: Yes, all components can be extended or overridden in your client project.

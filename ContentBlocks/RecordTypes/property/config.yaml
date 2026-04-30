@@ -1,0 +1,153 @@
+name: factory/property
+title: Property
+description: A real-estate property record with common fields and a free-placeable content area.
+table: tx_factorycore_property
+labelField: title
+prefixFields: false
+fields:
+  # ------------------------------------------------------------
+  # Common tab
+  # ------------------------------------------------------------
+  - identifier: divCommon
+    type: Tab
+    label: Common
+
+  - identifier: title
+    type: Text
+    label: Title
+    required: true
+
+  - identifier: slug
+    type: Slug
+    label: Slug
+    generatorOptions:
+      fields: [title]
+
+  - identifier: teaser
+    type: Textarea
+    label: Teaser
+    rows: 3
+
+  - identifier: listing_type
+    type: Select
+    renderType: selectSingle
+    label: Listing Type
+    items:
+      - { label: Kauf, value: buy }
+      - { label: Miete, value: rent }
+    default: buy
+
+  - identifier: status
+    type: Select
+    renderType: selectSingle
+    label: Status
+    items:
+      - { label: Neu, value: new }
+      - { label: Verfügbar, value: available }
+      - { label: Reserviert, value: reserved }
+      - { label: Verkauft / Vermietet, value: sold }
+    default: available
+
+  - identifier: tag
+    type: Select
+    renderType: selectSingle
+    label: Tag
+    items:
+      - { label: 'NEUBAU', value: neubau }
+      - { label: 'UMBAU', value: umbau }
+      - { label: 'SANIERUNG', value: sanierung }
+      - { label: 'BESTAND', value: bestand }
+      - { label: 'DENKMAL', value: denkmal }
+      - { label: 'GEWERBE', value: gewerbe }
+      - { label: 'MEHRFAMILIENHAUS', value: mfh }
+    default: neubau
+
+  - identifier: tag_custom
+    type: Text
+    label: Tag Override
+    description: Free-text label that overrides the selected tag (e.g. "NEUBAU & UMBAU").
+
+  - identifier: address_street
+    type: Text
+    label: Street
+
+  - identifier: address_zip
+    type: Text
+    label: ZIP
+    size: 10
+
+  - identifier: address_city
+    type: Text
+    label: City
+
+  - identifier: address_country
+    type: Text
+    label: Country
+    default: Deutschland
+
+  - identifier: price
+    type: Number
+    format: decimal
+    label: Price
+    description: Leave empty to render "Preis auf Anfrage".
+    nullable: true
+
+  - identifier: price_type
+    type: Select
+    renderType: selectSingle
+    label: Price Type
+    items:
+      - { label: Gesamt, value: total }
+      - { label: Monatlich, value: monthly }
+    default: total
+
+  - identifier: area_m2
+    type: Number
+    format: decimal
+    label: Area (m²)
+
+  - identifier: rooms
+    type: Number
+    format: decimal
+    label: Rooms
+
+  - identifier: units
+    type: Number
+    label: Units (WE)
+    description: Number of Wohneinheiten, for multi-unit listings.
+
+  - identifier: year_built
+    type: Number
+    label: Year Built
+    nullable: true
+
+  - identifier: year_completed
+    type: Number
+    label: Year Completed
+    description: Rendered as "FERTIG" on the card.
+    nullable: true
+
+  - identifier: hero_image
+    type: File
+    label: Hero Image
+    maxItems: 1
+    allowedFileExtensions: ['jpg', 'jpeg', 'png', 'webp']
+
+  - identifier: gallery
+    type: File
+    label: Gallery
+    maxItems: 30
+    allowedFileExtensions: ['jpg', 'jpeg', 'png', 'webp', 'mp4']
+
+  # ------------------------------------------------------------
+  # Content tab — inline tt_content (overridden to IRRE in TCA/Overrides)
+  # ------------------------------------------------------------
+  - identifier: divContent
+    type: Tab
+    label: Content
+
+  - identifier: content_elements
+    type: Relation
+    label: Content Elements
+    description: Drop any active Content Block here. They render stacked on the property detail page.
+    allowed: tt_content

@@ -1,0 +1,5 @@
+<f:layout name="Preview" />
+<f:section name="Content">
+    <strong>Page Logos<f:if condition="{data.title}">: {data.title}</f:if></strong>
+    <small>({data.items -> f:count()} logo<f:if condition="{data.items -> f:count()} != 1">s</f:if><f:if condition="{data.marquee}"> · marquee</f:if>)</small>
+</f:section>

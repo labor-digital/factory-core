@@ -1,0 +1,6 @@
+<f:layout name="Preview" />
+<f:section name="Content">
+    <strong>Text Slider: <f:format.raw>{data.title}</f:format.raw></strong>
+    <f:if condition="{data.eyebrow}"><br/><em>{data.eyebrow}</em></f:if>
+    <br/><small>{data.slides -> f:count()} slide<f:if condition="{data.slides -> f:count()} != 1">s</f:if> · {data.aspect_ratio}<f:if condition="{data.autoplay}"> · autoplay</f:if><f:if condition="{data.loop}"> · loop</f:if> · align: {data.text_align}</small>
+</f:section>
