@@ -99,6 +99,23 @@ final class FactoryComponentRegistry
     }
 
     /**
+     * Drops the in-process static cache for a single site (or for everything
+     * when null). Call after rewriting `config/sites/{slug}/factory.json` so
+     * the next request on this PHP-FPM worker re-reads from disk. Other
+     * workers (other ECS tasks, other FPM children) catch up on their own
+     * recycle cadence — see DL #013 for the multi-instance caveat.
+     */
+    public static function invalidate(?string $siteIdentifier = null): void
+    {
+        if ($siteIdentifier === null) {
+            self::$siteConfigs = [];
+            self::$config = null;
+            return;
+        }
+        unset(self::$siteConfigs[$siteIdentifier]);
+    }
+
+    /**
      * @return array{core_version:string,active_components:list<string>,active_record_types:list<string>}
      */
     private static function loadConfigFile(string $path): array
