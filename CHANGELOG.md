@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.2.0](https://github.com/labor-digital/lab-factory/compare/factory-core-v0.1.1...factory-core-v0.2.0) (2026-05-08)
+
+
+### Features
+
+* **factory-core:** add FactoryComponentRegistry::invalidate and factory:seed:reset ([f453e6a](https://github.com/labor-digital/lab-factory/commit/f453e6ac7302f24ff86bef31add24bb50ccb7906))
+
 ## [0.1.1](https://github.com/labor-digital/lab-factory/compare/factory-core-v0.1.0...factory-core-v0.1.1) (2026-04-30)
 
 
