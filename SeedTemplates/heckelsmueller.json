@@ -1,6 +1,9 @@
 {
+	"core_version": "^0.2",
 	"name": "Heckelsmüller",
 	"description": "Construction company homepage — centered hero + three intro sections (media right, left, bottom) + a breakout project reference slider.",
+	"active_components": ["PageHero", "PageSection", "TextSlider", "ReferenceList"],
+	"active_record_types": ["Property"],
 	"settings": {
 		"colors": {
 			"primary": "#B03030",
