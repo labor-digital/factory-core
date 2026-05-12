@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.3.2](https://github.com/labor-digital/lab-factory/compare/factory-core-v0.3.1...factory-core-v0.3.2) (2026-05-12)
+
+
+### Bug Fixes
+
+* **factory-core:** use sys_filemounts (TYPO3 13 schema) in TenantProvisionCommand ([9aba963](https://github.com/labor-digital/lab-factory/commit/9aba96340fd8bff0d9b840dcd76b47940f7e6acb))
+
 ## [0.3.1](https://github.com/labor-digital/lab-factory/compare/factory-core-v0.3.0...factory-core-v0.3.1) (2026-05-12)
 
 
