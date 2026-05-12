@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace LaborDigital\FactoryCore\Service;
 
 use LaborDigital\FactoryCore\Configuration\FactoryComponentRegistry;
+use Symfony\Component\Yaml\Yaml;
 use TYPO3\CMS\Core\Authentication\BackendUserAuthentication;
 use TYPO3\CMS\Core\Core\Environment;
 use TYPO3\CMS\Core\Database\ConnectionPool;
@@ -63,13 +64,27 @@ final class TenantRetirementService
 
     private function resolveSiteRoot(string $siteIdentifier): int
     {
+        // Read config.yaml directly to avoid the SiteFinder cache, which can
+        // be stale across requests (it was populated before this tenant
+        // existed; SiteFinder returns "not found" even when the file is on
+        // disk). Retire is best-effort — if the YAML is missing too, return
+        // 0 and let the rest of the cleanup run.
+        $configPath = Environment::getProjectPath() . '/config/sites/' . $siteIdentifier . '/config.yaml';
+        if (is_file($configPath)) {
+            try {
+                $config = Yaml::parseFile($configPath);
+                $rootUid = (int)($config['rootPageId'] ?? 0);
+                if ($rootUid > 0) {
+                    return $rootUid;
+                }
+            } catch (\Throwable) {
+                // fall through to SiteFinder
+            }
+        }
         try {
             $site = $this->siteFinder->getSiteByIdentifier($siteIdentifier);
             return $site->getRootPageId();
         } catch (\Throwable) {
-            // Site config missing or unparseable — that's fine, retire is
-            // best-effort. Return 0 so the page-tree step no-ops; we still
-            // run the on-disk cleanup below.
             return 0;
         }
     }
