@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.4.1](https://github.com/labor-digital/lab-factory/compare/factory-core-v0.4.0...factory-core-v0.4.1) (2026-05-12)
+
+
+### Bug Fixes
+
+* **factory-core:** use Doctrine\DBAL\ParameterType::INTEGER, not \PDO::PARAM_INT ([d01abb8](https://github.com/labor-digital/lab-factory/commit/d01abb89e42f0b7de9c8e3201697aaf9c9fd5a65))
+
 ## [0.4.0](https://github.com/labor-digital/lab-factory/compare/factory-core-v0.3.2...factory-core-v0.4.0) (2026-05-12)
 
 
