@@ -174,7 +174,7 @@ class ResetSeederCommand extends Command
             $rows = $qb->select('uid')
                 ->from('pages')
                 ->where(
-                    $qb->expr()->eq('pid', $qb->createNamedParameter($parent, \PDO::PARAM_INT)),
+                    $qb->expr()->eq('pid', $qb->createNamedParameter($parent, \Doctrine\DBAL\ParameterType::INTEGER)),
                     $qb->expr()->eq('deleted', 0),
                 )
                 ->executeQuery()
@@ -240,7 +240,7 @@ class ResetSeederCommand extends Command
         $row = $qb->select('uid')
             ->from('pages')
             ->where(
-                $qb->expr()->eq('pid', $qb->createNamedParameter($rootUid, \PDO::PARAM_INT)),
+                $qb->expr()->eq('pid', $qb->createNamedParameter($rootUid, \Doctrine\DBAL\ParameterType::INTEGER)),
                 $qb->expr()->eq('title', $qb->createNamedParameter('Records')),
                 $qb->expr()->eq('deleted', 0),
             )

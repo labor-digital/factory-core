@@ -106,7 +106,7 @@ final class TenantRetirementService
             $rows = $qb->select('uid')
                 ->from('pages')
                 ->where(
-                    $qb->expr()->eq('pid', $qb->createNamedParameter($parent, \PDO::PARAM_INT)),
+                    $qb->expr()->eq('pid', $qb->createNamedParameter($parent, \Doctrine\DBAL\ParameterType::INTEGER)),
                     $qb->expr()->eq('deleted', 0),
                 )
                 ->executeQuery()
