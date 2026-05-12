@@ -253,8 +253,12 @@ final class TenantProvisionCommand extends Command
 
     private function createFileMount(string $slug, SymfonyStyle $io): int
     {
+        // TYPO3 13's table name is `sys_filemounts` (plural) — `sys_filemount`
+        // (singular) doesn't exist as a TCA schema and DataHandler refuses to
+        // operate on it. The mistake is easy to make because the BE column
+        // referencing it (be_groups.file_mountpoints) uses the singular root.
         $data = [
-            'sys_filemount' => [
+            'sys_filemounts' => [
                 'NEW_fm' => [
                     'pid' => 0,
                     'title' => "tenant_{$slug}",
@@ -268,7 +272,7 @@ final class TenantProvisionCommand extends Command
         $dataHandler->process_datamap();
         $this->assertNoDataHandlerErrors($dataHandler, 'create filemount');
         $uid = (int)($dataHandler->substNEWwithIDs['NEW_fm'] ?? 0);
-        $io->writeln("Created sys_filemount #{$uid} (1:/{$slug}/).");
+        $io->writeln("Created sys_filemounts #{$uid} (1:/{$slug}/).");
         return $uid;
     }
 
