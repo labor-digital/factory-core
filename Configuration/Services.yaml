@@ -9,3 +9,14 @@ services:
 
   LaborDigital\FactoryCore\DataProcessing\ReferenceListProcessor:
     public: true
+
+  # DataHandler legacy hooks (processDatamapClass / processCmdmapClass in
+  # ext_localconf.php) instantiate via GeneralUtility::makeInstance(::class),
+  # which goes through the DI container by class name. Private services
+  # are rejected on that lookup path, so the container falls back to a
+  # bare `new TenantScopeEnforcer()` — which then crashes with "Too few
+  # arguments to __construct(), 0 passed, 2 expected" because the deps
+  # (SiteFinder + ResourceFactory) never get injected. Public-tagging
+  # makes the lookup succeed and DI wires the constructor properly.
+  LaborDigital\FactoryCore\Security\TenantScopeEnforcer:
+    public: true
