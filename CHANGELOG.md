@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.3.1](https://github.com/labor-digital/lab-factory/compare/factory-core-v0.3.0...factory-core-v0.3.1) (2026-05-12)
+
+
+### Bug Fixes
+
+* **factory-core:** TenantScopeEnforcer must be a public DI service ([951f0b7](https://github.com/labor-digital/lab-factory/commit/951f0b7571b2e8df90e0f2116a395abd7013201c))
+
 ## [0.3.0](https://github.com/labor-digital/lab-factory/compare/factory-core-v0.2.0...factory-core-v0.3.0) (2026-05-12)
 
 
