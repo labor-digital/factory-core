@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.3.0](https://github.com/labor-digital/lab-factory/compare/factory-core-v0.2.0...factory-core-v0.3.0) (2026-05-12)
+
+
+### Features
+
+* **seed:** heckelsmüller declares core_version ^0.2 + read seed file directly ([d992c1c](https://github.com/labor-digital/lab-factory/commit/d992c1c722cf8c1b9ded7e6fa12c5d634cf082f8))
+
 ## [0.2.0](https://github.com/labor-digital/lab-factory/compare/factory-core-v0.1.1...factory-core-v0.2.0) (2026-05-08)
 
 
