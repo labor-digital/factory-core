@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.4.2](https://github.com/labor-digital/lab-factory/compare/factory-core-v0.4.1...factory-core-v0.4.2) (2026-05-12)
+
+
+### Bug Fixes
+
+* **factory-core:** read site config.yaml directly instead of SiteFinder ([1e4977a](https://github.com/labor-digital/lab-factory/commit/1e4977a25ff534d23d85122f77c1b138c0716198))
+
 ## [0.4.1](https://github.com/labor-digital/lab-factory/compare/factory-core-v0.4.0...factory-core-v0.4.1) (2026-05-12)
 
 
