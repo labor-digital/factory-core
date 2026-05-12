@@ -4,7 +4,9 @@ declare(strict_types=1);
 
 namespace LaborDigital\FactoryCore\Service;
 
+use Symfony\Component\Yaml\Yaml;
 use TYPO3\CMS\Core\Authentication\BackendUserAuthentication;
+use TYPO3\CMS\Core\Core\Environment;
 use TYPO3\CMS\Core\Database\ConnectionPool;
 use TYPO3\CMS\Core\DataHandling\DataHandler;
 use TYPO3\CMS\Core\Site\SiteFinder;
@@ -54,6 +56,29 @@ final class TenantContentSeeder
 
     private function resolveSiteRoot(string $siteIdentifier): int
     {
+        // Read config.yaml directly instead of going through SiteFinder.
+        // The site was almost certainly created by a `POST /tenants` in the
+        // immediately-previous HTTP request; TYPO3's site cache is populated
+        // across requests and was warmed before the new site existed, so
+        // SiteFinder::getSiteByIdentifier returns "site not found" even
+        // though the file is on disk. A direct YAML read avoids the entire
+        // cache layer — one extra fopen, no staleness window.
+        //
+        // Fall back to SiteFinder if the file isn't where we expect, since
+        // some installs may relocate config/sites/.
+        $configPath = Environment::getProjectPath() . '/config/sites/' . $siteIdentifier . '/config.yaml';
+        if (is_file($configPath)) {
+            try {
+                $config = Yaml::parseFile($configPath);
+                $rootUid = (int)($config['rootPageId'] ?? 0);
+                if ($rootUid > 0) {
+                    return $rootUid;
+                }
+            } catch (\Throwable) {
+                // fall through to SiteFinder
+            }
+        }
+
         try {
             $site = $this->siteFinder->getSiteByIdentifier($siteIdentifier);
         } catch (\Throwable $e) {
