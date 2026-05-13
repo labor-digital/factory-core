@@ -25,6 +25,23 @@ use TYPO3\CMS\Core\Utility\GeneralUtility;
 )]
 final class TenantProvisionCommand extends Command
 {
+    /**
+     * Single-language presets used to populate the site config. Keep the set
+     * small + explicit: pipeline-app's UI exposes the same codes, and we'd
+     * rather fail loudly on an unknown language than emit a half-broken
+     * locale/hreflang combination.
+     *
+     * @var array<string, array{title: string, locale: string, hreflang: string, navigationTitle: string, flag: string}>
+     */
+    private const LANGUAGE_PRESETS = [
+        'en' => ['title' => 'English', 'locale' => 'en_US.utf8', 'hreflang' => 'en-US', 'navigationTitle' => 'English', 'flag' => 'en-us-gb'],
+        'de' => ['title' => 'German',  'locale' => 'de_DE.utf8', 'hreflang' => 'de-DE', 'navigationTitle' => 'Deutsch', 'flag' => 'de'],
+        'fr' => ['title' => 'French',  'locale' => 'fr_FR.utf8', 'hreflang' => 'fr-FR', 'navigationTitle' => 'Français', 'flag' => 'fr'],
+        'it' => ['title' => 'Italian', 'locale' => 'it_IT.utf8', 'hreflang' => 'it-IT', 'navigationTitle' => 'Italiano', 'flag' => 'it'],
+        'es' => ['title' => 'Spanish', 'locale' => 'es_ES.utf8', 'hreflang' => 'es-ES', 'navigationTitle' => 'Español', 'flag' => 'es'],
+        'nl' => ['title' => 'Dutch',   'locale' => 'nl_NL.utf8', 'hreflang' => 'nl-NL', 'navigationTitle' => 'Nederlands', 'flag' => 'nl'],
+    ];
+
     public function __construct(
         private readonly ConnectionPool $connectionPool,
         private readonly PasswordHashFactory $passwordHashFactory,
@@ -44,6 +61,7 @@ final class TenantProvisionCommand extends Command
             ->addOption('components', null, InputOption::VALUE_OPTIONAL, 'Comma-separated list of active component names (PascalCase or slug)', '')
             ->addOption('record-types', null, InputOption::VALUE_OPTIONAL, 'Comma-separated list of active record type names', '')
             ->addOption('admin-email', null, InputOption::VALUE_REQUIRED, 'Email address of the initial tenant admin (also used as username)')
+            ->addOption('language', null, InputOption::VALUE_OPTIONAL, 'Default site language as a 2-letter ISO code (en, de, fr, it, es, nl). Drives locale/hreflang/flag in the site config. Defaults to en for back-compat with single-tenant clients.', 'en')
             ->addOption('dry-run', null, InputOption::VALUE_NONE, 'Print what would be done without writing anything');
     }
 
@@ -56,6 +74,7 @@ final class TenantProvisionCommand extends Command
         $domain = (string)$input->getOption('domain');
         $base = (string)($input->getOption('base') ?: '');
         $frontendBase = (string)($input->getOption('frontend-base') ?: '');
+        $language = strtolower((string)($input->getOption('language') ?: 'en'));
         $displayName = (string)($input->getOption('display-name') ?: $slug);
         $components = $this->parseCsvOption((string)$input->getOption('components'));
         $recordTypes = $this->parseCsvOption((string)$input->getOption('record-types'));
@@ -76,6 +95,14 @@ final class TenantProvisionCommand extends Command
         }
         if ($frontendBase !== '' && !preg_match('#^https?://[^\s]+$#i', $frontendBase)) {
             $io->error('Invalid --frontend-base. Must be a full http(s) URL.');
+            return Command::FAILURE;
+        }
+        if (!array_key_exists($language, self::LANGUAGE_PRESETS)) {
+            $io->error(sprintf(
+                'Invalid --language "%s". Supported: %s.',
+                $language,
+                implode(', ', array_keys(self::LANGUAGE_PRESETS))
+            ));
             return Command::FAILURE;
         }
         if ($adminEmail === '' || !filter_var($adminEmail, FILTER_VALIDATE_EMAIL)) {
@@ -112,7 +139,7 @@ final class TenantProvisionCommand extends Command
             $this->applyRootPagePerms($rootPageUid, $editorGroupUid, $io);
             $fileMountUid = $this->createFileMount($slug, $io);
             $this->createFileadminDir($slug, $io);
-            $this->writeSiteConfig($slug, $domain, $base, $frontendBase, $displayName, $rootPageUid, $io);
+            $this->writeSiteConfig($slug, $domain, $base, $frontendBase, $language, $displayName, $rootPageUid, $io);
             $this->writeFactoryJson($slug, $components, $recordTypes, $io);
             $this->createTenantAdminUser($slug, $adminEmail, [$editorGroupUid, $adminGroupUid], $fileMountUid, $rootPageUid, $io);
 
@@ -302,7 +329,7 @@ final class TenantProvisionCommand extends Command
         $io->writeln("Created fileadmin dir {$dir}.");
     }
 
-    private function writeSiteConfig(string $slug, string $domain, string $base, string $frontendBase, string $displayName, int $rootPageUid, SymfonyStyle $io): void
+    private function writeSiteConfig(string $slug, string $domain, string $base, string $frontendBase, string $language, string $displayName, int $rootPageUid, SymfonyStyle $io): void
     {
         // Use TYPO3's SiteWriter (not file_put_contents) so that the
         // SiteConfigurationChangedEvent fires and the in-memory + persistent
@@ -334,19 +361,14 @@ final class TenantProvisionCommand extends Command
             'websiteTitle' => $displayName,
             'headless' => 1,
             'languages' => [
-                [
-                    'title' => 'English',
+                array_merge(self::LANGUAGE_PRESETS[$language], [
                     'enabled' => true,
-                    'locale' => 'en_US.utf8',
-                    'hreflang' => '',
                     'base' => '/',
                     'websiteTitle' => $displayName,
-                    'navigationTitle' => 'English',
                     'fallbackType' => 'strict',
                     'fallbacks' => '',
-                    'flag' => 'en-us-gb',
                     'languageId' => 0,
-                ],
+                ]),
             ],
             'rootPageId' => $rootPageUid,
         ];
