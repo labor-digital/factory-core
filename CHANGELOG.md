@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.8.0](https://github.com/labor-digital/lab-factory/compare/factory-core-v0.7.1...factory-core-v0.8.0) (2026-05-13)
+
+
+### Features
+
+* **factory-core:** --language option on factory:tenant:provision ([7054355](https://github.com/labor-digital/lab-factory/commit/7054355bc4b00d9dd15e9e18c6ca84c1559db2fc))
+
 ## [0.7.1](https://github.com/labor-digital/lab-factory/compare/factory-core-v0.7.0...factory-core-v0.7.1) (2026-05-13)
 
 
