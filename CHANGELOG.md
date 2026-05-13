@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.6.0](https://github.com/labor-digital/lab-factory/compare/factory-core-v0.5.2...factory-core-v0.6.0) (2026-05-13)
+
+
+### Features
+
+* **factory-core:** TenantContentSeeder supports subpages ([25c0315](https://github.com/labor-digital/lab-factory/commit/25c0315b37c51eefcae97b70ea0113648e9fcce4))
+
 ## [0.5.2](https://github.com/labor-digital/lab-factory/compare/factory-core-v0.5.1...factory-core-v0.5.2) (2026-05-13)
 
 
