@@ -37,6 +37,7 @@ final class TenantProvisionCommand extends Command
         $this
             ->addOption('slug', null, InputOption::VALUE_REQUIRED, 'Tenant slug (alphanumeric + dashes, used for site identifier and filemount path)')
             ->addOption('domain', null, InputOption::VALUE_REQUIRED, 'Primary domain, e.g. acme.example.com')
+            ->addOption('base', null, InputOption::VALUE_OPTIONAL, 'Full TYPO3 site base URL. Defaults to https://<domain>. Set explicitly for shared-host setups where the tenant lives on a subpath (e.g. https://shared.example.com/<slug>) — the TYPO3 site resolver routes by this prefix.', '')
             ->addOption('display-name', null, InputOption::VALUE_REQUIRED, 'Human-readable tenant name (root page title)')
             ->addOption('components', null, InputOption::VALUE_OPTIONAL, 'Comma-separated list of active component names (PascalCase or slug)', '')
             ->addOption('record-types', null, InputOption::VALUE_OPTIONAL, 'Comma-separated list of active record type names', '')
@@ -51,6 +52,7 @@ final class TenantProvisionCommand extends Command
 
         $slug = (string)$input->getOption('slug');
         $domain = (string)$input->getOption('domain');
+        $base = (string)($input->getOption('base') ?: '');
         $displayName = (string)($input->getOption('display-name') ?: $slug);
         $components = $this->parseCsvOption((string)$input->getOption('components'));
         $recordTypes = $this->parseCsvOption((string)$input->getOption('record-types'));
@@ -63,6 +65,10 @@ final class TenantProvisionCommand extends Command
         }
         if ($domain === '' || !preg_match('/^[a-z0-9.-]+$/i', $domain)) {
             $io->error('Invalid --domain.');
+            return Command::FAILURE;
+        }
+        if ($base !== '' && !preg_match('#^https?://[^\s]+$#i', $base)) {
+            $io->error('Invalid --base. Must be a full http(s) URL.');
             return Command::FAILURE;
         }
         if ($adminEmail === '' || !filter_var($adminEmail, FILTER_VALIDATE_EMAIL)) {
@@ -99,7 +105,7 @@ final class TenantProvisionCommand extends Command
             $this->applyRootPagePerms($rootPageUid, $editorGroupUid, $io);
             $fileMountUid = $this->createFileMount($slug, $io);
             $this->createFileadminDir($slug, $io);
-            $this->writeSiteConfig($slug, $domain, $displayName, $rootPageUid, $io);
+            $this->writeSiteConfig($slug, $domain, $base, $displayName, $rootPageUid, $io);
             $this->writeFactoryJson($slug, $components, $recordTypes, $io);
             $this->createTenantAdminUser($slug, $adminEmail, [$editorGroupUid, $adminGroupUid], $fileMountUid, $rootPageUid, $io);
 
@@ -289,14 +295,14 @@ final class TenantProvisionCommand extends Command
         $io->writeln("Created fileadmin dir {$dir}.");
     }
 
-    private function writeSiteConfig(string $slug, string $domain, string $displayName, int $rootPageUid, SymfonyStyle $io): void
+    private function writeSiteConfig(string $slug, string $domain, string $base, string $displayName, int $rootPageUid, SymfonyStyle $io): void
     {
         $siteDir = Environment::getProjectPath() . '/config/sites/' . $slug;
         if (!is_dir($siteDir) && !mkdir($siteDir, 0775, true) && !is_dir($siteDir)) {
             throw new \RuntimeException("Failed to create site dir {$siteDir}");
         }
         $config = [
-            'base' => 'https://' . $domain,
+            'base' => $base !== '' ? $base : 'https://' . $domain,
             'dependencies' => ['labor-digital/client_sitepackage'],
             'websiteTitle' => $displayName,
             'headless' => 1,
