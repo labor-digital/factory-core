@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.7.1](https://github.com/labor-digital/lab-factory/compare/factory-core-v0.7.0...factory-core-v0.7.1) (2026-05-13)
+
+
+### Bug Fixes
+
+* **factory-core:** normalise frontendBase to always end with "/" ([963a37d](https://github.com/labor-digital/lab-factory/commit/963a37db85e2ea267cc64d0a7183db5db9417734))
+
 ## [0.7.0](https://github.com/labor-digital/lab-factory/compare/factory-core-v0.6.0...factory-core-v0.7.0) (2026-05-13)
 
 
