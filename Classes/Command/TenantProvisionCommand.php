@@ -310,6 +310,17 @@ final class TenantProvisionCommand extends Command
         // site cache stale until the next manual `typo3 cache:flush` —
         // which translates to a 404 on every request to the newly
         // provisioned tenant for the duration of the cache TTL.
+        // Normalise frontendBase to always end with "/". friendsoftypo3/headless'
+        // UrlUtility::getFrontendUrlWithSite only strips the TYPO3 base path
+        // when frontendBase has a non-empty path component (see vendor
+        // friendsoftypo3/headless/Classes/Utility/UrlUtility.php:122-124).
+        // Host-only frontendBase → strip is skipped → menu links keep the
+        // `/<tenant-slug>/` backend prefix and render as broken hrefs on the
+        // frontend. Adding "/" makes the path "/" (non-empty) so the strip
+        // fires and the backend prefix is removed from generated URLs.
+        $resolvedFrontendBase = $frontendBase !== '' ? $frontendBase : 'https://' . $domain;
+        $resolvedFrontendBase = rtrim($resolvedFrontendBase, '/') . '/';
+
         $config = [
             'base' => $base !== '' ? $base : 'https://' . $domain,
             // friendsoftypo3/headless reads this to generate menu/page link
@@ -318,7 +329,7 @@ final class TenantProvisionCommand extends Command
             // /<tenant-slug>/<page> hrefs that 404 in Nuxt. Defaults to
             // `https://<domain>` so single-tenant setups (where domain ===
             // the public host) work without any extra config.
-            'frontendBase' => $frontendBase !== '' ? $frontendBase : 'https://' . $domain,
+            'frontendBase' => $resolvedFrontendBase,
             'dependencies' => ['labor-digital/client_sitepackage'],
             'websiteTitle' => $displayName,
             'headless' => 1,
