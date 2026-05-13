@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.5.1](https://github.com/labor-digital/lab-factory/compare/factory-core-v0.5.0...factory-core-v0.5.1) (2026-05-13)
+
+
+### Bug Fixes
+
+* **factory-core:** invalidate TYPO3 site cache on tenant create/retire ([fbe6872](https://github.com/labor-digital/lab-factory/commit/fbe68722eb22d0dafc1a2aaf3086f825359cb35a))
+
 ## [0.5.0](https://github.com/labor-digital/lab-factory/compare/factory-core-v0.4.2...factory-core-v0.5.0) (2026-05-13)
 
 
