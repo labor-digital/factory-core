@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.5.2](https://github.com/labor-digital/lab-factory/compare/factory-core-v0.5.1...factory-core-v0.5.2) (2026-05-13)
+
+
+### Bug Fixes
+
+* **factory-core:** rename content-block templates Frontend.html → frontend.html ([ef6027f](https://github.com/labor-digital/lab-factory/commit/ef6027f7b6c1f2d0c358cd192e262c04214690a0))
+
 ## [0.5.1](https://github.com/labor-digital/lab-factory/compare/factory-core-v0.5.0...factory-core-v0.5.1) (2026-05-13)
 
 
