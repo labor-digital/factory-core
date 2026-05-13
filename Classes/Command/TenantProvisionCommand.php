@@ -10,8 +10,8 @@ use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Style\SymfonyStyle;
-use Symfony\Component\Yaml\Yaml;
 use TYPO3\CMS\Core\Authentication\BackendUserAuthentication;
+use TYPO3\CMS\Core\Configuration\SiteWriter;
 use TYPO3\CMS\Core\Core\Environment;
 use TYPO3\CMS\Core\Crypto\PasswordHashing\PasswordHashFactory;
 use TYPO3\CMS\Core\Crypto\Random;
@@ -28,6 +28,7 @@ final class TenantProvisionCommand extends Command
     public function __construct(
         private readonly ConnectionPool $connectionPool,
         private readonly PasswordHashFactory $passwordHashFactory,
+        private readonly SiteWriter $siteWriter,
     ) {
         parent::__construct();
     }
@@ -297,10 +298,12 @@ final class TenantProvisionCommand extends Command
 
     private function writeSiteConfig(string $slug, string $domain, string $base, string $displayName, int $rootPageUid, SymfonyStyle $io): void
     {
-        $siteDir = Environment::getProjectPath() . '/config/sites/' . $slug;
-        if (!is_dir($siteDir) && !mkdir($siteDir, 0775, true) && !is_dir($siteDir)) {
-            throw new \RuntimeException("Failed to create site dir {$siteDir}");
-        }
+        // Use TYPO3's SiteWriter (not file_put_contents) so that the
+        // SiteConfigurationChangedEvent fires and the in-memory + persistent
+        // site caches are invalidated. Direct filesystem writes leave the
+        // site cache stale until the next manual `typo3 cache:flush` —
+        // which translates to a 404 on every request to the newly
+        // provisioned tenant for the duration of the cache TTL.
         $config = [
             'base' => $base !== '' ? $base : 'https://' . $domain,
             'dependencies' => ['labor-digital/client_sitepackage'],
@@ -323,8 +326,8 @@ final class TenantProvisionCommand extends Command
             ],
             'rootPageId' => $rootPageUid,
         ];
-        file_put_contents($siteDir . '/config.yaml', Yaml::dump($config, 6, 2));
-        $io->writeln("Wrote site config to {$siteDir}/config.yaml.");
+        $this->siteWriter->write($slug, $config);
+        $io->writeln("Wrote site config for {$slug} (cache invalidated via SiteConfigurationChangedEvent).");
     }
 
     /**

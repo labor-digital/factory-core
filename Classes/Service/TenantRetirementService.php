@@ -7,9 +7,11 @@ namespace LaborDigital\FactoryCore\Service;
 use LaborDigital\FactoryCore\Configuration\FactoryComponentRegistry;
 use Symfony\Component\Yaml\Yaml;
 use TYPO3\CMS\Core\Authentication\BackendUserAuthentication;
+use TYPO3\CMS\Core\Configuration\SiteWriter;
 use TYPO3\CMS\Core\Core\Environment;
 use TYPO3\CMS\Core\Database\ConnectionPool;
 use TYPO3\CMS\Core\DataHandling\DataHandler;
+use TYPO3\CMS\Core\Exception\SiteNotFoundException;
 use TYPO3\CMS\Core\Site\SiteFinder;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 
@@ -30,6 +32,7 @@ final class TenantRetirementService
     public function __construct(
         private readonly ConnectionPool $connectionPool,
         private readonly SiteFinder $siteFinder,
+        private readonly SiteWriter $siteWriter,
     ) {}
 
     /**
@@ -217,6 +220,21 @@ final class TenantRetirementService
     {
         $dir = Environment::getProjectPath() . '/config/sites/' . $siteIdentifier;
         if (!is_dir($dir)) return false;
+
+        // SiteWriter::delete unlinks config.yaml AND dispatches
+        // SiteConfigurationChangedEvent so the site cache invalidates.
+        // Skipping this leaves a freshly-retired tenant's stale entry
+        // in TYPO3's cache, so a subsequent re-provision under the same
+        // slug serves the OLD config until the cache expires. Best-effort:
+        // a missing config.yaml is fine — retire is idempotent.
+        try {
+            $this->siteWriter->delete($siteIdentifier);
+        } catch (SiteNotFoundException) {
+            // config.yaml already gone — fall through to dir cleanup.
+        }
+
+        // SiteWriter::delete only removes config.yaml; we still need to
+        // sweep factory.json + any other stragglers in the dir.
         $this->rmrf($dir);
         return !is_dir($dir);
     }
