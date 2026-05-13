@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.5.0](https://github.com/labor-digital/lab-factory/compare/factory-core-v0.4.2...factory-core-v0.5.0) (2026-05-13)
+
+
+### Features
+
+* **factory-core:** add --base option to factory:tenant:provision ([01a7828](https://github.com/labor-digital/lab-factory/commit/01a78281ee49c970ba8d23d2f2deb70954e7c57f))
+
 ## [0.4.2](https://github.com/labor-digital/lab-factory/compare/factory-core-v0.4.1...factory-core-v0.4.2) (2026-05-12)
 
 
