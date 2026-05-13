@@ -37,21 +37,134 @@ final class TenantContentSeeder
 
     /**
      * @param list<array{component?: string, data?: array<string, mixed>}> $elements
-     * @return array{root_page_id: int, seeded: int, wiped: int}
+     * @param list<array{title?: string, slug?: string, elements?: list<array{component?: string, data?: array<string, mixed>}>}> $pages
+     * @return array{root_page_id: int, seeded: int, wiped: int, pages_seeded: int, pages_wiped: int}
      */
-    public function seed(string $siteIdentifier, array $elements, bool $wipe = true): array
+    public function seed(string $siteIdentifier, array $elements, bool $wipe = true, array $pages = []): array
     {
         $this->bootstrapAdminBeUser();
 
         $rootPageUid = $this->resolveSiteRoot($siteIdentifier);
-        $wiped = $wipe ? $this->wipeRootContent($rootPageUid) : 0;
+
+        $wiped = 0;
+        $pagesWiped = 0;
+        if ($wipe) {
+            $wiped = $this->wipeRootContent($rootPageUid);
+            // Only purge descendants when the caller actually supplies a
+            // pages array. Without this guard a "wipe just content" call
+            // would also nuke any subpages the operator may have created
+            // manually in the BE.
+            if ($pages !== []) {
+                $pagesWiped = $this->wipeDescendantPages($rootPageUid);
+            }
+        }
+
         $seeded = $this->seedElements($rootPageUid, $elements);
+        $pagesSeeded = $this->seedSubpages($rootPageUid, $pages);
 
         return [
             'root_page_id' => $rootPageUid,
             'seeded' => $seeded,
             'wiped' => $wiped,
+            'pages_seeded' => $pagesSeeded,
+            'pages_wiped' => $pagesWiped,
         ];
+    }
+
+    /**
+     * @param list<array{title?: string, slug?: string, elements?: list<array{component?: string, data?: array<string, mixed>}>}> $pages
+     */
+    private function seedSubpages(int $rootPageUid, array $pages): int
+    {
+        if ($pages === []) {
+            return 0;
+        }
+
+        $created = 0;
+        $sorting = 256;
+        foreach ($pages as $index => $page) {
+            $title = is_string($page['title'] ?? null) ? trim((string)$page['title']) : '';
+            $slug = is_string($page['slug'] ?? null) ? trim((string)$page['slug']) : '';
+            if ($title === '' || $slug === '') {
+                continue;
+            }
+            $newId = 'NEW_subpage_' . $index . '_' . preg_replace('/[^a-z0-9]+/i', '_', $slug);
+            $data = [
+                'pages' => [
+                    $newId => [
+                        'pid' => $rootPageUid,
+                        'title' => $title,
+                        // DataHandler accepts a leading "/" — TYPO3 normalises
+                        // (per-language base prefix is applied at routing time).
+                        'slug' => '/' . ltrim($slug, '/'),
+                        'doktype' => 1,
+                        'is_siteroot' => 0,
+                        'hidden' => 0,
+                        'sys_language_uid' => 0,
+                        'sorting' => $sorting,
+                    ],
+                ],
+            ];
+            $dataHandler = GeneralUtility::makeInstance(DataHandler::class);
+            $dataHandler->start($data, []);
+            $dataHandler->process_datamap();
+            if (!empty($dataHandler->errorLog)) {
+                throw new \RuntimeException(
+                    'TenantContentSeeder: failed creating subpage "' . $slug . '": ' . implode(', ', $dataHandler->errorLog)
+                );
+            }
+            $newPageUid = (int)($dataHandler->substNEWwithIDs[$newId] ?? 0);
+            if ($newPageUid <= 0) {
+                continue;
+            }
+            $childElements = is_array($page['elements'] ?? null) ? $page['elements'] : [];
+            if ($childElements !== []) {
+                $this->seedElements($newPageUid, $childElements);
+            }
+            $sorting += 256;
+            $created++;
+        }
+        return $created;
+    }
+
+    private function wipeDescendantPages(int $rootPageUid): int
+    {
+        // Collect every descendant uid via BFS, then submit a single
+        // DataHandler cmdmap (deepest-first) so TCA cascade rules fire for
+        // each. DataHandler also takes care of removing tt_content rows
+        // tied to the deleted pages.
+        $descendants = [];
+        $stack = [$rootPageUid];
+        while ($stack !== []) {
+            $parent = array_pop($stack);
+            $qb = $this->connectionPool->getQueryBuilderForTable('pages');
+            $rows = $qb->select('uid')
+                ->from('pages')
+                ->where(
+                    $qb->expr()->eq('pid', $qb->createNamedParameter($parent, \Doctrine\DBAL\ParameterType::INTEGER)),
+                    $qb->expr()->eq('deleted', 0),
+                )
+                ->executeQuery()
+                ->fetchAllAssociative();
+            foreach ($rows as $row) {
+                $uid = (int)$row['uid'];
+                $descendants[] = $uid;
+                $stack[] = $uid;
+            }
+        }
+        if ($descendants === []) {
+            return 0;
+        }
+
+        $cmdmap = ['pages' => []];
+        foreach (array_reverse($descendants) as $uid) {
+            $cmdmap['pages'][$uid] = ['delete' => 1];
+        }
+        $dataHandler = GeneralUtility::makeInstance(DataHandler::class);
+        $dataHandler->start([], $cmdmap);
+        $dataHandler->process_cmdmap();
+        // Best-effort — leftovers from manual BE edits aren't fatal.
+        return count($descendants);
     }
 
     private function resolveSiteRoot(string $siteIdentifier): int
