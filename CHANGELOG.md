@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.7.0](https://github.com/labor-digital/lab-factory/compare/factory-core-v0.6.0...factory-core-v0.7.0) (2026-05-13)
+
+
+### Features
+
+* **factory-core:** write frontendBase into tenant site config ([3d0eec2](https://github.com/labor-digital/lab-factory/commit/3d0eec2aeef9abb0f4dc185835d2d9445252ff14))
+
 ## [0.6.0](https://github.com/labor-digital/lab-factory/compare/factory-core-v0.5.2...factory-core-v0.6.0) (2026-05-13)
 
 
