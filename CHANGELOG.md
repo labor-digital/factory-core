@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.9.0](https://github.com/labor-digital/lab-factory/compare/factory-core-v0.8.0...factory-core-v0.9.0) (2026-05-13)
+
+
+### Features
+
+* **factory-core:** CORS middleware allowing the site's frontendBase ([69148ef](https://github.com/labor-digital/lab-factory/commit/69148ef283fd59efaaa8240af8e2911d660ba7d6))
+
 ## [0.8.0](https://github.com/labor-digital/lab-factory/compare/factory-core-v0.7.1...factory-core-v0.8.0) (2026-05-13)
 
 
