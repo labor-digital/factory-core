@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.10.0](https://github.com/labor-digital/lab-factory/compare/factory-core-v0.9.0...factory-core-v0.10.0) (2026-05-14)
+
+
+### Features
+
+* **content-blocks:** adopt Claude-design content blocks, retire NuxtUI ones (DL [#018](https://github.com/labor-digital/lab-factory/issues/018)) ([93ccfc5](https://github.com/labor-digital/lab-factory/commit/93ccfc5e8b1df8fda2d6ae82cd62650ad74b8b97))
+
 ## [0.9.0](https://github.com/labor-digital/lab-factory/compare/factory-core-v0.8.0...factory-core-v0.9.0) (2026-05-13)
 
 
