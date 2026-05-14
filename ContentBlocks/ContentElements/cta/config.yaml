@@ -1,0 +1,110 @@
+name: factory/cta
+title: CTA
+description: A call-to-action banner with eyebrow, two-tone headline, body, and one or two buttons (or an inline contact form).
+group: factory
+icon: content-info
+fields:
+  - identifier: variant
+    type: Select
+    renderType: selectSingle
+    label: Variant
+    items:
+      - { label: Split (text + button on soft brand bg), value: split }
+      - { label: Center Dark (centered text, dark bg), value: center-dark }
+      - { label: Full-bleed Image (text over image), value: fullbleed-image }
+      - { label: Inline Form (name + email + submit), value: inline-form }
+    default: split
+
+  - identifier: eyebrow
+    type: Text
+    label: Eyebrow
+
+  - identifier: title_light
+    type: Text
+    label: Title (light weight)
+    description: The first line of the two-tone headline (rendered in light weight).
+
+  - identifier: title_bold
+    type: Text
+    label: Title (bold weight)
+    description: The second line of the two-tone headline (rendered in bold).
+
+  - identifier: body
+    type: Textarea
+    label: Body
+
+  - identifier: background_image
+    type: File
+    label: Background Image
+    description: Only used for the Full-bleed Image variant.
+    allowedFileExtensions: ['jpg', 'jpeg', 'png', 'webp']
+    maxItems: 1
+    displayCond: 'FIELD:variant:=:fullbleed-image'
+
+  - identifier: buttons
+    type: Collection
+    label: Buttons
+    description: Primary first, optional secondary second. Ignored when Inline Form is selected.
+    maxitems: 2
+    fields:
+      - identifier: label
+        type: Text
+        label: Label
+      - identifier: to
+        type: Link
+        label: Link
+      - identifier: target
+        type: Select
+        renderType: selectSingle
+        label: Link Target
+        items:
+          - { label: Default, value: '' }
+          - { label: New Window, value: _blank }
+      - identifier: color
+        type: Select
+        renderType: selectSingle
+        label: Color
+        items:
+          - { label: Primary, value: primary }
+          - { label: Secondary, value: secondary }
+        default: primary
+      - identifier: variant
+        type: Select
+        renderType: selectSingle
+        label: Variant
+        items:
+          - { label: Solid, value: solid }
+          - { label: Outline, value: outline }
+          - { label: White Solid (on-dark), value: white-solid }
+          - { label: Outline White (on-dark), value: outline-white }
+        default: solid
+
+  - identifier: form_enabled
+    type: Checkbox
+    label: Inline Form Enabled
+    description: Only used for the Inline Form variant.
+    displayCond: 'FIELD:variant:=:inline-form'
+    default: 1
+
+  - identifier: form_name_label
+    type: Text
+    label: Form — Name Label
+    default: Name
+    displayCond: 'FIELD:variant:=:inline-form'
+
+  - identifier: form_mail_label
+    type: Text
+    label: Form — Email Label
+    default: E-Mail-Adresse
+    displayCond: 'FIELD:variant:=:inline-form'
+
+  - identifier: form_submit_label
+    type: Text
+    label: Form — Submit Button Label
+    default: Absenden
+    displayCond: 'FIELD:variant:=:inline-form'
+
+  - identifier: form_note
+    type: Text
+    label: Form — Note (small text below submit)
+    displayCond: 'FIELD:variant:=:inline-form'

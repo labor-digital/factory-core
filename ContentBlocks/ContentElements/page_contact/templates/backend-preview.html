@@ -1,6 +1,0 @@
-<f:layout name="Preview" />
-<f:section name="Content">
-    <strong>Page Contact: {data.title}</strong>
-    <f:if condition="{data.headline}"><br/><em>{data.headline}</em></f:if>
-    <br/><small>{data.contact_items -> f:count()} contact item<f:if condition="{data.contact_items -> f:count()} != 1">s</f:if> · {data.form_fields -> f:count()} form field<f:if condition="{data.form_fields -> f:count()} != 1">s</f:if> · {data.orientation}</small>
-</f:section>

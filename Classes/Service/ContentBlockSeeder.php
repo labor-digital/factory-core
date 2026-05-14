@@ -41,7 +41,7 @@ class ContentBlockSeeder
     }
 
     /**
-     * Convert PascalCase to kebab-case: PageHero → page-hero
+     * Convert PascalCase to kebab-case: ImgSlider → img-slider
      */
     public function toKebabCase(string $pascalCase): string
     {
@@ -65,7 +65,7 @@ class ContentBlockSeeder
     }
 
     /**
-     * Convert kebab-case slug to underscore directory name: page-hero → page_hero
+     * Convert kebab-case slug to underscore directory name: img-slider → img_slider
      */
     public function toDirectoryName(string $slug): string
     {

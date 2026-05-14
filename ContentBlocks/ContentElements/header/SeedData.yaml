@@ -1,3 +1,8 @@
-text: Getting Started
-level: h2
-alignment: left
+variant: classic
+logo_text: Brand
+links:
+  - { label: HOME, to: / }
+  - { label: 'ÜBER UNS', to: /uns }
+  - { label: 'LEISTUNGEN', to: /leistungen }
+  - { label: 'REFERENZEN', to: /referenzen }
+  - { label: KONTAKT, to: /kontakt }

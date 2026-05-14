@@ -1,0 +1,306 @@
+name: factory/section
+title: Section
+description: A content section with headline, text, buttons, and an image/video gallery.
+group: factory
+icon: content-text
+fields:
+  # ------------------------------------------------------------
+  # Text block
+  # ------------------------------------------------------------
+  - identifier: icon
+    type: Text
+    label: Icon
+    description: Optional Iconify icon shown above the eyebrow (e.g. i-lucide-home).
+
+  - identifier: eyebrow
+    type: Text
+    label: Eyebrow
+    description: Small uppercase label above the title.
+
+  - identifier: eyebrow_decoration
+    type: Select
+    renderType: selectSingle
+    label: Eyebrow Decoration
+    items:
+      - { label: None, value: none }
+      - { label: Bar, value: bar }
+      - { label: Dot, value: dot }
+    default: bar
+
+  - identifier: eyebrow_color
+    type: Select
+    renderType: selectSingle
+    label: Eyebrow / Accent Color
+    description: Controls the eyebrow, decoration, and title accent color.
+    items:
+      - { label: Primary, value: primary }
+      - { label: Secondary, value: secondary }
+      - { label: Neutral, value: neutral }
+      - { label: Success, value: success }
+      - { label: Info, value: info }
+      - { label: Warning, value: warning }
+      - { label: Error, value: error }
+    default: primary
+
+  - identifier: title
+    type: Text
+    label: Title
+    description: Main heading. Use <strong>…</strong> to emphasise part of the title in the accent color.
+
+  - identifier: description
+    type: Textarea
+    label: Description
+
+  - identifier: buttons
+    type: Collection
+    label: Buttons
+    fields:
+      - identifier: label
+        type: Text
+        label: Label
+      - identifier: to
+        type: Link
+        label: Link
+      - identifier: target
+        type: Select
+        renderType: selectSingle
+        label: Link Target
+        items:
+          - { label: Default, value: '' }
+          - { label: New Window, value: _blank }
+          - { label: Parent, value: _parent }
+          - { label: Self, value: _self }
+          - { label: Top, value: _top }
+      - identifier: color
+        type: Select
+        renderType: selectSingle
+        label: Color
+        items:
+          - { label: Primary, value: primary }
+          - { label: Secondary, value: secondary }
+          - { label: Neutral, value: neutral }
+          - { label: Success, value: success }
+          - { label: Info, value: info }
+          - { label: Warning, value: warning }
+          - { label: Error, value: error }
+      - identifier: variant
+        type: Select
+        renderType: selectSingle
+        label: Variant
+        items:
+          - { label: Solid, value: solid }
+          - { label: Outline, value: outline }
+          - { label: Soft, value: soft }
+          - { label: Subtle, value: subtle }
+          - { label: Ghost, value: ghost }
+          - { label: Link, value: link }
+      - identifier: size
+        type: Select
+        renderType: selectSingle
+        label: Size
+        items:
+          - { label: Extra Small, value: xs }
+          - { label: Small, value: sm }
+          - { label: Medium, value: md }
+          - { label: Large, value: lg }
+          - { label: Extra Large, value: xl }
+      - identifier: icon
+        type: Text
+        label: Icon
+      - identifier: leading
+        type: Checkbox
+        label: Leading Icon
+      - identifier: trailing
+        type: Checkbox
+        label: Trailing Icon
+      - identifier: block
+        type: Checkbox
+        label: Full Width
+
+  # ------------------------------------------------------------
+  # Layout
+  # ------------------------------------------------------------
+  - identifier: media_position
+    type: Select
+    renderType: selectSingle
+    label: Media Position
+    items:
+      - { label: Right of text, value: right }
+      - { label: Left of text, value: left }
+      - { label: Below text, value: bottom }
+      - { label: Above text, value: top }
+    default: right
+
+  - identifier: media_width
+    type: Select
+    renderType: selectSingle
+    label: Media Width
+    description: Relative width of the media column (ignored when media is above/below text).
+    items:
+      - { label: Narrow (1/3 media · 2/3 text), value: narrow }
+      - { label: Normal (1/2 · 1/2), value: normal }
+      - { label: Wide (2/3 media · 1/3 text), value: wide }
+    default: normal
+
+  - identifier: content_align
+    type: Select
+    renderType: selectSingle
+    label: Text Alignment
+    items:
+      - { label: Left, value: left }
+      - { label: Center, value: center }
+      - { label: Right, value: right }
+    default: left
+
+  - identifier: text_max_width
+    type: Select
+    renderType: selectSingle
+    label: Text Column Max Width
+    description: Applied when media is above/below text, or for pure text layouts.
+    items:
+      - { label: Narrow, value: narrow }
+      - { label: Normal, value: normal }
+      - { label: Wide, value: wide }
+      - { label: Full, value: full }
+    default: normal
+
+  # ------------------------------------------------------------
+  # Section background
+  # ------------------------------------------------------------
+  - identifier: background_type
+    type: Select
+    renderType: selectSingle
+    label: Section Background
+    items:
+      - { label: None, value: none }
+      - { label: Color, value: color }
+      - { label: Image, value: image }
+    default: none
+
+  - identifier: background_color
+    type: Select
+    renderType: selectSingle
+    label: Background Color
+    items:
+      - { label: Primary, value: primary }
+      - { label: Secondary, value: secondary }
+      - { label: Neutral, value: neutral }
+      - { label: Success, value: success }
+      - { label: Info, value: info }
+      - { label: Warning, value: warning }
+      - { label: Error, value: error }
+    default: neutral
+    displayCond: 'FIELD:background_type:=:color'
+
+  - identifier: background_image
+    type: File
+    label: Background Image
+    allowedFileExtensions: ['jpg', 'jpeg', 'png', 'webp', 'svg']
+    maxItems: 1
+    displayCond: 'FIELD:background_type:=:image'
+
+  - identifier: background_overlay
+    type: Select
+    renderType: selectSingle
+    label: Background Overlay
+    items:
+      - { label: None, value: none }
+      - { label: Dark, value: dark }
+      - { label: Light, value: light }
+    default: none
+    displayCond: 'FIELD:background_type:!=:none'
+
+  # ------------------------------------------------------------
+  # Media gallery (images + videos)
+  # ------------------------------------------------------------
+  - identifier: media
+    type: Collection
+    label: Media
+    description: One or more images / videos. Displayed as a slider when >1 item.
+    fields:
+      - identifier: type
+        type: Select
+        renderType: selectSingle
+        label: Type
+        items:
+          - { label: Image, value: image }
+          - { label: Video, value: video }
+        default: image
+
+      - identifier: image
+        type: File
+        label: Image
+        allowedFileExtensions: ['jpg', 'jpeg', 'png', 'webp', 'svg']
+        maxItems: 1
+        displayCond: 'FIELD:type:=:image'
+
+      - identifier: video
+        type: File
+        label: Video (upload)
+        description: Self-hosted MP4 / WebM.
+        allowedFileExtensions: ['mp4', 'webm']
+        maxItems: 1
+        displayCond: 'FIELD:type:=:video'
+
+      - identifier: video_url
+        type: Text
+        label: Video URL
+        description: Alternative to upload — direct URL to mp4/webm.
+        displayCond: 'FIELD:type:=:video'
+
+      - identifier: poster
+        type: File
+        label: Video Poster
+        description: Still image shown before a video plays.
+        allowedFileExtensions: ['jpg', 'jpeg', 'png', 'webp']
+        maxItems: 1
+        displayCond: 'FIELD:type:=:video'
+
+      - identifier: alt
+        type: Text
+        label: Alt / Accessibility Text
+
+      - identifier: caption
+        type: Text
+        label: Caption
+
+  - identifier: aspect_ratio
+    type: Select
+    renderType: selectSingle
+    label: Aspect Ratio
+    items:
+      - { label: Auto (native), value: auto }
+      - { label: Square (1:1), value: '1/1' }
+      - { label: Widescreen (16:9), value: '16/9' }
+      - { label: Classic (4:3), value: '4/3' }
+      - { label: Photo (3:2), value: '3/2' }
+      - { label: Cinematic (21:9), value: '21/9' }
+      - { label: Portrait (3:4), value: '3/4' }
+      - { label: Portrait photo (2:3), value: '2/3' }
+    default: '1/1'
+
+  - identifier: caption_position
+    type: Select
+    renderType: selectSingle
+    label: Caption Position
+    items:
+      - { label: Below image, value: below }
+      - { label: Overlay on image, value: overlay }
+      - { label: Hidden, value: none }
+    default: below
+
+  - identifier: show_arrows
+    type: Checkbox
+    label: Show Slider Arrows
+    default: 0
+
+  - identifier: show_pagination
+    type: Checkbox
+    label: Show Slider Pagination
+    default: 1
+
+  - identifier: enable_lightbox
+    type: Checkbox
+    label: Enable Lightbox
+    description: Open a full-screen modal when a media item is clicked.
+    default: 1

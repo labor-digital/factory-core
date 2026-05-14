@@ -1,0 +1,68 @@
+name: factory/logowall
+title: Logo Wall
+description: A grid, marquee, compact row, or paginated slider of client/partner logos.
+group: factory
+icon: content-image
+fields:
+  - identifier: variant
+    type: Select
+    renderType: selectSingle
+    label: Variant
+    items:
+      - { label: Grid (6 columns), value: grid }
+      - { label: Marquee (auto-scrolling row), value: marquee }
+      - { label: Compact (single row, no header), value: compact }
+      - { label: Slider (paginated, prev/next), value: slider }
+    default: grid
+
+  - identifier: eyebrow
+    type: Text
+    label: Eyebrow
+
+  - identifier: headline
+    type: Text
+    label: Headline
+
+  - identifier: intro
+    type: Textarea
+    label: Intro
+
+  - identifier: columns
+    type: Select
+    renderType: selectSingle
+    label: Columns (Grid variant)
+    items:
+      - { label: '3', value: '3' }
+      - { label: '4', value: '4' }
+      - { label: '5', value: '5' }
+      - { label: '6', value: '6' }
+    default: '6'
+    displayCond: 'FIELD:variant:=:grid'
+
+  - identifier: per_page
+    type: Select
+    renderType: selectSingle
+    label: Logos per page (Slider variant)
+    items:
+      - { label: '4', value: '4' }
+      - { label: '6', value: '6' }
+      - { label: '8', value: '8' }
+    default: '6'
+    displayCond: 'FIELD:variant:=:slider'
+
+  - identifier: logos
+    type: Collection
+    label: Logos
+    minitems: 1
+    fields:
+      - identifier: label
+        type: Text
+        label: Label (alt text fallback)
+      - identifier: image
+        type: File
+        label: Logo Image
+        allowedFileExtensions: ['svg', 'png', 'webp', 'jpg']
+        maxItems: 1
+      - identifier: url
+        type: Link
+        label: Link (optional)

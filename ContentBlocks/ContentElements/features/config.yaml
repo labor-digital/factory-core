@@ -1,0 +1,60 @@
+name: factory/features
+title: Features
+description: A grid of feature/service cards with optional icon, image, number, or simple flat layout.
+group: factory
+icon: content-text
+fields:
+  - identifier: variant
+    type: Select
+    renderType: selectSingle
+    label: Variant
+    items:
+      - { label: Cards (3-col with icon and link), value: cards }
+      - { label: Flat (3-col minimal, top border), value: flat }
+      - { label: Numbered (big numbers), value: numbered }
+      - { label: Media (with image), value: media }
+    default: cards
+
+  - identifier: eyebrow
+    type: Text
+    label: Eyebrow
+
+  - identifier: headline
+    type: Text
+    label: Headline
+
+  - identifier: intro
+    type: Textarea
+    label: Intro
+
+  - identifier: items
+    type: Collection
+    label: Items
+    minitems: 1
+    fields:
+      - identifier: num
+        type: Text
+        label: Number (e.g. 01)
+        description: Used by Numbered and Media variants. Auto-numbered if empty.
+      - identifier: title
+        type: Text
+        label: Title
+      - identifier: text
+        type: Textarea
+        label: Text
+      - identifier: icon
+        type: Text
+        label: Icon (Iconify name, e.g. i-lucide-star)
+        description: Used by Cards / Flat variants.
+      - identifier: image
+        type: File
+        label: Image
+        description: Used by Media variant.
+        allowedFileExtensions: ['jpg', 'jpeg', 'png', 'webp', 'svg']
+        maxItems: 1
+      - identifier: link_label
+        type: Text
+        label: Link Label
+      - identifier: link_to
+        type: Link
+        label: Link Target

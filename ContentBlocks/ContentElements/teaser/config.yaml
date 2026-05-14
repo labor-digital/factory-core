@@ -1,0 +1,263 @@
+name: factory/teaser
+title: Teaser
+description: A polymorphic section that lists records of any active record type (Property, News, …) as a grid or slider.
+group: factory
+icon: content-list
+fields:
+  # ------------------------------------------------------------
+  # Header block (identical to img_slider — editors transfer muscle memory)
+  # ------------------------------------------------------------
+  - identifier: eyebrow
+    type: Text
+    label: Eyebrow
+    description: Small uppercase label above the title.
+
+  - identifier: eyebrow_decoration
+    type: Select
+    renderType: selectSingle
+    label: Eyebrow Decoration
+    items:
+      - { label: None, value: none }
+      - { label: Bar, value: bar }
+      - { label: Dot, value: dot }
+    default: bar
+
+  - identifier: eyebrow_color
+    type: Select
+    renderType: selectSingle
+    label: Eyebrow / Accent Color
+    items:
+      - { label: Primary, value: primary }
+      - { label: Secondary, value: secondary }
+      - { label: Neutral, value: neutral }
+      - { label: Success, value: success }
+      - { label: Info, value: info }
+      - { label: Warning, value: warning }
+      - { label: Error, value: error }
+    default: primary
+
+  - identifier: title
+    type: Text
+    label: Title
+    description: Main heading. Use <strong>…</strong> to emphasise part of the title in the accent color.
+
+  - identifier: description
+    type: Textarea
+    label: Description
+
+  - identifier: text_align
+    type: Select
+    renderType: selectSingle
+    label: Header Alignment
+    items:
+      - { label: Left, value: left }
+      - { label: Center, value: center }
+      - { label: Right, value: right }
+    default: left
+
+  - identifier: buttons
+    type: Collection
+    label: Buttons
+    description: Optional CTAs shown in the header row (top-right when aligned left).
+    fields:
+      - { identifier: label, type: Text, label: Label }
+      - { identifier: to, type: Link, label: Link }
+      - identifier: target
+        type: Select
+        renderType: selectSingle
+        label: Link Target
+        items:
+          - { label: Default, value: '' }
+          - { label: New Window, value: _blank }
+          - { label: Parent, value: _parent }
+          - { label: Self, value: _self }
+          - { label: Top, value: _top }
+      - identifier: color
+        type: Select
+        renderType: selectSingle
+        label: Color
+        items:
+          - { label: Primary, value: primary }
+          - { label: Secondary, value: secondary }
+          - { label: Neutral, value: neutral }
+          - { label: Success, value: success }
+          - { label: Info, value: info }
+          - { label: Warning, value: warning }
+          - { label: Error, value: error }
+      - identifier: variant
+        type: Select
+        renderType: selectSingle
+        label: Variant
+        items:
+          - { label: Solid, value: solid }
+          - { label: Outline, value: outline }
+          - { label: Soft, value: soft }
+          - { label: Subtle, value: subtle }
+          - { label: Ghost, value: ghost }
+          - { label: Link, value: link }
+      - identifier: size
+        type: Select
+        renderType: selectSingle
+        label: Size
+        items:
+          - { label: Extra Small, value: xs }
+          - { label: Small, value: sm }
+          - { label: Medium, value: md }
+          - { label: Large, value: lg }
+          - { label: Extra Large, value: xl }
+      - { identifier: icon, type: Text, label: Icon, description: 'Iconify icon name (e.g., i-lucide-arrow-right).' }
+      - { identifier: leading, type: Checkbox, label: Leading Icon }
+      - { identifier: trailing, type: Checkbox, label: Trailing Icon }
+      - { identifier: block, type: Checkbox, label: Full Width }
+
+  # ------------------------------------------------------------
+  # Layout
+  # ------------------------------------------------------------
+  - identifier: layout
+    type: Select
+    renderType: selectSingle
+    label: Layout
+    items:
+      - { label: Grid, value: grid }
+      - { label: Slider, value: slider }
+    default: grid
+
+  - identifier: columns
+    type: Select
+    renderType: selectSingle
+    label: Columns
+    items:
+      - { label: '2', value: '2' }
+      - { label: '3', value: '3' }
+      - { label: '4', value: '4' }
+    default: '3'
+
+  - identifier: aspect_ratio
+    type: Select
+    renderType: selectSingle
+    label: Card Image Aspect Ratio
+    items:
+      - { label: Auto (native), value: auto }
+      - { label: Widescreen (16:9), value: '16/9' }
+      - { label: Classic (4:3), value: '4/3' }
+      - { label: Cinematic (21:9), value: '21/9' }
+      - { label: Square (1:1), value: '1/1' }
+    default: '4/3'
+
+  - identifier: show_arrows
+    type: Checkbox
+    label: Show Navigation Arrows
+    default: 1
+    displayCond: 'FIELD:layout:=:slider'
+
+  - identifier: show_pagination
+    type: Checkbox
+    label: Show Pagination Dots
+    default: 0
+    displayCond: 'FIELD:layout:=:slider'
+
+  - identifier: autoplay
+    type: Checkbox
+    label: Autoplay
+    default: 0
+    displayCond: 'FIELD:layout:=:slider'
+
+  - identifier: loop
+    type: Checkbox
+    label: Loop
+    default: 0
+    displayCond: 'FIELD:layout:=:slider'
+
+  - identifier: slider_overflow
+    type: Select
+    renderType: selectSingle
+    label: Slider Overflow
+    description: 'Contained: stays inside the page container. Breakout: extends the track past the container edge(s) to the viewport edge so extra slides peek in.'
+    items:
+      - { label: 'Contained', value: contained }
+      - { label: 'Breakout — extend right', value: breakout-right }
+      - { label: 'Breakout — extend left', value: breakout-left }
+      - { label: 'Breakout — extend both sides', value: breakout-both }
+    default: contained
+    displayCond: 'FIELD:layout:=:slider'
+
+  - identifier: slider_show_overflow
+    type: Checkbox
+    label: Show opposite-side peek
+    description: 'When on, slides that scroll past the container on the non-breakout side stay visible extending toward the other viewport edge (symmetric peek). No effect on the contained layout.'
+    default: 0
+    displayCond: 'FIELD:slider_overflow:!=:contained'
+
+  # ------------------------------------------------------------
+  # Record source
+  # ------------------------------------------------------------
+  - identifier: record_type
+    type: Select
+    renderType: selectSingle
+    label: Record Type
+    description: Which record type to display. Driven by active_record_types in factory.json.
+    itemsProcFunc: LaborDigital\FactoryCore\Tca\RecordTypeItemsProc->getItems
+    items: []
+
+  - identifier: selection_mode
+    type: Select
+    renderType: selectSingle
+    label: Selection Mode
+    items:
+      - { label: Manual — pick records, value: manual }
+      - { label: Auto — query from folder, value: auto }
+    default: manual
+
+  # Manual selection — one Relation field per record type. Only `records_property` is
+  # baked in; Configuration/TCA/Overrides/tt_content.php emits additional
+  # `records_<slug>` fields for any other active record type.
+  - identifier: records_property
+    type: Relation
+    label: Properties
+    allowed: tx_factorycore_property
+    maxItems: 24
+    # Ideally this would also check record_type = property, but TYPO3 13's
+    # inline AND(...) displayCond syntax is unreliable, so we gate only on
+    # selection_mode. When more record types are added, a TCA override can
+    # emit additional records_<slug> fields with the same gating.
+    displayCond: 'FIELD:selection_mode:=:manual'
+
+  # Auto selection — shared across record types.
+  # TCA config is overridden in Configuration/TCA/Overrides/tt_content.php to a
+  # native `group` field (allowed: pages, maxitems: 10). We declare `Text` in CB
+  # so Content Blocks treats the field as an opaque string — otherwise
+  # nb-headless-content-blocks tries to serialize the `pages` relation and
+  # crashes (it only knows CB-defined tables + sys_category).
+  - identifier: auto_storage_pid
+    type: Text
+    label: Storage Folders
+    description: 'Page(s) (typically the "Records" sysfolder) containing the records to list. Leave empty to query all records regardless of location.'
+    displayCond: 'FIELD:selection_mode:=:auto'
+
+  - identifier: auto_filter_listing_type
+    type: Select
+    renderType: selectSingle
+    label: Listing Filter
+    items:
+      - { label: Any, value: '' }
+      - { label: Kauf only, value: buy }
+      - { label: Miete only, value: rent }
+    default: ''
+    displayCond: 'FIELD:selection_mode:=:auto'
+
+  - identifier: auto_limit
+    type: Number
+    label: Limit
+    default: 6
+    displayCond: 'FIELD:selection_mode:=:auto'
+
+  - identifier: auto_order
+    type: Select
+    renderType: selectSingle
+    label: Order
+    items:
+      - { label: Newest first, value: 'crdate desc' }
+      - { label: Oldest first, value: 'crdate asc' }
+      - { label: Title A→Z, value: 'title asc' }
+    default: 'crdate desc'
+    displayCond: 'FIELD:selection_mode:=:auto'

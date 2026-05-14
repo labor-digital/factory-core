@@ -1,68 +1,63 @@
 name: factory/header
 title: Header
-description: A headline element with optional separator.
+description: Site-wide page header with logo, primary navigation, and optional CTA. Variants — classic, transparent (over-hero), minimal (centered logo), mega (with mega-menu).
 group: factory
-icon: content-text
+icon: content-elements-mailform
 fields:
-  - identifier: text
+  - identifier: variant
+    type: Select
+    renderType: selectSingle
+    label: Variant
+    items:
+      - { label: Classic (white bar, bottom border), value: classic }
+      - { label: Transparent (over hero, light text), value: transparent }
+      - { label: Minimal (logo centered, burger + CTA), value: minimal }
+      - { label: Mega (with mega-menu dropdowns), value: mega }
+    default: classic
+
+  - identifier: logo_text
     type: Text
-    label: Headline
-    description: The headline text.
-  - identifier: level
-    type: Select
-    renderType: selectSingle
-    label: Level
-    description: The heading level.
-    items:
-      - { label: H1, value: h1 }
-      - { label: H2, value: h2 }
-      - { label: H3, value: h3 }
-      - { label: H4, value: h4 }
-      - { label: H5, value: h5 }
-      - { label: H6, value: h6 }
-    default: h2
-  - identifier: alignment
-    type: Select
-    renderType: selectSingle
-    label: Alignment
-    items:
-      - { label: Left, value: left }
-      - { label: Center, value: center }
-      - { label: Right, value: right }
-    default: left
-  - identifier: separator
-    type: Checkbox
-    label: Show Separator
-    description: Display a separator line below the headline.
-  - identifier: separator_color
-    type: Select
-    renderType: selectSingle
-    label: Separator Color
-    items:
-      - { label: Primary, value: primary }
-      - { label: Secondary, value: secondary }
-      - { label: Neutral, value: neutral }
-      - { label: Success, value: success }
-      - { label: Info, value: info }
-      - { label: Warning, value: warning }
-      - { label: Error, value: error }
-  - identifier: separator_type
-    type: Select
-    renderType: selectSingle
-    label: Separator Type
-    items:
-      - { label: Solid, value: solid }
-      - { label: Dashed, value: dashed }
-      - { label: Dotted, value: dotted }
-    default: solid
-  - identifier: separator_size
-    type: Select
-    renderType: selectSingle
-    label: Separator Size
-    items:
-      - { label: Extra Small, value: xs }
-      - { label: Small, value: sm }
-      - { label: Medium, value: md }
-      - { label: Large, value: lg }
-      - { label: Extra Large, value: xl }
-    default: sm
+    label: Logo Text
+    description: Used when no logo image is provided.
+
+  - identifier: logo_image
+    type: File
+    label: Logo Image
+    allowedFileExtensions: ['svg', 'png', 'webp']
+    maxItems: 1
+
+  - identifier: cta_label
+    type: Text
+    label: CTA Label
+
+  - identifier: cta_to
+    type: Link
+    label: CTA Link
+
+  - identifier: links
+    type: Collection
+    label: Primary Navigation
+    fields:
+      - identifier: label
+        type: Text
+        label: Label
+      - identifier: to
+        type: Link
+        label: Link
+      - identifier: active
+        type: Checkbox
+        label: Mark as Active
+      - identifier: children
+        type: Collection
+        label: Mega-Menu Children
+        description: Used by the Mega variant. Group child links via the Group field.
+        fields:
+          - identifier: group
+            type: Text
+            label: Group (column heading)
+          - identifier: label
+            type: Text
+            label: Label
+          - identifier: to
+            type: Link
+            label: Link
