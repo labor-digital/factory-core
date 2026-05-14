@@ -1,0 +1,49 @@
+name: factory/stats
+title: Stats
+description: A grid of key numbers / KPIs with an optional header.
+group: factory
+icon: content-table
+fields:
+  - identifier: variant
+    type: Select
+    renderType: selectSingle
+    label: Variant
+    items:
+      - { label: Row (4 KPIs in one row), value: row }
+      - { label: Big Four (2×2, dark bg, large numbers), value: bigfour }
+      - { label: Inline (single row with dividers), value: inline }
+      - { label: Split (head on left, grid on right), value: split }
+    default: row
+
+  - identifier: eyebrow
+    type: Text
+    label: Eyebrow
+
+  - identifier: headline
+    type: Text
+    label: Headline
+
+  - identifier: intro
+    type: Textarea
+    label: Intro / Subtitle
+
+  - identifier: callout
+    type: Textarea
+    label: Callout Quote
+    description: Used only by the Big Four variant. Rendered as a quote below the grid.
+    displayCond: 'FIELD:variant:=:bigfour'
+
+  - identifier: items
+    type: Collection
+    label: Stats
+    minitems: 1
+    fields:
+      - identifier: value
+        type: Text
+        label: Value (e.g. 120+, 98%, 18)
+      - identifier: label
+        type: Text
+        label: Label
+      - identifier: sub
+        type: Text
+        label: Sub-label (small caption)

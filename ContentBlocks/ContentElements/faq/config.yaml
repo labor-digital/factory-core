@@ -1,0 +1,62 @@
+name: factory/faq
+title: FAQ
+description: Collapsible questions and answers in single-column, two-column, grouped, or bordered XL layouts.
+group: factory
+icon: content-info
+fields:
+  - identifier: variant
+    type: Select
+    renderType: selectSingle
+    label: Variant
+    items:
+      - { label: Single Column, value: single }
+      - { label: Two Column (intro left, FAQ right), value: two-col }
+      - { label: Grouped (by category), value: grouped }
+      - { label: Bordered XL (large serif questions), value: bordered }
+    default: single
+
+  - identifier: eyebrow
+    type: Text
+    label: Eyebrow
+
+  - identifier: headline
+    type: Text
+    label: Headline
+
+  - identifier: intro
+    type: Textarea
+    label: Intro
+
+  - identifier: contact_label
+    type: Text
+    label: Contact card — Label
+    description: Used by Two Column variant.
+    default: Frage nicht dabei?
+    displayCond: 'FIELD:variant:=:two-col'
+
+  - identifier: contact_mail
+    type: Text
+    label: Contact card — Mail address
+    displayCond: 'FIELD:variant:=:two-col'
+
+  - identifier: contact_button
+    type: Text
+    label: Contact card — Button Label
+    default: Kontakt aufnehmen
+    displayCond: 'FIELD:variant:=:two-col'
+
+  - identifier: items
+    type: Collection
+    label: Questions
+    minitems: 1
+    fields:
+      - identifier: q
+        type: Text
+        label: Question
+      - identifier: a
+        type: Textarea
+        label: Answer
+      - identifier: group
+        type: Text
+        label: Group (Grouped variant only)
+        description: Items with the same group label appear under that heading.

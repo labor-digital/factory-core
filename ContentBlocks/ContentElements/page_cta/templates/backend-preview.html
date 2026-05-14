@@ -1,6 +1,0 @@
-<f:layout name="Preview" />
-<f:section name="Content">
-    <strong>Page CTA: {data.title}</strong>
-    <f:if condition="{data.description}"><br/><em>{data.description}</em></f:if>
-    <br/><small>variant: {data.variant} · {data.orientation}<f:if condition="{data.reverse}"> (reversed)</f:if> · {data.links -> f:count()} link<f:if condition="{data.links -> f:count()} != 1">s</f:if></small>
-</f:section>

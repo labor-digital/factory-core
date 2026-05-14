@@ -8,10 +8,11 @@ use LaborDigital\FactoryCore\Service\ContentBlockSeeder;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 
 /**
- * Populates the ReferenceList CE's `record_type` dropdown from the client's
+
+ * Populates the Teaser CE's `record_type` dropdown from the client's
  * active_record_types list in factory.json.
  *
- * Wiring: see ContentBlocks/ContentElements/reference_list/config.yaml →
+ * Wiring: see ContentBlocks/ContentElements/teaser/config.yaml →
  *   itemsProcFunc: LaborDigital\FactoryCore\Tca\RecordTypeItemsProc->getItems
  *
  * Instantiated by TYPO3 via `GeneralUtility::makeInstance()` without DI, so

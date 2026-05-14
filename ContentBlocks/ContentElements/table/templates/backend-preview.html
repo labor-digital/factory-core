@@ -1,8 +1,0 @@
-<f:layout name="Preview" />
-<f:section name="Content">
-    <strong>Table<f:if condition="{data.caption}">: {data.caption}</f:if></strong>
-    <small>({data.columns -> f:count()} cols × {data.rows -> f:count()} rows<f:if condition="{data.sticky}"> · sticky: {data.sticky}</f:if>)</small>
-    <f:if condition="{data.columns}">
-        <br/><em><f:for each="{data.columns}" as="col" iteration="i"><f:if condition="{i.isFirst} == 0"> | </f:if>{col.label}</f:for></em>
-    </f:if>
-</f:section>

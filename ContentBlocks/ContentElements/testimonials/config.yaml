@@ -1,0 +1,63 @@
+name: factory/testimonials
+title: Testimonials
+description: Customer quotes in five layouts — large single quote, long-form quote, 3-col cards, image+quote slider, featured dark with portrait.
+group: factory
+icon: content-quote
+fields:
+  - identifier: variant
+    type: Select
+    renderType: selectSingle
+    label: Variant
+    items:
+      - { label: Quote XL (single large serif quote), value: quote-xl }
+      - { label: Quote Flow (long-form quote), value: quote-flow }
+      - { label: Cards (3-col with stars), value: cards }
+      - { label: Slider (image left, quote right), value: slider }
+      - { label: Featured (dark, full-bleed), value: featured }
+    default: quote-xl
+
+  - identifier: eyebrow
+    type: Text
+    label: Eyebrow
+
+  - identifier: headline
+    type: Text
+    label: Headline
+
+  - identifier: intro
+    type: Textarea
+    label: Intro
+
+  - identifier: long_quote
+    type: Textarea
+    label: Long-form Quote
+    description: Used by Quote Flow variant. Falls back to first item's quote if empty.
+    displayCond: 'FIELD:variant:=:quote-flow'
+
+  - identifier: items
+    type: Collection
+    label: Testimonials
+    minitems: 1
+    fields:
+      - identifier: quote
+        type: Textarea
+        label: Quote
+      - identifier: name
+        type: Text
+        label: Name
+      - identifier: role
+        type: Text
+        label: Role / Title
+      - identifier: company
+        type: Text
+        label: Company
+      - identifier: avatar
+        type: File
+        label: Avatar
+        allowedFileExtensions: ['jpg', 'jpeg', 'png', 'webp']
+        maxItems: 1
+      - identifier: media
+        type: File
+        label: Portrait / Media (slider & featured variants)
+        allowedFileExtensions: ['jpg', 'jpeg', 'png', 'webp']
+        maxItems: 1

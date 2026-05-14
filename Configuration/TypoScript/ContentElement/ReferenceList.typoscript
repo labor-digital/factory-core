@@ -1,4 +1,0 @@
-tt_content.factory_referencelist.fields.content.dataProcessing.10.dataProcessing {
-    20 = LaborDigital\FactoryCore\DataProcessing\ReferenceListProcessor
-    20.as = records
-}

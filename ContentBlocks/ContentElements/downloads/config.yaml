@@ -1,0 +1,55 @@
+name: factory/downloads
+title: Downloads
+description: A list/grid of downloadable files with format icons. List, icon-grid, featured, or grouped layouts.
+group: factory
+icon: content-download
+fields:
+  - identifier: variant
+    type: Select
+    renderType: selectSingle
+    label: Variant
+    items:
+      - { label: List (compact table), value: list }
+      - { label: Icons (card grid with large icons), value: icons }
+      - { label: Featured (one highlight + secondary list), value: featured }
+      - { label: Grouped (categorised), value: grouped }
+    default: list
+
+  - identifier: eyebrow
+    type: Text
+    label: Eyebrow
+
+  - identifier: headline
+    type: Text
+    label: Headline
+
+  - identifier: intro
+    type: Textarea
+    label: Intro
+
+  - identifier: items
+    type: Collection
+    label: Files
+    minitems: 1
+    fields:
+      - identifier: title
+        type: Text
+        label: Title
+      - identifier: desc
+        type: Textarea
+        label: Description (Icons / Featured only)
+      - identifier: file
+        type: File
+        label: File
+        allowedFileExtensions: ['pdf', 'doc', 'docx', 'xls', 'xlsx', 'ppt', 'pptx', 'zip', 'jpg', 'png', 'mp4', 'dwg', 'txt']
+        maxItems: 1
+      - identifier: ext
+        type: Text
+        label: Format Override (e.g. pdf, docx, zip)
+        description: Optional. Inferred from the file URL when empty.
+      - identifier: size
+        type: Text
+        label: Size (human readable, e.g. 4.2 MB)
+      - identifier: group
+        type: Text
+        label: Group (Grouped variant only)

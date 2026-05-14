@@ -1,0 +1,103 @@
+name: factory/footer
+title: Footer
+description: Site footer with brand, link columns, contacts, and legal links. Variants — columns, compact, split (dark), maximal (giant wordmark).
+group: factory
+icon: content-text
+fields:
+  - identifier: variant
+    type: Select
+    renderType: selectSingle
+    label: Variant
+    items:
+      - { label: Columns (4-col light), value: columns }
+      - { label: Compact (single row), value: compact }
+      - { label: Split (dark, claim + links), value: split }
+      - { label: Maximal (giant wordmark, dark), value: maximal }
+    default: columns
+
+  - identifier: logo_text
+    type: Text
+    label: Logo Text
+
+  - identifier: logo_image
+    type: File
+    label: Logo Image
+    allowedFileExtensions: ['svg', 'png', 'webp']
+    maxItems: 1
+
+  - identifier: tagline
+    type: Textarea
+    label: Tagline (columns variant)
+
+  - identifier: claim
+    type: Textarea
+    label: Claim / Call-out (split & maximal variants)
+
+  - identifier: address
+    type: Textarea
+    label: Address (one line per row)
+
+  - identifier: cta_primary
+    type: Text
+    label: CTA Primary (split variant)
+    displayCond: 'FIELD:variant:=:split'
+
+  - identifier: cta_secondary
+    type: Text
+    label: CTA Secondary (split variant)
+    displayCond: 'FIELD:variant:=:split'
+
+  - identifier: cols
+    type: Collection
+    label: Link Columns
+    fields:
+      - identifier: title
+        type: Text
+        label: Title
+      - identifier: links
+        type: Collection
+        label: Links
+        fields:
+          - identifier: label
+            type: Text
+            label: Label
+          - identifier: to
+            type: Link
+            label: Link
+
+  - identifier: contacts
+    type: Collection
+    label: Contacts (maximal variant)
+    fields:
+      - identifier: label
+        type: Text
+        label: Label (e.g. +49 89 123 456 78)
+      - identifier: to
+        type: Link
+        label: Link (e.g. tel: or mailto:)
+
+  - identifier: socials
+    type: Collection
+    label: Social Links
+    fields:
+      - identifier: label
+        type: Text
+        label: Label (e.g. IN, LI, YT)
+      - identifier: to
+        type: Link
+        label: Link
+
+  - identifier: legal
+    type: Collection
+    label: Legal Links
+    fields:
+      - identifier: label
+        type: Text
+        label: Label
+      - identifier: to
+        type: Link
+        label: Link
+
+  - identifier: copyright
+    type: Text
+    label: Copyright Notice
