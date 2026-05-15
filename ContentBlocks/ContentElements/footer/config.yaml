@@ -74,7 +74,7 @@ fields:
         label: Label (e.g. +49 89 123 456 78)
       - identifier: to
         type: Link
-        label: Link (e.g. tel: or mailto:)
+        label: "Link (e.g. tel: or mailto:)"
 
   - identifier: socials
     type: Collection
