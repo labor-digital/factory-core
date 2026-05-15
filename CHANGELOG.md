@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.10.5](https://github.com/labor-digital/lab-factory/compare/factory-core-v0.10.4...factory-core-v0.10.5) (2026-05-15)
+
+
+### Bug Fixes
+
+* **typo3-extension:** handle backticked reserved-word columns in self-heal ([6acfed8](https://github.com/labor-digital/lab-factory/commit/6acfed85c6e9717a77aad64fd335a4693b7d9d75))
+
 ## [0.10.4](https://github.com/labor-digital/lab-factory/compare/factory-core-v0.10.3...factory-core-v0.10.4) (2026-05-15)
 
 
