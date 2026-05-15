@@ -1,5 +1,16 @@
 # Changelog
 
+## [0.11.0](https://github.com/labor-digital/lab-factory/compare/factory-core-v0.10.6...factory-core-v0.11.0) (2026-05-15)
+
+
+### ⚠ BREAKING CHANGES
+
+* **typo3-extension:** native ADD COLUMN IF NOT EXISTS + drop legacy fallbacks
+
+### Bug Fixes
+
+* **typo3-extension:** native ADD COLUMN IF NOT EXISTS + drop legacy fallbacks ([e3b9a61](https://github.com/labor-digital/lab-factory/commit/e3b9a6162858ef6221c2de0f9032a7c3ea06bdab))
+
 ## [0.10.6](https://github.com/labor-digital/lab-factory/compare/factory-core-v0.10.5...factory-core-v0.10.6) (2026-05-15)
 
 
