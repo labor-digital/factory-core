@@ -47,9 +47,10 @@ fields:
         type: Text
         label: Format Override (e.g. pdf, docx, zip)
         description: Optional. Inferred from the file URL when empty.
-      - identifier: size
+      - identifier: file_size
         type: Text
         label: Size (human readable, e.g. 4.2 MB)
+        description: Field identifier is "file_size" — "size" itself is reserved by content-blocks as the input-field width TCA attribute.
       - identifier: group
         type: Text
         label: Group (Grouped variant only)
