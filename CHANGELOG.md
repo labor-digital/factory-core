@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.11.2](https://github.com/labor-digital/lab-factory/compare/factory-core-v0.11.1...factory-core-v0.11.2) (2026-05-15)
+
+
+### Bug Fixes
+
+* **typo3-extension:** cta buttons collection matches the standard button schema ([bb8db85](https://github.com/labor-digital/lab-factory/commit/bb8db85431328a8c3b6f5354e9660c90efb3d2a0))
+
 ## [0.11.1](https://github.com/labor-digital/lab-factory/compare/factory-core-v0.11.0...factory-core-v0.11.1) (2026-05-15)
 
 
