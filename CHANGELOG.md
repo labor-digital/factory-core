@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.10.1](https://github.com/labor-digital/lab-factory/compare/factory-core-v0.10.0...factory-core-v0.10.1) (2026-05-15)
+
+
+### Bug Fixes
+
+* **typo3-extension:** quote Footer config label containing colons ([d56be0e](https://github.com/labor-digital/lab-factory/commit/d56be0ebe11234d2a4c0a4526823d32a4f8c3310))
+
 ## [0.10.0](https://github.com/labor-digital/lab-factory/compare/factory-core-v0.9.0...factory-core-v0.10.0) (2026-05-14)
 
 
