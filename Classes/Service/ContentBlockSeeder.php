@@ -350,16 +350,33 @@ class ContentBlockSeeder
         // still in place — and a seed-time INSERT then failed with
         // "Unknown column 'X' in 'field list'"). Self-heal here.
         if ($schemaManager->tablesExist([$tableName])) {
-            $existing = array_keys($schemaManager->listTableColumns($tableName));
-            $existingLower = array_map('strtolower', $existing);
+            // Normalise Doctrine's returned column names — reserved-word
+            // columns (e.g. `to`) come back backticked on some platforms,
+            // and casing varies across MySQL/MariaDB versions, so the naive
+            // in_array() check missed them and we tried to ALTER-ADD a
+            // column that already existed ("Duplicate column name 'to'").
+            $existingLower = [];
+            foreach ($schemaManager->listTableColumns($tableName) as $name => $_) {
+                $existingLower[] = strtolower(trim((string)$name, '`"\''));
+            }
             foreach ($subFieldDefs as $subFieldId => $subFieldDef) {
                 if (in_array(strtolower($subFieldId), $existingLower, true)) {
                     continue;
                 }
                 $sqlType = $this->sqlTypeForFieldType($subFieldDef['type'] ?? 'Text');
-                $connection->executeStatement(
-                    'ALTER TABLE `' . $tableName . '` ADD COLUMN `' . $subFieldId . '` ' . $sqlType
-                );
+                try {
+                    $connection->executeStatement(
+                        'ALTER TABLE `' . $tableName . '` ADD COLUMN `' . $subFieldId . '` ' . $sqlType
+                    );
+                } catch (\Doctrine\DBAL\Exception $e) {
+                    // Belt-and-suspenders: if the column race-existed (or
+                    // our normalisation missed an edge case), don't blow
+                    // up the seed. The next INSERT will surface a real
+                    // problem if there is one.
+                    if (!str_contains($e->getMessage(), 'Duplicate column')) {
+                        throw $e;
+                    }
+                }
             }
             $this->ensuredTables[$tableName] = true;
             return;
