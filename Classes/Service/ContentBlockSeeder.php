@@ -350,29 +350,24 @@ class ContentBlockSeeder
         // still in place — and a seed-time INSERT then failed with
         // "Unknown column 'X' in 'field list'"). Self-heal here.
         if ($schemaManager->tablesExist([$tableName])) {
-            // Normalise Doctrine's returned column names — reserved-word
-            // columns (e.g. `to`) come back backticked on some platforms,
-            // and casing varies across MySQL/MariaDB versions, so the naive
-            // in_array() check missed them and we tried to ALTER-ADD a
-            // column that already existed ("Duplicate column name 'to'").
-            $existingLower = [];
-            foreach ($schemaManager->listTableColumns($tableName) as $name => $_) {
-                $existingLower[] = strtolower(trim((string)$name, '`"\''));
-            }
+            // Self-heal: ALTER-add every sub-field column. Just try each one
+            // and swallow "Duplicate column" — bypasses every Doctrine
+            // schema-reporting quirk we hit before:
+            //   - 0.10.4: listTableColumns returned names the in_array
+            //     check didn't match (case folding)
+            //   - 0.10.5: Doctrine returned reserved-word columns
+            //     backticked, the strip-quote workaround handled `to` but
+            //     a different MariaDB build still made the comparison
+            //     match `button_size` to a non-existent column
+            // Dumb but reliable — and at most a handful of ALTER round-trips
+            // on already-up-to-date tables.
             foreach ($subFieldDefs as $subFieldId => $subFieldDef) {
-                if (in_array(strtolower($subFieldId), $existingLower, true)) {
-                    continue;
-                }
                 $sqlType = $this->sqlTypeForFieldType($subFieldDef['type'] ?? 'Text');
                 try {
                     $connection->executeStatement(
                         'ALTER TABLE `' . $tableName . '` ADD COLUMN `' . $subFieldId . '` ' . $sqlType
                     );
                 } catch (\Doctrine\DBAL\Exception $e) {
-                    // Belt-and-suspenders: if the column race-existed (or
-                    // our normalisation missed an edge case), don't blow
-                    // up the seed. The next INSERT will surface a real
-                    // problem if there is one.
                     if (!str_contains($e->getMessage(), 'Duplicate column')) {
                         throw $e;
                     }
