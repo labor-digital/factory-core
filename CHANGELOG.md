@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.10.2](https://github.com/labor-digital/lab-factory/compare/factory-core-v0.10.1...factory-core-v0.10.2) (2026-05-15)
+
+
+### Bug Fixes
+
+* **typo3-extension:** quote variant labels containing commas ([34caacc](https://github.com/labor-digital/lab-factory/commit/34caacc53f1484add993f35634c859bc516005e0))
+
 ## [0.10.1](https://github.com/labor-digital/lab-factory/compare/factory-core-v0.10.0...factory-core-v0.10.1) (2026-05-15)
 
 
