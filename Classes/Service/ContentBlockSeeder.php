@@ -339,8 +339,28 @@ class ContentBlockSeeder
         }
 
         $connection = $connectionPool->getConnectionForTable($tableName);
+        $schemaManager = $connection->createSchemaManager();
 
-        if ($connection->createSchemaManager()->tablesExist([$tableName])) {
+        // Existing table — bring it up to date by ALTER-adding any sub-field
+        // columns that aren't there yet. Previously we returned early on
+        // tablesExist, which broke seeding after a content-block schema
+        // change because the new column never landed (content-blocks
+        // creates the table during the DB analyzer pass but skipped
+        // renamed/added columns when an old version of the table was
+        // still in place — and a seed-time INSERT then failed with
+        // "Unknown column 'X' in 'field list'"). Self-heal here.
+        if ($schemaManager->tablesExist([$tableName])) {
+            $existing = array_keys($schemaManager->listTableColumns($tableName));
+            $existingLower = array_map('strtolower', $existing);
+            foreach ($subFieldDefs as $subFieldId => $subFieldDef) {
+                if (in_array(strtolower($subFieldId), $existingLower, true)) {
+                    continue;
+                }
+                $sqlType = $this->sqlTypeForFieldType($subFieldDef['type'] ?? 'Text');
+                $connection->executeStatement(
+                    'ALTER TABLE `' . $tableName . '` ADD COLUMN `' . $subFieldId . '` ' . $sqlType
+                );
+            }
             $this->ensuredTables[$tableName] = true;
             return;
         }
