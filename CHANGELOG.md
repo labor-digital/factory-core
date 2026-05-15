@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.10.4](https://github.com/labor-digital/lab-factory/compare/factory-core-v0.10.3...factory-core-v0.10.4) (2026-05-15)
+
+
+### Bug Fixes
+
+* **typo3-extension:** self-heal child-table columns in TenantContentSeeder ([1d05970](https://github.com/labor-digital/lab-factory/commit/1d05970b0ef6c4e0425d8ba6ae411e70ff865978))
+
 ## [0.10.3](https://github.com/labor-digital/lab-factory/compare/factory-core-v0.10.2...factory-core-v0.10.3) (2026-05-15)
 
 
