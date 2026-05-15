@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.10.6](https://github.com/labor-digital/lab-factory/compare/factory-core-v0.10.5...factory-core-v0.10.6) (2026-05-15)
+
+
+### Bug Fixes
+
+* **typo3-extension:** bulletproof child-table self-heal via try-ALTER pattern ([7791194](https://github.com/labor-digital/lab-factory/commit/77911947c392d41b5512b533d83be795d44293cd))
+
 ## [0.10.5](https://github.com/labor-digital/lab-factory/compare/factory-core-v0.10.4...factory-core-v0.10.5) (2026-05-15)
 
 
