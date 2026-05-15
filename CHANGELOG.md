@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.11.1](https://github.com/labor-digital/lab-factory/compare/factory-core-v0.11.0...factory-core-v0.11.1) (2026-05-15)
+
+
+### Bug Fixes
+
+* **typo3-extension:** introspect columns via information_schema, not ADD COLUMN IF NOT EXISTS ([56bdcad](https://github.com/labor-digital/lab-factory/commit/56bdcadf9d46ed2dc0331ce8212f2d02b5344f1a))
+
 ## [0.11.0](https://github.com/labor-digital/lab-factory/compare/factory-core-v0.10.6...factory-core-v0.11.0) (2026-05-15)
 
 
