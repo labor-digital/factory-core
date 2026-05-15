@@ -17,8 +17,8 @@ slides:
       - label: Referenzen ansehen
         color: neutral
         variant: outline
-        size: md
+        button_size: md
       - label: Angebot anfordern
         color: primary
         variant: solid
-        size: md
+        button_size: md
