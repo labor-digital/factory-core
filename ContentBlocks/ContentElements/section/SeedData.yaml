@@ -20,7 +20,7 @@ buttons:
   - label: Jetzt Kontakt aufnehmen
     color: primary
     variant: outline
-    size: md
+    button_size: md
 media:
   - type: image
     alt: Bauprojekt

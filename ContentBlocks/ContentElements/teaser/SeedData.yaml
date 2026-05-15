@@ -22,6 +22,6 @@ buttons:
   - label: Alle anzeigen
     color: primary
     variant: link
-    size: md
+    button_size: md
     icon: i-lucide-arrow-right
     trailing: 1
