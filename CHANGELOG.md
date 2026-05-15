@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.11.3](https://github.com/labor-digital/lab-factory/compare/factory-core-v0.11.2...factory-core-v0.11.3) (2026-05-15)
+
+
+### Bug Fixes
+
+* **typo3-extension:** rename `size` to `button_size` in SeedData.yaml defaults ([c622849](https://github.com/labor-digital/lab-factory/commit/c622849bbe9373af0dc660fa3a5e47461d46f4a0))
+
 ## [0.11.2](https://github.com/labor-digital/lab-factory/compare/factory-core-v0.11.1...factory-core-v0.11.2) (2026-05-15)
 
 
