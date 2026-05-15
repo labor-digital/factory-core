@@ -350,15 +350,30 @@ class ContentBlockSeeder
         // still in place — and a seed-time INSERT then failed with
         // "Unknown column 'X' in 'field list'"). Self-heal here.
         if ($schemaManager->tablesExist([$tableName])) {
-            // Self-heal: ALTER-add every sub-field column via ADD COLUMN
-            // IF NOT EXISTS. MariaDB (10.0+) and MySQL (8.0.29+) handle
-            // idempotency natively, so we don't have to introspect schema
-            // (which kept getting wrong across versions/builds) or
-            // catch-the-right-exception. Fail loudly on anything else.
+            // Self-heal: discover existing columns via information_schema
+            // (portable across MySQL/MariaDB, returns exactly the stored
+            // column names — no Doctrine introspection quirks, no backtick
+            // wrapping). Then ALTER-add the missing ones.
+            //
+            // We avoid `ADD COLUMN IF NOT EXISTS` because some MariaDB /
+            // MySQL builds we deploy to don't accept it (parse error on
+            // `IF NOT EXISTS` after ADD COLUMN). information_schema is
+            // available in every supported version.
+            $existing = $connection->fetchFirstColumn(
+                'SELECT COLUMN_NAME FROM information_schema.COLUMNS WHERE TABLE_SCHEMA = DATABASE() AND TABLE_NAME = ?',
+                [$tableName]
+            );
+            $existingLower = [];
+            foreach ($existing as $name) {
+                $existingLower[] = strtolower((string)$name);
+            }
             foreach ($subFieldDefs as $subFieldId => $subFieldDef) {
+                if (in_array(strtolower($subFieldId), $existingLower, true)) {
+                    continue;
+                }
                 $sqlType = $this->sqlTypeForFieldType($subFieldDef['type'] ?? 'Text');
                 $connection->executeStatement(
-                    'ALTER TABLE `' . $tableName . '` ADD COLUMN IF NOT EXISTS `' . $subFieldId . '` ' . $sqlType
+                    'ALTER TABLE `' . $tableName . '` ADD COLUMN `' . $subFieldId . '` ' . $sqlType
                 );
             }
             $this->ensuredTables[$tableName] = true;
