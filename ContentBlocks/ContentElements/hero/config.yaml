@@ -198,10 +198,11 @@ fields:
               - { label: Subtle, value: subtle }
               - { label: Ghost, value: ghost }
               - { label: Link, value: link }
-          - identifier: size
+          - identifier: button_size
             type: Select
             renderType: selectSingle
             label: Size
+            description: Renamed from "size" because content-blocks reserves that identifier for the input-field width TCA attribute (collision drops the DB column silently).
             items:
               - { label: Extra Small, value: xs }
               - { label: Small, value: sm }
