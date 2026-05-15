@@ -10,7 +10,7 @@ fields:
     label: Variant
     items:
       - { label: Cards (3-col with icon and link), value: cards }
-      - { label: Flat (3-col minimal, top border), value: flat }
+      - { label: 'Flat (3-col minimal, top border)', value: flat }
       - { label: Numbered (big numbers), value: numbered }
       - { label: Media (with image), value: media }
     default: cards

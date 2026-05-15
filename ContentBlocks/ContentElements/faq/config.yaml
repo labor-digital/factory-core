@@ -10,7 +10,7 @@ fields:
     label: Variant
     items:
       - { label: Single Column, value: single }
-      - { label: Two Column (intro left, FAQ right), value: two-col }
+      - { label: 'Two Column (intro left, FAQ right)', value: two-col }
       - { label: Grouped (by category), value: grouped }
       - { label: Bordered XL (large serif questions), value: bordered }
     default: single

@@ -10,9 +10,9 @@ fields:
     label: Variant
     items:
       - { label: Row (4 KPIs in one row), value: row }
-      - { label: Big Four (2×2, dark bg, large numbers), value: bigfour }
+      - { label: 'Big Four (2×2, dark bg, large numbers)', value: bigfour }
       - { label: Inline (single row with dividers), value: inline }
-      - { label: Split (head on left, grid on right), value: split }
+      - { label: 'Split (head on left, grid on right)', value: split }
     default: row
 
   - identifier: eyebrow
