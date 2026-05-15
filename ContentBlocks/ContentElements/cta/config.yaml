@@ -10,7 +10,7 @@ fields:
     label: Variant
     items:
       - { label: Split (text + button on soft brand bg), value: split }
-      - { label: Center Dark (centered text, dark bg), value: center-dark }
+      - { label: 'Center Dark (centered text, dark bg)', value: center-dark }
       - { label: Full-bleed Image (text over image), value: fullbleed-image }
       - { label: Inline Form (name + email + submit), value: inline-form }
     default: split

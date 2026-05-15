@@ -11,8 +11,8 @@ fields:
     items:
       - { label: Columns (4-col light), value: columns }
       - { label: Compact (single row), value: compact }
-      - { label: Split (dark, claim + links), value: split }
-      - { label: Maximal (giant wordmark, dark), value: maximal }
+      - { label: 'Split (dark, claim + links)', value: split }
+      - { label: 'Maximal (giant wordmark, dark)', value: maximal }
     default: columns
 
   - identifier: logo_text

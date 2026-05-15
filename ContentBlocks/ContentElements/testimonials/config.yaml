@@ -12,8 +12,8 @@ fields:
       - { label: Quote XL (single large serif quote), value: quote-xl }
       - { label: Quote Flow (long-form quote), value: quote-flow }
       - { label: Cards (3-col with stars), value: cards }
-      - { label: Slider (image left, quote right), value: slider }
-      - { label: Featured (dark, full-bleed), value: featured }
+      - { label: 'Slider (image left, quote right)', value: slider }
+      - { label: 'Featured (dark, full-bleed)', value: featured }
     default: quote-xl
 
   - identifier: eyebrow

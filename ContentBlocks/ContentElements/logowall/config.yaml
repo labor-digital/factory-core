@@ -11,8 +11,8 @@ fields:
     items:
       - { label: Grid (6 columns), value: grid }
       - { label: Marquee (auto-scrolling row), value: marquee }
-      - { label: Compact (single row, no header), value: compact }
-      - { label: Slider (paginated, prev/next), value: slider }
+      - { label: 'Compact (single row, no header)', value: compact }
+      - { label: 'Slider (paginated, prev/next)', value: slider }
     default: grid
 
   - identifier: eyebrow

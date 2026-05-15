@@ -9,9 +9,9 @@ fields:
     renderType: selectSingle
     label: Variant
     items:
-      - { label: Classic (white bar, bottom border), value: classic }
-      - { label: Transparent (over hero, light text), value: transparent }
-      - { label: Minimal (logo centered, burger + CTA), value: minimal }
+      - { label: 'Classic (white bar, bottom border)', value: classic }
+      - { label: 'Transparent (over hero, light text)', value: transparent }
+      - { label: 'Minimal (logo centered, burger + CTA)', value: minimal }
       - { label: Mega (with mega-menu dropdowns), value: mega }
     default: classic
 
