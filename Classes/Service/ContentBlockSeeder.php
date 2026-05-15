@@ -350,28 +350,16 @@ class ContentBlockSeeder
         // still in place — and a seed-time INSERT then failed with
         // "Unknown column 'X' in 'field list'"). Self-heal here.
         if ($schemaManager->tablesExist([$tableName])) {
-            // Self-heal: ALTER-add every sub-field column. Just try each one
-            // and swallow "Duplicate column" — bypasses every Doctrine
-            // schema-reporting quirk we hit before:
-            //   - 0.10.4: listTableColumns returned names the in_array
-            //     check didn't match (case folding)
-            //   - 0.10.5: Doctrine returned reserved-word columns
-            //     backticked, the strip-quote workaround handled `to` but
-            //     a different MariaDB build still made the comparison
-            //     match `button_size` to a non-existent column
-            // Dumb but reliable — and at most a handful of ALTER round-trips
-            // on already-up-to-date tables.
+            // Self-heal: ALTER-add every sub-field column via ADD COLUMN
+            // IF NOT EXISTS. MariaDB (10.0+) and MySQL (8.0.29+) handle
+            // idempotency natively, so we don't have to introspect schema
+            // (which kept getting wrong across versions/builds) or
+            // catch-the-right-exception. Fail loudly on anything else.
             foreach ($subFieldDefs as $subFieldId => $subFieldDef) {
                 $sqlType = $this->sqlTypeForFieldType($subFieldDef['type'] ?? 'Text');
-                try {
-                    $connection->executeStatement(
-                        'ALTER TABLE `' . $tableName . '` ADD COLUMN `' . $subFieldId . '` ' . $sqlType
-                    );
-                } catch (\Doctrine\DBAL\Exception $e) {
-                    if (!str_contains($e->getMessage(), 'Duplicate column')) {
-                        throw $e;
-                    }
-                }
+                $connection->executeStatement(
+                    'ALTER TABLE `' . $tableName . '` ADD COLUMN IF NOT EXISTS `' . $subFieldId . '` ' . $sqlType
+                );
             }
             $this->ensuredTables[$tableName] = true;
             return;
