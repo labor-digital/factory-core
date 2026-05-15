@@ -78,6 +78,30 @@ fields:
           - { label: White Solid (on-dark), value: white-solid }
           - { label: Outline White (on-dark), value: outline-white }
         default: solid
+      - identifier: button_size
+        type: Select
+        renderType: selectSingle
+        label: Size
+        description: Renamed from "size" — content-blocks reserves that identifier for the input-field width TCA attribute.
+        items:
+          - { label: Extra Small, value: xs }
+          - { label: Small, value: sm }
+          - { label: Medium, value: md }
+          - { label: Large, value: lg }
+          - { label: Extra Large, value: xl }
+      - identifier: icon
+        type: Text
+        label: Icon
+        description: Iconify icon name (e.g., i-lucide-arrow-right).
+      - identifier: leading
+        type: Checkbox
+        label: Leading Icon
+      - identifier: trailing
+        type: Checkbox
+        label: Trailing Icon
+      - identifier: block
+        type: Checkbox
+        label: Full Width
 
   - identifier: form_enabled
     type: Checkbox
