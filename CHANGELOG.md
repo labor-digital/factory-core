@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.10.3](https://github.com/labor-digital/lab-factory/compare/factory-core-v0.10.2...factory-core-v0.10.3) (2026-05-15)
+
+
+### Bug Fixes
+
+* **typo3-extension:** rename `size` identifier to avoid content-blocks reservation ([f34ea73](https://github.com/labor-digital/lab-factory/commit/f34ea7307b1317ab69f0ad7faff15d0bb09fb1a7))
+
 ## [0.10.2](https://github.com/labor-digital/lab-factory/compare/factory-core-v0.10.1...factory-core-v0.10.2) (2026-05-15)
 
 
