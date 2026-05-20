@@ -1,0 +1,90 @@
+name: factory/news
+title: News
+description: News / press / events section with grid, magazine, list (with filters), featured, or timeline layouts.
+group: factory
+icon: content-news
+fields:
+  - identifier: variant
+    type: Select
+    renderType: selectSingle
+    label: Variant
+    items:
+      - { label: Grid · 3-column teaser with filters, value: grid }
+      - { label: Magazine · 1 featured + 4 side items, value: magazine }
+      - { label: List · date marker + filters, value: list }
+      - { label: Featured + compact list, value: featured }
+      - { label: Timeline · year tabs · date markers, value: timeline }
+    default: grid
+
+  - identifier: eyebrow
+    type: Text
+    label: Eyebrow
+
+  - identifier: headline
+    type: Text
+    label: Headline
+
+  - identifier: intro
+    type: Textarea
+    label: Intro
+
+  - identifier: head_align
+    type: Select
+    renderType: selectSingle
+    label: Header Alignment
+    items:
+      - { label: Left, value: left }
+      - { label: Center, value: center }
+    default: left
+
+  - identifier: see_all_label
+    type: Text
+    label: Top-right link label
+    description: 'e.g. "Alle News →"'
+
+  - identifier: see_all_to
+    type: Link
+    label: Top-right link target
+
+  - identifier: items
+    type: Collection
+    label: News items
+    minitems: 1
+    fields:
+      - identifier: title
+        type: Text
+        label: Title
+        required: true
+      - identifier: excerpt
+        type: Textarea
+        label: Excerpt
+      - identifier: date
+        type: DateTime
+        format: date
+        label: Date
+      - identifier: category
+        type: Select
+        renderType: selectSingle
+        label: Category
+        items:
+          - { label: Projekt, value: Projekt }
+          - { label: Auszeichnung, value: Auszeichnung }
+          - { label: Presse, value: Presse }
+          - { label: Termin, value: Termin }
+      - identifier: author
+        type: Text
+        label: Author
+      - identifier: is_press_release
+        type: Checkbox
+        label: Pressemitteilung (PR badge)
+      - identifier: source
+        type: Text
+        label: External source (e.g. "Allgemeine Zeitung")
+      - identifier: image
+        type: File
+        label: Image
+        maxItems: 1
+        allowedFileExtensions: ['jpg', 'jpeg', 'png', 'webp']
+      - identifier: link
+        type: Link
+        label: Read-more link

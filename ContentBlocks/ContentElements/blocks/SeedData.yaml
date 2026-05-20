@@ -1,0 +1,24 @@
+variant: cards-pills
+eyebrow: Wissen
+headline: Inhalte stöbern.
+intro: Filtern Sie nach Kategorie, Typ oder durchsuchen Sie unsere Beiträge frei.
+categories: |
+  Konzept
+  Technik
+  Design
+  Praxis
+  Recht
+types: |
+  Artikel
+  Leitfaden
+  Studie
+  Interview
+search_placeholder: 'Inhalte durchsuchen …'
+per_page: 9
+items:
+  - { title: 'Was bedeutet KfW-EH 55?',     excerpt: 'Eine kurze Erklärung des Energiestandards.', category: Technik,  type: Leitfaden, date: '2026-04-22', read_time: 4 }
+  - { title: 'Holzbau vs. Massivbau',       excerpt: 'Wann lohnt sich welches Verfahren?',         category: Konzept,  type: Artikel,   date: '2026-04-08', read_time: 6 }
+  - { title: 'Materialwahl Fassade',         excerpt: 'Lärche, Putz oder Klinker?',                  category: Design,   type: Artikel,   date: '2026-03-19', read_time: 5 }
+  - { title: 'Interview mit Marie Lehmann',  excerpt: 'Über Generationenwechsel im Handwerk.',       category: Praxis,   type: Interview, date: '2026-03-04', read_time: 8 }
+  - { title: 'Bauantrag in RLP',             excerpt: 'Wer muss was wann einreichen?',              category: Recht,    type: Leitfaden, date: '2026-02-12', read_time: 12 }
+  - { title: 'Photovoltaik auf Altbauten',   excerpt: 'Wirtschaftlich oder nicht?',                  category: Technik,  type: Studie,    date: '2026-01-28', read_time: 7 }

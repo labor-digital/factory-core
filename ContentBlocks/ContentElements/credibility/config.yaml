@@ -1,0 +1,156 @@
+name: factory/credibility
+title: Credibility
+description: Trust-building section — certificates, guarantees, stats banner, awards, or customer reviews. Each variant uses its own collection of items.
+group: factory
+icon: content-special-html
+fields:
+  - identifier: variant
+    type: Select
+    renderType: selectSingle
+    label: Variant
+    items:
+      - { label: Certificates · logo grid, value: certificates }
+      - { label: Guarantees · icon cards, value: guarantees }
+      - { label: Stats banner · 4 KPIs, value: stats-banner }
+      - { label: Awards · featured + list, value: awards }
+      - { label: Reviews · star grid, value: reviews }
+      - { label: Reviews · slider, value: reviews-slider }
+    default: certificates
+
+  - identifier: eyebrow
+    type: Text
+    label: Eyebrow
+  - identifier: headline
+    type: Text
+    label: Headline
+  - identifier: intro
+    type: Textarea
+    label: Intro
+
+  # ----- certificates -----
+  - identifier: certificates
+    type: Collection
+    label: Certificates
+    displayCond: 'FIELD:variant:=:certificates'
+    fields:
+      - identifier: name
+        type: Text
+        label: Name (e.g. "ISO 9001")
+        required: true
+      - identifier: description
+        type: Textarea
+        label: Description
+      - identifier: issuer
+        type: Text
+        label: Issuer
+      - identifier: since
+        type: Number
+        label: Since (year)
+      - identifier: logo
+        type: File
+        label: Logo
+        maxItems: 1
+        allowedFileExtensions: ['svg', 'png', 'jpg', 'jpeg', 'webp']
+
+  # ----- guarantees -----
+  - identifier: guarantees
+    type: Collection
+    label: Guarantees
+    displayCond: 'FIELD:variant:=:guarantees'
+    fields:
+      - identifier: icon
+        type: Select
+        renderType: selectSingle
+        label: Icon
+        items:
+          - { label: 'Shield (Schutz)', value: shield }
+          - { label: 'Clock (Termin)', value: clock }
+          - { label: 'Euro (Preis)', value: euro }
+          - { label: 'Handshake (Partner)', value: handshake }
+        default: shield
+      - identifier: title
+        type: Text
+        label: Title
+      - identifier: description
+        type: Textarea
+        label: Description
+
+  # ----- stats-banner -----
+  - identifier: stats
+    type: Collection
+    label: Stats (banner)
+    displayCond: 'FIELD:variant:=:stats-banner'
+    fields:
+      - identifier: value
+        type: Text
+        label: Value
+      - identifier: suffix
+        type: Text
+        label: Suffix (e.g. "%", "/5", "+")
+      - identifier: label
+        type: Text
+        label: Label
+
+  # ----- awards -----
+  - identifier: awards
+    type: Collection
+    label: Awards
+    displayCond: 'FIELD:variant:=:awards'
+    fields:
+      - identifier: year
+        type: Number
+        label: Year
+      - identifier: title
+        type: Text
+        label: Title
+      - identifier: project
+        type: Text
+        label: Project
+      - identifier: issuer
+        type: Text
+        label: Issuer
+      - identifier: featured
+        type: Checkbox
+        label: Featured (renders as the hero card)
+
+  # ----- reviews -----
+  - identifier: reviews_summary_avg
+    type: Text
+    label: Reviews — average rating (e.g. "4,9")
+    description: Shown next to the star summary.
+    displayCond: 'FIELD:variant:IN:reviews,reviews-slider'
+  - identifier: reviews_summary_count
+    type: Number
+    label: Reviews — total count
+    displayCond: 'FIELD:variant:IN:reviews,reviews-slider'
+  - identifier: reviews_summary_source
+    type: Text
+    label: Reviews — sources (e.g. "Google · Trustpilot")
+    displayCond: 'FIELD:variant:IN:reviews,reviews-slider'
+
+  - identifier: reviews
+    type: Collection
+    label: Reviews
+    displayCond: 'FIELD:variant:IN:reviews,reviews-slider'
+    fields:
+      - identifier: name
+        type: Text
+        label: Name
+        required: true
+      - identifier: project
+        type: Text
+        label: Project / Context
+      - identifier: rating
+        type: Number
+        format: decimal
+        label: Rating (0–5)
+        default: 5
+      - identifier: quote
+        type: Textarea
+        label: Quote
+      - identifier: date
+        type: Text
+        label: Date (display, e.g. "März 2026")
+      - identifier: source
+        type: Text
+        label: Source (e.g. "Google")

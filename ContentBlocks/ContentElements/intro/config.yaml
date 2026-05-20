@@ -1,0 +1,80 @@
+name: factory/intro
+title: Intro
+description: An introductory section with text alongside an image, optionally with a stats sidebar.
+group: factory
+icon: content-text
+fields:
+  - identifier: variant
+    type: Select
+    renderType: selectSingle
+    label: Variant
+    items:
+      - { label: Text left · image right, value: text-left }
+      - { label: Text right · image left, value: text-right }
+      - { label: Centered · image below, value: centered }
+      - { label: Stacked with stats sidebar, value: stacked }
+    default: text-left
+
+  - identifier: eyebrow
+    type: Text
+    label: Eyebrow
+
+  - identifier: title
+    type: Text
+    label: Title
+    description: Main heading. Use <strong>…</strong> to emphasise part of the title in the accent color.
+
+  - identifier: body
+    type: Textarea
+    label: Body
+    enableRichtext: false
+
+  - identifier: image
+    type: File
+    label: Image
+    maxItems: 1
+    allowedFileExtensions: ['jpg', 'jpeg', 'png', 'webp']
+
+  - identifier: image_alt
+    type: Text
+    label: Image alt text override
+    description: Defaults to the file's metadata alt text.
+
+  - identifier: cta_label
+    type: Text
+    label: CTA Label
+
+  - identifier: cta_to
+    type: Link
+    label: CTA Link
+
+  - identifier: cta_target
+    type: Select
+    renderType: selectSingle
+    label: CTA Target
+    items:
+      - { label: Default, value: '' }
+      - { label: New Window, value: _blank }
+      - { label: Parent, value: _parent }
+      - { label: Self, value: _self }
+      - { label: Top, value: _top }
+
+  - identifier: stats_eyebrow
+    type: Text
+    label: Stats Sidebar Eyebrow
+    description: Label above the stats sidebar (stacked variant only).
+    default: In Zahlen
+    displayCond: 'FIELD:variant:=:stacked'
+
+  - identifier: stats
+    type: Collection
+    label: Stats (stacked variant)
+    description: Key numbers shown in the sidebar of the stacked variant.
+    displayCond: 'FIELD:variant:=:stacked'
+    fields:
+      - identifier: value
+        type: Text
+        label: Value (e.g. 40+, 98%)
+      - identifier: label
+        type: Text
+        label: Label

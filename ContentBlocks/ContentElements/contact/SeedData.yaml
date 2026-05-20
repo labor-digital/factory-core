@@ -1,0 +1,17 @@
+variant: split
+eyebrow: Kontakt
+headline: Sprechen Sie mit uns.
+intro: Wir freuen uns auf Ihr Vorhaben. Schreiben Sie uns oder rufen Sie direkt an — wir melden uns innerhalb von 24 Stunden zurück.
+head_align: left
+org: Heckeslmüller Bau GmbH
+address_street: Hauptstraße 42
+address_zip: '55299'
+address_city: Nackenheim
+phone: '+49 6135 12 34 56'
+email: hallo@heckeslmueller.de
+hours: 'Mo–Fr · 8 – 17 Uhr'
+success_text: 'Danke! Wir melden uns innerhalb eines Werktags bei Ihnen.'
+persons:
+  - { name: 'Marie Lehmann', role: 'Geschäftsführung',  email: 'm.lehmann@heckeslmueller.de', phone: '+49 6135 12 34 51' }
+  - { name: 'Thomas Weber',  role: 'Technische Leitung', email: 't.weber@heckeslmueller.de',   phone: '+49 6135 12 34 52' }
+  - { name: 'Lisa Hofmann',  role: 'Projektleitung',     email: 'l.hofmann@heckeslmueller.de', phone: '+49 6135 12 34 53' }

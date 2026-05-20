@@ -1,0 +1,17 @@
+variant: pricing
+eyebrow: Übersicht
+headline: Alles auf einen Blick.
+intro: Klar strukturierte Vergleiche — damit Sie schnell die passende Entscheidung treffen können.
+head_align: center
+pricing_plans:
+  - { label: Basis,    price: 'ab 2.400 €',   per: Pauschal,    note: 'Für kleinere Anpassungen', featured: 0, cta_label: Anfragen }
+  - { label: Standard, price: 'ab 6.900 €',   per: Pauschal,    note: 'Unser meistgewählter Tarif', featured: 1, featured_tag: Empfohlen, cta_label: Anfragen }
+  - { label: Premium,  price: individuell,    per: 'auf Anfrage', note: 'Schlüsselfertig komplett', featured: 0, cta_label: Anfragen }
+pricing_rows:
+  - { feature: 'Erstberatung vor Ort',       help: 'Kostenfreier Vor-Ort-Termin.',           values: 'true, true, true' }
+  - { feature: 'Maßaufnahme & Bestandsplan', help: 'Digitales Aufmaß.',                       values: 'true, true, true' }
+  - { feature: 'Planungs-Sitzungen',         help: 'Anzahl gemeinsamer Termine.',             values: '1×, 3×, Unbegrenzt' }
+  - { feature: 'Materialberatung',           help: 'Auswahl Bodenbeläge, Wandfarben.',        values: 'false, true, true' }
+  - { feature: 'Bauleitung',                 help: 'Vor-Ort-Koordination.',                   values: 'false, true, true' }
+  - { feature: 'Statik & Genehmigung',       help: 'Erstellung und Einreichung.',             values: 'false, false, true' }
+  - { feature: 'Garantie',                   help: 'Gewährleistung gemäß VOB.',                values: '2 J., 5 J., 10 J.' }

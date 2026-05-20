@@ -1,0 +1,10 @@
+variant: left
+eyebrow: EYEBROW
+title: Headline in zwei <strong>Teilen ausgezeichnet.</strong>
+subline: Eine kurze Subline, die den Kontext setzt.
+body: |
+  Hier steht der Copy-Text. Er erklärt den Sachverhalt in einem oder zwei Absätzen. Alles austauschbar pro Kunde und Projekt.
+
+  Ein zweiter Absatz kann zusätzliche Information liefern, ohne den Lesefluss zu stören.
+primary_label: Primäre Aktion
+secondary_label: Mehr erfahren

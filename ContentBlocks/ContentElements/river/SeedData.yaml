@@ -1,0 +1,9 @@
+variant: image-right
+aspect_ratio: 3/2
+blocks:
+  - eyebrow: KATEGORIE
+    title: Ein Kapitel im <strong>Riverflow.</strong>
+    subline: Eine kurze Subline, die den Kontext vorab skizziert.
+    body: Im Copy-Text wird das Thema weiter ausgeführt. Ein oder zwei Absätze eignen sich gut, um Details zu erklären, ohne den Lesefluss zu brechen.
+    button_label: Mehr erfahren
+    note: Abgesetzte Info-Zeile in Bold — austauschbar pro Projekt.

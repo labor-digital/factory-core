@@ -1,0 +1,204 @@
+name: factory/table
+title: Table
+description: Tabular data section — pricing comparison, product cards, datasheet (flat or grouped), sortable data list.
+group: factory
+icon: content-table
+fields:
+  - identifier: variant
+    type: Select
+    renderType: selectSingle
+    label: Variant
+    items:
+      - { label: 'Pricing · feature × plan matrix', value: pricing }
+      - { label: 'Compare · 3 option cards', value: compare }
+      - { label: 'Specs · flat datasheet', value: specs }
+      - { label: 'Specs grouped · by category', value: specs-grouped }
+      - { label: 'Data list · sortable columns', value: data }
+      - { label: 'Data list · zebra striping', value: data-striped }
+    default: pricing
+
+  - identifier: eyebrow
+    type: Text
+    label: Eyebrow
+  - identifier: headline
+    type: Text
+    label: Headline
+  - identifier: intro
+    type: Textarea
+    label: Intro
+  - identifier: head_align
+    type: Select
+    renderType: selectSingle
+    label: Header Alignment
+    items:
+      - { label: Left, value: left }
+      - { label: Center, value: center }
+    default: left
+
+  # ----- Pricing -----
+  - identifier: pricing_plans
+    type: Collection
+    label: Pricing — Plans (columns)
+    displayCond: 'FIELD:variant:=:pricing'
+    fields:
+      - identifier: label
+        type: Text
+        label: Plan name
+      - identifier: price
+        type: Text
+        label: Price
+      - identifier: per
+        type: Text
+        label: Per (e.g. "Pauschal")
+      - identifier: note
+        type: Text
+        label: Note
+      - identifier: featured
+        type: Checkbox
+        label: Featured (highlighted column)
+      - identifier: featured_tag
+        type: Text
+        label: Featured tag label
+        default: Empfohlen
+      - identifier: cta_label
+        type: Text
+        label: CTA Label
+      - identifier: cta_to
+        type: Link
+        label: CTA Link
+
+  - identifier: pricing_rows
+    type: Collection
+    label: Pricing — Feature rows
+    displayCond: 'FIELD:variant:=:pricing'
+    fields:
+      - identifier: feature
+        type: Text
+        label: Feature name
+      - identifier: help
+        type: Text
+        label: Help tooltip
+      - identifier: values
+        type: Text
+        label: Values (comma-separated · order matches plans · use "true"/"false" for ✓/✕)
+        description: 'e.g. "true, 3×, Unbegrenzt"'
+
+  # ----- Compare -----
+  - identifier: compare_items
+    type: Collection
+    label: Compare items (cards)
+    displayCond: 'FIELD:variant:=:compare'
+    fields:
+      - identifier: name
+        type: Text
+        label: Name
+      - identifier: tagline
+        type: Text
+        label: Tagline
+      - identifier: price
+        type: Text
+        label: Price
+      - identifier: featured
+        type: Checkbox
+        label: Featured
+      - identifier: featured_tag
+        type: Text
+        label: Featured tag label
+        default: Empfohlen
+      - identifier: cta_label
+        type: Text
+        label: CTA Label
+      - identifier: cta_to
+        type: Link
+        label: CTA Link
+      - identifier: image
+        type: File
+        label: Image
+        maxItems: 1
+        allowedFileExtensions: ['jpg', 'jpeg', 'png', 'webp']
+      - identifier: specs
+        type: Collection
+        label: Specs
+        fields:
+          - { identifier: label, type: Text, label: Label }
+          - { identifier: value, type: Text, label: Value }
+
+  # ----- Specs -----
+  - identifier: specs_columns
+    type: Collection
+    label: Specs — Column definitions
+    description: For variant "specs". Each value is a JSON-style description of a column.
+    displayCond: 'FIELD:variant:=:specs'
+    fields:
+      - identifier: key
+        type: Text
+        label: Item key (must match Specs row keys)
+      - identifier: label
+        type: Text
+        label: Column label
+
+  - identifier: specs_rows
+    type: Collection
+    label: Specs — Rows
+    displayCond: 'FIELD:variant:IN:specs,specs-grouped'
+    fields:
+      - identifier: group
+        type: Text
+        label: Group (used by specs-grouped)
+      - identifier: property
+        type: Text
+        label: Property
+      - identifier: value
+        type: Text
+        label: Value
+      - identifier: unit
+        type: Text
+        label: Unit
+      - identifier: norm
+        type: Text
+        label: Norm reference
+      - identifier: note
+        type: Text
+        label: Note
+
+  # ----- Data -----
+  - identifier: data_columns
+    type: Collection
+    label: Data — Column definitions
+    displayCond: 'FIELD:variant:IN:data,data-striped'
+    fields:
+      - identifier: key
+        type: Text
+        label: Key (must match row keys)
+      - identifier: label
+        type: Text
+        label: Column label
+      - identifier: align
+        type: Select
+        renderType: selectSingle
+        label: Align
+        items:
+          - { label: Left, value: left }
+          - { label: Center, value: center }
+          - { label: Right, value: right }
+        default: left
+      - identifier: numeric
+        type: Checkbox
+        label: Numeric (sort + right-align)
+      - identifier: is_status
+        type: Checkbox
+        label: Render as status badge
+      - identifier: suffix
+        type: Text
+        label: Suffix (e.g. " m²")
+
+  - identifier: data_rows
+    type: Collection
+    label: Data — Rows (JSON-ish — value pairs)
+    description: Each row is a free-form JSON object string; keys must match data_columns.
+    displayCond: 'FIELD:variant:IN:data,data-striped'
+    fields:
+      - identifier: row_json
+        type: Textarea
+        label: Row JSON
+        description: 'e.g. {"ref":"PR-001","name":"Projekt","year":2026,"status":"In Planung"}'

@@ -1,0 +1,32 @@
+variant: certificates
+eyebrow: Vertrauen
+headline: Geprüft, ausgezeichnet, empfohlen.
+intro: Über 40 Jahre Erfahrung, dokumentiert in unabhängigen Prüfungen, Auszeichnungen und Kundenstimmen.
+certificates:
+  - { name: 'ISO 9001',       description: 'Qualitätsmanagement nach internationaler Norm', issuer: 'TÜV Süd',         since: 2014 }
+  - { name: 'ISO 14001',      description: 'Umweltmanagement und Ressourcenschonung',       issuer: 'TÜV Süd',         since: 2018 }
+  - { name: 'DGNB Auditor',   description: 'Nachhaltiges Bauen nach DGNB-System',           issuer: 'DGNB e.V.',       since: 2019 }
+  - { name: 'Meisterbetrieb', description: 'Eingetragener Handwerksmeister-Betrieb',         issuer: 'HWK Rheinhessen', since: 1981 }
+guarantees:
+  - { icon: shield,    title: '5 Jahre Gewährleistung',  description: 'Auf alle Bau- und Konstruktionsleistungen gemäß VOB/B § 13.' }
+  - { icon: clock,     title: 'Termintreue garantiert',  description: 'Fixe Zeitpläne mit vertraglich vereinbarten Meilensteinen.' }
+  - { icon: euro,      title: 'Festpreis-Sicherheit',    description: 'Keine versteckten Kosten — Sie zahlen, was vereinbart wurde.' }
+  - { icon: handshake, title: 'Persönlicher Ansprechpartner', description: 'Ein Projektleiter, ein Verantwortlicher — von Anfang bis Übergabe.' }
+stats:
+  - { value: '44',    suffix: '',   label: 'Jahre Erfahrung' }
+  - { value: '1.200', suffix: '+',  label: 'Projekte umgesetzt' }
+  - { value: '98',    suffix: '%',  label: 'Termintreue' }
+  - { value: '4,9',   suffix: '/5', label: 'Kundenbewertung' }
+awards:
+  - { year: 2026, title: 'Baupreis Rheinhessen — Anerkennung',  project: 'Weingut zum Mehrfamilienhaus', issuer: 'Architektenkammer RLP', featured: 1 }
+  - { year: 2025, title: 'Top-Ausbildungsbetrieb',              project: '12 Auszubildende',              issuer: 'IHK Rheinhessen' }
+  - { year: 2024, title: 'Nachhaltigkeitspreis Bau',            project: 'Stadtvilla mit Erdwärme',       issuer: 'BNB Deutschland' }
+  - { year: 2024, title: 'Bauen mit Holz — Nominierung',        project: 'Doppelhaus Nackenheim',         issuer: 'Holzbau Deutschland' }
+reviews_summary_avg: '4,9'
+reviews_summary_count: 142
+reviews_summary_source: 'Google · ProvenExpert · Bewertet.de'
+reviews:
+  - { name: 'Familie Werner',   project: 'Einfamilienhaus Bodenheim', rating: 5, quote: 'Klare Termine, faire Kommunikation, exzellente Ausführung.', date: 'März 2026',     source: Google }
+  - { name: 'Christoph Meier',  project: 'Sanierung Hofreite',         rating: 5, quote: 'Auch nach Auftragsabschluss noch erreichbar und hilfsbereit.', date: 'Februar 2026', source: Google }
+  - { name: 'Andrea Hoffmann',  project: 'Doppelhaus Nackenheim',      rating: 5, quote: 'Anspruchsvolle Detaillösungen wurden sauber umgesetzt.',       date: 'Januar 2026',  source: ProvenExpert }
+  - { name: 'Familie Becker',   project: 'Stadtvilla Wiesbaden',       rating: 4, quote: 'Sehr professionelle Abwicklung.',                              date: 'November 2025', source: Google }
