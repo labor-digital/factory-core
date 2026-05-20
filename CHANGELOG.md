@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.12.0](https://github.com/labor-digital/lab-factory/compare/factory-core-v0.11.3...factory-core-v0.12.0) (2026-05-20)
+
+
+### Features
+
+* claude-design 11-block expansion + staging wizard polish ([3203dd8](https://github.com/labor-digital/lab-factory/commit/3203dd88f84ec1b06ab42a92f877409f04849ed2))
+* **typo3-extension:** add 11 content elements from claude-design expansion ([12f2ea1](https://github.com/labor-digital/lab-factory/commit/12f2ea1eb1889bdab14dfe725ec7d400888e69cb))
+
 ## [0.11.3](https://github.com/labor-digital/lab-factory/compare/factory-core-v0.11.2...factory-core-v0.11.3) (2026-05-15)
 
 
