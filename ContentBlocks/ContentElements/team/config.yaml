@@ -1,0 +1,79 @@
+name: factory/team
+title: Team
+description: Team / people section. Grid (with hover-reveal modal), card grid, slider, list, or grouped-by-department layouts.
+group: factory
+icon: content-special-indexedsearch
+fields:
+  - identifier: variant
+    type: Select
+    renderType: selectSingle
+    label: Variant
+    items:
+      - { label: Grid (hover overlay · modal on click), value: grid }
+      - { label: Card grid (flat), value: featured }
+      - { label: Slider (paginated pages), value: slider }
+      - { label: Edge slider (overflow right), value: edge-slider }
+      - { label: List (table-like rows), value: list }
+      - { label: Grouped by department, value: group }
+    default: grid
+
+  - identifier: eyebrow
+    type: Text
+    label: Eyebrow
+
+  - identifier: headline
+    type: Text
+    label: Headline
+
+  - identifier: intro
+    type: Textarea
+    label: Intro
+
+  - identifier: head_align
+    type: Select
+    renderType: selectSingle
+    label: Header Alignment
+    items:
+      - { label: Left, value: left }
+      - { label: Center, value: center }
+    default: left
+
+  - identifier: per_page
+    type: Number
+    label: Slider — items per page
+    default: 4
+    displayCond: 'FIELD:variant:=:slider'
+
+  - identifier: members
+    type: Collection
+    label: Members
+    minitems: 1
+    fields:
+      - identifier: name
+        type: Text
+        label: Name
+        required: true
+      - identifier: role
+        type: Text
+        label: Role
+      - identifier: department
+        type: Text
+        label: Department
+        description: Used by the grouped variant.
+      - identifier: bio
+        type: Textarea
+        label: Bio
+      - identifier: photo
+        type: File
+        label: Photo
+        maxItems: 1
+        allowedFileExtensions: ['jpg', 'jpeg', 'png', 'webp']
+      - identifier: email
+        type: Email
+        label: Email
+      - identifier: phone
+        type: Text
+        label: Phone
+      - identifier: linkedin
+        type: Link
+        label: LinkedIn URL

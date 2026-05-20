@@ -1,0 +1,82 @@
+name: factory/blocks
+title: Blocks
+description: Searchable / filterable content blocks (knowledge base, glossary, articles). Variants with category pills, dropdown filters, or magazine layout.
+group: factory
+icon: content-special-html
+fields:
+  - identifier: variant
+    type: Select
+    renderType: selectSingle
+    label: Variant
+    items:
+      - { label: 'Cards · with category pills', value: cards-pills }
+      - { label: 'Cards · with category tabs', value: cards-tabs }
+      - { label: 'Compact cards · with pills', value: compact-pills }
+      - { label: 'Compact cards · with tabs', value: compact-tabs }
+      - { label: 'List · with dropdown filters + sort', value: list-dropdown }
+      - { label: 'Magazine · 1 featured + 4 small + pills', value: magazine-pills }
+    default: cards-pills
+
+  - identifier: eyebrow
+    type: Text
+    label: Eyebrow
+  - identifier: headline
+    type: Text
+    label: Headline
+  - identifier: intro
+    type: Textarea
+    label: Intro
+
+  - identifier: categories
+    type: Text
+    label: Categories (one per line)
+    description: Used by the pill / tab / dropdown filters. Must match the category set on each block.
+
+  - identifier: types
+    type: Text
+    label: Types (one per line)
+    description: Used by the list-dropdown variant.
+
+  - identifier: search_placeholder
+    type: Text
+    label: Search placeholder
+    default: 'Suchen …'
+
+  - identifier: per_page
+    type: Number
+    label: Items per page
+    default: 9
+
+  - identifier: items
+    type: Collection
+    label: Blocks / Articles
+    minitems: 1
+    fields:
+      - identifier: title
+        type: Text
+        label: Title
+        required: true
+      - identifier: excerpt
+        type: Textarea
+        label: Excerpt
+      - identifier: category
+        type: Text
+        label: Category (must be in Categories above)
+      - identifier: type
+        type: Text
+        label: Type
+      - identifier: date
+        type: DateTime
+        format: date
+        label: Date
+      - identifier: read_time
+        type: Number
+        label: Read time (minutes)
+      - identifier: image
+        type: File
+        label: Image
+        maxItems: 1
+        allowedFileExtensions: ['jpg', 'jpeg', 'png', 'webp']
+      - identifier: link
+        type: Link
+        label: Read-more link

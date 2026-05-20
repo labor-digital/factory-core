@@ -1,0 +1,207 @@
+name: factory/comparison
+title: Comparison
+description: Side-by-side comparison — before/after, drag slider, head-to-head, methods, bars, or rating matrix.
+group: factory
+icon: content-special-html
+fields:
+  - identifier: variant
+    type: Select
+    renderType: selectSingle
+    label: Variant
+    items:
+      - { label: 'Before / After (side-by-side)', value: before-after }
+      - { label: 'Before → After slider (drag handle)', value: slider }
+      - { label: 'Head-to-head · A vs. B with property rows', value: head-to-head }
+      - { label: 'Methods · 3 cards with pros/cons', value: methods }
+      - { label: 'Bars · horizontal bar chart', value: bars }
+      - { label: 'Ratings · multi-criteria matrix', value: ratings }
+    default: before-after
+
+  - identifier: eyebrow
+    type: Text
+    label: Eyebrow
+  - identifier: headline
+    type: Text
+    label: Headline
+  - identifier: intro
+    type: Textarea
+    label: Intro
+
+  # ----- Before/After + Slider -----
+  - identifier: before_label
+    type: Text
+    label: Before label
+    displayCond: 'FIELD:variant:IN:before-after,slider'
+  - identifier: before_caption
+    type: Text
+    label: Before caption
+    displayCond: 'FIELD:variant:IN:before-after,slider'
+  - identifier: before_meta
+    type: Text
+    label: Before meta (e.g. year/state)
+    displayCond: 'FIELD:variant:IN:before-after,slider'
+  - identifier: before_image
+    type: File
+    label: Before image
+    maxItems: 1
+    allowedFileExtensions: ['jpg', 'jpeg', 'png', 'webp']
+    displayCond: 'FIELD:variant:IN:before-after,slider'
+  - identifier: after_label
+    type: Text
+    label: After label
+    displayCond: 'FIELD:variant:IN:before-after,slider'
+  - identifier: after_caption
+    type: Text
+    label: After caption
+    displayCond: 'FIELD:variant:IN:before-after,slider'
+  - identifier: after_meta
+    type: Text
+    label: After meta
+    displayCond: 'FIELD:variant:IN:before-after,slider'
+  - identifier: after_image
+    type: File
+    label: After image
+    maxItems: 1
+    allowedFileExtensions: ['jpg', 'jpeg', 'png', 'webp']
+    displayCond: 'FIELD:variant:IN:before-after,slider'
+
+  # ----- Head-to-head -----
+  - identifier: h2h_a_name
+    type: Text
+    label: H2H · A name
+    displayCond: 'FIELD:variant:=:head-to-head'
+  - identifier: h2h_a_tagline
+    type: Text
+    label: H2H · A tagline
+    displayCond: 'FIELD:variant:=:head-to-head'
+  - identifier: h2h_a_image
+    type: File
+    label: H2H · A image
+    maxItems: 1
+    allowedFileExtensions: ['jpg', 'jpeg', 'png', 'webp']
+    displayCond: 'FIELD:variant:=:head-to-head'
+  - identifier: h2h_b_name
+    type: Text
+    label: H2H · B name
+    displayCond: 'FIELD:variant:=:head-to-head'
+  - identifier: h2h_b_tagline
+    type: Text
+    label: H2H · B tagline
+    displayCond: 'FIELD:variant:=:head-to-head'
+  - identifier: h2h_b_image
+    type: File
+    label: H2H · B image
+    maxItems: 1
+    allowedFileExtensions: ['jpg', 'jpeg', 'png', 'webp']
+    displayCond: 'FIELD:variant:=:head-to-head'
+
+  - identifier: h2h_rows
+    type: Collection
+    label: H2H · Property rows
+    displayCond: 'FIELD:variant:=:head-to-head'
+    fields:
+      - identifier: property
+        type: Text
+        label: Property
+      - identifier: a_value
+        type: Text
+        label: A value
+      - identifier: a_tone
+        type: Select
+        renderType: selectSingle
+        label: A tone
+        items:
+          - { label: Positive, value: pos }
+          - { label: Negative, value: neg }
+          - { label: Neutral,  value: neu }
+        default: neu
+      - identifier: b_value
+        type: Text
+        label: B value
+      - identifier: b_tone
+        type: Select
+        renderType: selectSingle
+        label: B tone
+        items:
+          - { label: Positive, value: pos }
+          - { label: Negative, value: neg }
+          - { label: Neutral,  value: neu }
+        default: neu
+
+  # ----- Methods -----
+  - identifier: methods
+    type: Collection
+    label: Methods cards
+    displayCond: 'FIELD:variant:=:methods'
+    fields:
+      - identifier: name
+        type: Text
+        label: Name
+      - identifier: tagline
+        type: Text
+        label: Tagline
+      - identifier: metric1_label
+        type: Text
+        label: Metric 1 label
+      - identifier: metric1_value
+        type: Text
+        label: Metric 1 value
+      - identifier: metric2_label
+        type: Text
+        label: Metric 2 label
+      - identifier: metric2_value
+        type: Text
+        label: Metric 2 value
+      - identifier: pros
+        type: Text
+        label: Pros (one per line)
+      - identifier: cons
+        type: Text
+        label: Cons (one per line)
+
+  # ----- Bars -----
+  - identifier: bars_unit
+    type: Text
+    label: Bars · unit (e.g. "€/m²")
+    displayCond: 'FIELD:variant:=:bars'
+  - identifier: bars_max
+    type: Number
+    label: Bars · max value
+    default: 100
+    displayCond: 'FIELD:variant:=:bars'
+  - identifier: bars_rows
+    type: Collection
+    label: Bars · rows
+    displayCond: 'FIELD:variant:=:bars'
+    fields:
+      - identifier: label
+        type: Text
+        label: Label
+      - identifier: value
+        type: Number
+        format: decimal
+        label: Value
+      - identifier: note
+        type: Text
+        label: Note
+      - identifier: highlight
+        type: Checkbox
+        label: Highlight
+
+  # ----- Ratings -----
+  - identifier: rating_criteria
+    type: Text
+    label: Ratings · criteria (one per line)
+    displayCond: 'FIELD:variant:=:ratings'
+  - identifier: rating_items
+    type: Collection
+    label: Ratings · items
+    displayCond: 'FIELD:variant:=:ratings'
+    fields:
+      - identifier: name
+        type: Text
+        label: Name
+      - identifier: values
+        type: Text
+        label: Values (comma-separated 1-5, in criteria order)
+        description: 'e.g. "4, 3, 5, 4, 5"'

@@ -1,0 +1,50 @@
+name: factory/text
+title: Text
+description: A simple text section with eyebrow, title, subline, body, and up to two CTAs.
+group: factory
+icon: content-text
+fields:
+  - identifier: variant
+    type: Select
+    renderType: selectSingle
+    label: Variant
+    items:
+      - { label: Left-aligned, value: left }
+      - { label: Centered, value: center }
+      - { label: 'Two-column (title left · body right)', value: two-col }
+      - { label: Oversize (huge headline breaks the grid), value: oversize }
+    default: left
+
+  - identifier: eyebrow
+    type: Text
+    label: Eyebrow
+
+  - identifier: title
+    type: Text
+    label: Title
+    description: Main heading. Use <strong>…</strong> to emphasise part of the title in the accent color.
+
+  - identifier: subline
+    type: Text
+    label: Subline
+    description: Short sentence between title and body.
+
+  - identifier: body
+    type: Textarea
+    label: Body
+
+  - identifier: primary_label
+    type: Text
+    label: Primary CTA Label
+
+  - identifier: primary_to
+    type: Link
+    label: Primary CTA Link
+
+  - identifier: secondary_label
+    type: Text
+    label: Secondary CTA Label
+
+  - identifier: secondary_to
+    type: Link
+    label: Secondary CTA Link

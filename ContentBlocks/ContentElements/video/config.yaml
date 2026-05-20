@@ -1,0 +1,117 @@
+name: factory/video
+title: Video
+description: Video module — split, full-top, overlay, or a card grid of videos. Renders YouTube/Vimeo embeds or a poster image with play overlay.
+group: factory
+icon: content-media
+fields:
+  - identifier: variant
+    type: Select
+    renderType: selectSingle
+    label: Variant
+    items:
+      - { label: Split · video left, value: split-left }
+      - { label: Split · video right, value: split-right }
+      - { label: Full width on top, value: full-top }
+      - { label: Background overlay (video as hero), value: overlay }
+      - { label: Card grid (multiple videos), value: cards }
+    default: split-left
+
+  - identifier: eyebrow
+    type: Text
+    label: Eyebrow
+
+  - identifier: headline
+    type: Text
+    label: Headline
+
+  - identifier: body
+    type: Textarea
+    label: Body
+
+  - identifier: cta_label
+    type: Text
+    label: CTA Label
+
+  - identifier: cta_to
+    type: Link
+    label: CTA Link
+
+  - identifier: speaker_name
+    type: Text
+    label: Speaker Name
+    description: Shown in the overlay variant.
+
+  - identifier: speaker_role
+    type: Text
+    label: Speaker Role
+
+  - identifier: bullets
+    type: Collection
+    label: Numbered Bullets
+    description: Process steps or key points. Used by split-* and full-top variants.
+    fields:
+      - identifier: title
+        type: Text
+        label: Title
+      - identifier: description
+        type: Textarea
+        label: Description
+
+  - identifier: video_provider
+    type: Select
+    renderType: selectSingle
+    label: Provider
+    items:
+      - { label: YouTube, value: youtube }
+      - { label: Vimeo, value: vimeo }
+      - { label: 'Custom (embed URL)', value: custom }
+    default: youtube
+    description: Used by the single-video variants. The card grid variant defines per-item provider.
+
+  - identifier: video_id
+    type: Text
+    label: Video ID
+    description: YouTube/Vimeo ID, or full embed URL when provider is custom.
+
+  - identifier: duration
+    type: Text
+    label: Duration Label
+    description: 'e.g. 4:18'
+
+  - identifier: poster
+    type: File
+    label: Poster Image
+    maxItems: 1
+    allowedFileExtensions: ['jpg', 'jpeg', 'png', 'webp']
+
+  - identifier: cards
+    type: Collection
+    label: Video Cards (cards variant)
+    displayCond: 'FIELD:variant:=:cards'
+    fields:
+      - identifier: title
+        type: Text
+        label: Title
+      - identifier: category
+        type: Text
+        label: Category
+      - identifier: duration
+        type: Text
+        label: Duration
+      - identifier: video_provider
+        type: Select
+        renderType: selectSingle
+        label: Provider
+        items:
+          - { label: YouTube, value: youtube }
+          - { label: Vimeo, value: vimeo }
+          - { label: 'Custom (embed URL)', value: custom }
+        default: youtube
+      - identifier: video_id
+        type: Text
+        label: Video ID / Embed URL
+      - identifier: poster
+        type: File
+        label: Poster Image
+        maxItems: 1
+        allowedFileExtensions: ['jpg', 'jpeg', 'png', 'webp']

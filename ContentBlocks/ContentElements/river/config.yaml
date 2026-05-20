@@ -1,0 +1,80 @@
+name: factory/river
+title: Riverflow
+description: Alternating text-and-media block(s). Use a single block (image-left / image-right / video) or a stacked riverflow of multiple blocks.
+group: factory
+icon: content-text
+fields:
+  - identifier: variant
+    type: Select
+    renderType: selectSingle
+    label: Variant
+    items:
+      - { label: Image right, value: image-right }
+      - { label: Image left, value: image-left }
+      - { label: With video (play overlay), value: video }
+      - { label: Stacked riverflow (multiple blocks alternating), value: stacked }
+    default: image-right
+
+  - identifier: aspect_ratio
+    type: Select
+    renderType: selectSingle
+    label: Default Media Aspect Ratio
+    description: Used by the single-block variants. Stacked blocks may override per item.
+    items:
+      - { label: '1:1 Square', value: '1/1' }
+      - { label: '16:9 Wide', value: '16/9' }
+      - { label: '3:2 Landscape', value: '3/2' }
+      - { label: '4:5 Portrait', value: '4/5' }
+      - { label: '21:9 Cinema', value: '21/9' }
+      - { label: 'Golden (1.618:1)', value: 'golden' }
+    default: '3/2'
+
+  - identifier: blocks
+    type: Collection
+    label: Blocks
+    description: One row of text+media. Single-block variants use the first item; the stacked variant renders all of them alternating left/right.
+    minitems: 1
+    fields:
+      - identifier: eyebrow
+        type: Text
+        label: Eyebrow
+      - identifier: title
+        type: Text
+        label: Title
+        description: Use <strong>…</strong> to emphasise part of the title in the accent color.
+      - identifier: subline
+        type: Text
+        label: Subline
+      - identifier: body
+        type: Textarea
+        label: Body
+      - identifier: button_label
+        type: Text
+        label: Button Label
+      - identifier: button_to
+        type: Link
+        label: Button Link
+      - identifier: note
+        type: Text
+        label: Footnote
+        description: Small line below the button.
+      - identifier: aspect_ratio
+        type: Select
+        renderType: selectSingle
+        label: Media Aspect Ratio
+        items:
+          - { label: 'Inherit from section', value: '' }
+          - { label: '1:1 Square', value: '1/1' }
+          - { label: '16:9 Wide', value: '16/9' }
+          - { label: '3:2 Landscape', value: '3/2' }
+          - { label: '4:5 Portrait', value: '4/5' }
+          - { label: '21:9 Cinema', value: '21/9' }
+          - { label: 'Golden (1.618:1)', value: 'golden' }
+      - identifier: image
+        type: File
+        label: Image
+        maxItems: 1
+        allowedFileExtensions: ['jpg', 'jpeg', 'png', 'webp']
+      - identifier: image_alt
+        type: Text
+        label: Image alt text override

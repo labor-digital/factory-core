@@ -1,0 +1,19 @@
+variant: before-after
+eyebrow: Vergleich
+headline: Optionen direkt gegenüberstellen.
+intro: Werte, Eigenschaften und Bewertungen in einer klaren Übersicht.
+before_label: Vorher
+before_caption: Ausgangszustand
+before_meta: 2024
+after_label: Nachher
+after_caption: Ergebnis
+after_meta: 2026
+h2h_a_name: Option A
+h2h_a_tagline: Variante 1
+h2h_b_name: Option B
+h2h_b_tagline: Variante 2
+h2h_rows:
+  - { property: 'Eigenschaft 1', a_value: 'Wert A1', a_tone: pos, b_value: 'Wert B1', b_tone: neg }
+  - { property: 'Eigenschaft 2', a_value: 'Wert A2', a_tone: pos, b_value: 'Wert B2', b_tone: neg }
+  - { property: 'Eigenschaft 3', a_value: 'Wert A3', a_tone: neu, b_value: 'Wert B3', b_tone: pos }
+  - { property: 'Eigenschaft 4', a_value: 'Wert A4', a_tone: neu, b_value: 'Wert B4', b_tone: pos }
