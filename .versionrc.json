@@ -1,0 +1,6 @@
+{
+  "bumpFiles": [
+    { "filename": "composer.json", "type": "json" },
+    { "filename": "ext_emconf.php", "updater": "ext-emconf.updater.cjs" }
+  ]
+}
