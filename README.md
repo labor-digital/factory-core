@@ -32,3 +32,5 @@ vendor/bin/typo3 extension:setup
 ## License
 
 GPL-2.0-or-later — see [LICENSE](./LICENSE).
+
+<!-- ci: release-gate bump test (DL #025) -->
