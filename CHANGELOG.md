@@ -2,13 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
-#  (2026-07-22)
+#  (2026-07-24)
 
 
 ### Bug Fixes
 
 * **ci:** correct deploy step script path → /opt/deploy-docker-to-ecs.sh ([f9b3168](https://bitbucket.org/labor-digital/labor-factory-app/commits/f9b316891a41d01c8557a0971c061f86a703fa0e))
 * **ci:** quote ext_emconf sync command (colon-space broke YAML parse) ([5ddbaf6](https://bitbucket.org/labor-digital/labor-factory-app/commits/5ddbaf6f954d0e8b25756d507d9f26f326f120e0))
+* **ci:** sync release steps to master tip before bump ([dff8ed2](https://bitbucket.org/labor-digital/labor-factory-app/commits/dff8ed2398ccb1164d816eb7d7d19a15cb12e0fc))
+* **ci:** write npm auth to $HOME/.npmrc (workspace ignores member .npmrc) ([7f6bace](https://bitbucket.org/labor-digital/labor-factory-app/commits/7f6bace8ad612f4e0301b10dd00e782d669bc7a0))
 * correct nuxt-layer install snippet to match actual typo3 module config ([e804f8d](https://bitbucket.org/labor-digital/labor-factory-app/commits/e804f8d7ea53a7b91946e14466faa5da74809472))
 * correct nuxt-layer repo link and add typo3-extension README ([b54310a](https://bitbucket.org/labor-digital/labor-factory-app/commits/b54310a8b268a9cf28048f86866e01e2e33bf445))
 * **factory-components:** resolve the nuxt-layer path in npm mode ([8e963cd](https://bitbucket.org/labor-digital/labor-factory-app/commits/8e963cd19fdde9f3dff937616e87793e1e3029a1))
@@ -45,10 +47,13 @@ All notable changes to this project will be documented in this file. See [standa
 * **pipeline-app:** send frontendBase to POST /tenants ([00b18aa](https://bitbucket.org/labor-digital/labor-factory-app/commits/00b18aa223c55ee9fd5959469bca62ce41644364))
 * **pipeline-app:** serve on PORT 8000 to match the node22 base EXPOSE ([14d928c](https://bitbucket.org/labor-digital/labor-factory-app/commits/14d928c1610d59cc3fb60e61a241d49c3d181de6))
 * **pipeline-app:** stagingPhase reads STAGING_API_TOKEN via $env/dynamic/private, not process.env ([0775ed9](https://bitbucket.org/labor-digital/labor-factory-app/commits/0775ed91ccf7eaca06315530831ec07a4a9cb39c))
+* **pipeline-app:** strip comments from .env.template for ECR build ([be3dc43](https://bitbucket.org/labor-digital/labor-factory-app/commits/be3dc43df9df9edd1da500b27f49aa2b4d4597d0))
 * **pipeline-app:** target=staging takes precedence over deploymentMode + correct token gate ([024a4d7](https://bitbucket.org/labor-digital/labor-factory-app/commits/024a4d77441b9c7b157ba0cdf90db888e8075681))
 * **pipeline-app:** treat seed.json.core_version as authoritative ([1493d31](https://bitbucket.org/labor-digital/labor-factory-app/commits/1493d314a870d249342a02fc1117b6d63aea2dae))
 * **pipeline-app:** use per-tenant subpath base for staging deploys ([3d547a1](https://bitbucket.org/labor-digital/labor-factory-app/commits/3d547a14e21a8bb9a1039a42c9d15aef84b574a2))
 * **pipeline:** correct npm/composer constraints for the published layers ([557d6a3](https://bitbucket.org/labor-digital/labor-factory-app/commits/557d6a3928a24dda87023a05eb0fd731e45ede12))
+* **responsive:** working mobile menu + breakout/grid overflow fixes ([7ec2125](https://bitbucket.org/labor-digital/labor-factory-app/commits/7ec21255a9fa6c6b4da90e14b9eac30e34bf52ee))
+* **seeds:** align aurum-bau demo hero with reworked hero schema ([42594d8](https://bitbucket.org/labor-digital/labor-factory-app/commits/42594d81b33626b82388df83a1557e6596d1e0f9))
 * **staging:** pass TYPO3_API_BASE_URL to local nuxt build env ([4ee268f](https://bitbucket.org/labor-digital/labor-factory-app/commits/4ee268ff8bf198c91ec3204179c167d70c82183e))
 * **typo3-extension:** bulletproof child-table self-heal via try-ALTER pattern ([7791194](https://bitbucket.org/labor-digital/labor-factory-app/commits/77911947c392d41b5512b533d83be795d44293cd))
 * **typo3-extension:** cta buttons collection matches the standard button schema ([bb8db85](https://bitbucket.org/labor-digital/labor-factory-app/commits/bb8db85431328a8c3b6f5354e9660c90efb3d2a0))
@@ -64,6 +69,10 @@ All notable changes to this project will be documented in this file. See [standa
 
 ### Features
 
+* **ai-layer:** agent-drivable dev harness (DL [#024](https://bitbucket.org/labor-digital/labor-factory-app/issues/024)) ([6135070](https://bitbucket.org/labor-digital/labor-factory-app/commits/61350707c5926d0f3dce8f32e445f159d0d97d56))
+* **ai-layer:** guided news creation + usable records surface (DL [#023](https://bitbucket.org/labor-digital/labor-factory-app/issues/023)) ([ed9bb03](https://bitbucket.org/labor-digital/labor-factory-app/commits/ed9bb03baf1f81e90ef6dad30d24bc44d9e2c38c))
+* **ai-layer:** wire local frontend + fix cross-origin broker calls ([0e4cca8](https://bitbucket.org/labor-digital/labor-factory-app/commits/0e4cca809e5b5c5d19f5fe604407428cd04ca2f7))
+* apply seed records via multitenant API path ([f853af4](https://bitbucket.org/labor-digital/labor-factory-app/commits/f853af4678d43d2bde32d58c7b58e374f2faf8d4))
 * **cms-free:** AI editor layer — records, SEO, pages panel, nav ([6362fdb](https://bitbucket.org/labor-digital/labor-factory-app/commits/6362fdb06bb753840926bcba5b7df164781c7856)), closes [#020](https://bitbucket.org/labor-digital/labor-factory-app/issue/020) [#021](https://bitbucket.org/labor-digital/labor-factory-app/issue/021)
 * **content-blocks:** adopt Claude-design content blocks, retire NuxtUI ones (DL [#018](https://bitbucket.org/labor-digital/labor-factory-app/issues/018)) ([93ccfc5](https://bitbucket.org/labor-digital/labor-factory-app/commits/93ccfc5e8b1df8fda2d6ae82cd62650ad74b8b97))
 * **factory-ai-layer:** publish as a private npm package ([09800c7](https://bitbucket.org/labor-digital/labor-factory-app/commits/09800c70a894d5fc4fa894176e2a962f004859c1))
@@ -81,6 +90,7 @@ All notable changes to this project will be documented in this file. See [standa
 * **factory-multitenant-api:** scaffold extension + release wiring ([26704c1](https://bitbucket.org/labor-digital/labor-factory-app/commits/26704c195aba1c7ed99fff082748d8bb72e60311)), closes [#013](https://bitbucket.org/labor-digital/labor-factory-app/issue/013)
 * **factory-multitenant-api:** strip backend base path from generated links ([b600890](https://bitbucket.org/labor-digital/labor-factory-app/commits/b6008907963a3f1f9c9e14ac48ab4a0858802417))
 * **factory-nuxt-layer:** export types/ for consumers and prerender records ([ab1e87c](https://bitbucket.org/labor-digital/labor-factory-app/commits/ab1e87cbfcf09893fd00fb34f9d9145a131e35a4)), closes [#048](https://bitbucket.org/labor-digital/labor-factory-app/issue/048) [#021](https://bitbucket.org/labor-digital/labor-factory-app/issue/021)
+* **header:** subpage dropdowns for classic/transparent + mobile arrow accordion ([8f50820](https://bitbucket.org/labor-digital/labor-factory-app/commits/8f50820d4d7f3e55ad67440ec649566607ecda80))
 * initial public release of factory-core 0.1.0 ([f3c1d53](https://bitbucket.org/labor-digital/labor-factory-app/commits/f3c1d53c57c00f1761d08f2a6ac2794839477cb8))
 * **nuxt-layer:** add Vue components for 11 new content blocks ([92752bb](https://bitbucket.org/labor-digital/labor-factory-app/commits/92752bb91b14d84d3e79a5d3904b55ff67431170))
 * **pipeline-app:** auth flow + dashboard IA (DL [#017](https://bitbucket.org/labor-digital/labor-factory-app/issues/017) phase C) ([eb2aa53](https://bitbucket.org/labor-digital/labor-factory-app/commits/eb2aa537179c78e5ab274b7903e245cdc47b110b))
@@ -92,10 +102,14 @@ All notable changes to this project will be documented in this file. See [standa
 * **pipeline-app:** email one-time-code login (replace magic link) ([0e2b413](https://bitbucket.org/labor-digital/labor-factory-app/commits/0e2b4130102030fbc08c6861ffd4cd58bc2596e9))
 * **pipeline-app:** environment selector + staging deploy + version compat (DL [#015](https://bitbucket.org/labor-digital/labor-factory-app/issues/015)) ([ed6a36b](https://bitbucket.org/labor-digital/labor-factory-app/commits/ed6a36b984e207cda49d8494b5e5422f506a209b))
 * **pipeline-app:** extend TenantSpec with identifier, frontendBase, websiteTitle ([da057cc](https://bitbucket.org/labor-digital/labor-factory-app/commits/da057ccac298e3833e5d4acaa747291f6b791fe9))
+* **pipeline-app:** finalize seed translator for page-manifest + brand tokens ([199e12e](https://bitbucket.org/labor-digital/labor-factory-app/commits/199e12eab23672aa3b7a6314188c76dab11fab53))
 * **pipeline-app:** forward seed.language to POST /tenants ([65af3f2](https://bitbucket.org/labor-digital/labor-factory-app/commits/65af3f2610cea9511e10479c7c7cc8738b38c301))
+* **pipeline-app:** generate record rows from record-listing sections ([d8b66a4](https://bitbucket.org/labor-digital/labor-factory-app/commits/d8b66a42d97549ec4b06380b7b044f61744777fc))
+* **pipeline-app:** generate seeds from JSON via Mistral ([8f1f2a0](https://bitbucket.org/labor-digital/labor-factory-app/commits/8f1f2a01e6e7824dccf4aeea72c10778f53e6d58))
 * **pipeline-app:** high-contrast theme with pastel section accents ([0d0b466](https://bitbucket.org/labor-digital/labor-factory-app/commits/0d0b4664f976a5b8f9bd0160c91df985ca46ad46))
 * **pipeline-app:** monorepo runtime access for full provisioning (DL [#022](https://bitbucket.org/labor-digital/labor-factory-app/issues/022) Q4) ([a901ab7](https://bitbucket.org/labor-digital/labor-factory-app/commits/a901ab79fed94f43e3d201c01a6d67be0a0ca903))
 * **pipeline-app:** port factory:* commands in-process, drop labCliBin ([bd245bf](https://bitbucket.org/labor-digital/labor-factory-app/commits/bd245bfe262ef11377f863ce1730a6a5e4e9489c))
+* **pipeline-app:** run locally via `lab up` (compose + Doppler + HTTPS) ([7a86800](https://bitbucket.org/labor-digital/labor-factory-app/commits/7a86800f8d66b237dfd0eaa59b467aacc2f68cc1))
 * **pipeline-app:** seed edit page at /seeds/[slug] ([aba6c3a](https://bitbucket.org/labor-digital/labor-factory-app/commits/aba6c3a6d79e04fbadfc9c65c477fb069de46b87))
 * **pipeline-app:** seed library + fast local reseed (DL [#014](https://bitbucket.org/labor-digital/labor-factory-app/issues/014)) ([54b4947](https://bitbucket.org/labor-digital/labor-factory-app/commits/54b4947db1ca30e7e7e0701dddc9245ef6dfaa18))
 * **pipeline-app:** seed pre-fills tenants[] + Fly.io UI in staging mode ([1890b20](https://bitbucket.org/labor-digital/labor-factory-app/commits/1890b2072698eacd09593ccdbb66dd8551cfcf93))
@@ -108,6 +122,8 @@ All notable changes to this project will be documented in this file. See [standa
 * **pipeline-app:** update-mode for staging + automatic content seeding (DL [#016](https://bitbucket.org/labor-digital/labor-factory-app/issues/016)) ([60fa006](https://bitbucket.org/labor-digital/labor-factory-app/commits/60fa006501b062c38394bf229b22623f7d3ac877))
 * **pipeline:** wire private-npm consume mode for the two layers ([580480c](https://bitbucket.org/labor-digital/labor-factory-app/commits/580480c71080b437a611cff22c5178ea2b205038))
 * **playground:** add theme settings page and dark-preview toggle ([f21c3dc](https://bitbucket.org/labor-digital/labor-factory-app/commits/f21c3dc4b08e9577a05c76390ff0fa82b158564e))
+* **playground:** desktop/tablet/mobile viewport switcher in the preview ([8ae140b](https://bitbucket.org/labor-digital/labor-factory-app/commits/8ae140b412a84ecf46606d5a603d7f6417f8cd35))
+* rework component library from Figma spec + per-component AI manifests ([00a910f](https://bitbucket.org/labor-digital/labor-factory-app/commits/00a910f71a486970c266de2f5f9c083501e58752)), closes [#023](https://bitbucket.org/labor-digital/labor-factory-app/issue/023) [#024](https://bitbucket.org/labor-digital/labor-factory-app/issue/024)
 * **seed:** heckelsmüller declares core_version ^0.2 + read seed file directly ([d992c1c](https://bitbucket.org/labor-digital/labor-factory-app/commits/d992c1c722cf8c1b9ded7e6fa12c5d634cf082f8))
 * **shared-tenant:** wire local E2E test bed for factory-multitenant-api ([8c81834](https://bitbucket.org/labor-digital/labor-factory-app/commits/8c81834416588bd810e6518a13a3c4358f5c40d2)), closes [#013](https://bitbucket.org/labor-digital/labor-factory-app/issue/013) [#013](https://bitbucket.org/labor-digital/labor-factory-app/issue/013)
 * **staging:** build Nuxt locally + deploy thin image to Fly + default region fra ([461ab52](https://bitbucket.org/labor-digital/labor-factory-app/commits/461ab52598140f20fed8e49398a404ab7ee6993b))
