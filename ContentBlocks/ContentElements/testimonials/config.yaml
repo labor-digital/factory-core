@@ -1,19 +1,21 @@
 name: factory/testimonials
 title: Testimonials
-description: Customer quotes in five layouts — large single quote, long-form quote, 3-col cards, image+quote slider, featured dark with portrait.
+description: Customer quotes in six layouts — XL single quote, long-form flow, centered text slider, 3-col cards with stars, image+quote slider, and featured dark with portrait.
 group: factory
 icon: content-quote
 fields:
+  # Variant values mirror the Figma component set exactly (773:55689).
   - identifier: variant
     type: Select
     renderType: selectSingle
     label: Variant
     items:
-      - { label: Quote XL (single large serif quote), value: quote-xl }
+      - { label: Quote XL (single large centered quote), value: quote-xl }
       - { label: Quote Flow (long-form quote), value: quote-flow }
+      - { label: 'Slider — Text (centered, text-only)', value: slider-text }
       - { label: Cards (3-col with stars), value: cards }
       - { label: 'Slider (image left, quote right)', value: slider }
-      - { label: 'Featured (dark, full-bleed)', value: featured }
+      - { label: 'Featured (dark, portrait + quote)', value: featured }
     default: quote-xl
 
   - identifier: eyebrow
@@ -61,3 +63,11 @@ fields:
         label: Portrait / Media (slider & featured variants)
         allowedFileExtensions: ['jpg', 'jpeg', 'png', 'webp']
         maxItems: 1
+      # Optional CTA — rendered by the featured variant ("Zur Case Study →").
+      - identifier: link
+        type: Link
+        label: Link (featured variant)
+      - identifier: link_label
+        type: Text
+        label: Link Label
+        description: Text for the optional featured-variant link (e.g. "Zur Case Study").

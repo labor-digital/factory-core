@@ -1,0 +1,57 @@
+{
+	"$schema": "../../../../schema/component-manifest.schema.json",
+	"name": "Text",
+	"type": "content-element",
+	"version": "1.0.1",
+	"min_core_version": "1.0.0",
+	"description": "Simple text section with eyebrow, title (with <strong> accent support), subline, body, and up to two CTAs. Layouts: left-aligned, centered, two-column (title left / body right), or an oversize headline that breaks the grid.",
+	"when_to_use": "Pure copy blocks — mission statements, section intros, editorial passages without media. Use Intro when an image belongs next to the text; use Cta when the block's job is conversion.",
+	"capabilities": [
+		"four layouts incl. editorial two-column and oversize display headline",
+		"title <strong> emphasis rendered in the accent color",
+		"primary + secondary CTA pair"
+	],
+	"variants": [
+		{
+			"value": "left",
+			"description": "Left-aligned column. Default."
+		},
+		{
+			"value": "center",
+			"description": "Centered column."
+		},
+		{
+			"value": "two-col",
+			"description": "Title left, body right in two columns."
+		},
+		{
+			"value": "oversize",
+			"description": "Huge display headline breaking the grid; body below."
+		}
+	],
+	"atoms": [
+		"Button",
+		"Eyebrow"
+	],
+	"breakpoints": {
+		"mobile": "Single column everywhere; oversize headline scales down.",
+		"desktop": "Two-column split for the two-col variant."
+	},
+	"figma": {
+		"file": "Factory_Library_WORKING_260723",
+		"fileKey": "avP1L4LoOxY5ukjT4bAajX",
+		"nodeId": "773:55886",
+		"dateStamp": "2026-07-23",
+		"moduleHeader": "TEXT · ALL VARIANTS"
+	},
+	"composer_dependencies": [],
+	"npm_dependencies": [],
+	"ai": {
+		"prompt_summary": "Text: copy-only section. Settings: variant (left|center|two-col|oversize), eyebrow, title (supports <strong> accent), subline (short sentence between title and body), body, primary_label + primary_to, secondary_label + secondary_to.",
+		"content_guidelines": "Title 3-8 words with at most one <strong> emphasis (oversize titles even shorter). Body 2-5 sentences. CTAs optional — primary before secondary.",
+		"field_hints": {
+			"title": "Wrap the emphasized phrase in <strong>...</strong>; it renders in the brand accent color.",
+			"subline": "One short bridging sentence — not a second paragraph."
+		}
+	}
+}

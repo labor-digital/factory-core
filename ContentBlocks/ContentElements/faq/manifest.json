@@ -1,0 +1,57 @@
+{
+	"$schema": "../../../../schema/component-manifest.schema.json",
+	"name": "Faq",
+	"type": "content-element",
+	"version": "1.1.0",
+	"min_core_version": "1.0.0",
+	"description": "Collapsible questions and answers in single-column, two-column, grouped, or bordered XL layouts. The two-column variant includes a contact card for unanswered questions.",
+	"when_to_use": "Lower page regions to resolve objections and support questions. Use grouped when questions span multiple topics; use two-col when a contact escalation path should be visible.",
+	"capabilities": [
+		"accordion behavior (one open item at a time)",
+		"four layouts: single (centered), two-col (intro left, FAQ right), grouped by category, bordered XL (cream)",
+		"contact card with mail + button (two-col variant)",
+		"category grouping via a free-text group label per question"
+	],
+	"variants": [
+		{
+			"value": "single",
+			"description": "Single centered column. Default."
+		},
+		{
+			"value": "two-col",
+			"description": "Intro text and contact card left, accordion right. Uses contact_label, contact_mail, contact_button."
+		},
+		{
+			"value": "grouped",
+			"description": "Questions clustered under their items[].group headings."
+		},
+		{
+			"value": "bordered",
+			"description": "Bordered XL rows with large regular-weight questions on a cream background."
+		}
+	],
+	"atoms": [
+		"Eyebrow"
+	],
+	"breakpoints": {
+		"mobile": "Single column everywhere; contact card stacks above the accordion.",
+		"desktop": "Two-column split for the two-col variant."
+	},
+	"figma": {
+		"file": "Factory_Library_WORKING_260723",
+		"fileKey": "avP1L4LoOxY5ukjT4bAajX",
+		"nodeId": "773:41491",
+		"dateStamp": "2026-07-23",
+		"moduleHeader": "FAQ · ALL VARIANTS"
+	},
+	"composer_dependencies": [],
+	"npm_dependencies": [],
+	"ai": {
+		"prompt_summary": "Faq: accordion Q&A. Settings: variant (single|two-col|grouped|bordered). Fields: eyebrow, headline, intro; two-col only: contact_label, contact_mail, contact_button; items[] (min 1): { q, a, group (grouped variant only) }.",
+		"content_guidelines": "5-8 questions. Questions phrased from the visitor's perspective, answers 1-3 sentences. Group labels short nouns (e.g. Preise, Ablauf).",
+		"field_hints": {
+			"items.group": "Only rendered by the grouped variant; items sharing a label appear under that heading.",
+			"contact_mail": "Plain address, no mailto: prefix."
+		}
+	}
+}

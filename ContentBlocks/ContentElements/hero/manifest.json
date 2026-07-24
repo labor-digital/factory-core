@@ -1,0 +1,64 @@
+{
+	"$schema": "../../../../schema/component-manifest.schema.json",
+	"name": "Hero",
+	"type": "content-element",
+	"version": "2.0.0",
+	"min_core_version": "1.0.0",
+	"description": "Full-bleed hero banner for the top of a page. Fixed-height (600px), vertically centered, dark olive fallback background. Renders one static slide or a rotating Splide.js slider; each slide has its own background (theme color, image, or self-hosted/external video), eyebrow + headline + supporting text, and CTA buttons.",
+	"when_to_use": "First block on landing and campaign pages. Use left/center/right for a static hero; the slider variant for rotating campaign banners with more than one slide. Do not use mid-page — use Section or Cta instead.",
+	"capabilities": [
+		"content alignment via variant: left, center, right, or slider",
+		"slider variant adds side navigation arrows; slideshow dots appear automatically when there is more than one slide",
+		"background per slide: theme color | image | video (upload or external URL)",
+		"readability gradient by default over image/video, or an explicit dark/light overlay",
+		"0..n CTA buttons per slide (shared Factory Button spec)"
+	],
+	"variants": [
+		{
+			"value": "left",
+			"description": "Left-aligned content. Default."
+		},
+		{
+			"value": "center",
+			"description": "Centered content."
+		},
+		{
+			"value": "right",
+			"description": "Right-aligned content."
+		},
+		{
+			"value": "slider",
+			"description": "Left-aligned content with side navigation arrows for a multi-slide banner."
+		}
+	],
+	"atoms": [
+		"Button",
+		"Eyebrow"
+	],
+	"breakpoints": {
+		"mobile": "Content stacks, buttons wrap; banner height reduces to ~460px.",
+		"tablet": "Banner height ~520px.",
+		"desktop": "Fixed 600px height; full alignment honored."
+	},
+	"figma": {
+		"file": "Factory_Library_WORKING_260723",
+		"fileKey": "avP1L4LoOxY5ukjT4bAajX",
+		"nodeId": "773:43192",
+		"dateStamp": "2026-07-23",
+		"moduleHeader": "HERO · ALL VARIANTS"
+	},
+	"composer_dependencies": [],
+	"npm_dependencies": [
+		"@splidejs/vue-splide",
+		"@iconify/vue"
+	],
+	"ai": {
+		"prompt_summary": "Hero: full-bleed page opener, fixed 600px height. Element settings: variant (left|center|right|slider), autoplay + loop (slider only). Content lives in slides[] (min 1); each slide: eyebrow, title, subline, text_color (auto|light|dark), background_type (color|image|video) + matching source field, overlay (none|dark|light), buttons[] (label, to, color, variant [solid|outline|ghost|outline-white|white-solid], button_size, icon). Slideshow dots show automatically for multiple slides.",
+		"content_guidelines": "Headline at most 8 words. Eyebrow uppercase, may use ' · ' separators for a location/tagline line. 0-2 buttons per slide; on the dark hero use outline-white then white-solid button variants.",
+		"field_hints": {
+			"slides.background_color": "Semantic theme token (primary, secondary, ...), never a hex value.",
+			"slides.text_color": "Leave at 'auto' unless contrast fails on the chosen background.",
+			"slides.background_video_url": "Only as alternative to an uploaded file; direct mp4/webm URL."
+		}
+	}
+}

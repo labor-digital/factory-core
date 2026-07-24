@@ -153,10 +153,10 @@ fields:
         type: Text
         label: Metric 2 value
       - identifier: pros
-        type: Text
+        type: Textarea
         label: Pros (one per line)
       - identifier: cons
-        type: Text
+        type: Textarea
         label: Cons (one per line)
 
   # ----- Bars -----
@@ -190,7 +190,7 @@ fields:
 
   # ----- Ratings -----
   - identifier: rating_criteria
-    type: Text
+    type: Textarea
     label: Ratings · criteria (one per line)
     displayCond: 'FIELD:variant:=:ratings'
   - identifier: rating_items

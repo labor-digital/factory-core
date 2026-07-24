@@ -12,7 +12,7 @@ fields:
       - { label: Single Column, value: single }
       - { label: 'Two Column (intro left, FAQ right)', value: two-col }
       - { label: Grouped (by category), value: grouped }
-      - { label: Bordered XL (large serif questions), value: bordered }
+      - { label: Bordered XL (large questions on cream), value: bordered }
     default: single
 
   - identifier: eyebrow

@@ -1,0 +1,10 @@
+variant: row
+eyebrow: In Zahlen
+headline: Was wir bewegen
+intro: Ein kleiner Ausschnitt aus unserer Arbeit der letzten Jahre — und dem Vertrauen, das Kunden uns entgegenbringen.
+callout: 'Wir glauben: Zahlen sind nur Kontext. Was zählt, sind die Menschen und Projekte dahinter.'
+items:
+  - { value: '120+', label: 'Projekte umgesetzt',    sub: 'seit 2015' }
+  - { value: '18',   label: 'Jahre Erfahrung',       sub: 'im Digitalen' }
+  - { value: '42',   label: 'Aktive Kunden',         sub: 'national & international' }
+  - { value: '98%',  label: 'Kunden-Zufriedenheit',  sub: 'aus anonymen Befragungen' }

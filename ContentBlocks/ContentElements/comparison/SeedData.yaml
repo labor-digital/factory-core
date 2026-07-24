@@ -17,3 +17,21 @@ h2h_rows:
   - { property: 'Eigenschaft 2', a_value: 'Wert A2', a_tone: pos, b_value: 'Wert B2', b_tone: neg }
   - { property: 'Eigenschaft 3', a_value: 'Wert A3', a_tone: neu, b_value: 'Wert B3', b_tone: pos }
   - { property: 'Eigenschaft 4', a_value: 'Wert A4', a_tone: neu, b_value: 'Wert B4', b_tone: pos }
+methods:
+  - { name: 'Variante 1', tagline: 'Kurzbeschreibung der Methode', metric1_label: 'Kennzahl 1', metric1_value: 'Wert 1', metric2_label: 'Kennzahl 2', metric2_value: 'Wert 2', pros: "Stichpunkt 1\nStichpunkt 2\nStichpunkt 3", cons: "Einschränkung 1\nEinschränkung 2" }
+  - { name: 'Variante 2', tagline: 'Kurzbeschreibung der Methode', metric1_label: 'Kennzahl 1', metric1_value: 'Wert 1', metric2_label: 'Kennzahl 2', metric2_value: 'Wert 2', pros: "Stichpunkt 1\nStichpunkt 2\nStichpunkt 3", cons: "Einschränkung 1\nEinschränkung 2" }
+  - { name: 'Variante 3', tagline: 'Kurzbeschreibung der Methode', metric1_label: 'Kennzahl 1', metric1_value: 'Wert 1', metric2_label: 'Kennzahl 2', metric2_value: 'Wert 2', pros: "Stichpunkt 1\nStichpunkt 2\nStichpunkt 3", cons: "Einschränkung 1\nEinschränkung 2" }
+bars_unit: 'Einheit'
+bars_max: 100
+bars_rows:
+  - { label: 'Position A', value: 28, note: 'Hinweis A', highlight: 1 }
+  - { label: 'Position B', value: 42, note: 'Hinweis B', highlight: 0 }
+  - { label: 'Position C', value: 56, note: 'Hinweis C', highlight: 0 }
+  - { label: 'Position D', value: 71, note: 'Hinweis D', highlight: 0 }
+  - { label: 'Position E', value: 94, note: 'Hinweis E', highlight: 0 }
+rating_criteria: "Kriterium 1\nKriterium 2\nKriterium 3\nKriterium 4\nKriterium 5"
+rating_items:
+  - { name: 'Item 1', values: '4, 3, 5, 4, 5' }
+  - { name: 'Item 2', values: '5, 5, 4, 2, 3' }
+  - { name: 'Item 3', values: '4, 5, 3, 4, 3' }
+  - { name: 'Item 4', values: '5, 5, 4, 3, 2' }

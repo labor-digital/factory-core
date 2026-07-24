@@ -1,0 +1,64 @@
+{
+	"$schema": "../../../../schema/component-manifest.schema.json",
+	"name": "Video",
+	"type": "content-element",
+	"version": "1.0.1",
+	"min_core_version": "1.0.0",
+	"description": "Video module rendering YouTube/Vimeo/custom embeds behind a poster with play overlay. Layouts: split with text beside the video, full-width video on top, background overlay with speaker attribution, or a card grid of multiple videos that open in a modal player.",
+	"when_to_use": "Explainers, image films, testimonial videos, or a webinar/video library (cards variant). Use Hero with a video background for ambient motion without playback controls.",
+	"capabilities": [
+		"YouTube / Vimeo IDs or custom embed URLs; poster image with play button until click",
+		"inline playback for single-video variants, modal player for the card grid",
+		"numbered bullet list of process steps/key points (split and full-top variants)",
+		"speaker name + role attribution (overlay variant), duration label and per-card category"
+	],
+	"variants": [
+		{
+			"value": "split-left",
+			"description": "Video left, text + bullets right. Default."
+		},
+		{
+			"value": "split-right",
+			"description": "Video right, text + bullets left."
+		},
+		{
+			"value": "full-top",
+			"description": "Full-width video above the text block."
+		},
+		{
+			"value": "overlay",
+			"description": "Hero-like background treatment with speaker_name/speaker_role over the video."
+		},
+		{
+			"value": "cards",
+			"description": "Grid of cards[] videos; clicking opens a modal player."
+		}
+	],
+	"atoms": [
+		"Button",
+		"Eyebrow",
+		"Tag"
+	],
+	"breakpoints": {
+		"mobile": "Splits stack video above text; cards go single column.",
+		"desktop": "Two-column splits; card grid in 2-3 columns."
+	},
+	"figma": {
+		"file": "Factory_Library_WORKING_260723",
+		"fileKey": "avP1L4LoOxY5ukjT4bAajX",
+		"nodeId": "773:56496",
+		"dateStamp": "2026-07-23",
+		"moduleHeader": null
+	},
+	"composer_dependencies": [],
+	"npm_dependencies": [],
+	"ai": {
+		"prompt_summary": "Video: video section. Settings: variant (split-left|split-right|full-top|overlay|cards), eyebrow, headline, body, cta_label + cta_to, speaker_name + speaker_role (overlay), video_provider (youtube|vimeo|custom), video_id (ID, or full embed URL for custom), duration (e.g. '4:18'), poster. bullets[] (split/full-top): { title, description }. cards[] (cards variant): { title, category, duration, video_provider, video_id, poster }.",
+		"content_guidelines": "Always provide a poster image. 2-4 bullets with 1-sentence descriptions. Card grids: 3-6 videos with short titles and a category each.",
+		"field_hints": {
+			"video_id": "Plain YouTube/Vimeo ID; only a full embed URL when provider is custom.",
+			"bullets": "Numbered automatically; used by split-* and full-top variants.",
+			"cards": "Only rendered by the cards variant; each card opens its video in a modal."
+		}
+	}
+}

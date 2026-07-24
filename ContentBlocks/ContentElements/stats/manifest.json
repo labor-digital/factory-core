@@ -1,0 +1,56 @@
+{
+	"$schema": "../../../../schema/component-manifest.schema.json",
+	"name": "Stats",
+	"type": "content-element",
+	"version": "1.0.1",
+	"min_core_version": "1.0.0",
+	"description": "Grid of key numbers / KPIs with an optional header. Layouts: one row of four, a dark 2x2 'big four' with a callout quote, a divider-separated inline row, or a split with the header left and the grid right.",
+	"when_to_use": "Compact proof through numbers — years of experience, projects, satisfaction rates. Use Credibility (stats-banner) when the numbers should read as third-party trust signals; use Intro (stacked) to attach stats to an introduction.",
+	"capabilities": [
+		"four layouts: row, big-four dark, inline with dividers, split head/grid",
+		"value + label + small sub-caption per stat",
+		"callout quote below the grid (bigfour variant)"
+	],
+	"variants": [
+		{
+			"value": "row",
+			"description": "4 KPIs in one row. Default."
+		},
+		{
+			"value": "bigfour",
+			"description": "2x2 grid on dark background with large numbers; renders the callout quote."
+		},
+		{
+			"value": "inline",
+			"description": "Single row separated by dividers."
+		},
+		{
+			"value": "split",
+			"description": "Header block left, stat grid right."
+		}
+	],
+	"atoms": [
+		"Eyebrow"
+	],
+	"breakpoints": {
+		"mobile": "Stats wrap to 2 columns then 1; inline stacks with a divider between; split stacks header above the grid.",
+		"desktop": "row: 4 KPIs each under a 2px top rule. bigfour: dark 2x2 with 120px numbers + callout. inline: 4 KPIs between two rules, vertical dividers. split: 0.9/1.1 header-left + 2x2 grid-right."
+	},
+	"figma": {
+		"file": "Factory_Library_WORKING_260723",
+		"fileKey": "avP1L4LoOxY5ukjT4bAajX",
+		"nodeId": "773:47170",
+		"dateStamp": "2026-07-23",
+		"moduleHeader": null
+	},
+	"composer_dependencies": [],
+	"npm_dependencies": [],
+	"ai": {
+		"prompt_summary": "Stats: KPI grid aligned to Figma 773:47170. Settings: variant (row|bigfour|inline|split), eyebrow, headline, intro, callout (quote, bigfour only). Numbers in items[] (min 1): { value (e.g. 120+, 98%, 18), label, sub (small caption) }. row/split render each KPI under a rule; bigfour is a dark 2x2 with 120px numbers + a callout quote; inline sits between two rules with vertical dividers (no sub).",
+		"content_guidelines": "Provide exactly 4 stats for row, bigfour, inline and split. Values short with unit/suffix baked in (40+, 98%); labels 1-3 words; sub optional one-liner (not shown in the inline variant).",
+		"field_hints": {
+			"items.value": "Display string including suffix — no separate unit field.",
+			"callout": "Only rendered by the bigfour variant, as a quote below the grid."
+		}
+	}
+}

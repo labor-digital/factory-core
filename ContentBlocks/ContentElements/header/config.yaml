@@ -29,10 +29,13 @@ fields:
   - identifier: cta_label
     type: Text
     label: CTA Label
+    description: Shown by the Minimal and Mega variants (Figma has no CTA slot on Classic/Transparent).
+    displayCond: 'FIELD:variant:IN:minimal,mega'
 
   - identifier: cta_to
     type: Link
     label: CTA Link
+    displayCond: 'FIELD:variant:IN:minimal,mega'
 
   - identifier: links
     type: Collection
@@ -61,3 +64,15 @@ fields:
           - identifier: to
             type: Link
             label: Link
+      - identifier: feature_title
+        type: Text
+        label: Feature Title (mega variant)
+        description: Optional highlighted teaser shown as the last column of this link's mega-menu panel.
+      - identifier: feature_body
+        type: Textarea
+        label: Feature Text (mega variant)
+      - identifier: feature_image
+        type: File
+        label: Feature Image (mega variant)
+        allowedFileExtensions: ['svg', 'png', 'webp', 'jpg', 'jpeg']
+        maxItems: 1

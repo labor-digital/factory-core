@@ -1,8 +1,16 @@
 variant: classic
 logo_text: Brand
 links:
-  - { label: HOME, to: / }
+  - { label: HOME, to: /, active: 1 }
   - { label: 'ÜBER UNS', to: /uns }
-  - { label: 'LEISTUNGEN', to: /leistungen }
+  - label: 'LEISTUNGEN'
+    to: /leistungen
+    children:
+      - { group: 'Kategorie A', label: 'Leistung Eins', to: '#' }
+      - { group: 'Kategorie A', label: 'Leistung Zwei', to: '#' }
+      - { group: 'Kategorie B', label: 'Leistung Drei', to: '#' }
+      - { group: 'Kategorie B', label: 'Leistung Vier', to: '#' }
+    feature_title: Aktueller Schwerpunkt
+    feature_body: Kurzer Teaser-Text für ein hervorgehobenes Thema im Menü.
   - { label: 'REFERENZEN', to: /referenzen }
   - { label: KONTAKT, to: /kontakt }

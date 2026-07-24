@@ -38,9 +38,10 @@ final class TenantContentSeeder
     /**
      * @param list<array{component?: string, data?: array<string, mixed>}> $elements
      * @param list<array{title?: string, slug?: string, elements?: list<array{component?: string, data?: array<string, mixed>}>}> $pages
-     * @return array{root_page_id: int, seeded: int, wiped: int, pages_seeded: int, pages_wiped: int}
+     * @param array<string, list<array<string, mixed>>> $records Record rows keyed by PascalCase record-type name.
+     * @return array{root_page_id: int, seeded: int, wiped: int, pages_seeded: int, pages_wiped: int, records_seeded: int}
      */
-    public function seed(string $siteIdentifier, array $elements, bool $wipe = true, array $pages = []): array
+    public function seed(string $siteIdentifier, array $elements, bool $wipe = true, array $pages = [], array $records = []): array
     {
         $this->bootstrapAdminBeUser();
 
@@ -61,6 +62,7 @@ final class TenantContentSeeder
 
         $seeded = $this->seedElements($rootPageUid, $elements);
         $pagesSeeded = $this->seedSubpages($rootPageUid, $pages);
+        $recordsSeeded = $this->seedRecords($rootPageUid, $records, $wipe);
 
         return [
             'root_page_id' => $rootPageUid,
@@ -68,6 +70,7 @@ final class TenantContentSeeder
             'wiped' => $wiped,
             'pages_seeded' => $pagesSeeded,
             'pages_wiped' => $pagesWiped,
+            'records_seeded' => $recordsSeeded,
         ];
     }
 
@@ -307,5 +310,117 @@ final class TenantContentSeeder
         }
 
         return count($componentMeta);
+    }
+
+    /**
+     * Seed record-type rows supplied inline by the caller (payload `records`),
+     * keyed by PascalCase record-type name → list of {fieldIdentifier: value}.
+     * Mirrors ResetSeederCommand::reseedRecords but takes rows from the payload
+     * instead of the record type's static SeedData.yaml, and — because the
+     * multitenant DB is shared — scopes the wipe to THIS tenant's records pid
+     * rather than truncating the whole table.
+     *
+     * @param array<string, list<array<string, mixed>>> $records
+     */
+    private function seedRecords(int $rootPageUid, array $records, bool $wipe): int
+    {
+        if ($records === []) {
+            return 0;
+        }
+
+        // Records live on the tenant's dedicated "Records" page when present;
+        // fall back to the root page so rows still land somewhere addressable.
+        $recordsPid = $this->resolveRecordsPid($rootPageUid);
+        if ($recordsPid <= 0) {
+            $recordsPid = $rootPageUid;
+        }
+
+        $data = [];
+        $seeded = 0;
+        $sorting = 256;
+
+        foreach ($records as $recordTypeName => $rows) {
+            if (!is_string($recordTypeName) || !is_array($rows)) {
+                continue;
+            }
+            $slug = $this->contentBlockSeeder->toKebabCase($recordTypeName);
+            $directoryName = $this->contentBlockSeeder->toDirectoryName($slug);
+            $table = $this->contentBlockSeeder->resolveRecordTable($directoryName);
+            if ($table === null) {
+                continue;
+            }
+            if ($wipe) {
+                $this->wipeRecordTable($table, $recordsPid);
+            }
+            foreach (array_values($rows) as $index => $entry) {
+                if (!is_array($entry)) {
+                    continue;
+                }
+                $newId = 'NEW_tenant_rec_' . $directoryName . '_' . $index;
+                $record = $this->contentBlockSeeder->buildRecordDataHandlerRecord(
+                    $directoryName,
+                    $recordsPid,
+                    $sorting,
+                    $newId,
+                    $entry,
+                );
+                if ($record === null) {
+                    continue;
+                }
+                foreach ($record as $t => $tRows) {
+                    $data[$t] = array_merge($data[$t] ?? [], $tRows);
+                }
+                $sorting += 256;
+                $seeded++;
+            }
+        }
+
+        if ($data === []) {
+            return 0;
+        }
+
+        $dataHandler = GeneralUtility::makeInstance(DataHandler::class);
+        $dataHandler->start($data, []);
+        $dataHandler->process_datamap();
+        if (!empty($dataHandler->errorLog)) {
+            throw new \RuntimeException(
+                'TenantContentSeeder: record DataHandler errors: ' . implode(', ', $dataHandler->errorLog)
+            );
+        }
+
+        return $seeded;
+    }
+
+    private function resolveRecordsPid(int $rootUid): int
+    {
+        $qb = $this->connectionPool->getQueryBuilderForTable('pages');
+        $row = $qb->select('uid')
+            ->from('pages')
+            ->where(
+                $qb->expr()->eq('pid', $qb->createNamedParameter($rootUid, \Doctrine\DBAL\ParameterType::INTEGER)),
+                $qb->expr()->eq('title', $qb->createNamedParameter('Records')),
+                $qb->expr()->eq('deleted', 0),
+            )
+            ->setMaxResults(1)
+            ->executeQuery()
+            ->fetchAssociative();
+        return $row ? (int)$row['uid'] : 0;
+    }
+
+    /** Scoped wipe: only this tenant's rows (pid), never the whole shared table. */
+    private function wipeRecordTable(string $table, int $pid): int
+    {
+        if (!str_starts_with($table, 'tx_factorycore_')) {
+            return 0;
+        }
+        try {
+            $connection = $this->connectionPool->getConnectionForTable($table);
+            return (int)$connection->executeStatement(
+                'DELETE FROM ' . $connection->quoteIdentifier($table) . ' WHERE pid = ' . (int)$pid
+            );
+        } catch (\Throwable) {
+            // Table may not exist yet on a fresh tenant — best-effort.
+            return 0;
+        }
     }
 }

@@ -90,10 +90,9 @@ fields:
         items:
           - { label: Solid, value: solid }
           - { label: Outline, value: outline }
-          - { label: Soft, value: soft }
-          - { label: Subtle, value: subtle }
           - { label: Ghost, value: ghost }
-          - { label: Link, value: link }
+          - { label: Outline White (on-dark), value: outline-white }
+          - { label: White Solid (on-dark), value: white-solid }
       - identifier: button_size
         type: Select
         renderType: selectSingle

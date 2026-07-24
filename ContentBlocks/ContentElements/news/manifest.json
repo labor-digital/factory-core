@@ -1,0 +1,65 @@
+{
+	"$schema": "../../../../schema/component-manifest.schema.json",
+	"name": "News",
+	"type": "content-element",
+	"version": "1.0.1",
+	"min_core_version": "1.0.0",
+	"description": "News / press / events section over hand-authored items with fixed categories (Projekt, Auszeichnung, Presse, Termin). Layouts: filterable teaser grid, magazine (1 featured + 4 side items), filtered list with date markers, featured + compact list, or a timeline with year tabs.",
+	"when_to_use": "Company news, press mentions, and dates on marketing pages. Items are authored inline — use Teaser when entries should come from a record type instead.",
+	"capabilities": [
+		"client-side category filters (grid/list) and year tabs (timeline)",
+		"category badge, date, author, and external source per item",
+		"press-release badge (PR) via is_press_release flag",
+		"magazine and featured layouts highlight the first item",
+		"optional 'see all' link in the header row"
+	],
+	"variants": [
+		{
+			"value": "grid",
+			"description": "3-column teaser cards with category filters. Default."
+		},
+		{
+			"value": "magazine",
+			"description": "One featured item left + 4 smaller side items."
+		},
+		{
+			"value": "list",
+			"description": "Rows with date markers and category filters."
+		},
+		{
+			"value": "featured",
+			"description": "One featured card + compact list beside it."
+		},
+		{
+			"value": "timeline",
+			"description": "Chronological rows grouped behind year tabs."
+		}
+	],
+	"atoms": [
+		"SectionHead",
+		"Button",
+		"Tag"
+	],
+	"breakpoints": {
+		"mobile": "Single column; filters and year tabs wrap.",
+		"desktop": "3-column grid; magazine/featured split into featured + side column."
+	},
+	"figma": {
+		"file": "Factory_Library_WORKING_260723",
+		"fileKey": "avP1L4LoOxY5ukjT4bAajX",
+		"nodeId": "773:46055",
+		"dateStamp": "2026-07-23",
+		"moduleHeader": null
+	},
+	"composer_dependencies": [],
+	"npm_dependencies": [],
+	"ai": {
+		"prompt_summary": "News: press/news section. Settings: variant (grid|magazine|list|featured|timeline), eyebrow, headline, intro, head_align (left|center), see_all_label (e.g. 'Alle News →'), see_all_to. Items in items[] (min 1): { title (required), excerpt, date, category (Projekt|Auszeichnung|Presse|Termin), author, is_press_release (PR badge), source (external outlet), image, link }.",
+		"content_guidelines": "5-8 items with varied categories and descending dates. Excerpts 1-2 sentences. Set source only for external press coverage.",
+		"field_hints": {
+			"items.category": "One of the four fixed values — they double as filter labels.",
+			"items.is_press_release": "Adds a PR badge; combine with source for external coverage.",
+			"see_all_label": "Top-right header link; leave empty to hide."
+		}
+	}
+}

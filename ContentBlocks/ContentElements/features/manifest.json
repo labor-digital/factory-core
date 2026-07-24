@@ -1,0 +1,61 @@
+{
+	"$schema": "../../../../schema/component-manifest.schema.json",
+	"name": "Features",
+	"type": "content-element",
+	"version": "1.2.0",
+	"min_core_version": "1.0.0",
+	"description": "Grid of feature/service cards, each with title and text plus an optional icon, big number, or image depending on the variant. Cards can carry an individual link.",
+	"when_to_use": "Service overviews, USP lists, process steps (numbered variant). Use River for alternating text+media storytelling and Stats for pure number KPIs.",
+	"capabilities": [
+		"four card styles: icon cards, flat minimal with top border, big numbers, image cards",
+		"Iconify icon per item (cards/flat variants)",
+		"auto-numbering when num is empty (numbered/media variants)",
+		"optional link per card (label + target)"
+	],
+	"variants": [
+		{
+			"value": "cards",
+			"description": "3-column cards with icon and link. Default."
+		},
+		{
+			"value": "flat",
+			"description": "Minimal 3-column items with a top border, icon optional."
+		},
+		{
+			"value": "numbered",
+			"description": "Big ordinal numbers (01, 02, …) instead of icons."
+		},
+		{
+			"value": "media",
+			"description": "Cards with an image (items[].image) and number."
+		}
+	],
+	"atoms": [
+		"Eyebrow",
+		"FeatureCard"
+	],
+	"breakpoints": {
+		"mobile": "Single column stack.",
+		"desktop": "3-column grid."
+	},
+	"figma": {
+		"file": "Factory_Library_WORKING_260723",
+		"fileKey": "avP1L4LoOxY5ukjT4bAajX",
+		"nodeId": "773:42008",
+		"dateStamp": "2026-07-23",
+		"moduleHeader": "Modules / Features"
+	},
+	"composer_dependencies": [],
+	"npm_dependencies": [
+		"@iconify/vue"
+	],
+	"ai": {
+		"prompt_summary": "Features: feature/service card grid. Settings: variant (cards|flat|numbered|media), eyebrow, headline, intro. Cards in items[] (min 1): { num (e.g. '01', auto-numbered if empty), title, text, icon (Iconify name, cards/flat), image (media variant), link_label, link_to }.",
+		"content_guidelines": "3 or 6 items for a clean grid. Titles 2-4 words, texts 1-2 sentences. Use consistent icon style (e.g. all i-lucide-*).",
+		"field_hints": {
+			"items.icon": "Iconify name like i-lucide-star; used by cards and flat variants.",
+			"items.num": "Leave empty for automatic 01/02/03 numbering.",
+			"items.image": "Only rendered by the media variant."
+		}
+	}
+}

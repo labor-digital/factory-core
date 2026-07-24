@@ -28,15 +28,6 @@ fields:
     type: Textarea
     label: Intro
 
-  - identifier: head_align
-    type: Select
-    renderType: selectSingle
-    label: Header Alignment
-    items:
-      - { label: Left, value: left }
-      - { label: Center, value: center }
-    default: left
-
   - identifier: org
     type: Text
     label: Organisation name

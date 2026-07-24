@@ -1,0 +1,57 @@
+{
+	"$schema": "../../../../schema/component-manifest.schema.json",
+	"name": "Intro",
+	"type": "content-element",
+	"version": "2.0.0",
+	"min_core_version": "1.0.0",
+	"description": "Introductory section pairing eyebrow + title + body text with an image, optionally with a stats sidebar. The title supports <strong> emphasis rendered in the accent color.",
+	"when_to_use": "Directly after the Hero to introduce the company or topic. Use the stacked variant when key numbers should accompany the introduction; use Text instead when there is no image.",
+	"capabilities": [
+		"four layouts: text-left, text-right, centered (image below), stacked with stats sidebar",
+		"accent-colored emphasis inside the title via <strong>",
+		"optional single CTA link",
+		"stats sidebar with labeled key numbers (stacked variant)"
+	],
+	"variants": [
+		{
+			"value": "text-left",
+			"description": "Text left, image right. Default."
+		},
+		{
+			"value": "text-right",
+			"description": "Text right, image left."
+		},
+		{
+			"value": "centered",
+			"description": "Centered text with the image below."
+		},
+		{
+			"value": "stacked",
+			"description": "Stacked layout with a stats sidebar (stats_eyebrow + stats[])."
+		}
+	],
+	"atoms": [
+		"Eyebrow"
+	],
+	"breakpoints": {
+		"mobile": "Single column; image stacks under the text.",
+		"desktop": "Two-column split per variant."
+	},
+	"figma": {
+		"file": "Factory_Library_WORKING_260723",
+		"fileKey": "avP1L4LoOxY5ukjT4bAajX",
+		"nodeId": "773:43771",
+		"dateStamp": "2026-07-23",
+		"moduleHeader": "INTRO · ALL VARIANTS"
+	},
+	"composer_dependencies": [],
+	"npm_dependencies": [],
+	"ai": {
+		"prompt_summary": "Intro: text + image opener section. Settings: variant (text-left|text-right|centered|stacked). Fields: eyebrow, title (supports <strong> accent), body, image + image_alt, cta_label + cta_to; stacked only: stats_eyebrow, stats[] ({ value, label }).",
+		"content_guidelines": "Title 4-10 words with one <strong> emphasis. Body 2-4 sentences. Stats values short (e.g. 40+, 98%), 2-4 items.",
+		"field_hints": {
+			"title": "Wrap the emphasized phrase in <strong>...</strong>; it renders in the brand accent color.",
+			"stats": "Only rendered by the stacked variant."
+		}
+	}
+}

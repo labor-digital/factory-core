@@ -1,24 +1,18 @@
-content_position_x: center
-content_position_y: center
-height: medium
-show_arrows: 0
-show_pagination: 1
-autoplay: 0
-loop: 1
+variant: left
 slides:
-  - eyebrow: BAUGESCHÄFT · NACKENHEIM · SEIT VIER GENERATIONEN
-    headline: Jeder hat eine Leidenschaft.
-    text: Wir bauen Häuser.
+  - eyebrow: BAUGESCHÄFT MUSTER · MUSTERSTADT · SEIT VIER GENERATIONEN
+    title: Wir bauen Häuser.
+    subline: Jeder hat eine Leidenschaft.
     text_color: light
     background_type: color
-    background_color: primary
+    background_color: secondary
     overlay: none
     buttons:
       - label: Referenzen ansehen
         color: neutral
-        variant: outline
+        variant: outline-white
         button_size: md
       - label: Angebot anfordern
-        color: primary
-        variant: solid
+        color: neutral
+        variant: white-solid
         button_size: md
