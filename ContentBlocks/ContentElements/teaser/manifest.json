@@ -2,7 +2,7 @@
 	"$schema": "../../../../schema/component-manifest.schema.json",
 	"name": "Teaser",
 	"type": "content-element",
-	"version": "2.0.0",
+	"version": "2.0.1",
 	"min_core_version": "1.0.0",
 	"description": "Polymorphic record teaser: lists records of any active record type (Property, ...) in one of five Figma layouts — cards, cards-compact, list, feature, or edge. Records are picked manually via relation fields or queried automatically from a storage folder with filter, limit, and order; each record renders through its record type's card component.",
 	"when_to_use": "Reference/portfolio rows fed by structured records — 'Unsere Referenzen', latest properties. Use Blocks or News for hand-authored inline items instead of records.",
@@ -13,11 +13,26 @@
 		"header block identical to ImgSlider (eyebrow + decoration + accent color, <strong> title, buttons)"
 	],
 	"variants": [
-		{ "value": "cards", "description": "4-column bordered card grid. Default." },
-		{ "value": "cards-compact", "description": "3-column card grid." },
-		{ "value": "list", "description": "Single-column stacked rows." },
-		{ "value": "feature", "description": "First record as a lead card plus the remaining records as a side list." },
-		{ "value": "edge", "description": "Horizontal slider whose track extends past the right container edge; arrows sit in the header row." }
+		{
+			"value": "cards",
+			"description": "4-column bordered card grid. Default."
+		},
+		{
+			"value": "cards-compact",
+			"description": "3-column card grid."
+		},
+		{
+			"value": "list",
+			"description": "Single-column stacked rows."
+		},
+		{
+			"value": "feature",
+			"description": "First record as a lead card plus the remaining records as a side list."
+		},
+		{
+			"value": "edge",
+			"description": "Horizontal slider whose track extends past the right container edge; arrows sit in the header row."
+		}
 	],
 	"atoms": [
 		"Button",

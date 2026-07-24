@@ -2,7 +2,7 @@
 	"$schema": "../../../../schema/component-manifest.schema.json",
 	"name": "Header",
 	"type": "content-element",
-	"version": "1.1.0",
+	"version": "1.1.1",
 	"min_core_version": "1.0.0",
 	"description": "Site-wide page header with logo (text or image), primary navigation with optional active marking, an optional CTA button, and mega-menu dropdowns grouped into columns plus an optional featured teaser column (mega variant).",
 	"when_to_use": "Exactly one Header per site, on the shared layout. Pick transparent when it sits over a Hero with imagery; mega when the navigation needs grouped second-level links.",
