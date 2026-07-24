@@ -2,16 +2,18 @@
 	"$schema": "../../../../schema/component-manifest.schema.json",
 	"name": "Header",
 	"type": "content-element",
-	"version": "1.1.1",
+	"version": "1.2.0",
 	"min_core_version": "1.0.0",
-	"description": "Site-wide page header with logo (text or image), primary navigation with optional active marking, an optional CTA button, and mega-menu dropdowns grouped into columns plus an optional featured teaser column (mega variant).",
+	"description": "Site-wide page header with logo (text or image), primary navigation with subpage dropdowns, an optional CTA button, and a burger-toggled mobile menu. The mega variant shows a full-width panel with grouped columns plus an optional featured teaser column.",
 	"when_to_use": "Exactly one Header per site, on the shared layout. Pick transparent when it sits over a Hero with imagery; mega when the navigation needs grouped second-level links.",
 	"capabilities": [
 		"logo as text or uploaded image (svg/png/webp)",
 		"primary navigation with per-link active flag (active shows a brand-primary underline)",
 		"optional CTA button (cta_label + cta_to) — classic/transparent hide it, minimal/mega show it",
-		"mega-menu dropdowns: child links grouped into columns via a group heading",
+		"classic/transparent: hover dropdown under links with subpages (children)",
+		"mega: full-width panel with child links grouped into columns via a group heading",
 		"optional per-link featured teaser column in the mega panel (image + title + text)",
+		"mobile menu (burger): subpages collapse behind an arrow toggle, all variants",
 		"transparent over-hero mode with light text"
 	],
 	"variants": [
