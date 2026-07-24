@@ -22,10 +22,10 @@
 			"role": "Maintainer"
 		}
 	],
-	"homepage": "https://github.com/labor-digital/lab-factory/tree/main/factory-core/typo3-extension",
+	"homepage": "https://bitbucket.org/labor-digital/labor-factory-app/src/master/factory-core/typo3-extension",
 	"support": {
-		"issues": "https://github.com/labor-digital/lab-factory/issues",
-		"source": "https://github.com/labor-digital/lab-factory"
+		"issues": "https://bitbucket.org/labor-digital/labor-factory-app/issues",
+		"source": "https://bitbucket.org/labor-digital/labor-factory-app"
 	},
 	"require": {
 		"php": "^8.4",

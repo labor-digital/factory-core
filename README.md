@@ -1,6 +1,6 @@
 # labor-digital/factory-core
 
-TYPO3 extension for the [LABOR.digital Factory](https://github.com/labor-digital/lab-factory) headless CMS boilerplate.
+TYPO3 extension for the [LABOR.digital Factory](https://bitbucket.org/labor-digital/labor-factory-app) headless CMS boilerplate.
 
 Ships Content Blocks, record types, tenant-scope enforcement, and provisioning CLIs for single-tenant and shared-tenant TYPO3 installations.
 
