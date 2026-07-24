@@ -48,17 +48,6 @@ fields:
     type: Link
     label: CTA Link
 
-  - identifier: cta_target
-    type: Select
-    renderType: selectSingle
-    label: CTA Target
-    items:
-      - { label: Default, value: '' }
-      - { label: New Window, value: _blank }
-      - { label: Parent, value: _parent }
-      - { label: Self, value: _self }
-      - { label: Top, value: _top }
-
   - identifier: stats_eyebrow
     type: Text
     label: Stats Sidebar Eyebrow

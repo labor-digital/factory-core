@@ -1,0 +1,13 @@
+# File-free seed (per teaser pattern): items carry ext + file_size + group so
+# every variant renders without a real uploaded File. url falls back to '#'.
+variant: list
+eyebrow: Downloads
+headline: Unterlagen zum Mitnehmen.
+intro: Datenblätter, Broschüren und Formulare — alle Dokumente stehen hier zum Download bereit.
+items:
+  - { title: 'Unternehmens-Broschüre 2026', ext: 'pdf',  file_size: '4.2 MB', desc: 'Leistungen, Referenzen und Team im Überblick.', group: 'Produktinformationen' }
+  - { title: 'Produktdatenblatt · Massivhaus', ext: 'pdf', file_size: '1.8 MB', desc: 'Technische Spezifikationen und Materialien.',  group: 'Produktinformationen' }
+  - { title: 'Anfrage-Formular', ext: 'docx', file_size: '64 KB', desc: 'Vorausgefülltes Formular zum Ausdrucken.', group: 'Formulare & Vorlagen' }
+  - { title: 'Kalkulations-Vorlage', ext: 'xlsx', file_size: '128 KB', desc: 'Excel-Template für Kostenschätzung.', group: 'Formulare & Vorlagen' }
+  - { title: 'Projekt-Galerie (komprimiert)', ext: 'zip', file_size: '28 MB', desc: 'Alle Projekt-Fotos als ZIP-Download.', group: 'Medien & Präsentationen' }
+  - { title: 'Firmen-Präsentation', ext: 'pptx', file_size: '12 MB', desc: 'Kurz-Präsentation für Erstgespräche.', group: 'Medien & Präsentationen' }

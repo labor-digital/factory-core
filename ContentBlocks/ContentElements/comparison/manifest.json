@@ -1,0 +1,67 @@
+{
+	"$schema": "../../../../schema/component-manifest.schema.json",
+	"name": "Comparison",
+	"type": "content-element",
+	"version": "1.0.1",
+	"min_core_version": "1.0.0",
+	"description": "Side-by-side comparison section in six shapes: before/after images (static or with a draggable reveal slider), a head-to-head A-vs-B property table, method cards with pros/cons, a horizontal bar chart, or a multi-criteria star-rating matrix. Each variant reads its own field group.",
+	"when_to_use": "Whenever two or more options, states, or methods must be contrasted — renovation before/after, product A vs. B, alternative approaches, or benchmark values. Use Table for pricing/spec data without a comparative framing.",
+	"capabilities": [
+		"before/after image pair, static side-by-side or with pointer-draggable reveal handle",
+		"head-to-head table: two contenders with per-row values and pos/neg/neu tone coloring",
+		"method cards with two metrics plus pros/cons lists",
+		"horizontal bar chart with unit, max value, notes, and highlight flag",
+		"star-rating matrix scoring items against a shared criteria list"
+	],
+	"variants": [
+		{
+			"value": "before-after",
+			"description": "Two labeled images side by side with captions and meta lines. Default."
+		},
+		{
+			"value": "slider",
+			"description": "Before/after stacked in one frame with a draggable reveal handle (pointer events)."
+		},
+		{
+			"value": "head-to-head",
+			"description": "A vs. B: names, taglines, images, and h2h_rows[] with tone-colored values."
+		},
+		{
+			"value": "methods",
+			"description": "Method cards (methods[]) with tagline, two metrics, and pros/cons lists."
+		},
+		{
+			"value": "bars",
+			"description": "Horizontal bar chart from bars_rows[], scaled to bars_max, labeled with bars_unit."
+		},
+		{
+			"value": "ratings",
+			"description": "Matrix rating each rating_items[] entry 1-5 against the rating_criteria lines."
+		}
+	],
+	"atoms": [
+		"Eyebrow"
+	],
+	"breakpoints": {
+		"mobile": "Cards and table columns stack; the slider variant stays a single draggable frame.",
+		"desktop": "Two-column pairs; methods render as a 3-card row."
+	},
+	"figma": {
+		"file": "Factory_Library_WORKING_260723",
+		"fileKey": "avP1L4LoOxY5ukjT4bAajX",
+		"nodeId": "773:36621",
+		"dateStamp": "2026-07-23",
+		"moduleHeader": null
+	},
+	"composer_dependencies": [],
+	"npm_dependencies": [],
+	"ai": {
+		"prompt_summary": "Comparison: contrast section. Settings: variant (before-after|slider|head-to-head|methods|bars|ratings), eyebrow, headline, intro. Per variant: before_/after_ label+caption+meta+image (before-after, slider); h2h_a_/h2h_b_ name+tagline+image plus h2h_rows[] { property, a_value, a_tone (pos|neg|neu), b_value, b_tone } (head-to-head); methods[] { name, tagline, metric1/2 label+value, pros, cons — one per line } (methods); bars_unit, bars_max plus bars_rows[] { label, value, note, highlight } (bars); rating_criteria (one per line) plus rating_items[] { name, values (comma-separated 1-5) } (ratings).",
+		"content_guidelines": "Keep row/criteria labels to 2-4 words. 4-7 h2h rows or bars; 3 method cards; 3-6 rating criteria. Tones: pos for the advantage, neg for the drawback, neu otherwise.",
+		"field_hints": {
+			"rating_items.values": "Comma-separated 1-5 scores in the exact order of the rating_criteria lines.",
+			"bars_max": "Bars scale relative to this value — set it at or slightly above the largest row value.",
+			"methods.pros": "One point per line; rendered as a checkmark list (cons as crosses)."
+		}
+	}
+}

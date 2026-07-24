@@ -26,14 +26,6 @@ fields:
   - identifier: intro
     type: Textarea
     label: Intro
-  - identifier: head_align
-    type: Select
-    renderType: selectSingle
-    label: Header Alignment
-    items:
-      - { label: Left, value: left }
-      - { label: Center, value: center }
-    default: left
 
   # ----- Pricing -----
   - identifier: pricing_plans

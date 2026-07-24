@@ -1,0 +1,70 @@
+{
+	"$schema": "../../../../schema/component-manifest.schema.json",
+	"name": "Testimonials",
+	"type": "content-element",
+	"version": "1.1.0",
+	"min_core_version": "1.0.0",
+	"description": "Customer quotes in six layouts: an XL single centered quote, a long-form quote flow, a centered text-only quote slider, a 3-column card grid with stars, an image+quote slider, and a featured dark treatment with portrait.",
+	"when_to_use": "Narrative social proof from named customers. Use Credibility (reviews) for star-rated review volumes with aggregate scores instead of individual stories.",
+	"capabilities": [
+		"single hero quote layouts (quote-xl, quote-flow with dedicated long_quote field)",
+		"centered text-only quote slider (slider-text) paged through items with progress dots",
+		"card grid with star decoration and avatars",
+		"slider pairing a portrait image left with the quote right",
+		"featured dark layout with large portrait and an optional per-item CTA link",
+		"per-item name, role, company, avatar, portrait media, and link"
+	],
+	"variants": [
+		{
+			"value": "quote-xl",
+			"description": "Single large centered quote from the first item on a cream band. Default."
+		},
+		{
+			"value": "quote-flow",
+			"description": "Long-form quote; uses long_quote, falling back to the first item's quote."
+		},
+		{
+			"value": "slider-text",
+			"description": "Centered text-only quote slider: attribution above, large bold quote, progress dots. Paged through items."
+		},
+		{
+			"value": "cards",
+			"description": "3-column bordered cards with stars, quote, avatar, and attribution. Uses the eyebrow/headline/intro header."
+		},
+		{
+			"value": "slider",
+			"description": "Portrait (items[].media) left, quote right, paged per item with dots + round arrows. Uses the header."
+		},
+		{
+			"value": "featured",
+			"description": "Dark (near-black) band with a square portrait left and white quote right, plus an optional per-item link (link/link_label)."
+		}
+	],
+	"atoms": [
+		"Eyebrow",
+		"SliderArrow"
+	],
+	"breakpoints": {
+		"mobile": "Cards stack; slider/featured show portrait above the quote.",
+		"desktop": "3-column cards; slider/featured split portrait and quote."
+	},
+	"figma": {
+		"file": "Factory_Library_WORKING_260723",
+		"fileKey": "avP1L4LoOxY5ukjT4bAajX",
+		"nodeId": "773:55689",
+		"dateStamp": "2026-07-23",
+		"moduleHeader": null
+	},
+	"composer_dependencies": [],
+	"npm_dependencies": [],
+	"ai": {
+		"prompt_summary": "Testimonials: customer quotes. Settings: variant (quote-xl|quote-flow|slider-text|cards|slider|featured, matching Figma), eyebrow, headline, intro (used by cards/slider header), long_quote (quote-flow only). Quotes in items[] (min 1): { quote, name, role, company, avatar (small round image), media (portrait for slider/featured), link + link_label (optional CTA for the featured variant) }. All quotes render in the sans face with an accent-coloured quote mark.",
+		"content_guidelines": "Quotes in first person, 1-3 sentences (long_quote may run 1-2 paragraphs). Always attribute with name + role/company. 3 items for cards; several for slider-text/slider. Add a per-item link only on the featured variant.",
+		"field_hints": {
+			"long_quote": "Only read by quote-flow; falls back to the first item's quote when empty.",
+			"items.media": "Larger portrait used by the slider and featured variants; avatar stays the small round image.",
+			"items.quote": "No surrounding quotation marks — the layout adds them.",
+			"items.link": "Only rendered by the featured variant (items[0]); shows as 'Zur Case Study →' using link_label."
+		}
+	}
+}

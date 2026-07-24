@@ -1,9 +1,22 @@
 name: factory/teaser
 title: Teaser
-description: A polymorphic section that lists records of any active record type (Property, News, …) as a grid or slider.
+description: A polymorphic section that lists records of any active record type (Property, News, …) in one of five Figma layouts — cards, cards-compact, list, feature, or edge.
 group: factory
 icon: content-list
 fields:
+  # Variant values mirror the Figma component set exactly (773:55229).
+  - identifier: variant
+    type: Select
+    renderType: selectSingle
+    label: Variant
+    items:
+      - { label: Cards (4-column bordered cards), value: cards }
+      - { label: 'Cards Compact (3-column, borderless)', value: cards-compact }
+      - { label: List (stacked rows), value: list }
+      - { label: Feature (one lead + list), value: feature }
+      - { label: 'Edge (horizontal slider, breakout)', value: edge }
+    default: cards
+
   # ------------------------------------------------------------
   # Header block (identical to img_slider — editors transfer muscle memory)
   # ------------------------------------------------------------
@@ -91,10 +104,9 @@ fields:
         items:
           - { label: Solid, value: solid }
           - { label: Outline, value: outline }
-          - { label: Soft, value: soft }
-          - { label: Subtle, value: subtle }
           - { label: Ghost, value: ghost }
-          - { label: Link, value: link }
+          - { label: Outline White (on-dark), value: outline-white }
+          - { label: White Solid (on-dark), value: white-solid }
       - identifier: button_size
         type: Select
         renderType: selectSingle
@@ -110,84 +122,6 @@ fields:
       - { identifier: leading, type: Checkbox, label: Leading Icon }
       - { identifier: trailing, type: Checkbox, label: Trailing Icon }
       - { identifier: block, type: Checkbox, label: Full Width }
-
-  # ------------------------------------------------------------
-  # Layout
-  # ------------------------------------------------------------
-  - identifier: layout
-    type: Select
-    renderType: selectSingle
-    label: Layout
-    items:
-      - { label: Grid, value: grid }
-      - { label: Slider, value: slider }
-    default: grid
-
-  - identifier: columns
-    type: Select
-    renderType: selectSingle
-    label: Columns
-    items:
-      - { label: '2', value: '2' }
-      - { label: '3', value: '3' }
-      - { label: '4', value: '4' }
-    default: '3'
-
-  - identifier: aspect_ratio
-    type: Select
-    renderType: selectSingle
-    label: Card Image Aspect Ratio
-    items:
-      - { label: Auto (native), value: auto }
-      - { label: Widescreen (16:9), value: '16/9' }
-      - { label: Classic (4:3), value: '4/3' }
-      - { label: Cinematic (21:9), value: '21/9' }
-      - { label: Square (1:1), value: '1/1' }
-    default: '4/3'
-
-  - identifier: show_arrows
-    type: Checkbox
-    label: Show Navigation Arrows
-    default: 1
-    displayCond: 'FIELD:layout:=:slider'
-
-  - identifier: show_pagination
-    type: Checkbox
-    label: Show Pagination Dots
-    default: 0
-    displayCond: 'FIELD:layout:=:slider'
-
-  - identifier: autoplay
-    type: Checkbox
-    label: Autoplay
-    default: 0
-    displayCond: 'FIELD:layout:=:slider'
-
-  - identifier: loop
-    type: Checkbox
-    label: Loop
-    default: 0
-    displayCond: 'FIELD:layout:=:slider'
-
-  - identifier: slider_overflow
-    type: Select
-    renderType: selectSingle
-    label: Slider Overflow
-    description: 'Contained: stays inside the page container. Breakout: extends the track past the container edge(s) to the viewport edge so extra slides peek in.'
-    items:
-      - { label: 'Contained', value: contained }
-      - { label: 'Breakout — extend right', value: breakout-right }
-      - { label: 'Breakout — extend left', value: breakout-left }
-      - { label: 'Breakout — extend both sides', value: breakout-both }
-    default: contained
-    displayCond: 'FIELD:layout:=:slider'
-
-  - identifier: slider_show_overflow
-    type: Checkbox
-    label: Show opposite-side peek
-    description: 'When on, slides that scroll past the container on the non-breakout side stay visible extending toward the other viewport edge (symmetric peek). No effect on the contained layout.'
-    default: 0
-    displayCond: 'FIELD:slider_overflow:!=:contained'
 
   # ------------------------------------------------------------
   # Record source

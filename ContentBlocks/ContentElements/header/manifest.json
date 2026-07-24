@@ -1,0 +1,63 @@
+{
+	"$schema": "../../../../schema/component-manifest.schema.json",
+	"name": "Header",
+	"type": "content-element",
+	"version": "1.1.0",
+	"min_core_version": "1.0.0",
+	"description": "Site-wide page header with logo (text or image), primary navigation with optional active marking, an optional CTA button, and mega-menu dropdowns grouped into columns plus an optional featured teaser column (mega variant).",
+	"when_to_use": "Exactly one Header per site, on the shared layout. Pick transparent when it sits over a Hero with imagery; mega when the navigation needs grouped second-level links.",
+	"capabilities": [
+		"logo as text or uploaded image (svg/png/webp)",
+		"primary navigation with per-link active flag (active shows a brand-primary underline)",
+		"optional CTA button (cta_label + cta_to) — classic/transparent hide it, minimal/mega show it",
+		"mega-menu dropdowns: child links grouped into columns via a group heading",
+		"optional per-link featured teaser column in the mega panel (image + title + text)",
+		"transparent over-hero mode with light text"
+	],
+	"variants": [
+		{
+			"value": "classic",
+			"description": "White bar with bottom border. Default."
+		},
+		{
+			"value": "transparent",
+			"description": "Transparent over the hero, light text — place directly above a Hero."
+		},
+		{
+			"value": "minimal",
+			"description": "Centered logo with burger + CTA."
+		},
+		{
+			"value": "mega",
+			"description": "Nav links open mega-menu dropdowns built from links[].children (grouped columns)."
+		}
+	],
+	"atoms": [
+		"Button"
+	],
+	"breakpoints": {
+		"mobile": "Navigation collapses behind a burger; CTA stays visible where space allows.",
+		"desktop": "Horizontal nav; mega-menu opens as a full-width panel."
+	},
+	"figma": {
+		"file": "Factory_Library_WORKING_260723",
+		"fileKey": "avP1L4LoOxY5ukjT4bAajX",
+		"nodeId": "773:42892",
+		"dateStamp": "2026-07-23",
+		"moduleHeader": null
+	},
+	"composer_dependencies": [],
+	"npm_dependencies": [
+		"@iconify/vue"
+	],
+	"ai": {
+		"prompt_summary": "Header: site header/navigation. Settings: variant (classic|transparent|minimal|mega), logo_text (fallback when no image), logo_image, cta_label, cta_to (CTA shows only in minimal/mega). Navigation in links[]: { label, to, active, children[] (mega variant): { group (column heading), label, to }, feature_title/feature_body/feature_image (optional mega teaser column) }.",
+		"content_guidelines": "4-6 primary links with 1-2 word labels. One CTA at most (e.g. 'Kontakt'). Mega children: 2-3 groups with 3-5 links each; add a feature_title/feature_image to spotlight one topic.",
+		"field_hints": {
+			"links.active": "Marks the link as the current page (brand-primary underline).",
+			"links.children": "Only used by the mega variant; the group field clusters children into columns.",
+			"links.feature_title": "Optional mega-panel teaser column (with feature_image + feature_body); leave empty to omit.",
+			"logo_text": "Used when no logo_image is uploaded."
+		}
+	}
+}

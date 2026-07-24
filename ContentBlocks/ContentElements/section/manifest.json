@@ -1,0 +1,40 @@
+{
+	"$schema": "../../../../schema/component-manifest.schema.json",
+	"name": "Section",
+	"type": "content-element",
+	"version": "1.0.0",
+	"min_core_version": "1.0.0",
+	"description": "Flexible mid-page content section: icon + eyebrow + title + description + buttons paired with a media gallery (images/videos) that becomes a Splide slider with more than one item. Media position, column split, text alignment, section background (color/image with overlay), aspect ratio, captions, and a full-screen lightbox are all configurable.",
+	"when_to_use": "Narrative blocks like 'Our vision' or feature showcases with imagery. Use Hero for full-bleed openers, ImgSlider when the media row should dominate under a headline, River for alternating multi-row stories.",
+	"capabilities": [
+		"media position left/right/top/bottom with narrow/normal/wide column split",
+		"gallery of images and videos; slider with arrows/pagination when >1 item",
+		"full-bleed section background: theme color or image with dark/light overlay",
+		"full-screen lightbox on click (Teleport modal, on by default)",
+		"caption below, overlaid, or hidden; section-wide aspect ratio presets",
+		"0..n CTA buttons (shared Factory Button spec)"
+	],
+	"atoms": ["Button", "Eyebrow", "SliderArrow"],
+	"breakpoints": {
+		"mobile": "Layout stacks vertically regardless of media_position.",
+		"desktop": "Two-column split per media_position/media_width; top/bottom media spans full content width."
+	},
+	"figma": {
+		"fileKey": null,
+		"nodeId": null,
+		"dateStamp": null,
+		"moduleHeader": null
+	},
+	"composer_dependencies": [],
+	"npm_dependencies": ["@splidejs/vue-splide", "@iconify/vue"],
+	"ai": {
+		"prompt_summary": "Section: text + media gallery section. Text: icon (Iconify, above eyebrow), eyebrow, eyebrow_decoration (none|bar|dot), eyebrow_color (7 semantic tokens), title (supports <strong> accent), description, buttons[] (shared Factory Button spec). Layout: media_position (right|left|bottom|top), media_width (narrow|normal|wide), content_align (left|center|right), text_max_width (narrow|normal|wide|full). Background: background_type (none|color|image), background_color (semantic token), background_image, background_overlay (none|dark|light). Media in media[]: { type (image|video), image, video, video_url, poster, alt, caption }; gallery-wide: aspect_ratio (auto|1/1|16/9|4/3|3/2|21/9|3/4|2/3), caption_position (below|overlay|none), show_arrows, show_pagination, enable_lightbox.",
+		"content_guidelines": "One <strong> emphasis per title at most. Description 2-4 sentences. Captions short enough to overlay. Do not stack two Sections with the same background color.",
+		"field_hints": {
+			"background_color": "Semantic theme token, never a hex value; only read when background_type is color.",
+			"media": "More than one item turns the gallery into a slider.",
+			"enable_lightbox": "On by default — clicking media opens a full-screen modal.",
+			"media_width": "Only applies when media is left/right of the text."
+		}
+	}
+}

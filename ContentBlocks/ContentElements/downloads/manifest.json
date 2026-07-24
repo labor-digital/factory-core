@@ -1,0 +1,65 @@
+{
+	"$schema": "../../../../schema/component-manifest.schema.json",
+	"name": "Downloads",
+	"type": "content-element",
+	"version": "1.1.0",
+	"min_core_version": "1.0.0",
+	"description": "List or grid of downloadable files with colour-coded format badges, file-type icons, sizes, and descriptions. Layouts: rows list, icon card grid, one featured download + secondary list, grouped by category, or a two-column compact mini-list.",
+	"when_to_use": "Document sections — brochures, data sheets, price lists, press kits. Use one Downloads block per page region; the grouped variant replaces multiple blocks when files span categories; compact suits dense footers/sidebars.",
+	"capabilities": [
+		"colour-coded format badge (Badge atom) + file-type icon derived from the extension (override via ext field)",
+		"human-readable size label per file",
+		"featured layout: one highlighted download plus a secondary list",
+		"category grouping via a free-text group label per file",
+		"compact two-column mini-list"
+	],
+	"variants": [
+		{
+			"value": "list",
+			"description": "Rows: file icon + title + format badge + size, round download action. Default."
+		},
+		{
+			"value": "icons",
+			"description": "Card grid (3 col) with large file icons and descriptions."
+		},
+		{
+			"value": "featured",
+			"description": "First file highlighted as a bordered hero card, the rest as a secondary list."
+		},
+		{
+			"value": "grouped",
+			"description": "Rows clustered under their items[].group headings with a per-group file count."
+		},
+		{
+			"value": "compact",
+			"description": "Two-column mini rows: format badge + title + size, no icon or card."
+		}
+	],
+	"atoms": [
+		"Eyebrow",
+		"Badge",
+		"Button"
+	],
+	"breakpoints": {
+		"mobile": "Single column rows / cards; compact collapses to one column.",
+		"desktop": "Icon grid in 3 columns; featured splits hero + list; compact in 2 columns."
+	},
+	"figma": {
+		"file": "Factory_Library_WORKING_260723",
+		"fileKey": "avP1L4LoOxY5ukjT4bAajX",
+		"nodeId": "773:40748",
+		"dateStamp": "2026-07-23",
+		"moduleHeader": null
+	},
+	"composer_dependencies": [],
+	"npm_dependencies": [],
+	"ai": {
+		"prompt_summary": "Downloads: file list/grid aligned to Figma 773:40748. Settings: variant (list|icons|featured|grouped|compact), eyebrow, headline, intro. Files in items[] (min 1): { title, desc (icons/featured only), file (pdf/doc/xls/ppt/zip/img/mp4/dwg/txt), ext (format override, inferred from file URL when empty), file_size (human readable, e.g. '4.2 MB'), group (grouped variant only) }. Format badge colour + file icon come from ext.",
+		"content_guidelines": "Titles are document names, not sentences. 3-8 files; descriptions one line. Group labels short nouns (e.g. Broschüren, Technik).",
+		"field_hints": {
+			"items.ext": "Only set when the format cannot be inferred from the file URL.",
+			"items.file_size": "Free text — include the unit (MB/KB).",
+			"items.group": "Only rendered by the grouped variant."
+		}
+	}
+}

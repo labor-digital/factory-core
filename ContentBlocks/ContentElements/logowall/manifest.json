@@ -1,0 +1,59 @@
+{
+	"$schema": "../../../../schema/component-manifest.schema.json",
+	"name": "Logowall",
+	"type": "content-element",
+	"version": "1.0.1",
+	"min_core_version": "1.0.0",
+	"description": "Wall of client/partner logos as a static grid (3-6 columns), an auto-scrolling marquee with masked edges, a compact single row without header, or a paginated prev/next slider.",
+	"when_to_use": "Social proof through recognizable brands — 'Trusted by' rows near the top or references further down. Use Credibility (certificates) when the logos are certifications rather than clients.",
+	"capabilities": [
+		"grid with configurable column count (3-6)",
+		"marquee: continuously scrolling logo track with fade-out edge masks",
+		"compact headerless single row",
+		"paginated slider with prev/next arrows and 4/6/8 logos per page",
+		"optional link per logo"
+	],
+	"variants": [
+		{
+			"value": "grid",
+			"description": "Static grid; columns setting picks 3-6 columns. Default."
+		},
+		{
+			"value": "marquee",
+			"description": "Auto-scrolling row (logos duplicated for a seamless loop), edges masked."
+		},
+		{
+			"value": "compact",
+			"description": "Single row without the header block."
+		},
+		{
+			"value": "slider",
+			"description": "Paginated with prev/next arrows; per_page sets 4/6/8 logos per page."
+		}
+	],
+	"atoms": [
+		"Eyebrow"
+	],
+	"breakpoints": {
+		"mobile": "Grid collapses to 2-3 columns; marquee keeps scrolling.",
+		"desktop": "Full column count honored."
+	},
+	"figma": {
+		"file": "Factory_Library_WORKING_260723",
+		"fileKey": "avP1L4LoOxY5ukjT4bAajX",
+		"nodeId": "773:44015",
+		"dateStamp": "2026-07-23",
+		"moduleHeader": null
+	},
+	"composer_dependencies": [],
+	"npm_dependencies": [],
+	"ai": {
+		"prompt_summary": "Logowall: partner/client logo wall. Settings: variant (grid|marquee|compact|slider), eyebrow, headline, intro, columns (3|4|5|6, grid only), per_page (4|6|8, slider only). Logos in logos[] (min 1): { label (alt text fallback), image (svg/png/webp/jpg), url (optional link) }.",
+		"content_guidelines": "6-12 logos; prefer SVG for crispness. Labels are company names (used as alt text). Skip headline for the compact variant — it is not rendered there.",
+		"field_hints": {
+			"logos.label": "Company name; serves as the alt-text fallback.",
+			"columns": "Only applies to the grid variant.",
+			"per_page": "Only applies to the slider variant."
+		}
+	}
+}

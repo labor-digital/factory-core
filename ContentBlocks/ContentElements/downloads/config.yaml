@@ -9,10 +9,11 @@ fields:
     renderType: selectSingle
     label: Variant
     items:
-      - { label: List (compact table), value: list }
-      - { label: Icons (card grid with large icons), value: icons }
+      - { label: 'List (rows with icon, badge + size)', value: list }
+      - { label: Icons (card grid with large file icons), value: icons }
       - { label: Featured (one highlight + secondary list), value: featured }
       - { label: Grouped (categorised), value: grouped }
+      - { label: Compact (two-column mini list), value: compact }
     default: list
 
   - identifier: eyebrow

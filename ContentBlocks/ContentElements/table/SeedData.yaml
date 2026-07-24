@@ -2,7 +2,6 @@ variant: pricing
 eyebrow: Übersicht
 headline: Alles auf einen Blick.
 intro: Klar strukturierte Vergleiche — damit Sie schnell die passende Entscheidung treffen können.
-head_align: center
 pricing_plans:
   - { label: Basis,    price: 'ab 2.400 €',   per: Pauschal,    note: 'Für kleinere Anpassungen', featured: 0, cta_label: Anfragen }
   - { label: Standard, price: 'ab 6.900 €',   per: Pauschal,    note: 'Unser meistgewählter Tarif', featured: 1, featured_tag: Empfohlen, cta_label: Anfragen }
@@ -15,3 +14,65 @@ pricing_rows:
   - { feature: 'Bauleitung',                 help: 'Vor-Ort-Koordination.',                   values: 'false, true, true' }
   - { feature: 'Statik & Genehmigung',       help: 'Erstellung und Einreichung.',             values: 'false, false, true' }
   - { feature: 'Garantie',                   help: 'Gewährleistung gemäß VOB.',                values: '2 J., 5 J., 10 J.' }
+compare_items:
+  - name: 'Werkstatt-Kompakt'
+    tagline: 'Für Selbermacher'
+    price: '12.900 €'
+    featured: 0
+    cta_label: 'Beratung anfragen'
+    specs:
+      - { label: 'Grundfläche', value: 'ca. 28 m²' }
+      - { label: 'Material', value: 'KVH Fichte' }
+      - { label: 'Dach', value: 'Pultdach' }
+      - { label: 'Ausstattung', value: 'Basis' }
+      - { label: 'Lieferzeit', value: '8–10 Wochen' }
+  - name: 'Werkstatt-Professional'
+    tagline: 'Unser Bestseller'
+    price: '24.500 €'
+    featured: 1
+    featured_tag: 'Empfohlen'
+    cta_label: 'Empfohlen'
+    specs:
+      - { label: 'Grundfläche', value: 'ca. 42 m²' }
+      - { label: 'Material', value: 'KVH Eiche' }
+      - { label: 'Dach', value: 'Satteldach' }
+      - { label: 'Ausstattung', value: 'Premium' }
+      - { label: 'Lieferzeit', value: '10–12 Wochen' }
+  - name: 'Werkstatt-Manufaktur'
+    tagline: 'Individuell konfiguriert'
+    price: 'ab 38.000 €'
+    featured: 0
+    cta_label: 'Konfigurator starten'
+    specs:
+      - { label: 'Grundfläche', value: 'ab 60 m²' }
+      - { label: 'Material', value: 'Auf Wunsch' }
+      - { label: 'Dach', value: 'Konfigurierbar' }
+      - { label: 'Ausstattung', value: 'Vollausstattung' }
+      - { label: 'Lieferzeit', value: 'auf Anfrage' }
+specs_columns:
+  - { key: 'property', label: 'Eigenschaft' }
+  - { key: 'value',    label: 'Wert' }
+  - { key: 'unit',     label: 'Einheit' }
+  - { key: 'norm',     label: 'Norm' }
+  - { key: 'note',     label: 'Hinweis' }
+specs_rows:
+  - { group: 'Maße & Gewicht',      property: 'Grundfläche',   value: '42',                     unit: 'm²',     norm: 'DIN 277',       note: '6,0 × 7,0 m' }
+  - { group: 'Maße & Gewicht',      property: 'Firsthöhe',     value: '3,80',                   unit: 'm',      norm: 'DIN 18065',     note: 'über OK Bodenplatte' }
+  - { group: 'Material & Bauweise', property: 'Wandmaterial',  value: 'KVH Fichte',             unit: '',       norm: 'DIN EN 14080',  note: '14 cm Dämmung' }
+  - { group: 'Material & Bauweise', property: 'Dachdeckung',   value: 'Doppelstehfalz Zink',    unit: '',       norm: 'DIN 18338',     note: '0,7 mm' }
+  - { group: 'Technik & Energie',   property: 'Energiestandard', value: 'KfW-EH 55',            unit: '',       norm: 'GEG 2024',      note: 'förderfähig' }
+  - { group: 'Technik & Energie',   property: 'Heizung',       value: 'Sole-Wasser-Wärmepumpe', unit: 'kW',     norm: 'DIN EN 14511',  note: '8 kW' }
+data_columns:
+  - { key: 'ref',    label: 'Referenz', align: left,  numeric: 0, is_status: 0, suffix: '' }
+  - { key: 'name',   label: 'Projekt',  align: left,  numeric: 0, is_status: 0, suffix: '' }
+  - { key: 'type',   label: 'Art',      align: left,  numeric: 0, is_status: 0, suffix: '' }
+  - { key: 'loc',    label: 'Ort',      align: left,  numeric: 0, is_status: 0, suffix: '' }
+  - { key: 'area',   label: 'Fläche',   align: right, numeric: 1, is_status: 0, suffix: ' m²' }
+  - { key: 'year',   label: 'Jahr',     align: right, numeric: 1, is_status: 0, suffix: '' }
+  - { key: 'status', label: 'Status',   align: left,  numeric: 0, is_status: 1, suffix: '' }
+data_rows:
+  - { row_json: '{"ref":"PR-2025-002","name":"Erweiterung Schulgebäude","type":"Neubau","loc":"Musterstadt","area":980,"year":2025,"status":"In Planung"}' }
+  - { row_json: '{"ref":"PR-2024-018","name":"Weingut zum Mehrfamilienhaus","type":"Neubau","loc":"Musterstadt","area":640,"year":2024,"status":"Abgeschlossen"}' }
+  - { row_json: '{"ref":"PR-2024-031","name":"Doppelhaus Musterstadt","type":"Neubau","loc":"Musterstadt","area":340,"year":2024,"status":"In Bauphase"}' }
+  - { row_json: '{"ref":"PR-2023-040","name":"Altbau-Sanierung Musterstadt","type":"Sanierung","loc":"Musterstadt","area":180,"year":2023,"status":"Abgeschlossen"}' }
+  - { row_json: '{"ref":"PR-2022-091","name":"Wohnanlage Musterstadt","type":"Neubau","loc":"Musterstadt","area":1240,"year":2022,"status":"Abgeschlossen"}' }

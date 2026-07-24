@@ -1,0 +1,65 @@
+{
+	"$schema": "../../../../schema/component-manifest.schema.json",
+	"name": "Contact",
+	"type": "content-element",
+	"version": "2.0.0",
+	"min_core_version": "1.0.0",
+	"description": "Contact section combining an info block (organisation, address, phone, email, hours, social links) with a contact form. Layouts: split info/form, stacked with centered form, three info tiles, contact-person cards, or a split with photo.",
+	"when_to_use": "Contact pages and page-end conversion sections where visitors should reach out. Use Cta with the inline-form variant for a lightweight name+email capture instead of a full contact section.",
+	"capabilities": [
+		"contact form with configurable POST endpoint and success message",
+		"organisation info block: address, phone (auto tel: link), email, opening hours",
+		"LinkedIn / Instagram social links and privacy-policy link",
+		"contact-person cards with photo, role, email, phone (persons variant)",
+		"photo column beside the form (split-image variant)"
+	],
+	"variants": [
+		{
+			"value": "split",
+			"description": "Info block left, form right. Default."
+		},
+		{
+			"value": "stacked",
+			"description": "Info on top, centered form below."
+		},
+		{
+			"value": "tiles",
+			"description": "Three info tiles (address / phone / email) above the form."
+		},
+		{
+			"value": "persons",
+			"description": "Grid of contact persons from persons[] instead of a generic info block."
+		},
+		{
+			"value": "split-image",
+			"description": "Photo left (photo field), form right."
+		}
+	],
+	"atoms": [
+		"Button",
+		"Eyebrow"
+	],
+	"breakpoints": {
+		"mobile": "Everything stacks; tiles and person cards go single column.",
+		"desktop": "Two-column split for split/split-image; persons and tiles in a three-column grid; stacked centers an info band above a 720px form."
+	},
+	"figma": {
+		"file": "Factory_Library_WORKING_260723",
+		"fileKey": "avP1L4LoOxY5ukjT4bAajX",
+		"nodeId": "773:37489",
+		"dateStamp": "2026-07-23",
+		"moduleHeader": null
+	},
+	"composer_dependencies": [],
+	"npm_dependencies": [],
+	"ai": {
+		"prompt_summary": "Contact: info + form section aligned to Figma 773:37489. Settings: variant (split|stacked|tiles|persons|split-image), eyebrow, headline, intro, org, address_street, address_zip, address_city, phone, email, hours, linkedin_url, instagram_url, success_text, form_endpoint (POST URL, empty = demo no-op), privacy_link; split-image only: photo. persons[] (persons variant): { name (required), role, email, phone, photo }. Header alignment is variant-driven (split/persons/split-image left; stacked/tiles centered) — there is no alignment field. Form fields are underline-only.",
+		"content_guidelines": "Headline short and inviting (e.g. 'Sprechen wir über Ihr Projekt'). Intro 1-2 sentences. 2-4 contact persons. Keep success_text reassuring with a concrete response time.",
+		"field_hints": {
+			"phone": "Display format with spaces is fine — the tel: link strips them automatically.",
+			"hours": "Optional opening-hours info line (no direct Figma prop; kept as a common contact-info generalization). Rendered in split/stacked when set.",
+			"form_endpoint": "Leave empty unless a real form backend exists; the form then stays demo/no-op.",
+			"persons": "Only rendered by the persons variant."
+		}
+	}
+}

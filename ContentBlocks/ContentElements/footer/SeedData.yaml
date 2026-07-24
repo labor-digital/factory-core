@@ -1,0 +1,46 @@
+variant: columns
+logo_text: Brand
+tagline: Kurze Tagline oder Claim, die das Unternehmen in einem Satz beschreibt.
+claim: Lust auf ein Projekt zusammen?
+address: |
+  Musterstraße 12
+  80331 München
+  Deutschland
+cta_primary: Kontakt aufnehmen
+cta_secondary: Newsletter abonnieren
+copyright: © 2026 Muster GmbH. Alle Rechte vorbehalten.
+cols:
+  - title: Leistungen
+    links:
+      - { label: Strategie, to: '#' }
+      - { label: Design, to: '#' }
+      - { label: Development, to: '#' }
+      - { label: Consulting, to: '#' }
+      - { label: Support, to: '#' }
+  - title: Unternehmen
+    links:
+      - { label: 'Über uns', to: '#' }
+      - { label: Team, to: '#' }
+      - { label: Karriere, to: '#' }
+      - { label: Presse, to: '#' }
+      - { label: Kontakt, to: '#' }
+  - title: Ressourcen
+    links:
+      - { label: Blog, to: '#' }
+      - { label: 'Case Studies', to: '#' }
+      - { label: Downloads, to: '#' }
+      - { label: FAQ, to: '#' }
+      - { label: Newsletter, to: '#' }
+contacts:
+  - { label: '+49 6135 12 34 56', to: 'tel:+49613512345' }
+  - { label: 'hallo@musterfirma.de', to: 'mailto:hallo@musterfirma.de' }
+socials:
+  - { label: IN, to: '#' }
+  - { label: LI, to: '#' }
+  - { label: XI, to: '#' }
+  - { label: YT, to: '#' }
+legal:
+  - { label: Impressum, to: '#' }
+  - { label: Datenschutz, to: '#' }
+  - { label: AGB, to: '#' }
+  - { label: Cookies, to: '#' }

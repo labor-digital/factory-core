@@ -7,58 +7,31 @@ fields:
   # ------------------------------------------------------------
   # Hero-level settings (apply to the whole hero / slider)
   # ------------------------------------------------------------
-  - identifier: content_position_x
+  - identifier: variant
     type: Select
     renderType: selectSingle
-    label: Content Position (Horizontal)
+    label: Variant
+    description: Content alignment; "slider" adds side navigation arrows for multi-slide heroes. Slideshow dots appear automatically when there is more than one slide.
     items:
       - { label: Left, value: left }
       - { label: Center, value: center }
       - { label: Right, value: right }
-    default: center
-
-  - identifier: content_position_y
-    type: Select
-    renderType: selectSingle
-    label: Content Position (Vertical)
-    items:
-      - { label: Top, value: top }
-      - { label: Center, value: center }
-      - { label: Bottom, value: bottom }
-    default: center
-
-  - identifier: height
-    type: Select
-    renderType: selectSingle
-    label: Hero Height
-    items:
-      - { label: Small, value: small }
-      - { label: Medium, value: medium }
-      - { label: Large, value: large }
-      - { label: Fullscreen, value: fullscreen }
-    default: medium
-
-  - identifier: show_arrows
-    type: Checkbox
-    label: Show Navigation Arrows
-    default: 0
-
-  - identifier: show_pagination
-    type: Checkbox
-    label: Show Pagination Dots
-    default: 1
+      - { label: 'Slider (left, with arrows)', value: slider }
+    default: left
 
   - identifier: autoplay
     type: Checkbox
     label: Autoplay
-    description: Automatically advance to the next slide.
+    description: Automatically advance to the next slide (slider variant).
     default: 0
+    displayCond: 'FIELD:variant:=:slider'
 
   - identifier: loop
     type: Checkbox
     label: Loop
-    description: Continue from the first slide after the last.
+    description: Continue from the first slide after the last (slider variant).
     default: 1
+    displayCond: 'FIELD:variant:=:slider'
 
   # ------------------------------------------------------------
   # Slides collection (min 1 slide required, 1 is auto-seeded)
@@ -72,16 +45,17 @@ fields:
       - identifier: eyebrow
         type: Text
         label: Eyebrow
-        description: Small label displayed above the headline.
+        description: Small label above the title. Supports " · " separators for a location/tagline line.
 
-      - identifier: headline
+      - identifier: title
         type: Text
-        label: Headline
+        label: Title
+        description: Main heading. Use <strong>…</strong> to emphasise part of the title.
 
-      - identifier: text
+      - identifier: subline
         type: Textarea
-        label: Text
-        description: Optional supporting paragraph.
+        label: Subline
+        description: Short supporting line below the title.
 
       - identifier: text_color
         type: Select
@@ -194,10 +168,9 @@ fields:
             items:
               - { label: Solid, value: solid }
               - { label: Outline, value: outline }
-              - { label: Soft, value: soft }
-              - { label: Subtle, value: subtle }
               - { label: Ghost, value: ghost }
-              - { label: Link, value: link }
+              - { label: Outline White (on-dark), value: outline-white }
+              - { label: White Solid (on-dark), value: white-solid }
           - identifier: button_size
             type: Select
             renderType: selectSingle

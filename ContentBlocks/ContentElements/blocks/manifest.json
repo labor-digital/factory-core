@@ -1,0 +1,69 @@
+{
+	"$schema": "../../../../schema/component-manifest.schema.json",
+	"name": "Blocks",
+	"type": "content-element",
+	"version": "1.1.0",
+	"min_core_version": "1.0.0",
+	"description": "Searchable, filterable listing of content blocks (knowledge base, glossary, articles). All filtering, search, and pagination happen client-side over the authored items; layouts range from card grids over compact lists to a magazine layout with one featured item.",
+	"when_to_use": "Knowledge bases, glossaries, blog/article overviews with many entries the visitor should narrow down themselves. Use News for press/date-driven content; use Teaser to list records of a record type instead of hand-authored items.",
+	"capabilities": [
+		"client-side full-text search over title/excerpt with configurable placeholder",
+		"category filtering via pills, tabs, or dropdowns (list variant adds a type filter + sort)",
+		"client-side pagination with configurable items per page",
+		"six layouts: card grid, compact cards, filterable list, magazine (1 featured + 4 small)",
+		"per-item image, date, read time, and read-more link"
+	],
+	"variants": [
+		{
+			"value": "cards-pills",
+			"description": "Card grid with category filter pills. Default."
+		},
+		{
+			"value": "cards-tabs",
+			"description": "Card grid with underlined category tabs."
+		},
+		{
+			"value": "compact-pills",
+			"description": "Compact cards (no image emphasis) with filter pills."
+		},
+		{
+			"value": "compact-tabs",
+			"description": "Compact cards with category tabs."
+		},
+		{
+			"value": "list-dropdown",
+			"description": "Row list with category + type dropdown filters and sort. Uses the types field."
+		},
+		{
+			"value": "magazine-pills",
+			"description": "Magazine layout: 1 featured item + 4 small, with filter pills."
+		}
+	],
+	"atoms": [
+		"SectionHead",
+		"Button",
+		"Tag"
+	],
+	"breakpoints": {
+		"mobile": "Single column; filters wrap into multiple rows.",
+		"desktop": "3-column card grid; magazine splits featured left, small items right."
+	},
+	"figma": {
+		"file": "Factory_Library_WORKING_260723",
+		"fileKey": "avP1L4LoOxY5ukjT4bAajX",
+		"nodeId": "773:34907",
+		"dateStamp": "2026-07-23",
+		"moduleHeader": null
+	},
+	"composer_dependencies": [],
+	"npm_dependencies": [],
+	"ai": {
+		"prompt_summary": "Blocks: searchable/filterable article listing. Settings: variant (cards-pills|cards-tabs|compact-pills|compact-tabs|list-dropdown|magazine-pills), eyebrow, headline, intro, categories (one per line), types (one per line, list-dropdown only), search_placeholder, per_page (default 9). Content in items[] (min 1): title (required), excerpt, category, type, date, read_time (minutes), image, link.",
+		"content_guidelines": "6-12 items so filters and pagination are meaningful. Excerpts 1-2 sentences. 3-5 categories; every item category must appear verbatim in the categories field.",
+		"field_hints": {
+			"categories": "Newline-separated list driving the pill/tab/dropdown filters; values must match items[].category exactly.",
+			"types": "Newline-separated; only used by the list-dropdown variant's second filter.",
+			"items.read_time": "Whole minutes; rendered as a small meta label."
+		}
+	}
+}

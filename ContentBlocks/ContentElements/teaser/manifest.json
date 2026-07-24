@@ -1,0 +1,54 @@
+{
+	"$schema": "../../../../schema/component-manifest.schema.json",
+	"name": "Teaser",
+	"type": "content-element",
+	"version": "2.0.0",
+	"min_core_version": "1.0.0",
+	"description": "Polymorphic record teaser: lists records of any active record type (Property, ...) in one of five Figma layouts — cards, cards-compact, list, feature, or edge. Records are picked manually via relation fields or queried automatically from a storage folder with filter, limit, and order; each record renders through its record type's card component.",
+	"when_to_use": "Reference/portfolio rows fed by structured records — 'Unsere Referenzen', latest properties. Use Blocks or News for hand-authored inline items instead of records.",
+	"capabilities": [
+		"five layout variants: cards (4-col grid), cards-compact (3-col grid), list (stacked rows), feature (lead card + list), edge (horizontal breakout slider)",
+		"record source per active record type (dropdown driven by factory.json active_record_types)",
+		"manual record picking or auto query (storage folder, listing-type filter, limit, order)",
+		"header block identical to ImgSlider (eyebrow + decoration + accent color, <strong> title, buttons)"
+	],
+	"variants": [
+		{ "value": "cards", "description": "4-column bordered card grid. Default." },
+		{ "value": "cards-compact", "description": "3-column card grid." },
+		{ "value": "list", "description": "Single-column stacked rows." },
+		{ "value": "feature", "description": "First record as a lead card plus the remaining records as a side list." },
+		{ "value": "edge", "description": "Horizontal slider whose track extends past the right container edge; arrows sit in the header row." }
+	],
+	"atoms": [
+		"Button",
+		"Eyebrow",
+		"SliderArrow"
+	],
+	"breakpoints": {
+		"mobile": "Grids collapse to one column; edge scrolls horizontally; feature stacks.",
+		"tablet": "cards/cards-compact collapse to 2 columns.",
+		"desktop": "Full variant layout (4/3/1 columns, feature split, edge peek)."
+	},
+	"figma": {
+		"file": "Factory_Library_WORKING_260723",
+		"fileKey": "avP1L4LoOxY5ukjT4bAajX",
+		"nodeId": "773:55229",
+		"dateStamp": "2026-07-23",
+		"moduleHeader": null
+	},
+	"composer_dependencies": [],
+	"npm_dependencies": [
+		"@splidejs/vue-splide",
+		"@iconify/vue"
+	],
+	"ai": {
+		"prompt_summary": "Teaser: polymorphic record listing. Settings: variant (cards|cards-compact|list|feature|edge, matching Figma). Header: eyebrow, eyebrow_decoration (none|bar|dot), eyebrow_color (7 semantic tokens), title (supports <strong> accent), description, text_align (left|center|right), buttons[] (shared Factory Button spec, typically one 'Alle anzeigen' link). Source: record_type (dynamic, from active_record_types), selection_mode (manual|auto); manual: records_property (relation picker, one records_<slug> field per record type); auto: auto_storage_pid (folder, empty = all), auto_filter_listing_type (''|buy|rent), auto_limit (default 6), auto_order ('crdate desc'|'crdate asc'|'title asc').",
+		"content_guidelines": "Header title short with one <strong> emphasis; usually a single ghost/link 'Alle anzeigen' button. 4-8 records; auto mode with a limit is the common default. cards/cards-compact/edge are the primary layouts; list and feature reuse the same record card.",
+		"field_hints": {
+			"variant": "Layout family; the record card interior is owned by the record type's card component.",
+			"record_type": "Options come from factory.json active_record_types at runtime — not a fixed list.",
+			"records_property": "Only read in manual mode; additional records_<slug> pickers appear per active record type.",
+			"auto_storage_pid": "Page/folder holding the records; leave empty to query all locations."
+		}
+	}
+}

@@ -75,8 +75,9 @@ fields:
         items:
           - { label: Solid, value: solid }
           - { label: Outline, value: outline }
-          - { label: White Solid (on-dark), value: white-solid }
+          - { label: Ghost, value: ghost }
           - { label: Outline White (on-dark), value: outline-white }
+          - { label: White Solid (on-dark), value: white-solid }
         default: solid
       - identifier: button_size
         type: Select
@@ -102,13 +103,6 @@ fields:
       - identifier: block
         type: Checkbox
         label: Full Width
-
-  - identifier: form_enabled
-    type: Checkbox
-    label: Inline Form Enabled
-    description: Only used for the Inline Form variant.
-    displayCond: 'FIELD:variant:=:inline-form'
-    default: 1
 
   - identifier: form_name_label
     type: Text

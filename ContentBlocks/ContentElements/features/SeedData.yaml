@@ -1,0 +1,11 @@
+variant: cards
+eyebrow: Leistungen
+headline: Was wir für Sie tun
+intro: Kurzer einleitender Satz, der die Leistungen einordnet und neugierig macht auf die einzelnen Bereiche.
+items:
+  - { icon: i-lucide-target,    title: 'Strategie & Konzept',  text: 'Wir analysieren Zielgruppen, Wettbewerb und Potenziale – und leiten daraus eine tragfähige Strategie ab.', link_label: 'Mehr erfahren' }
+  - { icon: i-lucide-palette,   title: 'Design & Gestaltung',  text: 'Identitäten, Interfaces, Druckstücke. Gestaltung mit Haltung und klarer Gestaltungslogik.',               link_label: 'Mehr erfahren' }
+  - { icon: i-lucide-code,      title: 'Development',          text: 'Saubere, performante Websites und Web-Apps – vom ersten Prototypen bis zum stabilen Betrieb.',           link_label: 'Mehr erfahren' }
+  - { icon: i-lucide-users,     title: 'Beratung & Workshops', text: 'Strukturierte Begleitung, klare Ergebnisse. Wir vermitteln, was intern weitergetragen werden kann.',     link_label: 'Mehr erfahren' }
+  - { icon: i-lucide-pen-tool,  title: 'Content & Redaktion',  text: 'Texte, die tragen. Recherche, Redaktion und Pflege – punktuell oder kontinuierlich.',                    link_label: 'Mehr erfahren' }
+  - { icon: i-lucide-life-buoy, title: 'Support & Wartung',    text: 'Regelmäßige Updates, Monitoring und ein verlässlicher Ansprechpartner für den laufenden Betrieb.',       link_label: 'Mehr erfahren' }

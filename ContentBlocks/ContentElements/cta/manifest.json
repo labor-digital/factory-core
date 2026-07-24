@@ -1,0 +1,61 @@
+{
+	"$schema": "../../../../schema/component-manifest.schema.json",
+	"name": "Cta",
+	"type": "content-element",
+	"version": "2.0.0",
+	"min_core_version": "1.0.0",
+	"description": "Call-to-action banner with eyebrow, a two-tone headline (light line + bold line), body text, and up to two buttons — or an inline name+email form. Backgrounds: soft brand, dark, or a full-bleed image.",
+	"when_to_use": "Conversion moments mid-page or before the footer. Use the inline-form variant for lightweight lead capture; use Contact for a full contact section, and Hero for page openers.",
+	"capabilities": [
+		"two-tone headline: light-weight first line + bold second line",
+		"up to two buttons with on-dark variants (white-solid, outline-white)",
+		"inline form with name + email + submit and a small note (inline-form variant)",
+		"full-bleed background image with text overlay (fullbleed-image variant)"
+	],
+	"variants": [
+		{
+			"value": "split",
+			"description": "Text left, button right on a soft brand background. Default."
+		},
+		{
+			"value": "center-dark",
+			"description": "Centered text on a dark background — pair with white-solid / outline-white buttons."
+		},
+		{
+			"value": "fullbleed-image",
+			"description": "Text over the background_image with a scrim."
+		},
+		{
+			"value": "inline-form",
+			"description": "Name + email + submit form instead of buttons; uses the form_* fields."
+		}
+	],
+	"atoms": [
+		"Button",
+		"Eyebrow"
+	],
+	"breakpoints": {
+		"mobile": "Stacked; buttons and form fields go full width.",
+		"desktop": "Split variant places text and actions side by side."
+	},
+	"figma": {
+		"file": "Factory_Library_WORKING_260723",
+		"fileKey": "avP1L4LoOxY5ukjT4bAajX",
+		"nodeId": "773:38875",
+		"dateStamp": "2026-07-23",
+		"moduleHeader": "Modules / CTA"
+	},
+	"composer_dependencies": [],
+	"npm_dependencies": [
+		"@iconify/vue"
+	],
+	"ai": {
+		"prompt_summary": "Cta: conversion banner. Settings: variant (split|center-dark|fullbleed-image|inline-form), eyebrow, title_light (light-weight line), title_bold (bold line), body; fullbleed-image only: background_image; inline-form only: form_name_label, form_mail_label, form_submit_label, form_note. buttons[] (max 2 — primary first, optional secondary second; ignored by inline-form): { label, to, target, color (primary|secondary), variant (solid|outline|ghost|white-solid|outline-white), button_size, icon, leading, trailing, block }.",
+		"content_guidelines": "Headline lines 2-5 words each; body at most 2 sentences. Primary button first. On center-dark and fullbleed-image use white-solid or outline-white button variants.",
+		"field_hints": {
+			"title_light": "First headline line, rendered in light weight — set up the bold line.",
+			"buttons": "Ignored when variant is inline-form.",
+			"form_note": "Small reassurance line below submit, e.g. privacy hint."
+		}
+	}
+}

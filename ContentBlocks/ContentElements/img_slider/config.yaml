@@ -1,9 +1,22 @@
 name: factory/img-slider
 title: Image Slider
-description: A section with header text plus an image/video slider below, with dot pagination.
+description: A header text block plus an image/video gallery below in one of five layouts — single, grid, thumbs, fullbleed, or edge.
 group: factory
 icon: content-text
 fields:
+  # Variant values mirror the Figma component set exactly (773:43556).
+  - identifier: variant
+    type: Select
+    renderType: selectSingle
+    label: Variant
+    items:
+      - { label: Single (one image + arrows), value: single }
+      - { label: Grid (one large + tile grid), value: grid }
+      - { label: Thumbs (main image + thumbnails), value: thumbs }
+      - { label: 'Fullbleed (full width, 21:9)', value: fullbleed }
+      - { label: Edge (cards run past the edge), value: edge }
+    default: single
+
   # ------------------------------------------------------------
   # Header block
   # ------------------------------------------------------------
@@ -95,10 +108,9 @@ fields:
         items:
           - { label: Solid, value: solid }
           - { label: Outline, value: outline }
-          - { label: Soft, value: soft }
-          - { label: Subtle, value: subtle }
           - { label: Ghost, value: ghost }
-          - { label: Link, value: link }
+          - { label: Outline White (on-dark), value: outline-white }
+          - { label: White Solid (on-dark), value: white-solid }
       - identifier: button_size
         type: Select
         renderType: selectSingle
@@ -131,6 +143,7 @@ fields:
     type: Select
     renderType: selectSingle
     label: Slide Aspect Ratio
+    description: 'Applies to single / grid / thumbs. Fullbleed is always 21:9 and Edge is always square.'
     items:
       - { label: Auto (native), value: auto }
       - { label: Widescreen (16:9), value: '16/9' }
@@ -142,11 +155,7 @@ fields:
   - identifier: show_arrows
     type: Checkbox
     label: Show Navigation Arrows
-    default: 0
-
-  - identifier: show_pagination
-    type: Checkbox
-    label: Show Pagination Dots
+    description: 'Applies to single / fullbleed / edge (grid is static; thumbs navigates via thumbnails).'
     default: 1
 
   - identifier: autoplay

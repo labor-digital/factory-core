@@ -1,0 +1,67 @@
+{
+	"$schema": "../../../../schema/component-manifest.schema.json",
+	"name": "Team",
+	"type": "content-element",
+	"version": "1.0.1",
+	"min_core_version": "1.0.0",
+	"description": "Team / people section over a members collection. Layouts: photo grid with hover overlay and a click-to-open bio modal, flat card grid, paginated slider, edge slider overflowing to the right, table-like list rows, or grouped by department.",
+	"when_to_use": "About/team pages and 'your contacts' sections. Use Contact (persons variant) when the people are primarily reachable contacts with a form next to them.",
+	"capabilities": [
+		"grid with hover overlay and bio modal on click (dialog with photo, bio, contact links)",
+		"paginated slider with configurable members per page, plus an edge slider overflowing right",
+		"department grouping via a free-text department per member",
+		"per-member role, bio, photo, email, phone, and LinkedIn link"
+	],
+	"variants": [
+		{
+			"value": "grid",
+			"description": "Photo grid; hover shows an overlay, click opens the bio modal. Default."
+		},
+		{
+			"value": "featured",
+			"description": "Flat card grid without modal."
+		},
+		{
+			"value": "slider",
+			"description": "Paginated pages of per_page members."
+		},
+		{
+			"value": "edge-slider",
+			"description": "Slider whose track overflows past the right container edge."
+		},
+		{
+			"value": "list",
+			"description": "Table-like rows with contact details."
+		},
+		{
+			"value": "group",
+			"description": "Members clustered under their department headings."
+		}
+	],
+	"atoms": [
+		"SectionHead",
+		"Button"
+	],
+	"breakpoints": {
+		"mobile": "1-2 columns; list rows stack their meta.",
+		"desktop": "3-4 column grid; slider shows a full page of members."
+	},
+	"figma": {
+		"file": "Factory_Library_WORKING_260723",
+		"fileKey": "avP1L4LoOxY5ukjT4bAajX",
+		"nodeId": "773:53548",
+		"dateStamp": "2026-07-23",
+		"moduleHeader": null
+	},
+	"composer_dependencies": [],
+	"npm_dependencies": [],
+	"ai": {
+		"prompt_summary": "Team: people section. Settings: variant (grid|featured|slider|edge-slider|list|group), eyebrow, headline, intro, head_align (left|center), per_page (slider only, default 4). People in members[] (min 1): { name (required), role, department (group variant), bio, photo, email, phone, linkedin }.",
+		"content_guidelines": "4-8 members. Roles 1-3 words; bios 2-3 sentences (shown in the modal / list). Consistent portrait crops.",
+		"field_hints": {
+			"members.department": "Only used by the group variant — members sharing a department appear under that heading.",
+			"members.bio": "Surfaces in the grid variant's modal and the list variant.",
+			"per_page": "Only applies to the slider variant."
+		}
+	}
+}

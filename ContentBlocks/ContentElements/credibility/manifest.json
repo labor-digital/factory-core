@@ -1,0 +1,67 @@
+{
+	"$schema": "../../../../schema/component-manifest.schema.json",
+	"name": "Credibility",
+	"type": "content-element",
+	"version": "1.0.1",
+	"min_core_version": "1.0.0",
+	"description": "Trust-building section with five proof formats: certificate logo grid, guarantee icon cards, a 4-KPI stats banner, awards (one featured + list), or customer reviews as a star grid or horizontal slider. Each variant reads its own collection.",
+	"when_to_use": "Mid or lower page to back up claims with third-party proof — certifications, guarantees, awards, review scores. Use Testimonials for narrative customer quotes; use Stats for company KPIs without a trust framing.",
+	"capabilities": [
+		"certificate grid with logo, issuer, and 'since' year",
+		"guarantee cards with preset icons (shield, clock, euro, handshake)",
+		"stats banner with value + suffix + label KPIs",
+		"awards list with a featured hero card (featured flag)",
+		"reviews with star ratings, aggregate summary (average, count, sources), grid or arrow-paged slider"
+	],
+	"variants": [
+		{
+			"value": "certificates",
+			"description": "Logo grid from certificates[] with name, issuer, since year. Default."
+		},
+		{
+			"value": "guarantees",
+			"description": "Icon cards from guarantees[] (icon: shield|clock|euro|handshake)."
+		},
+		{
+			"value": "stats-banner",
+			"description": "KPI banner from stats[] ({ value, suffix, label })."
+		},
+		{
+			"value": "awards",
+			"description": "Awards from awards[]; the featured flag renders one as the hero card."
+		},
+		{
+			"value": "reviews",
+			"description": "Star-rated review cards in a grid, with summary row (avg, count, sources)."
+		},
+		{
+			"value": "reviews-slider",
+			"description": "Same review cards in a horizontally paged slider with prev/next arrows."
+		}
+	],
+	"atoms": [
+		"Eyebrow"
+	],
+	"breakpoints": {
+		"mobile": "Grids collapse to 1-2 columns; the reviews slider pages one card at a time.",
+		"desktop": "Multi-column grids; stats banner in a single row."
+	},
+	"figma": {
+		"file": "Factory_Library_WORKING_260723",
+		"fileKey": "avP1L4LoOxY5ukjT4bAajX",
+		"nodeId": "773:38684",
+		"dateStamp": "2026-07-23",
+		"moduleHeader": null
+	},
+	"composer_dependencies": [],
+	"npm_dependencies": [],
+	"ai": {
+		"prompt_summary": "Credibility: trust/proof section. Settings: variant (certificates|guarantees|stats-banner|awards|reviews|reviews-slider), eyebrow, headline, intro. Per variant: certificates[] { name (required), description, issuer, since (year), logo }; guarantees[] { icon (shield|clock|euro|handshake), title, description }; stats[] { value, suffix, label }; awards[] { year, title, project, issuer, featured }; reviews variants: reviews_summary_avg, reviews_summary_count, reviews_summary_source plus reviews[] { name (required), project, rating (0-5), quote, date, source }.",
+		"content_guidelines": "4-8 items per collection. Review quotes 1-3 sentences, ratings mostly 4-5. Use realistic issuers/sources (TÜV, Google, Trustpilot). Exactly one featured award.",
+		"field_hints": {
+			"reviews_summary_avg": "Display string with locale decimal comma, e.g. '4,9'.",
+			"guarantees.icon": "Only the four preset values are supported — no free Iconify names here.",
+			"awards.featured": "Set on one award; it renders as the large hero card."
+		}
+	}
+}

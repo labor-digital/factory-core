@@ -28,12 +28,12 @@ fields:
     label: Intro
 
   - identifier: categories
-    type: Text
+    type: Textarea
     label: Categories (one per line)
     description: Used by the pill / tab / dropdown filters. Must match the category set on each block.
 
   - identifier: types
-    type: Text
+    type: Textarea
     label: Types (one per line)
     description: Used by the list-dropdown variant.
 
