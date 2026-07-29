@@ -1,0 +1,45 @@
+{
+	"$schema": "../../../../schema/component-manifest.schema.json",
+	"name": "RecordProperty",
+	"type": "record-type",
+	"version": "1.1.0",
+	"min_core_version": "1.0.0",
+	"labels": {
+		"singular": "Property",
+		"plural": "Properties"
+	},
+	"description": "Real-estate property record. Renders as a teaser card (image, tag pill, title, address line, FERTIG/FLAECHE/EINH. meta row) and as its own page at /property/<slug> — a typed header (hero, gallery, teaser) above a free content body that accepts any active Content Block.",
+	"when_to_use": "One record per listed property; list them on pages via the Teaser content element (record_type: property, manual picks or auto query with buy/rent filter).",
+	"capabilities": [
+		"listing type buy/rent controlling price display (total vs. monthly), 'Preis auf Anfrage' when price is empty",
+		"status (new, available, reserved, sold) and tag presets with free-text tag_custom override for the card pill",
+		"address, price, area, rooms, units, construction years; card meta shows year_completed, ca. area m2, and units when > 1",
+		"hero image (card + header) and page-only gallery (up to 30 images/videos)",
+		"content_elements: inline tt_content body — editors drop any active Content Block onto the property page, exactly as on a normal page"
+	],
+	"figma": {
+		"file": "Factory_Library_WORKING_260622",
+		"fileKey": "avP1L4LoOxY5ukjT4bAajX",
+		"nodeId": null,
+		"dateStamp": null,
+		"moduleHeader": null
+	},
+	"composer_dependencies": [],
+	"npm_dependencies": [],
+	"migrations": {
+		"renamed_from": {
+			"name": "Property",
+			"since": "1.1.0",
+			"note": "Record types carry a Record marker so they can never be confused with a content element of the same name (DL #030). The public slug is unchanged ('property'), so Supabase records.type and every /property/<slug> URL still match; the TYPO3 table moved from tx_factorycore_property to tx_factorycore_record_property — see migrations/1.1.0/typo3.md."
+		}
+	},
+	"ai": {
+		"prompt_summary": "Property record (tx_factorycore_record_property, type slug 'property'): title (required), slug (required, auto from title — the record's URL segment in /property/<slug>), teaser (1-3 sentences, page only), listing_type (buy|rent), status (new|available|reserved|sold), tag (neubau|umbau|sanierung|bestand|denkmal|gewerbe|mfh) + tag_custom override, address_street/zip/city/country, price (nullable — empty renders 'Preis auf Anfrage') + price_type (total|monthly), area_m2, rooms, units (WE), year_built, year_completed (card 'FERTIG'), hero_image, gallery (max 30), content_elements (the page body — any block).",
+		"content_guidelines": "Titles are project/property names, not sentences. Teaser 1-3 sentences. Use tag_custom only for combined labels like 'NEUBAU & UMBAU'. Use status sold for rented-out listings too.",
+		"field_hints": {
+			"price": "Leave empty for 'Preis auf Anfrage'; price_type monthly makes it read as EUR/Monat.",
+			"units": "Only shown on the card when greater than 1 (as '{units} WE').",
+			"content_elements": "The record's page body. Any active Content Block, rendered by FactoryPageRenderer below the typed header — same as a page's content."
+		}
+	}
+}

@@ -149,7 +149,7 @@ fields:
   - identifier: records_property
     type: Relation
     label: Properties
-    allowed: tx_factorycore_property
+    allowed: tx_factorycore_record_property
     maxItems: 24
     # Ideally this would also check record_type = property, but TYPO3 13's
     # inline AND(...) displayCond syntax is unreliable, so we gate only on

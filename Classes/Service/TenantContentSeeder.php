@@ -343,8 +343,8 @@ final class TenantContentSeeder
             if (!is_string($recordTypeName) || !is_array($rows)) {
                 continue;
             }
-            $slug = $this->contentBlockSeeder->toKebabCase($recordTypeName);
-            $directoryName = $this->contentBlockSeeder->toDirectoryName($slug);
+            // RecordProperty -> record_property (DL #030 naming convention).
+            $directoryName = $this->contentBlockSeeder->toRecordDirectory($recordTypeName);
             $table = $this->contentBlockSeeder->resolveRecordTable($directoryName);
             if ($table === null) {
                 continue;

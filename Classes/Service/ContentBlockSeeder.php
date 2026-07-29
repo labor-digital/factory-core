@@ -72,6 +72,65 @@ class ContentBlockSeeder
         return str_replace('-', '_', $slug);
     }
 
+    // -----------------------------------------------------------------------
+    // Record type naming (DL #030). Developer-facing identifiers carry a
+    // `Record` / `record_` marker so a record type can never be confused with
+    // a content element (`factory_news` the CE vs. RecordNews the record type).
+    // The PUBLIC slug — URLs, records.type, the Teaser dropdown value — drops
+    // it: RecordNews → "news", so /news/<slug> stays readable.
+    //
+    // These three are the single source of truth for that mapping. Anything
+    // that needs to go from a key to a directory, a directory to a slug, or a
+    // slug back to a directory must call them rather than re-deriving.
+    // -----------------------------------------------------------------------
+
+    /**
+     * Record type key → public slug: RecordProperty → property
+     */
+    public function toRecordSlug(string $pascalCase): string
+    {
+        $kebab = $this->toKebabCase($pascalCase);
+
+        return (string)preg_replace('/^record-/', '', $kebab);
+    }
+
+    /**
+     * Record type key → block directory: RecordProperty → record_property
+     */
+    public function toRecordDirectory(string $pascalCase): string
+    {
+        return $this->toDirectoryName($this->toKebabCase($pascalCase));
+    }
+
+    /**
+     * Public slug → block directory: property → record_property
+     *
+     * Tolerates an already-prefixed value so a stored `record-property` (or a
+     * hand-typed one) resolves too, rather than silently finding no table.
+     */
+    public function recordDirectoryForSlug(string $slug): string
+    {
+        $slug = $this->toDirectoryName(trim($slug));
+        if ($slug === '') {
+            return '';
+        }
+
+        return str_starts_with($slug, 'record_') ? $slug : 'record_' . $slug;
+    }
+
+    /**
+     * Human label for a record type, read from its config.yaml `title:`
+     * (falls back to the key). Used for the Teaser's record_type dropdown, so
+     * editors see "Property" and not "RecordProperty".
+     */
+    public function getRecordTypeLabel(string $pascalCase): string
+    {
+        $config = $this->readConfigYaml($this->toRecordDirectory($pascalCase), isRecord: true);
+        $title = $config['title'] ?? null;
+
+        return is_string($title) && $title !== '' ? $title : $pascalCase;
+    }
+
     /**
      * Resolve the CType from the config.yaml qualified name.
      * factory/page-hero → factory_pagehero
@@ -728,7 +787,7 @@ class ContentBlockSeeder
      * Build a DataHandler data array for seeding a single record type entry.
      *
      * Unlike tt_content blocks, record types use their own table (e.g.
-     * tx_factorycore_property) and have no CType / colPos. Field names are
+     * tx_factorycore_record_property) and have no CType / colPos. Field names are
      * used as-is (no cType_fieldname prefix).
      *
      * @return array<string, array<string, array<string, mixed>>>|null

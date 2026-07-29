@@ -526,8 +526,8 @@ class InitSeederCommand extends Command
         $sorting = 256;
 
         foreach ($activeRecordTypes as $recordTypeName) {
-            $slug = $this->contentBlockSeeder->toKebabCase($recordTypeName);
-            $directoryName = $this->contentBlockSeeder->toDirectoryName($slug);
+            // RecordProperty -> record_property (DL #030 naming convention).
+            $directoryName = $this->contentBlockSeeder->toRecordDirectory($recordTypeName);
             $seedList = $this->contentBlockSeeder->readSeedData($directoryName, isRecord: true);
 
             if (!is_array($seedList)) {

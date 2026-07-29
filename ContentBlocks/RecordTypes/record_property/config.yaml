@@ -1,7 +1,7 @@
-name: factory/property
+name: factory/record-property
 title: Property
-description: A real-estate property record with common fields and a free-placeable content area.
-table: tx_factorycore_property
+description: A real-estate property record. Has a slug and renders as its own page at /property/<slug>, with a free content body that accepts any active Content Block.
+table: tx_factorycore_record_property
 labelField: title
 prefixFields: false
 fields:
@@ -17,9 +17,13 @@ fields:
     label: Title
     required: true
 
+  # Required on every record type: it is the record's URL segment inside
+  # /<type>/<slug> and what the route enhancer's PersistedAliasMapper resolves
+  # (DL #030). A record without a slug has no page.
   - identifier: slug
     type: Slug
     label: Slug
+    required: true
     generatorOptions:
       fields: [title]
 
@@ -140,7 +144,11 @@ fields:
     allowedFileExtensions: ['jpg', 'jpeg', 'png', 'webp', 'mp4']
 
   # ------------------------------------------------------------
-  # Content tab — inline tt_content (overridden to IRRE in TCA/Overrides)
+  # Content tab — the record's PAGE BODY. Declared here as a Relation because
+  # Content Blocks cannot emit IRRE; Configuration/TCA/Overrides/
+  # factory_record_types.php overrides it to inline for every record type.
+  # Required on every record type (DL #030): a record is a page, so it always
+  # has a body that accepts any active block.
   # ------------------------------------------------------------
   - identifier: divContent
     type: Tab
@@ -149,5 +157,5 @@ fields:
   - identifier: content_elements
     type: Relation
     label: Content Elements
-    description: Drop any active Content Block here. They render stacked on the property detail page.
+    description: The record's page body. Drop any active Content Block here — rendered by FactoryPageRenderer below the typed header, exactly as on a normal page.
     allowed: tt_content

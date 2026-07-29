@@ -13,8 +13,8 @@ use TYPO3\CMS\Frontend\ContentObject\DataProcessorInterface;
 
 /**
  * Resolves the records selected (manual or auto) in a ReferenceList CE and
- * serialises each to the wire shape consumed by BaseProperty.vue (and any
- * future BaseRecord*.vue component).
+ * serialises each to the wire shape consumed by BaseRecordProperty.vue (and
+ * any other BaseRecord*.vue component).
  *
  * Output shape on $processedData:
  *   'records' => [
@@ -90,9 +90,10 @@ final class ReferenceListProcessor implements DataProcessorInterface
 
     private function resolveTableForSlug(string $slug): ?string
     {
-        // Directory name mirrors the slug with underscores instead of hyphens
-        $directory = str_replace('-', '_', $slug);
-        return $this->seeder->resolveRecordTable($directory);
+        // The stored value is the PUBLIC slug ("property"); the block directory
+        // carries the record marker ("record_property"). One helper owns that
+        // mapping — see ContentBlockSeeder (DL #030 naming convention).
+        return $this->seeder->resolveRecordTable($this->seeder->recordDirectoryForSlug($slug));
     }
 
     /**
@@ -190,7 +191,7 @@ final class ReferenceListProcessor implements DataProcessorInterface
     }
 
     /**
-     * Serialise a raw DB row into the wire shape consumed by BaseProperty.vue /
+     * Serialise a raw DB row into the wire shape consumed by BaseRecordProperty.vue /
      * BaseRecord*.vue — matches what parseFile / unwrapSelect expect.
      */
     private function serialise(string $slug, string $table, array $row): array

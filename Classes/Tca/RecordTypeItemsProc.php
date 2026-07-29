@@ -25,10 +25,12 @@ final class RecordTypeItemsProc
     {
         $seeder = GeneralUtility::makeInstance(ContentBlockSeeder::class);
         foreach ($seeder->getActiveRecordTypes() as $name) {
-            $slug = $seeder->toKebabCase($name);
+            // Store the PUBLIC slug ("property"), show the human title
+            // ("Property") — the `Record` marker is developer-facing only
+            // (DL #030 naming convention).
             $params['items'][] = [
-                'label' => $name,
-                'value' => $slug,
+                'label' => $seeder->getRecordTypeLabel($name),
+                'value' => $seeder->toRecordSlug($name),
             ];
         }
     }
