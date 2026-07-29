@@ -2,6 +2,26 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## 1.0.0 (2026-07-29)
+
+### Stable release
+
+No functional change from 0.12.4. The version moves to 1.0.0 so that conventional
+versioning and automatic delivery stop contradicting each other.
+
+Consumers install this by caret range, and a pre-1.0 caret excludes the next
+minor (`^0.12` = `>=0.12.0 <0.13.0`) — so a conventional `feat:` bump would have
+fallen outside every consumer's range and silently stopped reaching them. That is
+why automatic releases were forced to a patch regardless of commit type. At 1.x a
+caret covers every minor, so from here `feat:` bumps the minor and `fix:` the
+patch.
+
+The consumer constraint is now `^1` (`factoryCoreComposerConstraint` in
+`pipeline-app/src/lib/pipeline/config.ts`), and every `seeds.core_version` was
+rewritten to `^1` by `0013_bump_seeds_to_factory_core_1.sql` — which also repaired
+three drifted values (`^0.11`, `^0.12`, `^0.1`) that predate this change.
+
+
 #  (2026-07-24)
 
 
