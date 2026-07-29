@@ -1,0 +1,20 @@
+{
+	"$schema": "../../../../schema/component-manifest.schema.json",
+	"name": "RecordDetail",
+	"type": "content-element",
+	"version": "1.0.0",
+	"min_core_version": "1.1.0",
+	"description": "Renders the record addressed by the current URL (/<type>/<slug>) as a page: the record type's typed header above the record's own content body, which accepts any active Content Block. Emits nothing when the URL addresses no record, so the same page can serve both the list and the detail view.",
+	"when_to_use": "Exactly once on a record type's page, alongside a Teaser or RecordList that shows the index. Placed automatically by the seeder for every active record type — an editor rarely adds it by hand.",
+	"capabilities": [
+		"resolves the record from the URL, not from an editor field, so there is one source of truth for which record is shown",
+		"renders the record's inline tt_content children through the normal block dispatch — every active component works inside a record",
+		"silent when no record is addressed, which is what lets one page be both list and detail"
+	],
+	"composer_dependencies": [],
+	"npm_dependencies": [],
+	"ai": {
+		"prompt_summary": "RecordDetail (factory_recorddetail): infrastructure, not content. Renders whichever record the URL /<type>/<slug> addresses — typed header plus the record's own body. Only field is `headline`, an optional fallback used when the record has no title. Do NOT add this to a normal page and do not use it to 'show a record': to change what a record page contains, edit the RECORD's fields or its content body instead.",
+		"content_guidelines": "Leave `headline` empty unless a record type genuinely has untitled records."
+	}
+}

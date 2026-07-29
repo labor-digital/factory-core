@@ -68,6 +68,9 @@ class InitSeederCommand extends Command
             }
             $this->seedCollectionContent($uids['cb_collection'], $io);
             $this->seedRecordTypeContent($uids['records'], $io);
+            // After the records exist, so the pages that serve them are created
+            // against a tree that already has content to show.
+            $this->createRecordTypePages($uids['home'], $io);
             $this->generateSiteConfiguration($languages, $baseLang, $uids, $io);
             $this->createAdminUser($io);
 
@@ -581,6 +584,94 @@ class InitSeederCommand extends Command
         }
 
         $io->writeln('Seeded record types: ' . implode(', ', $seeded));
+    }
+
+    /**
+     * One page per active record type, at `/<type>` (DL #030).
+     *
+     * A record is a page, and `RecordPageMiddleware` serves `/<type>/<slug>` by
+     * rewriting the request to this page — so without it a record type has no
+     * page to render on and every record 404s. The page does double duty:
+     *
+     *   - `/property`            → the LIST (a Teaser querying that record type)
+     *   - `/property/haus`       → the record, via factory_recorddetail
+     *
+     * The detail element stays silent when the URL addresses no record, which is
+     * what lets one page serve both.
+     */
+    private function createRecordTypePages(int $homeUid, SymfonyStyle $io): void
+    {
+        $activeRecordTypes = $this->contentBlockSeeder->getActiveRecordTypes();
+        if ($activeRecordTypes === []) {
+            return;
+        }
+
+        $io->section('Creating Record Type Pages');
+
+        $pageData = [];
+        foreach ($activeRecordTypes as $recordTypeName) {
+            $slug = $this->contentBlockSeeder->toRecordSlug($recordTypeName);
+            if ($slug === '') {
+                continue;
+            }
+            $pageData['NEW_rt_' . $slug] = [
+                'pid' => $homeUid,
+                'title' => $this->contentBlockSeeder->getRecordTypeLabel($recordTypeName),
+                'slug' => '/' . $slug,
+                'doktype' => 1,
+                'hidden' => 0,
+                // Not a nav destination: records surface through list blocks and
+                // direct URLs, and a "Property" entry in the main menu pointing at
+                // a bare list is rarely what a client wants.
+                'nav_hide' => 1,
+                'sys_language_uid' => 0,
+            ];
+        }
+
+        if ($pageData === []) {
+            return;
+        }
+
+        $dataHandler = GeneralUtility::makeInstance(DataHandler::class);
+        $dataHandler->start(['pages' => $pageData], []);
+        $dataHandler->process_datamap();
+        if (!empty($dataHandler->errorLog)) {
+            throw new \RuntimeException('Error creating record type pages: ' . implode(', ', $dataHandler->errorLog));
+        }
+
+        // Each page gets the detail element. The LIST half is a Teaser the editor
+        // configures (or a seed template places), because how a client wants their
+        // records listed is a design decision, not a default.
+        $contentData = [];
+        $sorting = 256;
+        foreach ($pageData as $newId => $page) {
+            $pageUid = $dataHandler->substNEWwithIDs[$newId] ?? null;
+            if ($pageUid === null) {
+                $io->writeln('  ! could not resolve the new page uid for ' . $page['slug'] . ' — its detail element was not placed.');
+                continue;
+            }
+            $contentData['tt_content']['NEW_rd_' . $pageUid] = [
+                'pid' => $pageUid,
+                'CType' => 'factory_recorddetail',
+                'colPos' => 0,
+                'sorting' => $sorting,
+                'hidden' => 0,
+                'sys_language_uid' => 0,
+            ];
+            $sorting += 256;
+            $io->writeln('  ' . $page['slug'] . ' (page ' . $pageUid . ')');
+        }
+
+        if ($contentData === []) {
+            return;
+        }
+
+        $contentHandler = GeneralUtility::makeInstance(DataHandler::class);
+        $contentHandler->start($contentData, []);
+        $contentHandler->process_datamap();
+        if (!empty($contentHandler->errorLog)) {
+            throw new \RuntimeException('Error placing record detail elements: ' . implode(', ', $contentHandler->errorLog));
+        }
     }
 
     private function generateSiteConfiguration(array $languages, string $baseLang, array $uids, SymfonyStyle $io): void

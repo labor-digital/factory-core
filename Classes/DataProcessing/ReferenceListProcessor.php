@@ -5,9 +5,9 @@ declare(strict_types=1);
 namespace LaborDigital\FactoryCore\DataProcessing;
 
 use LaborDigital\FactoryCore\Service\ContentBlockSeeder;
+use LaborDigital\FactoryCore\Service\RecordSerializer;
 use TYPO3\CMS\Core\Database\Connection;
 use TYPO3\CMS\Core\Database\ConnectionPool;
-use TYPO3\CMS\Core\Resource\FileRepository;
 use TYPO3\CMS\Frontend\ContentObject\ContentObjectRenderer;
 use TYPO3\CMS\Frontend\ContentObject\DataProcessorInterface;
 
@@ -37,16 +37,10 @@ final class ReferenceListProcessor implements DataProcessorInterface
     /** Field names on tt_content created by Content Blocks — CType prefix + '_' + identifier. */
     private const FIELD_PREFIX = 'factory_referencelist_';
 
-    /** Select fields whose JSON shape must be a single-element array (matches unwrapSelect). */
-    private const SELECT_FIELDS_PROPERTY = ['tag', 'listing_type', 'status', 'price_type'];
-
-    /** File reference fields on the property table. */
-    private const FILE_FIELDS_PROPERTY = ['hero_image', 'gallery'];
-
     public function __construct(
         private readonly ContentBlockSeeder $seeder,
         private readonly ConnectionPool $connectionPool,
-        private readonly FileRepository $fileRepository,
+        private readonly RecordSerializer $serializer,
     ) {}
 
     public function process(
@@ -78,7 +72,7 @@ final class ReferenceListProcessor implements DataProcessorInterface
         foreach ($uids as $uid) {
             $row = $this->fetchRow($table, (int)$uid);
             if ($row !== null) {
-                $records[] = $this->serialise($recordTypeSlug, $table, $row);
+                $records[] = $this->serializer->serialize($recordTypeSlug, $table, $row);
             }
         }
 
@@ -190,62 +184,4 @@ final class ReferenceListProcessor implements DataProcessorInterface
         return is_array($row) ? $row : null;
     }
 
-    /**
-     * Serialise a raw DB row into the wire shape consumed by BaseRecordProperty.vue /
-     * BaseRecord*.vue — matches what parseFile / unwrapSelect expect.
-     */
-    private function serialise(string $slug, string $table, array $row): array
-    {
-        $result = ['_record_type' => $slug];
-
-        foreach ($row as $key => $value) {
-            $result[$key] = $value;
-        }
-
-        // Only Property has known select / file fields in v1 — extendable per slug.
-        if ($slug === 'property') {
-            foreach (self::SELECT_FIELDS_PROPERTY as $field) {
-                if (isset($row[$field]) && $row[$field] !== '' && $row[$field] !== null) {
-                    $result[$field] = [$row[$field]];
-                }
-            }
-            foreach (self::FILE_FIELDS_PROPERTY as $field) {
-                $files = $this->resolveFileReferences($table, (int)$row['uid'], $field);
-                if ($files !== []) {
-                    $result[$field] = $files;
-                }
-            }
-        }
-
-        return $result;
-    }
-
-    /**
-     * @return array<array{publicUrl: string, properties: array}>
-     */
-    private function resolveFileReferences(string $table, int $uid, string $field): array
-    {
-        try {
-            $references = $this->fileRepository->findByRelation($table, $field, $uid);
-        } catch (\Throwable) {
-            return [];
-        }
-
-        $out = [];
-        foreach ($references as $ref) {
-            $file = $ref->getOriginalFile();
-            $out[] = [
-                'publicUrl' => $file->getPublicUrl() ?? '',
-                'properties' => [
-                    'alternative' => (string)($ref->getProperty('alternative') ?? ''),
-                    'title'       => (string)($ref->getProperty('title') ?? ''),
-                    'description' => (string)($ref->getProperty('description') ?? ''),
-                    'width'       => (int)($file->getProperty('width') ?? 0),
-                    'height'      => (int)($file->getProperty('height') ?? 0),
-                    'mimeType'    => (string)($file->getProperty('mime_type') ?? ''),
-                ],
-            ];
-        }
-        return $out;
-    }
 }

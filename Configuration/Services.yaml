@@ -7,7 +7,18 @@ services:
   LaborDigital\FactoryCore\:
     resource: '../Classes/*'
 
+  # DataProcessors are resolved by class name from TypoScript, which goes through
+  # the container — a private service is rejected on that path and TYPO3 falls
+  # back to `new Processor()`, crashing on the constructor deps.
   LaborDigital\FactoryCore\DataProcessing\ReferenceListProcessor:
+    public: true
+
+  LaborDigital\FactoryCore\DataProcessing\RecordDetailProcessor:
+    public: true
+
+  # Instantiated via GeneralUtility::makeInstance in RecordTypeItemsProc (TCA
+  # itemsProcFunc, which gets no DI) and injected everywhere else.
+  LaborDigital\FactoryCore\Service\RecordSerializer:
     public: true
 
   # DataHandler legacy hooks (processDatamapClass / processCmdmapClass in

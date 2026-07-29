@@ -3,6 +3,7 @@
 declare(strict_types=1);
 
 use LaborDigital\FactoryCore\Middleware\CorsMiddleware;
+use LaborDigital\FactoryCore\Middleware\RecordPageMiddleware;
 
 /**
  * factory-core registers a CORS middleware on the frontend chain so the
@@ -22,6 +23,20 @@ return [
             'target' => CorsMiddleware::class,
             'after' => ['typo3/cms-frontend/site'],
             'before' => ['typo3/cms-frontend/tsfe'],
+        ],
+        /*
+         * Serves a record's own page at /<type>/<slug> (DL #030). Rewrites the
+         * request to the record type's page and attaches the resolved record, so
+         * everything downstream is ordinary page rendering.
+         *
+         * Must run AFTER `site` (needs the Site + language attributes to strip
+         * the language base) and BEFORE `page-resolver`, which is what turns a
+         * path into a page — by then the rewrite would be too late.
+         */
+        'labor-digital/factory-core/record-page' => [
+            'target' => RecordPageMiddleware::class,
+            'after' => ['typo3/cms-frontend/base-redirect-resolver'],
+            'before' => ['typo3/cms-frontend/page-resolver'],
         ],
     ],
 ];
