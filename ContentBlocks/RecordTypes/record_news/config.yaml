@@ -1,0 +1,83 @@
+name: factory/record-news
+title: News post
+description: A news post. Has a slug and renders as its own page at /news/<slug>, with a free content body that accepts any active Content Block.
+table: tx_factorycore_record_news
+labelField: title
+prefixFields: false
+fields:
+  - identifier: divCommon
+    type: Tab
+    label: Common
+
+  - identifier: title
+    type: Text
+    label: Title
+    required: true
+
+  # Required on every record type: the URL segment inside /<type>/<slug>, and
+  # what RecordPageMiddleware resolves (DL #030).
+  - identifier: slug
+    type: Slug
+    label: Slug
+    required: true
+    generatorOptions:
+      fields: [title]
+
+  # `excerpt` rather than `teaser`: these identifiers are the ones the AI editor
+  # and factory-ai-layer/docs/news-record-authoring.md already write into
+  # records.meta, and renaming them would orphan content the assistant has
+  # already authored for no gain.
+  - identifier: excerpt
+    type: Textarea
+    label: Excerpt
+    description: One or two sentences. Shown on the list card and used as the SEO description fallback.
+    rows: 3
+
+  - identifier: date
+    type: Date
+    label: Date
+    description: Display date. Drives the default sort order of news lists.
+    required: true
+
+  - identifier: author
+    type: Text
+    label: Author
+    description: Optional byline.
+
+  - identifier: category
+    type: Select
+    renderType: selectSingle
+    label: Category
+    items:
+      - { label: Unternehmen, value: company }
+      - { label: Projekte, value: projects }
+      - { label: Presse, value: press }
+      - { label: Termine, value: events }
+    default: company
+
+  - identifier: hero_image
+    type: File
+    label: Hero Image
+    maxItems: 1
+    allowedFileExtensions: ['jpg', 'jpeg', 'png', 'webp']
+
+  - identifier: gallery
+    type: File
+    label: Gallery
+    maxItems: 30
+    allowedFileExtensions: ['jpg', 'jpeg', 'png', 'webp', 'mp4']
+
+  # ------------------------------------------------------------
+  # Content tab — the record's PAGE BODY. Declared as a Relation because Content
+  # Blocks cannot emit IRRE; Configuration/TCA/Overrides/factory_record_types.php
+  # overrides it to inline for every record type.
+  # ------------------------------------------------------------
+  - identifier: divContent
+    type: Tab
+    label: Content
+
+  - identifier: content_elements
+    type: Relation
+    label: Content Elements
+    description: The post's body. Drop any active Content Block here — rendered by FactoryPageRenderer below the typed header, exactly as on a normal page.
+    allowed: tt_content

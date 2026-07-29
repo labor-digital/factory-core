@@ -1,0 +1,30 @@
+{
+	"$schema": "../../../../schema/component-manifest.schema.json",
+	"name": "RecordJob",
+	"type": "record-type",
+	"version": "1.0.0",
+	"min_core_version": "1.1.0",
+	"labels": {
+		"singular": "Job",
+		"plural": "Jobs"
+	},
+	"description": "An open position: employment type, work mode, location, start and how to apply, plus its own page at /job/<slug> whose body carries the tasks/profile/offer sections.",
+	"when_to_use": "One record per vacancy. Close a position by deleting or hiding the record rather than editing another one, so its URL stops resolving.",
+	"capabilities": [
+		"employment type (full/part/apprentice/intern/freelance) and work mode (onsite/hybrid/remote) for filtering",
+		"location, start date as free text, optional salary range",
+		"application by email or external link, link winning when both are set",
+		"content_elements: the vacancy body — any active Content Block"
+	],
+	"composer_dependencies": [],
+	"npm_dependencies": [],
+	"ai": {
+		"prompt_summary": "Job record (tx_factorycore_record_job, type slug 'job'): title (required, the position — include (m/w/d) where the client uses it), slug (required, auto from title), excerpt (1-2 sentences for the card), employment_type (full|part|apprentice|intern|freelance), work_mode (onsite|hybrid|remote), location, starts (free text: 'ab sofort' or a date), salary_range (optional), apply_email, apply_link (wins over the email), hero_image, content_elements (the body: tasks, profile, what we offer).",
+		"content_guidelines": "Match the client's existing (m/w/d) convention rather than introducing one. Never invent a salary range. Put tasks/profile/offer in the BODY as blocks, not crammed into the excerpt.",
+		"field_hints": {
+			"starts": "Free text on purpose: 'ab sofort' is as common as a date.",
+			"apply_link": "Takes precedence over apply_email when both are set, so leave it empty if applications go by mail.",
+			"content_elements": "Where the real posting lives — one Text or Section block per part (Aufgaben, Profil, Wir bieten)."
+		}
+	}
+}

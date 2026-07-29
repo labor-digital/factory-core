@@ -1,0 +1,22 @@
+# SeedData.yaml for RecordNews — a LIST of demo records (unlike ContentElements,
+# which seed a single element). The seeder loops each entry into DataHandler.
+- title: Richtfest am Neubau in Bodenheim
+  slug: richtfest-bodenheim
+  excerpt: Ein Meilenstein: das Dach steht. Bilder und Eindrücke vom Richtfest.
+  date: '2026-06-14'
+  author: Redaktion
+  category: projects
+
+- title: Neue Kolleginnen und Kollegen im Team
+  slug: neue-kollegen
+  excerpt: Vier neue Gesichter verstärken unser Team in der Planung und auf der Baustelle.
+  date: '2026-05-02'
+  author: Redaktion
+  category: company
+
+- title: Auszeichnung für nachhaltiges Bauen
+  slug: auszeichnung-nachhaltiges-bauen
+  excerpt: Unser Sanierungsprojekt in Mainz wurde für seinen Umgang mit Bestand ausgezeichnet.
+  date: '2026-03-20'
+  author: Redaktion
+  category: press

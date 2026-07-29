@@ -1,0 +1,93 @@
+name: factory/record-person
+title: Person
+description: One person — a team member, contact or author. Has a slug and renders as its own profile page at /person/<slug>, with a free content body that accepts any active Content Block.
+table: tx_factorycore_record_person
+labelField: title
+prefixFields: false
+fields:
+  - identifier: divCommon
+    type: Tab
+    label: Common
+
+  # `title` rather than first_name/last_name: labelField needs one field, every
+  # list card reads `title`, and a person's displayed name is rarely a clean
+  # split (titles, double names, "Dr."). Split it only when a client needs to
+  # sort by surname.
+  - identifier: title
+    type: Text
+    label: Name
+    description: Full display name, e.g. "Dr. Anna Weber".
+    required: true
+
+  - identifier: slug
+    type: Slug
+    label: Slug
+    required: true
+    generatorOptions:
+      fields: [title]
+
+  - identifier: role
+    type: Text
+    label: Role
+    description: Job title, e.g. "Bauleitung".
+
+  - identifier: excerpt
+    type: Textarea
+    label: Excerpt
+    description: One line for the team-grid card.
+    rows: 2
+
+  - identifier: email
+    type: Email
+    label: Email
+
+  - identifier: phone
+    type: Text
+    label: Phone
+
+  - identifier: mobile
+    type: Text
+    label: Mobile
+
+  # Named hero_image, not `portrait`: every card and page header reads
+  # `hero_image`, and a per-type image field would mean the generic card and the
+  # SEO head could not find a person's picture (DL #030).
+  - identifier: hero_image
+    type: File
+    label: Portrait
+    maxItems: 1
+    allowedFileExtensions: ['jpg', 'jpeg', 'png', 'webp']
+
+  - identifier: bio
+    type: Textarea
+    label: Bio
+    description: A short biography for the profile page.
+    rows: 6
+
+  - identifier: links
+    type: Collection
+    label: Links
+    labelField: label
+    maxitems: 6
+    fields:
+      - identifier: label
+        type: Text
+        label: Label
+        required: true
+      - identifier: url
+        type: Link
+        label: URL
+        required: true
+
+  # ------------------------------------------------------------
+  # Content tab — the record's PAGE BODY.
+  # ------------------------------------------------------------
+  - identifier: divContent
+    type: Tab
+    label: Content
+
+  - identifier: content_elements
+    type: Relation
+    label: Content Elements
+    description: The profile body. Drop any active Content Block here — rendered by FactoryPageRenderer below the typed header.
+    allowed: tt_content

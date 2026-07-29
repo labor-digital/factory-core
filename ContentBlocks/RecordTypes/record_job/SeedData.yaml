@@ -1,0 +1,29 @@
+# SeedData.yaml for RecordJob — a LIST of demo records. No salary ranges: an
+# invented figure on a seeded vacancy is the kind of placeholder that reaches a
+# live site unnoticed.
+- title: Bauleiter (m/w/d)
+  slug: bauleiter
+  excerpt: Sie koordinieren unsere Projekte auf der Baustelle — vom Rohbau bis zur Abnahme.
+  employment_type: full
+  work_mode: onsite
+  location: Ingelheim
+  starts: ab sofort
+  apply_email: bewerbung@example.com
+
+- title: Bauzeichner (m/w/d)
+  slug: bauzeichner
+  excerpt: Sie zeichnen Ausführungspläne und unterstützen die Planung im Bestand.
+  employment_type: part
+  work_mode: hybrid
+  location: Mainz
+  starts: '01.09.2026'
+  apply_email: bewerbung@example.com
+
+- title: Ausbildung Maurer (m/w/d)
+  slug: ausbildung-maurer
+  excerpt: Drei Jahre Ausbildung im Handwerk, mit Übernahmeperspektive.
+  employment_type: apprentice
+  work_mode: onsite
+  location: Ingelheim
+  starts: August 2026
+  apply_email: bewerbung@example.com

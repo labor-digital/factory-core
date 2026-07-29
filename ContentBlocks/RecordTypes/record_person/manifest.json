@@ -1,0 +1,30 @@
+{
+	"$schema": "../../../../schema/component-manifest.schema.json",
+	"name": "RecordPerson",
+	"type": "record-type",
+	"version": "1.0.0",
+	"min_core_version": "1.1.0",
+	"labels": {
+		"singular": "Person",
+		"plural": "People"
+	},
+	"description": "One person — team member, contact or author: name, role, contact details, portrait and a bio, plus their own profile page at /person/<slug> with a free content body.",
+	"when_to_use": "A team section where each person has a profile worth linking to, or a named contact reused across pages. When the client only wants a flat grid of faces with no detail pages, the Team content element is simpler.",
+	"capabilities": [
+		"role, email, phone and mobile for contact blocks",
+		"portrait used as both the card image and the page header image",
+		"links collection for profiles (LinkedIn, Xing, a personal site)",
+		"content_elements: the profile body — any active Content Block"
+	],
+	"composer_dependencies": [],
+	"npm_dependencies": [],
+	"ai": {
+		"prompt_summary": "Person record (tx_factorycore_record_person, type slug 'person'): title (required — the full display name, e.g. 'Dr. Anna Weber'), slug (required, auto from title), role (job title), excerpt (one line for the card), email, phone, mobile, hero_image (the portrait — array of one file), bio (longer text for the profile), links[] ({label, url}), content_elements (the body).",
+		"content_guidelines": "`title` is the person's name, never a role. Put the role in `role`. Never invent contact details or a biography for a real person — leave the field empty and ask.",
+		"field_hints": {
+			"title": "The display name. Roles belong in `role`, or the team grid shows the job title where the name should be.",
+			"hero_image": "The portrait, named hero_image because every card and page header reads that key.",
+			"links": "A collection of {label, url}; keep labels short ('LinkedIn')."
+		}
+	}
+}

@@ -1,0 +1,31 @@
+{
+	"$schema": "../../../../schema/component-manifest.schema.json",
+	"name": "RecordNews",
+	"type": "record-type",
+	"version": "1.0.0",
+	"min_core_version": "1.1.0",
+	"labels": {
+		"singular": "News post",
+		"plural": "News"
+	},
+	"description": "A news post: date, optional byline and category, an excerpt for list cards, and its own page at /news/<slug> — a typed header above a free content body that accepts any active Content Block.",
+	"when_to_use": "Company news, project updates, press releases. One record per post. List them with a RecordList (newest first) or a Teaser when the section needs a specific layout.",
+	"capabilities": [
+		"date-driven ordering, with an author byline and a category for filtering",
+		"excerpt feeding both the list card and the SEO description fallback",
+		"hero image for the card and the page header, plus a gallery on the page",
+		"content_elements: the post body — any active Content Block, rendered like a page's content"
+	],
+	"composer_dependencies": [],
+	"npm_dependencies": [],
+	"ai": {
+		"prompt_summary": "News record (tx_factorycore_record_news, type slug 'news'): title (required), slug (required, auto from title — the URL segment in /news/<slug>), excerpt (1-2 sentences, list card + SEO description fallback), date (required, display date and sort key), author (optional byline), category (company|projects|press|events), hero_image (array of one file), gallery (max 30), content_elements (the body — any block). These identifiers match what the guided news flow already writes into records.meta.",
+		"content_guidelines": "Headline-style titles, not sentences, and no trailing period. Excerpt 1-2 sentences that make sense out of context, since it appears on cards. Set date to the publication date, not today, when back-filling. Leave author empty rather than inventing one.",
+		"field_hints": {
+			"date": "ISO 8601 (2026-07-14). Lists sort on it, so a wrong date silently reorders the news page.",
+			"excerpt": "Shown on the card and used as the SEO description when none is set — write it to stand alone.",
+			"hero_image": "An ARRAY of one file object, even though only one image is used.",
+			"content_elements": "The post body. Any active Content Block, rendered by FactoryPageRenderer below the typed header."
+		}
+	}
+}

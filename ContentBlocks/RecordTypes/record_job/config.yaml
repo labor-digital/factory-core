@@ -1,0 +1,94 @@
+name: factory/record-job
+title: Job
+description: An open position. Has a slug and renders as its own page at /job/<slug>, with a free content body that accepts any active Content Block.
+table: tx_factorycore_record_job
+labelField: title
+prefixFields: false
+fields:
+  - identifier: divCommon
+    type: Tab
+    label: Common
+
+  - identifier: title
+    type: Text
+    label: Title
+    description: The position, e.g. "Bauleiter (m/w/d)".
+    required: true
+
+  - identifier: slug
+    type: Slug
+    label: Slug
+    required: true
+    generatorOptions:
+      fields: [title]
+
+  - identifier: excerpt
+    type: Textarea
+    label: Excerpt
+    description: One or two sentences for the list card.
+    rows: 3
+
+  - identifier: employment_type
+    type: Select
+    renderType: selectSingle
+    label: Employment type
+    items:
+      - { label: Vollzeit, value: full }
+      - { label: Teilzeit, value: part }
+      - { label: Ausbildung, value: apprentice }
+      - { label: Praktikum, value: intern }
+      - { label: Freelance, value: freelance }
+    default: full
+
+  - identifier: work_mode
+    type: Select
+    renderType: selectSingle
+    label: Work mode
+    items:
+      - { label: Vor Ort, value: onsite }
+      - { label: Hybrid, value: hybrid }
+      - { label: Remote, value: remote }
+    default: onsite
+
+  - identifier: location
+    type: Text
+    label: Location
+    description: City or site, e.g. "Ingelheim".
+
+  - identifier: starts
+    type: Text
+    label: Start
+    description: Free text so "ab sofort" and "01.09.2026" both work.
+
+  - identifier: salary_range
+    type: Text
+    label: Salary range
+    description: Optional, e.g. "45.000 – 55.000 €".
+
+  - identifier: apply_email
+    type: Email
+    label: Application email
+
+  - identifier: apply_link
+    type: Link
+    label: Application link
+    description: An external form or portal. Takes precedence over the email when both are set.
+
+  - identifier: hero_image
+    type: File
+    label: Hero Image
+    maxItems: 1
+    allowedFileExtensions: ['jpg', 'jpeg', 'png', 'webp']
+
+  # ------------------------------------------------------------
+  # Content tab — the record's PAGE BODY.
+  # ------------------------------------------------------------
+  - identifier: divContent
+    type: Tab
+    label: Content
+
+  - identifier: content_elements
+    type: Relation
+    label: Content Elements
+    description: The vacancy's body — tasks, profile, what we offer. Drop any active Content Block here; rendered by FactoryPageRenderer below the typed header.
+    allowed: tt_content

@@ -1,0 +1,31 @@
+{
+	"$schema": "../../../../schema/component-manifest.schema.json",
+	"name": "RecordEvent",
+	"type": "record-type",
+	"version": "1.0.0",
+	"min_core_version": "1.1.0",
+	"labels": {
+		"singular": "Event",
+		"plural": "Events"
+	},
+	"description": "A dated event — open day, info evening, trade fair: start and optional end, venue and address, registration link and price, plus its own page at /event/<slug> with a free content body.",
+	"when_to_use": "Anything with a date the visitor might attend. One record per occurrence — a series is several records, because each needs its own date and registration.",
+	"capabilities": [
+		"start/end datetimes with an all-day flag that hides the times",
+		"venue name plus street/zip/city for directions",
+		"registration link and a free-text price so 'kostenlos' works",
+		"content_elements: the event page's body — any active Content Block"
+	],
+	"composer_dependencies": [],
+	"npm_dependencies": [],
+	"ai": {
+		"prompt_summary": "Event record (tx_factorycore_record_event, type slug 'event'): title (required), slug (required, auto from title), excerpt (1-2 sentences for the card), start_date (required, ISO datetime — the sort key), end_date (empty for a single moment), all_day (0|1 — hides times), location_name, address_street/zip/city, registration_link, price (free text), hero_image (array of one file), content_elements (the body).",
+		"content_guidelines": "Title names the event, not the date ('Tag der offenen Tür', not 'Tag der offenen Tür am 14.6.'). Set all_day rather than inventing 00:00 times. Leave price empty rather than guessing.",
+		"field_hints": {
+			"start_date": "ISO 8601 with time (2026-06-14T17:00:00). Lists sort on it, and a past date usually means the event drops off the page.",
+			"end_date": "Only for events spanning hours or days. Empty is normal.",
+			"all_day": "Set to 1 when there is no meaningful time — the frontend then shows the date alone.",
+			"price": "Free text on purpose: 'kostenlos', 'ab 12 €' and '12 € / 8 € reduziert' are all valid."
+		}
+	}
+}
