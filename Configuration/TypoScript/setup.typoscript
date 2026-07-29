@@ -2,6 +2,7 @@
 @import 'EXT:nb_headless_content_blocks/Configuration/TypoScript/setup.typoscript'
 @import 'EXT:factory_core/Configuration/TypoScript/ContentElement/Teaser.typoscript'
 @import 'EXT:factory_core/Configuration/TypoScript/ContentElement/RecordDetail.typoscript'
+@import 'EXT:factory_core/Configuration/TypoScript/ContentElement/RecordList.typoscript'
 
 # Override: rename "data" → "content" so @t3headless/nuxt-typo3 T3Renderer receives the fields.
 # T3Renderer destructures { content } from each element and spreads it as component props.

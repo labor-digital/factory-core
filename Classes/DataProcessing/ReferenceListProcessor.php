@@ -97,8 +97,15 @@ final class ReferenceListProcessor implements DataProcessorInterface
      */
     private function resolveManual(array $data, string $slug): array
     {
-        $column = self::FIELD_PREFIX . 'records_' . str_replace('-', '_', $slug);
-        $raw = $data[$column] ?? '';
+        // One generic `records` column for every record type (DL #030). The
+        // per-type `records_<slug>` column is still READ so content picked
+        // before the change keeps rendering — the declared rename in the
+        // Teaser's manifest is the same fallback, expressed for the guards.
+        $raw = $data[self::FIELD_PREFIX . 'records'] ?? '';
+        if (!is_string($raw) || $raw === '') {
+            $legacyColumn = self::FIELD_PREFIX . 'records_' . str_replace('-', '_', $slug);
+            $raw = $data[$legacyColumn] ?? '';
+        }
         if (!is_string($raw) || $raw === '') {
             return [];
         }

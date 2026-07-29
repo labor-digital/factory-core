@@ -16,6 +16,9 @@ services:
   LaborDigital\FactoryCore\DataProcessing\RecordDetailProcessor:
     public: true
 
+  LaborDigital\FactoryCore\DataProcessing\RecordListProcessor:
+    public: true
+
   # Instantiated via GeneralUtility::makeInstance in RecordTypeItemsProc (TCA
   # itemsProcFunc, which gets no DI) and injected everywhere else.
   LaborDigital\FactoryCore\Service\RecordSerializer:

@@ -1,0 +1,49 @@
+name: factory/record-list
+title: Record List
+description: A plain list of records of one type — each entry rendered by that record type's own card. The simple counterpart to the Teaser, which adds Figma layouts, a header and manual picking.
+prefixFields: false
+fields:
+  - identifier: eyebrow
+    type: Text
+    label: Eyebrow
+
+  - identifier: headline
+    type: Text
+    label: Headline
+
+  - identifier: intro
+    type: Textarea
+    label: Intro
+    rows: 3
+
+  - identifier: record_type
+    type: Select
+    renderType: selectSingle
+    label: Record Type
+    description: Which record type to list. Driven by active_record_types in factory.json.
+    itemsProcFunc: LaborDigital\FactoryCore\Tca\RecordTypeItemsProc->getItems
+    items: []
+
+  - identifier: limit
+    type: Number
+    label: Limit
+    description: How many records to show at most.
+    default: 6
+
+  - identifier: layout
+    type: Select
+    renderType: selectSingle
+    label: Layout
+    items:
+      - { label: Cards, value: cards }
+      - { label: Compact, value: compact }
+    default: cards
+
+  # Same opaque-CSV pattern as the Teaser's picker: declared Text here so
+  # nb-headless-content-blocks does not try to serialize a relation to a table it
+  # did not define, and upgraded to a native picker over every record table in
+  # Configuration/TCA/Overrides/tt_content.php. Empty = query the type instead.
+  - identifier: records
+    type: Text
+    label: Records
+    description: Optional. Pick specific records; leave empty to list the newest records of the selected type.

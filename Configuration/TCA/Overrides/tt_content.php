@@ -38,3 +38,43 @@ if (isset($GLOBALS['TCA']['tt_content']['columns'][$column])) {
         ],
     ];
 }
+
+/*
+ * Record pickers: turn the record-list blocks' opaque `records` CSV into a
+ * native picker over every DISCOVERED record type (DL #030).
+ *
+ * `allowed` is built from disk rather than listed here, so adding a record type
+ * is still just dropping a directory — which is what DL #010 wanted from the
+ * abandoned `records_<slug>` pass, without needing one column (and one generated
+ * SQL statement) per type.
+ *
+ * Discovery, not activation: a client's inactive types are hidden by
+ * hide_inactive_records.php, and TCA is shared across tenants in a multi-tenant
+ * install, so filtering by one tenant's factory.json here would be wrong.
+ */
+$recordTables = [];
+foreach (\LaborDigital\FactoryCore\Configuration\FactoryComponentRegistry::discoverRecordTypes() as $recordType) {
+    if (!empty($recordType['table'])) {
+        $recordTables[] = $recordType['table'];
+    }
+}
+
+if ($recordTables !== []) {
+    foreach (['factory_teaser_records', 'factory_recordlist_records'] as $recordColumn) {
+        if (!isset($GLOBALS['TCA']['tt_content']['columns'][$recordColumn])) {
+            continue;
+        }
+        $GLOBALS['TCA']['tt_content']['columns'][$recordColumn]['config'] = [
+            'type' => 'group',
+            'allowed' => implode(',', $recordTables),
+            'maxitems' => 24,
+            'minitems' => 0,
+            'size' => 6,
+            'suggestOptions' => [
+                'default' => [
+                    'searchWholePhrase' => true,
+                ],
+            ],
+        ];
+    }
+}

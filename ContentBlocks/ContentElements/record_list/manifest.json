@@ -1,0 +1,21 @@
+{
+	"$schema": "../../../../schema/component-manifest.schema.json",
+	"name": "RecordList",
+	"type": "content-element",
+	"version": "1.0.0",
+	"min_core_version": "1.1.0",
+	"description": "A plain list of records of one type, each entry rendered by that record type's own card. The simple counterpart to the Teaser: no Figma layout variants, no slider, just a grid or a compact stack.",
+	"when_to_use": "When a page needs 'the latest N news posts' or 'all team members' with no styling decisions. Reach for the Teaser instead when the section needs a header row, a specific Figma layout, or hand-picked records in a chosen order.",
+	"capabilities": [
+		"lists records of any active record type — each entry dispatches to that type's card, so a property looks like a property",
+		"auto by default (newest first, up to `limit`) or hand-picked via the shared record picker",
+		"cards or compact layout",
+		"renders on both data sources: TYPO3 resolves the records server-side, CMS-free mode reads them through the broker"
+	],
+	"composer_dependencies": [],
+	"npm_dependencies": [],
+	"ai": {
+		"prompt_summary": "RecordList (factory_record_list): a list of records of one type. Settings: eyebrow, headline, intro, record_type (from the site's record types), limit (default 6), layout (cards|compact), records (optional CSV of record UIDs — leave empty to list the newest automatically). It renders the records' own cards, so do NOT author card content here; create or edit the RECORDS instead.",
+		"content_guidelines": "Headline names the collection ('Aktuelles', 'Unser Team'), not a sentence. Leave `records` empty unless the client wants a specific order."
+	}
+}

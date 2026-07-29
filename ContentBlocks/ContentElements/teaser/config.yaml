@@ -143,18 +143,25 @@ fields:
       - { label: Auto — query from folder, value: auto }
     default: manual
 
-  # Manual selection — one Relation field per record type. Only `records_property` is
-  # baked in; Configuration/TCA/Overrides/tt_content.php emits additional
-  # `records_<slug>` fields for any other active record type.
-  - identifier: records_property
-    type: Relation
-    label: Properties
-    allowed: tx_factorycore_record_property
-    maxItems: 24
-    # Ideally this would also check record_type = property, but TYPO3 13's
-    # inline AND(...) displayCond syntax is unreliable, so we gate only on
-    # selection_mode. When more record types are added, a TCA override can
-    # emit additional records_<slug> fields with the same gating.
+  # Manual selection — ONE picker for every record type (DL #030).
+  #
+  # This used to be `records_property`, with the intent that a TCA pass would
+  # emit a `records_<slug>` sibling per record type. That never worked: Content
+  # Blocks creates DB columns from THIS file, so a TCA-only column has no column
+  # behind it, and generating SQL per type needs a schema event listener. One
+  # generic column sidesteps all of it — `allowed` is set to every record table
+  # by Configuration/TCA/Overrides/tt_content.php, and the processor resolves
+  # which table to read from the `record_type` field above.
+  #
+  # Declared `Text` (an opaque CSV of UIDs) for the same reason as
+  # `auto_storage_pid` below: nb-headless-content-blocks cannot serialize a
+  # relation to a table it did not define, and crashes rather than skipping it.
+  - identifier: records
+    type: Text
+    label: Records
+    description: Pick the records to show. The list is restricted to the record type selected above.
+    # Ideally this would also check record_type, but TYPO3 13's inline AND(...)
+    # displayCond syntax is unreliable, so we gate only on selection_mode.
     displayCond: 'FIELD:selection_mode:=:manual'
 
   # Auto selection — shared across record types.

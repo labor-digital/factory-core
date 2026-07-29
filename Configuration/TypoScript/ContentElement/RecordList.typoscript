@@ -1,0 +1,7 @@
+// Records for factory_record_list, resolved server-side so the block works in
+// TYPO3 mode (DL #030). In CMS-free mode the ai-layer's loader supplies them
+// instead, and the Vue component prefers whatever is already in the bag.
+tt_content.factory_recordlist.fields.content.dataProcessing.10.dataProcessing {
+    20 = LaborDigital\FactoryCore\DataProcessing\RecordListProcessor
+    20.as = records
+}
