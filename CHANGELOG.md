@@ -2,12 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
-#  (2026-07-29)
+#  (2026-07-30)
 
 
 ### Bug Fixes
 
 * **ai-layer:** live SEO preview, robots row, exclude noindex from sitemap ([ff5e5b6](https://bitbucket.org/labor-digital/labor-factory-app/commits/ff5e5b6100da53615195eb1c26f8330013bfaf71))
+* **ci:** compute each package's bump from its own commits, and refuse a stray major ([0f25263](https://bitbucket.org/labor-digital/labor-factory-app/commits/0f25263cb59f2c281018cea42db9830d89e8940c))
 * **ci:** correct deploy step script path → /opt/deploy-docker-to-ecs.sh ([f9b3168](https://bitbucket.org/labor-digital/labor-factory-app/commits/f9b316891a41d01c8557a0971c061f86a703fa0e))
 * **ci:** quote ext_emconf sync command (colon-space broke YAML parse) ([5ddbaf6](https://bitbucket.org/labor-digital/labor-factory-app/commits/5ddbaf6f954d0e8b25756d507d9f26f326f120e0))
 * **ci:** stop the changelog artifact from breaking the next release step ([70833a1](https://bitbucket.org/labor-digital/labor-factory-app/commits/70833a1f9356cd157d8cf1350ae758151638ff5e))
@@ -116,6 +117,7 @@ All notable changes to this project will be documented in this file. See [standa
 * initial public release of factory-core 0.1.0 ([f3c1d53](https://bitbucket.org/labor-digital/labor-factory-app/commits/f3c1d53c57c00f1761d08f2a6ac2794839477cb8))
 * manifest-driven record types with a Record naming convention (DL [#030](https://bitbucket.org/labor-digital/labor-factory-app/issues/030)) ([396db4f](https://bitbucket.org/labor-digital/labor-factory-app/commits/396db4f5b6133faf936ed5924906f394522f5de9)), closes [#010](https://bitbucket.org/labor-digital/labor-factory-app/issue/010) [#021](https://bitbucket.org/labor-digital/labor-factory-app/issue/021) [#023](https://bitbucket.org/labor-digital/labor-factory-app/issue/023)
 * migration for records whose typed fields sit in a phantom body element ([c447096](https://bitbucket.org/labor-digital/labor-factory-app/commits/c447096bed51e9bfa15cae5cd26e38aa00d404a1))
+* move consumer constraints to ^2 and make a major release the user's call ([3378720](https://bitbucket.org/labor-digital/labor-factory-app/commits/3378720d7499bea08e1055a81243eb6145ed9a7a))
 * **nuxt-layer:** add Vue components for 11 new content blocks ([92752bb](https://bitbucket.org/labor-digital/labor-factory-app/commits/92752bb91b14d84d3e79a5d3904b55ff67431170))
 * **pipeline-app:** auth flow + dashboard IA (DL [#017](https://bitbucket.org/labor-digital/labor-factory-app/issues/017) phase C) ([eb2aa53](https://bitbucket.org/labor-digital/labor-factory-app/commits/eb2aa537179c78e5ab274b7903e245cdc47b110b))
 * **pipeline-app:** bake factory-core into the image (drop runtime repo token) ([2503c3b](https://bitbucket.org/labor-digital/labor-factory-app/commits/2503c3b64873ec8a18d420e93be1a31481b0b56e)), closes [#022](https://bitbucket.org/labor-digital/labor-factory-app/issue/022)
@@ -172,6 +174,15 @@ All notable changes to this project will be documented in this file. See [standa
 
 ### BREAKING CHANGES
 
+* footer, or widen a consumer constraint to a new major
+  unless the user asked for a major release in that conversation. If a
+  change looks like it needs one: say so, propose alternatives, and stop.
+
+That is the judgement half; compute-bump.sh's ALLOW_MAJOR gate is the
+mechanical half. Both exist because a major falls outside every caret
+range, so the cost belongs to whoever owns the clients.
+
+Co-Authored-By: Claude Opus 5 (1M context) <noreply@anthropic.com>
 * labor-digital/factory-core and factory-multitenant-api are
 now 1.x, and the consumer constraint moves from ^0.12 / ^0.9 to ^1. No code
 changes; the version arithmetic does.
