@@ -1,7 +1,14 @@
 {
   "releaseCommitMessageFormat": "chore(release): {{currentTag}} [skip ci]",
   "bumpFiles": [
-    { "filename": "composer.json", "type": "json" },
-    { "filename": "ext_emconf.php", "updater": "ext-emconf.updater.cjs" }
-  ]
+    {
+      "filename": "composer.json",
+      "type": "json"
+    },
+    {
+      "filename": "ext_emconf.php",
+      "updater": "ext-emconf.updater.cjs"
+    }
+  ],
+  "tagPrefix": "factory-core-v"
 }
