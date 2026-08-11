@@ -160,6 +160,60 @@ final class FactoryComponentRegistry
     }
 
     /**
+     * CTypes of components that declare `modes: ["supabase"]` in their
+     * manifest.json — i.e. AI / CMS-free-only components (DL #033).
+     *
+     * Their config.yaml still lives under ContentElements/ because that is the
+     * single source of truth build-manifest.mjs, the contract diff and the
+     * fleet check all read. But TYPO3 has no backend for them (no submission
+     * handler, no mail), so their CType must never reach the editor — not even
+     * if someone hand-adds the component to a factory.json.
+     *
+     * @return list<string>
+     */
+    public static function discoverModeGatedCTypes(): array
+    {
+        $path = ExtensionManagementUtility::extPath('factory_core') . self::CONTENT_ELEMENTS_DIR;
+        if (!is_dir($path)) {
+            return [];
+        }
+
+        $cTypes = [];
+        foreach (new \DirectoryIterator($path) as $info) {
+            if ($info->isDot() || !$info->isDir()) {
+                continue;
+            }
+            $manifestPath = $info->getPathname() . '/manifest.json';
+            if (!is_file($manifestPath)) {
+                continue;
+            }
+            $manifest = json_decode((string)file_get_contents($manifestPath), true);
+            if (!is_array($manifest) || !isset($manifest['modes']) || !is_array($manifest['modes'])) {
+                // No `modes` key = available in both modes. That is the default
+                // and covers every component but Form today.
+                continue;
+            }
+            if (in_array('typo3', $manifest['modes'], true)) {
+                continue;
+            }
+
+            $key = self::normalizeKey($info->getFilename());
+            if ($key === '') {
+                continue;
+            }
+            $component = [
+                'key' => $key,
+                'qualifiedName' => self::readQualifiedName($info->getPathname() . '/config.yaml'),
+            ];
+            foreach (self::buildCTypeCandidates($component) as $cType) {
+                $cTypes[$cType] = true;
+            }
+        }
+
+        return array_keys($cTypes);
+    }
+
+    /**
      * Discover every factory RecordType on disk and read its `table:` value.
      *
      * @return list<array{key:string,table:?string}>

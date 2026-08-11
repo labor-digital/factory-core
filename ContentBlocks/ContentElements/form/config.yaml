@@ -1,0 +1,122 @@
+name: factory/form
+title: Form
+description: Configurable form whose fields are authored as content. Submissions are emailed to the site's recipients and are never stored.
+group: factory
+icon: content-form
+fields:
+  - identifier: variant
+    type: Select
+    renderType: selectSingle
+    label: Variant
+    items:
+      - { label: Stacked · header above a centered form, value: stacked }
+      - { label: Split · header left, form right, value: split }
+      - { label: Card · form in a raised card, value: card }
+    default: stacked
+
+  - identifier: eyebrow
+    type: Text
+    label: Eyebrow
+
+  - identifier: headline
+    type: Text
+    label: Headline
+
+  - identifier: intro
+    type: Textarea
+    label: Intro
+
+  # Stable identifier for this form. Generated once by the AI `create_form`
+  # tool and never derived from the headline or the block's position — both
+  # change freely, and the broker resolves submissions by this key.
+  - identifier: form_key
+    type: Text
+    label: Form key
+    description: 'Generated automatically. Do not change it — submissions are matched to this form by this key.'
+    readOnly: true
+
+  - identifier: fields
+    type: Collection
+    label: Fields
+    description: 'The fields shown in the form, in display order.'
+    fields:
+      - identifier: identifier
+        type: Text
+        label: Identifier
+        required: true
+        description: 'Lowercase key used in the notification email, e.g. "email" or "message".'
+      - identifier: label
+        type: Text
+        label: Label
+        required: true
+      - identifier: type
+        type: Select
+        renderType: selectSingle
+        label: Type
+        items:
+          - { label: Single-line text, value: text }
+          - { label: Email address, value: email }
+          - { label: Phone number, value: tel }
+          - { label: Number, value: number }
+          - { label: Multi-line text, value: textarea }
+          - { label: Dropdown, value: select }
+          - { label: Checkbox, value: checkbox }
+          - { label: Radio group, value: radio }
+          - { label: Date, value: date }
+        default: text
+      - identifier: placeholder
+        type: Text
+        label: Placeholder
+      - identifier: required
+        type: Checkbox
+        label: Required
+      - identifier: width
+        type: Select
+        renderType: selectSingle
+        label: Width
+        items:
+          - { label: Full width, value: full }
+          - { label: Half width, value: half }
+        default: full
+      - identifier: options
+        type: Collection
+        label: Options
+        description: 'Only used by dropdown and radio fields.'
+        fields:
+          - identifier: label
+            type: Text
+            label: Label
+            required: true
+          - identifier: value
+            type: Text
+            label: Value
+            required: true
+
+  - identifier: submit_label
+    type: Text
+    label: Submit button label
+    default: Absenden
+
+  - identifier: success_text
+    type: Textarea
+    label: Success message
+    default: Danke! Wir melden uns in Kürze bei Ihnen.
+
+  - identifier: consent_text
+    type: Textarea
+    label: Consent checkbox text
+    default: Ich bin mit der Verarbeitung meiner Daten einverstanden.
+
+  - identifier: privacy_link
+    type: Link
+    label: Privacy policy link
+
+  - identifier: recipients
+    type: Text
+    label: Recipients
+    description: 'Comma-separated. Only addresses on the site''s verified list are honoured; anything else falls back to the site default.'
+
+  - identifier: send_confirmation
+    type: Checkbox
+    label: Send a copy to the visitor
+    description: 'Consumes the same monthly email quota as the notification.'
