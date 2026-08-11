@@ -2,12 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
-#  (2026-07-30)
+#  (2026-08-11)
 
 
 ### Bug Fixes
 
 * **ai-layer:** live SEO preview, robots row, exclude noindex from sitemap ([ff5e5b6](https://bitbucket.org/labor-digital/labor-factory-app/commits/ff5e5b6100da53615195eb1c26f8330013bfaf71))
+* **ci:** build the pipeline-app image after its version bump, not before ([babda58](https://bitbucket.org/labor-digital/labor-factory-app/commits/babda589d4330d4ac70ae3a085f6fcc371e11019))
 * **ci:** compute each package's bump from its own commits, and refuse a stray major ([0f25263](https://bitbucket.org/labor-digital/labor-factory-app/commits/0f25263cb59f2c281018cea42db9830d89e8940c))
 * **ci:** correct deploy step script path → /opt/deploy-docker-to-ecs.sh ([f9b3168](https://bitbucket.org/labor-digital/labor-factory-app/commits/f9b316891a41d01c8557a0971c061f86a703fa0e))
 * **ci:** quote ext_emconf sync command (colon-space broke YAML parse) ([5ddbaf6](https://bitbucket.org/labor-digital/labor-factory-app/commits/5ddbaf6f954d0e8b25756d507d9f26f326f120e0))
@@ -87,10 +88,12 @@ All notable changes to this project will be documented in this file. See [standa
 ### Features
 
 * add RecordNews, RecordPerson, RecordEvent and RecordJob (DL [#030](https://bitbucket.org/labor-digital/labor-factory-app/issues/030)) ([63bf5e4](https://bitbucket.org/labor-digital/labor-factory-app/commits/63bf5e46f389a40cc45cf9271eeadb2b01b05d44))
+* **ai-chat:** conversation memory, page + section links, human voice, honest limits ([5fa73fe](https://bitbucket.org/labor-digital/labor-factory-app/commits/5fa73fe68c56cd35a7f7c613195400420931d81a)), closes [#029](https://bitbucket.org/labor-digital/labor-factory-app/issue/029)
 * **ai-layer:** /login route replaces the permanent sign-in button ([d10e976](https://bitbucket.org/labor-digital/labor-factory-app/commits/d10e9768aacad536a883cac481dd1668a4f71871)), closes [#026](https://bitbucket.org/labor-digital/labor-factory-app/issue/026)
 * **ai-layer:** add a DE/EN message catalogue and locale composable ([0a08d83](https://bitbucket.org/labor-digital/labor-factory-app/commits/0a08d832aa1a1d849b2eb79a8fec63ae8aad92a0))
 * **ai-layer:** agent-drivable dev harness (DL [#024](https://bitbucket.org/labor-digital/labor-factory-app/issues/024)) ([6135070](https://bitbucket.org/labor-digital/labor-factory-app/commits/61350707c5926d0f3dce8f32e445f159d0d97d56))
 * **ai-layer:** guided news creation + usable records surface (DL [#023](https://bitbucket.org/labor-digital/labor-factory-app/issues/023)) ([ed9bb03](https://bitbucket.org/labor-digital/labor-factory-app/commits/ed9bb03baf1f81e90ef6dad30d24bc44d9e2c38c))
+* **ai-layer:** make every record kind reachable, editable and page-able (DL [#031](https://bitbucket.org/labor-digital/labor-factory-app/issues/031)) ([43dc66a](https://bitbucket.org/labor-digital/labor-factory-app/commits/43dc66a3c3790f0f85b93824ff21a951fc6dfcc3)), closes [#030](https://bitbucket.org/labor-digital/labor-factory-app/issue/030)
 * **ai-layer:** wire local frontend + fix cross-origin broker calls ([0e4cca8](https://bitbucket.org/labor-digital/labor-factory-app/commits/0e4cca809e5b5c5d19f5fe604407428cd04ca2f7))
 * apply seed records via multitenant API path ([f853af4](https://bitbucket.org/labor-digital/labor-factory-app/commits/f853af4678d43d2bde32d58c7b58e374f2faf8d4))
 * **cms-free:** AI editor layer — records, SEO, pages panel, nav ([6362fdb](https://bitbucket.org/labor-digital/labor-factory-app/commits/6362fdb06bb753840926bcba5b7df164781c7856)), closes [#020](https://bitbucket.org/labor-digital/labor-factory-app/issue/020) [#021](https://bitbucket.org/labor-digital/labor-factory-app/issue/021)
@@ -113,6 +116,7 @@ All notable changes to this project will be documented in this file. See [standa
 * **factory-multitenant-api:** scaffold extension + release wiring ([26704c1](https://bitbucket.org/labor-digital/labor-factory-app/commits/26704c195aba1c7ed99fff082748d8bb72e60311)), closes [#013](https://bitbucket.org/labor-digital/labor-factory-app/issue/013)
 * **factory-multitenant-api:** strip backend base path from generated links ([b600890](https://bitbucket.org/labor-digital/labor-factory-app/commits/b6008907963a3f1f9c9e14ac48ab4a0858802417))
 * **factory-nuxt-layer:** export types/ for consumers and prerender records ([ab1e87c](https://bitbucket.org/labor-digital/labor-factory-app/commits/ab1e87cbfcf09893fd00fb34f9d9145a131e35a4)), closes [#048](https://bitbucket.org/labor-digital/labor-factory-app/issue/048) [#021](https://bitbucket.org/labor-digital/labor-factory-app/issue/021)
+* **forms:** AI-authored forms with branded email notifications (DL [#033](https://bitbucket.org/labor-digital/labor-factory-app/issues/033)) ([5f11e1c](https://bitbucket.org/labor-digital/labor-factory-app/commits/5f11e1c4328382882f8c1a14d24a9623943f5ee6))
 * **header:** subpage dropdowns for classic/transparent + mobile arrow accordion ([8f50820](https://bitbucket.org/labor-digital/labor-factory-app/commits/8f50820d4d7f3e55ad67440ec649566607ecda80))
 * initial public release of factory-core 0.1.0 ([f3c1d53](https://bitbucket.org/labor-digital/labor-factory-app/commits/f3c1d53c57c00f1761d08f2a6ac2794839477cb8))
 * manifest-driven record types with a Record naming convention (DL [#030](https://bitbucket.org/labor-digital/labor-factory-app/issues/030)) ([396db4f](https://bitbucket.org/labor-digital/labor-factory-app/commits/396db4f5b6133faf936ed5924906f394522f5de9)), closes [#010](https://bitbucket.org/labor-digital/labor-factory-app/issue/010) [#021](https://bitbucket.org/labor-digital/labor-factory-app/issue/021) [#023](https://bitbucket.org/labor-digital/labor-factory-app/issue/023)
