@@ -2,7 +2,7 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
-#  (2026-08-11)
+#  (2026-08-12)
 
 
 ### Bug Fixes
@@ -18,6 +18,7 @@ All notable changes to this project will be documented in this file. See [standa
 * correct nuxt-layer install snippet to match actual typo3 module config ([e804f8d](https://bitbucket.org/labor-digital/labor-factory-app/commits/e804f8d7ea53a7b91946e14466faa5da74809472))
 * correct nuxt-layer repo link and add typo3-extension README ([b54310a](https://bitbucket.org/labor-digital/labor-factory-app/commits/b54310a8b268a9cf28048f86866e01e2e33bf445))
 * **deploy:** give npm the build token, and land the first Fly deploy ([48f6770](https://bitbucket.org/labor-digital/labor-factory-app/commits/48f6770f24e2e82d746e43f4abbab6e559e34d34))
+* **deploy:** make the tenant Update actually install the published layers (DL [#034](https://bitbucket.org/labor-digital/labor-factory-app/issues/034)) ([1d07088](https://bitbucket.org/labor-digital/labor-factory-app/commits/1d0708853ad330f3be290b5684900612f4ba91ce)), closes [#032](https://bitbucket.org/labor-digital/labor-factory-app/issue/032) [#029](https://bitbucket.org/labor-digital/labor-factory-app/issue/029)
 * **factory-ai-layer:** refuse non-members at sign-in instead of blanking the page ([335626e](https://bitbucket.org/labor-digital/labor-factory-app/commits/335626e5b5ddd7b65f07e0344726f4cfeec0d6c9))
 * **factory-ai-layer:** report the real error when the broker address is unset ([ffdbdfc](https://bitbucket.org/labor-digital/labor-factory-app/commits/ffdbdfc74aea9610d5dd525405c5bd9c172efaf3))
 * **factory-components:** resolve the nuxt-layer path in npm mode ([8e963cd](https://bitbucket.org/labor-digital/labor-factory-app/commits/8e963cd19fdde9f3dff937616e87793e1e3029a1))
@@ -97,6 +98,7 @@ All notable changes to this project will be documented in this file. See [standa
 * **ai-layer:** wire local frontend + fix cross-origin broker calls ([0e4cca8](https://bitbucket.org/labor-digital/labor-factory-app/commits/0e4cca809e5b5c5d19f5fe604407428cd04ca2f7))
 * apply seed records via multitenant API path ([f853af4](https://bitbucket.org/labor-digital/labor-factory-app/commits/f853af4678d43d2bde32d58c7b58e374f2faf8d4))
 * **cms-free:** AI editor layer — records, SEO, pages panel, nav ([6362fdb](https://bitbucket.org/labor-digital/labor-factory-app/commits/6362fdb06bb753840926bcba5b7df164781c7856)), closes [#020](https://bitbucket.org/labor-digital/labor-factory-app/issue/020) [#021](https://bitbucket.org/labor-digital/labor-factory-app/issue/021)
+* **components:** core components available by default in AI mode (DL [#035](https://bitbucket.org/labor-digital/labor-factory-app/issues/035)) ([92441dd](https://bitbucket.org/labor-digital/labor-factory-app/commits/92441dd1887dcde836abb2a0fa2cd0334698afba)), closes [#033](https://bitbucket.org/labor-digital/labor-factory-app/issue/033)
 * **content-blocks:** adopt Claude-design content blocks, retire NuxtUI ones (DL [#018](https://bitbucket.org/labor-digital/labor-factory-app/issues/018)) ([93ccfc5](https://bitbucket.org/labor-digital/labor-factory-app/commits/93ccfc5e8b1df8fda2d6ae82cd62650ad74b8b97))
 * **factory-ai-layer:** add a sign-out button to the editor overlay ([ffc83e8](https://bitbucket.org/labor-digital/labor-factory-app/commits/ffc83e84418bb5cb1bbe873be5a861e55a92c22b))
 * **factory-ai-layer:** publish as a private npm package ([09800c7](https://bitbucket.org/labor-digital/labor-factory-app/commits/09800c70a894d5fc4fa894176e2a962f004859c1))
