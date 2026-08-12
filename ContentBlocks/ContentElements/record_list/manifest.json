@@ -2,6 +2,7 @@
 	"$schema": "../../../../schema/component-manifest.schema.json",
 	"name": "RecordList",
 	"type": "content-element",
+	"tier": "optional",
 	"version": "1.0.0",
 	"min_core_version": "1.1.0",
 	"description": "A plain list of records of one type, each entry rendered by that record type's own card. The simple counterpart to the Teaser: no Figma layout variants, no slider, just a grid or a compact stack.",

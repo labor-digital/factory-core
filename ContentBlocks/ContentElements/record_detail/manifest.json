@@ -2,6 +2,7 @@
 	"$schema": "../../../../schema/component-manifest.schema.json",
 	"name": "RecordDetail",
 	"type": "content-element",
+	"tier": "optional",
 	"version": "1.0.0",
 	"min_core_version": "1.1.0",
 	"description": "Renders the record addressed by the current URL (/<type>/<slug>) as a page: the record type's typed header above the record's own content body, which accepts any active Content Block. Emits nothing when the URL addresses no record, so the same page can serve both the list and the detail view.",

@@ -2,6 +2,7 @@
 	"$schema": "../../../../schema/component-manifest.schema.json",
 	"name": "News",
 	"type": "content-element",
+	"tier": "optional",
 	"version": "1.0.1",
 	"min_core_version": "1.0.0",
 	"description": "News / press / events section over hand-authored items with fixed categories (Projekt, Auszeichnung, Presse, Termin). Layouts: filterable teaser grid, magazine (1 featured + 4 side items), filtered list with date markers, featured + compact list, or a timeline with year tabs.",
