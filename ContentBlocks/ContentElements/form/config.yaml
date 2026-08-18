@@ -10,7 +10,7 @@ fields:
     label: Variant
     items:
       - { label: Stacked · header above a centered form, value: stacked }
-      - { label: Split · header left, form right, value: split }
+      - { label: 'Split · header left, form right', value: split }
       - { label: Card · form in a raised card, value: card }
     default: stacked
 
