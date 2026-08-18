@@ -2,12 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
-#  (2026-08-12)
+#  (2026-08-18)
 
 
 ### Bug Fixes
 
 * **ai-layer:** live SEO preview, robots row, exclude noindex from sitemap ([ff5e5b6](https://bitbucket.org/labor-digital/labor-factory-app/commits/ff5e5b6100da53615195eb1c26f8330013bfaf71))
+* **ai-layer:** never persist an empty assistant turn in the chat transcript ([5f0f5d3](https://bitbucket.org/labor-digital/labor-factory-app/commits/5f0f5d32119288d29174112d5802775ab4d32180)), closes [#032](https://bitbucket.org/labor-digital/labor-factory-app/issue/032)
+* **ai-layer:** open the chat scrolled to the newest turn ([7276036](https://bitbucket.org/labor-digital/labor-factory-app/commits/72760360294460ef8876c0c077ed508e292acda5)), closes [#024](https://bitbucket.org/labor-digital/labor-factory-app/issue/024)
 * **ci:** build the pipeline-app image after its version bump, not before ([babda58](https://bitbucket.org/labor-digital/labor-factory-app/commits/babda589d4330d4ac70ae3a085f6fcc371e11019))
 * **ci:** compute each package's bump from its own commits, and refuse a stray major ([0f25263](https://bitbucket.org/labor-digital/labor-factory-app/commits/0f25263cb59f2c281018cea42db9830d89e8940c))
 * **ci:** correct deploy step script path → /opt/deploy-docker-to-ecs.sh ([f9b3168](https://bitbucket.org/labor-digital/labor-factory-app/commits/f9b316891a41d01c8557a0971c061f86a703fa0e))
@@ -15,6 +17,7 @@ All notable changes to this project will be documented in this file. See [standa
 * **ci:** stop the changelog artifact from breaking the next release step ([70833a1](https://bitbucket.org/labor-digital/labor-factory-app/commits/70833a1f9356cd157d8cf1350ae758151638ff5e))
 * **ci:** sync release steps to master tip before bump ([dff8ed2](https://bitbucket.org/labor-digital/labor-factory-app/commits/dff8ed2398ccb1164d816eb7d7d19a15cb12e0fc))
 * **ci:** write npm auth to $HOME/.npmrc (workspace ignores member .npmrc) ([7f6bace](https://bitbucket.org/labor-digital/labor-factory-app/commits/7f6bace8ad612f4e0301b10dd00e782d669bc7a0))
+* **core:** quote the Split variant label in the form Content Block ([091fc09](https://bitbucket.org/labor-digital/labor-factory-app/commits/091fc0943031bc06fab2793fb8c62a06fc1d7603)), closes [#033](https://bitbucket.org/labor-digital/labor-factory-app/issue/033)
 * correct nuxt-layer install snippet to match actual typo3 module config ([e804f8d](https://bitbucket.org/labor-digital/labor-factory-app/commits/e804f8d7ea53a7b91946e14466faa5da74809472))
 * correct nuxt-layer repo link and add typo3-extension README ([b54310a](https://bitbucket.org/labor-digital/labor-factory-app/commits/b54310a8b268a9cf28048f86866e01e2e33bf445))
 * **deploy:** give npm the build token, and land the first Fly deploy ([48f6770](https://bitbucket.org/labor-digital/labor-factory-app/commits/48f6770f24e2e82d746e43f4abbab6e559e34d34))
@@ -93,6 +96,7 @@ All notable changes to this project will be documented in this file. See [standa
 * **ai-layer:** /login route replaces the permanent sign-in button ([d10e976](https://bitbucket.org/labor-digital/labor-factory-app/commits/d10e9768aacad536a883cac481dd1668a4f71871)), closes [#026](https://bitbucket.org/labor-digital/labor-factory-app/issue/026)
 * **ai-layer:** add a DE/EN message catalogue and locale composable ([0a08d83](https://bitbucket.org/labor-digital/labor-factory-app/commits/0a08d832aa1a1d849b2eb79a8fec63ae8aad92a0))
 * **ai-layer:** agent-drivable dev harness (DL [#024](https://bitbucket.org/labor-digital/labor-factory-app/issues/024)) ([6135070](https://bitbucket.org/labor-digital/labor-factory-app/commits/61350707c5926d0f3dce8f32e445f159d0d97d56))
+* **ai-layer:** chat tasks with a resumable per-page history ([cbc6b3a](https://bitbucket.org/labor-digital/labor-factory-app/commits/cbc6b3af152f9514fcb41f968c54ef0acb5374f5)), closes [#037](https://bitbucket.org/labor-digital/labor-factory-app/issue/037)
 * **ai-layer:** guided news creation + usable records surface (DL [#023](https://bitbucket.org/labor-digital/labor-factory-app/issues/023)) ([ed9bb03](https://bitbucket.org/labor-digital/labor-factory-app/commits/ed9bb03baf1f81e90ef6dad30d24bc44d9e2c38c))
 * **ai-layer:** make every record kind reachable, editable and page-able (DL [#031](https://bitbucket.org/labor-digital/labor-factory-app/issues/031)) ([43dc66a](https://bitbucket.org/labor-digital/labor-factory-app/commits/43dc66a3c3790f0f85b93824ff21a951fc6dfcc3)), closes [#030](https://bitbucket.org/labor-digital/labor-factory-app/issue/030)
 * **ai-layer:** wire local frontend + fix cross-origin broker calls ([0e4cca8](https://bitbucket.org/labor-digital/labor-factory-app/commits/0e4cca809e5b5c5d19f5fe604407428cd04ca2f7))
@@ -164,6 +168,7 @@ All notable changes to this project will be documented in this file. See [standa
 * **playground:** desktop/tablet/mobile viewport switcher in the preview ([8ae140b](https://bitbucket.org/labor-digital/labor-factory-app/commits/8ae140b412a84ecf46606d5a603d7f6417f8cd35))
 * **publish:** fast publish via cache purge, and fix the RLS that blocked it ([a7f0f00](https://bitbucket.org/labor-digital/labor-factory-app/commits/a7f0f00c97553624c3307d4ddb300c6f41db1ed9)), closes [#026](https://bitbucket.org/labor-digital/labor-factory-app/issue/026)
 * **publish:** wire option B for a real Fly deploy ([740d3be](https://bitbucket.org/labor-digital/labor-factory-app/commits/740d3be39c5395c522000dd10c33b6a95105cf99)), closes [#026](https://bitbucket.org/labor-digital/labor-factory-app/issue/026)
+* read tenant content through the broker with a Fly OIDC handshake ([cec8c4d](https://bitbucket.org/labor-digital/labor-factory-app/commits/cec8c4dd7e8d972622d53d60ef2bf36d7caf33ce)), closes [#036](https://bitbucket.org/labor-digital/labor-factory-app/issue/036)
 * records render as pages, with their typed fields intact (DL [#030](https://bitbucket.org/labor-digital/labor-factory-app/issues/030)) ([7aa5ad6](https://bitbucket.org/labor-digital/labor-factory-app/commits/7aa5ad6f0d69365ffbb151916b0392afacd0335c)), closes [#029](https://bitbucket.org/labor-digital/labor-factory-app/issue/029)
 * register record_list as a real CType and give record pickers one column ([808c7b1](https://bitbucket.org/labor-digital/labor-factory-app/commits/808c7b126fedb10644b293f22bbdc41cabc8a5cd)), closes [#010](https://bitbucket.org/labor-digital/labor-factory-app/issue/010)
 * report and compare the layer version a tenant is running (DL [#028](https://bitbucket.org/labor-digital/labor-factory-app/issues/028) §1-3) ([5f506b2](https://bitbucket.org/labor-digital/labor-factory-app/commits/5f506b2e8625d50be5e4b9c07f108f261e01c8b9)), closes [#027](https://bitbucket.org/labor-digital/labor-factory-app/issue/027)
