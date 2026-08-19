@@ -2,7 +2,7 @@
 	"$schema": "../../../../schema/component-manifest.schema.json",
 	"name": "Features",
 	"type": "content-element",
-	"version": "1.2.0",
+	"version": "1.3.0",
 	"min_core_version": "1.0.0",
 	"description": "Grid of feature/service cards, each with title and text plus an optional icon, big number, or image depending on the variant. Cards can carry an individual link.",
 	"when_to_use": "Service overviews, USP lists, process steps (numbered variant). Use River for alternating text+media storytelling and Stats for pure number KPIs.",

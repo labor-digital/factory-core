@@ -2,7 +2,7 @@
 	"$schema": "../../../../schema/component-manifest.schema.json",
 	"name": "Intro",
 	"type": "content-element",
-	"version": "2.0.0",
+	"version": "2.1.0",
 	"min_core_version": "1.0.0",
 	"description": "Introductory section pairing eyebrow + title + body text with an image, optionally with a stats sidebar. The title supports <strong> emphasis rendered in the accent color.",
 	"when_to_use": "Directly after the Hero to introduce the company or topic. Use the stacked variant when key numbers should accompany the introduction; use Text instead when there is no image.",

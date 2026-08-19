@@ -2,7 +2,7 @@
 	"$schema": "../../../../schema/component-manifest.schema.json",
 	"name": "Section",
 	"type": "content-element",
-	"version": "1.0.0",
+	"version": "1.1.0",
 	"min_core_version": "1.0.0",
 	"description": "Flexible mid-page content section: icon + eyebrow + title + description + buttons paired with a media gallery (images/videos) that becomes a Splide slider with more than one item. Media position, column split, text alignment, section background (color/image with overlay), aspect ratio, captions, and a full-screen lightbox are all configurable.",
 	"when_to_use": "Narrative blocks like 'Our vision' or feature showcases with imagery. Use Hero for full-bleed openers, ImgSlider when the media row should dominate under a headline, River for alternating multi-row stories.",

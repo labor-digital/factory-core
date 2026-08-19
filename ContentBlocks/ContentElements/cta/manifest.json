@@ -2,7 +2,7 @@
 	"$schema": "../../../../schema/component-manifest.schema.json",
 	"name": "Cta",
 	"type": "content-element",
-	"version": "2.0.0",
+	"version": "2.1.0",
 	"min_core_version": "1.0.0",
 	"description": "Call-to-action banner with eyebrow, a two-tone headline (light line + bold line), body text, and up to two buttons — or an inline name+email form. Backgrounds: soft brand, dark, or a full-bleed image.",
 	"when_to_use": "Conversion moments mid-page or before the footer. Use the inline-form variant for lightweight lead capture; use Contact for a full contact section, and Hero for page openers.",

@@ -2,7 +2,7 @@
 	"$schema": "../../../../schema/component-manifest.schema.json",
 	"name": "Blocks",
 	"type": "content-element",
-	"version": "1.1.0",
+	"version": "1.2.0",
 	"min_core_version": "1.0.0",
 	"description": "Searchable, filterable listing of content blocks (knowledge base, glossary, articles). All filtering, search, and pagination happen client-side over the authored items; layouts range from card grids over compact lists to a magazine layout with one featured item.",
 	"when_to_use": "Knowledge bases, glossaries, blog/article overviews with many entries the visitor should narrow down themselves. Use News for press/date-driven content; use Teaser to list records of a record type instead of hand-authored items.",

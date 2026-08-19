@@ -2,7 +2,7 @@
 	"$schema": "../../../../schema/component-manifest.schema.json",
 	"name": "Faq",
 	"type": "content-element",
-	"version": "1.1.0",
+	"version": "1.2.0",
 	"min_core_version": "1.0.0",
 	"description": "Collapsible questions and answers in single-column, two-column, grouped, or bordered XL layouts. The two-column variant includes a contact card for unanswered questions.",
 	"when_to_use": "Lower page regions to resolve objections and support questions. Use grouped when questions span multiple topics; use two-col when a contact escalation path should be visible.",

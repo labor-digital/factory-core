@@ -2,7 +2,7 @@
 	"$schema": "../../../../schema/component-manifest.schema.json",
 	"name": "Comparison",
 	"type": "content-element",
-	"version": "1.0.1",
+	"version": "1.1.0",
 	"min_core_version": "1.0.0",
 	"description": "Side-by-side comparison section in six shapes: before/after images (static or with a draggable reveal slider), a head-to-head A-vs-B property table, method cards with pros/cons, a horizontal bar chart, or a multi-criteria star-rating matrix. Each variant reads its own field group.",
 	"when_to_use": "Whenever two or more options, states, or methods must be contrasted — renovation before/after, product A vs. B, alternative approaches, or benchmark values. Use Table for pricing/spec data without a comparative framing.",

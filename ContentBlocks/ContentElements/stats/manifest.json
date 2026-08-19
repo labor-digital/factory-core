@@ -2,7 +2,7 @@
 	"$schema": "../../../../schema/component-manifest.schema.json",
 	"name": "Stats",
 	"type": "content-element",
-	"version": "1.0.1",
+	"version": "1.1.0",
 	"min_core_version": "1.0.0",
 	"description": "Grid of key numbers / KPIs with an optional header. Layouts: one row of four, a dark 2x2 'big four' with a callout quote, a divider-separated inline row, or a split with the header left and the grid right.",
 	"when_to_use": "Compact proof through numbers — years of experience, projects, satisfaction rates. Use Credibility (stats-banner) when the numbers should read as third-party trust signals; use Intro (stacked) to attach stats to an introduction.",

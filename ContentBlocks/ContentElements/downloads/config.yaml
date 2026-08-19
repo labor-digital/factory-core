@@ -55,3 +55,14 @@ fields:
       - identifier: group
         type: Text
         label: Group (Grouped variant only)
+
+  - identifier: heading_level
+    type: Select
+    renderType: selectSingle
+    label: Heading level
+    description: Which HTML heading this section's main headline renders as. Use H1 once per page — the chat's SEO check reports duplicates.
+    items:
+      - { label: 'H1 — main page heading', value: h1 }
+      - { label: 'H2 — section heading', value: h2 }
+      - { label: 'H3 — sub-section', value: h3 }
+    default: h2

@@ -2,7 +2,7 @@
 	"$schema": "../../../../schema/component-manifest.schema.json",
 	"name": "Table",
 	"type": "content-element",
-	"version": "2.0.0",
+	"version": "2.1.0",
 	"min_core_version": "1.0.0",
 	"description": "Tabular data section in six shapes: pricing matrix (features x plans with a featured column), three compare cards with spec lists, flat or category-grouped datasheets, and a sortable data list (plain or zebra-striped) driven by column definitions plus JSON rows.",
 	"when_to_use": "Structured data: pricing, technical specifications, project lists. Use Comparison when the framing is A-vs-B or before/after rather than plain data.",

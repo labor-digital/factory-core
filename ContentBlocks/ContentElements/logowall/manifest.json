@@ -2,7 +2,7 @@
 	"$schema": "../../../../schema/component-manifest.schema.json",
 	"name": "Logowall",
 	"type": "content-element",
-	"version": "1.0.1",
+	"version": "1.1.0",
 	"min_core_version": "1.0.0",
 	"description": "Wall of client/partner logos as a static grid (3-6 columns), an auto-scrolling marquee with masked edges, a compact single row without header, or a paginated prev/next slider.",
 	"when_to_use": "Social proof through recognizable brands — 'Trusted by' rows near the top or references further down. Use Credibility (certificates) when the logos are certifications rather than clients.",

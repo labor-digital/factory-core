@@ -2,7 +2,7 @@
 	"$schema": "../../../../schema/component-manifest.schema.json",
 	"name": "Hero",
 	"type": "content-element",
-	"version": "2.0.0",
+	"version": "2.1.0",
 	"min_core_version": "1.0.0",
 	"description": "Full-bleed hero banner for the top of a page. Fixed-height (600px), vertically centered, dark olive fallback background. Renders one static slide or a rotating Splide.js slider; each slide has its own background (theme color, image, or self-hosted/external video), eyebrow + headline + supporting text, and CTA buttons.",
 	"when_to_use": "First block on landing and campaign pages. Use left/center/right for a static hero; the slider variant for rotating campaign banners with more than one slide. Do not use mid-page — use Section or Cta instead.",

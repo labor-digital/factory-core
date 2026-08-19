@@ -2,7 +2,7 @@
 	"$schema": "../../../../schema/component-manifest.schema.json",
 	"name": "Form",
 	"type": "content-element",
-	"version": "1.0.0",
+	"version": "1.1.0",
 	"min_core_version": "2.0.0",
 	"modes": ["supabase"],
 	"description": "Configurable form whose field list is authored as content. Submissions are forwarded by email to the site's recipients and are never stored anywhere.",

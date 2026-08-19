@@ -2,7 +2,7 @@
 	"$schema": "../../../../schema/component-manifest.schema.json",
 	"name": "River",
 	"type": "content-element",
-	"version": "1.0.1",
+	"version": "1.1.0",
 	"min_core_version": "1.0.0",
 	"description": "Alternating text-and-media rows ('riverflow'). Renders a single block with the image left or right (or with a video play overlay), or stacks multiple blocks that alternate sides automatically. Media aspect ratio is set section-wide with per-block overrides.",
 	"when_to_use": "Storytelling sequences — services, process steps, or project chapters where each row pairs a paragraph with an image. Use Section for one richer block with gallery/background; use Features for compact card grids.",

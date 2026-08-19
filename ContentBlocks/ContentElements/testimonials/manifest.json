@@ -2,7 +2,7 @@
 	"$schema": "../../../../schema/component-manifest.schema.json",
 	"name": "Testimonials",
 	"type": "content-element",
-	"version": "1.1.0",
+	"version": "1.2.0",
 	"min_core_version": "1.0.0",
 	"description": "Customer quotes in six layouts: an XL single centered quote, a long-form quote flow, a centered text-only quote slider, a 3-column card grid with stars, an image+quote slider, and a featured dark treatment with portrait.",
 	"when_to_use": "Narrative social proof from named customers. Use Credibility (reviews) for star-rated review volumes with aggregate scores instead of individual stories.",

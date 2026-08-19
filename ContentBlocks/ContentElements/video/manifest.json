@@ -2,7 +2,7 @@
 	"$schema": "../../../../schema/component-manifest.schema.json",
 	"name": "Video",
 	"type": "content-element",
-	"version": "1.0.1",
+	"version": "1.1.0",
 	"min_core_version": "1.0.0",
 	"description": "Video module rendering YouTube/Vimeo/custom embeds behind a poster with play overlay. Layouts: split with text beside the video, full-width video on top, background overlay with speaker attribution, or a card grid of multiple videos that open in a modal player.",
 	"when_to_use": "Explainers, image films, testimonial videos, or a webinar/video library (cards variant). Use Hero with a video background for ambient motion without playback controls.",
