@@ -2,14 +2,20 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
-#  (2026-08-18)
+#  (2026-08-19)
 
 
 ### Bug Fixes
 
+* a stray `content` wrapper on a collection item no longer hides the item ([a03e1ed](https://bitbucket.org/labor-digital/labor-factory-app/commits/a03e1edc6ab214305bf9e4d950ca5c97297e82af))
+* **a11y:** html lang, visible keyboard focus, and a skip link ([c283033](https://bitbucket.org/labor-digital/labor-factory-app/commits/c28303316dfa847be8367a4dbb0b98b6a7d76112))
+* **a11y:** the soft-text token could never pass AA, and a badge sat under it ([6f6b231](https://bitbucket.org/labor-digital/labor-factory-app/commits/6f6b231acb99441680a932029127cd7cbb24192c)), closes [#999999](https://bitbucket.org/labor-digital/labor-factory-app/issue/999999) [#707070](https://bitbucket.org/labor-digital/labor-factory-app/issue/707070) [#de041](https://bitbucket.org/labor-digital/labor-factory-app/issue/de041) [#038](https://bitbucket.org/labor-digital/labor-factory-app/issue/038)
+* **ai-layer:** keep node builtins out of the client bundle ([fbdffd7](https://bitbucket.org/labor-digital/labor-factory-app/commits/fbdffd72fe929f6a4b3783563acccd2d6f21c70d)), closes [#024](https://bitbucket.org/labor-digital/labor-factory-app/issue/024)
 * **ai-layer:** live SEO preview, robots row, exclude noindex from sitemap ([ff5e5b6](https://bitbucket.org/labor-digital/labor-factory-app/commits/ff5e5b6100da53615195eb1c26f8330013bfaf71))
 * **ai-layer:** never persist an empty assistant turn in the chat transcript ([5f0f5d3](https://bitbucket.org/labor-digital/labor-factory-app/commits/5f0f5d32119288d29174112d5802775ab4d32180)), closes [#032](https://bitbucket.org/labor-digital/labor-factory-app/issue/032)
 * **ai-layer:** open the chat scrolled to the newest turn ([7276036](https://bitbucket.org/labor-digital/labor-factory-app/commits/72760360294460ef8876c0c077ed508e292acda5)), closes [#024](https://bitbucket.org/labor-digital/labor-factory-app/issue/024)
+* **ai-layer:** stub the server-only content path out of the client build ([b12060d](https://bitbucket.org/labor-digital/labor-factory-app/commits/b12060d0b18716caf7bf1955b7d3857db3296e56))
+* **broker:** allowlist the org Fly actually puts in `iss` ([1c670e5](https://bitbucket.org/labor-digital/labor-factory-app/commits/1c670e559eafdcf294020560ba5e7abe59d61d40)), closes [#036](https://bitbucket.org/labor-digital/labor-factory-app/issue/036)
 * **ci:** build the pipeline-app image after its version bump, not before ([babda58](https://bitbucket.org/labor-digital/labor-factory-app/commits/babda589d4330d4ac70ae3a085f6fcc371e11019))
 * **ci:** compute each package's bump from its own commits, and refuse a stray major ([0f25263](https://bitbucket.org/labor-digital/labor-factory-app/commits/0f25263cb59f2c281018cea42db9830d89e8940c))
 * **ci:** correct deploy step script path → /opt/deploy-docker-to-ecs.sh ([f9b3168](https://bitbucket.org/labor-digital/labor-factory-app/commits/f9b316891a41d01c8557a0971c061f86a703fa0e))
@@ -18,10 +24,12 @@ All notable changes to this project will be documented in this file. See [standa
 * **ci:** sync release steps to master tip before bump ([dff8ed2](https://bitbucket.org/labor-digital/labor-factory-app/commits/dff8ed2398ccb1164d816eb7d7d19a15cb12e0fc))
 * **ci:** write npm auth to $HOME/.npmrc (workspace ignores member .npmrc) ([7f6bace](https://bitbucket.org/labor-digital/labor-factory-app/commits/7f6bace8ad612f4e0301b10dd00e782d669bc7a0))
 * **core:** quote the Split variant label in the form Content Block ([091fc09](https://bitbucket.org/labor-digital/labor-factory-app/commits/091fc0943031bc06fab2793fb8c62a06fc1d7603)), closes [#033](https://bitbucket.org/labor-digital/labor-factory-app/issue/033)
+* **core:** run the SSR tenant image as root so it can mint a Fly identity ([40c3b4c](https://bitbucket.org/labor-digital/labor-factory-app/commits/40c3b4c996d5b2f94ec5d970694c688202bab0ed)), closes [#036](https://bitbucket.org/labor-digital/labor-factory-app/issue/036)
 * correct nuxt-layer install snippet to match actual typo3 module config ([e804f8d](https://bitbucket.org/labor-digital/labor-factory-app/commits/e804f8d7ea53a7b91946e14466faa5da74809472))
 * correct nuxt-layer repo link and add typo3-extension README ([b54310a](https://bitbucket.org/labor-digital/labor-factory-app/commits/b54310a8b268a9cf28048f86866e01e2e33bf445))
 * **deploy:** give npm the build token, and land the first Fly deploy ([48f6770](https://bitbucket.org/labor-digital/labor-factory-app/commits/48f6770f24e2e82d746e43f4abbab6e559e34d34))
 * **deploy:** make the tenant Update actually install the published layers (DL [#034](https://bitbucket.org/labor-digital/labor-factory-app/issues/034)) ([1d07088](https://bitbucket.org/labor-digital/labor-factory-app/commits/1d0708853ad330f3be290b5684900612f4ba91ce)), closes [#032](https://bitbucket.org/labor-digital/labor-factory-app/issue/032) [#029](https://bitbucket.org/labor-digital/labor-factory-app/issue/029)
+* **deploy:** sync .dockerignore to existing tenants, and stop logging the npm token ([89c4642](https://bitbucket.org/labor-digital/labor-factory-app/commits/89c46420bd07baf025ff480f009352ba0bbe1932))
 * **factory-ai-layer:** refuse non-members at sign-in instead of blanking the page ([335626e](https://bitbucket.org/labor-digital/labor-factory-app/commits/335626e5b5ddd7b65f07e0344726f4cfeec0d6c9))
 * **factory-ai-layer:** report the real error when the broker address is unset ([ffdbdfc](https://bitbucket.org/labor-digital/labor-factory-app/commits/ffdbdfc74aea9610d5dd525405c5bd9c172efaf3))
 * **factory-components:** resolve the nuxt-layer path in npm mode ([8e963cd](https://bitbucket.org/labor-digital/labor-factory-app/commits/8e963cd19fdde9f3dff937616e87793e1e3029a1))
@@ -46,7 +54,11 @@ All notable changes to this project will be documented in this file. See [standa
 * **factory-multitenant-api:** require factory-core ^0.9 ([dbbfc6f](https://bitbucket.org/labor-digital/labor-factory-app/commits/dbbfc6fb5dada431dde98621327a9cb63856d0ef))
 * **factory-multitenant-api:** use correct TYPO3 13 middleware identifier ([bd77eb1](https://bitbucket.org/labor-digital/labor-factory-app/commits/bd77eb1abda6de2ffdcd098997f59b4ec9bf32f9))
 * **header:** align the header with the section content column ([10fcfb7](https://bitbucket.org/labor-digital/labor-factory-app/commits/10fcfb7d02712b3b29bf91e5fbc062c7f095e103))
+* **hero:** sizes="100vw" needs breakpoint keys, or the srcset asks for 1 pixel ([73a924a](https://bitbucket.org/labor-digital/labor-factory-app/commits/73a924a20fab6dd7143e065790193536e929a6c4))
 * **hero:** vertically centre the content layer ([f4ea41c](https://bitbucket.org/labor-digital/labor-factory-app/commits/f4ea41cf0768d9309799e794428b4d8694e80f4d))
+* **media:** decide the proxy at runtime, and keep the origin off the browser ([4582c58](https://bitbucket.org/labor-digital/labor-factory-app/commits/4582c5884d50f6749562caaeb265cf23fed09d2c))
+* **media:** keep the disk cache off Nitro's shared storage — it 500'd the site ([eeb64fd](https://bitbucket.org/labor-digital/labor-factory-app/commits/eeb64fddf7b5892ee8eddb07d1b383d6aab27c6d)), closes [#039](https://bitbucket.org/labor-digital/labor-factory-app/issue/039)
+* never ship a workstation's node_modules, and read Fly's real JWKS URL ([d045065](https://bitbucket.org/labor-digital/labor-factory-app/commits/d0450658b0f2c8275a2b9018c8c3adcb1296dc37)), closes [#034](https://bitbucket.org/labor-digital/labor-factory-app/issue/034)
 * **nuxt-layer:** include assets/ in published files whitelist ([3c7eda2](https://bitbucket.org/labor-digital/labor-factory-app/commits/3c7eda22a9ce35e6b83849f91bc4134f721257b8)), closes [#018](https://bitbucket.org/labor-digital/labor-factory-app/issue/018)
 * **nuxt-layer:** no doubled header/footer, nav fallback, teaser container ([fc54d4a](https://bitbucket.org/labor-digital/labor-factory-app/commits/fc54d4a34e20276904f1fdba266ee36abe2cdfec))
 * **nuxt-layer:** rename heading classes and drop @nuxt/ui from layout primitives ([534526a](https://bitbucket.org/labor-digital/labor-factory-app/commits/534526a5f9bc0921d57b9691bac9da07d42b5800))
@@ -73,6 +85,7 @@ All notable changes to this project will be documented in this file. See [standa
 * **responsive:** working mobile menu + breakout/grid overflow fixes ([7ec2125](https://bitbucket.org/labor-digital/labor-factory-app/commits/7ec21255a9fa6c6b4da90e14b9eac30e34bf52ee))
 * **seeds:** align aurum-bau demo hero with reworked hero schema ([42594d8](https://bitbucket.org/labor-digital/labor-factory-app/commits/42594d81b33626b82388df83a1557e6596d1e0f9))
 * **staging:** pass TYPO3_API_BASE_URL to local nuxt build env ([4ee268f](https://bitbucket.org/labor-digital/labor-factory-app/commits/4ee268ff8bf198c91ec3204179c167d70c82183e))
+* the item's own field wins over a stale `content` wrapper, not the other way ([fe56656](https://bitbucket.org/labor-digital/labor-factory-app/commits/fe5665699a285da48e6f4b253d59c854401f11fd))
 * **typo3-extension:** bulletproof child-table self-heal via try-ALTER pattern ([7791194](https://bitbucket.org/labor-digital/labor-factory-app/commits/77911947c392d41b5512b533d83be795d44293cd))
 * **typo3-extension:** cta buttons collection matches the standard button schema ([bb8db85](https://bitbucket.org/labor-digital/labor-factory-app/commits/bb8db85431328a8c3b6f5354e9660c90efb3d2a0))
 * **typo3-extension:** handle backticked reserved-word columns in self-heal ([6acfed8](https://bitbucket.org/labor-digital/labor-factory-app/commits/6acfed85c6e9717a77aad64fd335a4693b7d9d75))
@@ -104,6 +117,10 @@ All notable changes to this project will be documented in this file. See [standa
 * **cms-free:** AI editor layer — records, SEO, pages panel, nav ([6362fdb](https://bitbucket.org/labor-digital/labor-factory-app/commits/6362fdb06bb753840926bcba5b7df164781c7856)), closes [#020](https://bitbucket.org/labor-digital/labor-factory-app/issue/020) [#021](https://bitbucket.org/labor-digital/labor-factory-app/issue/021)
 * **components:** core components available by default in AI mode (DL [#035](https://bitbucket.org/labor-digital/labor-factory-app/issues/035)) ([92441dd](https://bitbucket.org/labor-digital/labor-factory-app/commits/92441dd1887dcde836abb2a0fa2cd0334698afba)), closes [#033](https://bitbucket.org/labor-digital/labor-factory-app/issue/033)
 * **content-blocks:** adopt Claude-design content blocks, retire NuxtUI ones (DL [#018](https://bitbucket.org/labor-digital/labor-factory-app/issues/018)) ([93ccfc5](https://bitbucket.org/labor-digital/labor-factory-app/commits/93ccfc5e8b1df8fda2d6ae82cd62650ad74b8b97))
+* **core:** heading_level — any section headline can be the page's h1 (DL [#038](https://bitbucket.org/labor-digital/labor-factory-app/issues/038) §1) ([a4c82a5](https://bitbucket.org/labor-digital/labor-factory-app/commits/a4c82a5f3650e253aff8e3538eca17d8abcaf398)), closes [#039](https://bitbucket.org/labor-digital/labor-factory-app/issue/039)
+* deploy checks that a page renders, og:image via /media, purgeable media cache ([62d2d85](https://bitbucket.org/labor-digital/labor-factory-app/commits/62d2d8546a1d386be4cd2017815c87335a408a7b)), closes [#038](https://bitbucket.org/labor-digital/labor-factory-app/issue/038) [#036](https://bitbucket.org/labor-digital/labor-factory-app/issue/036)
+* **deploy:** FACTORY_MEDIA_ORIGIN overrides where /media forwards to ([05b9e09](https://bitbucket.org/labor-digital/labor-factory-app/commits/05b9e09f38ec020fbc4fa3b29554ab55f8d0262c))
+* durable HTML cache, and sync fly.ssr.toml to existing app directories ([7204718](https://bitbucket.org/labor-digital/labor-factory-app/commits/7204718d194a3fc80fd9d768496511a2e13d91a9)), closes [#039](https://bitbucket.org/labor-digital/labor-factory-app/issue/039)
 * **factory-ai-layer:** add a sign-out button to the editor overlay ([ffc83e8](https://bitbucket.org/labor-digital/labor-factory-app/commits/ffc83e84418bb5cb1bbe873be5a861e55a92c22b))
 * **factory-ai-layer:** publish as a private npm package ([09800c7](https://bitbucket.org/labor-digital/labor-factory-app/commits/09800c70a894d5fc4fa894176e2a962f004859c1))
 * **factory-core:** --language option on factory:tenant:provision ([7054355](https://bitbucket.org/labor-digital/labor-factory-app/commits/7054355bc4b00d9dd15e9e18c6ca84c1559db2fc))
@@ -124,8 +141,10 @@ All notable changes to this project will be documented in this file. See [standa
 * **factory-nuxt-layer:** export types/ for consumers and prerender records ([ab1e87c](https://bitbucket.org/labor-digital/labor-factory-app/commits/ab1e87cbfcf09893fd00fb34f9d9145a131e35a4)), closes [#048](https://bitbucket.org/labor-digital/labor-factory-app/issue/048) [#021](https://bitbucket.org/labor-digital/labor-factory-app/issue/021)
 * **forms:** AI-authored forms with branded email notifications (DL [#033](https://bitbucket.org/labor-digital/labor-factory-app/issues/033)) ([5f11e1c](https://bitbucket.org/labor-digital/labor-factory-app/commits/5f11e1c4328382882f8c1a14d24a9623943f5ee6))
 * **header:** subpage dropdowns for classic/transparent + mobile arrow accordion ([8f50820](https://bitbucket.org/labor-digital/labor-factory-app/commits/8f50820d4d7f3e55ad67440ec649566607ecda80))
+* **images:** cache media for a year and serve it through Supabase transformations ([3763d25](https://bitbucket.org/labor-digital/labor-factory-app/commits/3763d25fe594e451429b322e132ac5ecd66f2e4c))
 * initial public release of factory-core 0.1.0 ([f3c1d53](https://bitbucket.org/labor-digital/labor-factory-app/commits/f3c1d53c57c00f1761d08f2a6ac2794839477cb8))
 * manifest-driven record types with a Record naming convention (DL [#030](https://bitbucket.org/labor-digital/labor-factory-app/issues/030)) ([396db4f](https://bitbucket.org/labor-digital/labor-factory-app/commits/396db4f5b6133faf936ed5924906f394522f5de9)), closes [#010](https://bitbucket.org/labor-digital/labor-factory-app/issue/010) [#021](https://bitbucket.org/labor-digital/labor-factory-app/issue/021) [#023](https://bitbucket.org/labor-digital/labor-factory-app/issue/023)
+* **media:** same-origin /media proxy with a cache the tenant owns (DL [#039](https://bitbucket.org/labor-digital/labor-factory-app/issues/039) A+B) ([ec8f0e8](https://bitbucket.org/labor-digital/labor-factory-app/commits/ec8f0e8d006b17137c0adc69519befb21358c54e)), closes [#026](https://bitbucket.org/labor-digital/labor-factory-app/issue/026)
 * migration for records whose typed fields sit in a phantom body element ([c447096](https://bitbucket.org/labor-digital/labor-factory-app/commits/c447096bed51e9bfa15cae5cd26e38aa00d404a1))
 * move consumer constraints to ^2 and make a major release the user's call ([3378720](https://bitbucket.org/labor-digital/labor-factory-app/commits/3378720d7499bea08e1055a81243eb6145ed9a7a))
 * **nuxt-layer:** add Vue components for 11 new content blocks ([92752bb](https://bitbucket.org/labor-digital/labor-factory-app/commits/92752bb91b14d84d3e79a5d3904b55ff67431170))
@@ -181,6 +200,11 @@ All notable changes to this project will be documented in this file. See [standa
 * **typo3-extension:** add 11 content elements from claude-design expansion ([12f2ea1](https://bitbucket.org/labor-digital/labor-factory-app/commits/12f2ea1eb1889bdab14dfe725ec7d400888e69cb))
 * **ui:** restyle pipeline-app and the AI-layer chrome to the LAB design system ([e208b8b](https://bitbucket.org/labor-digital/labor-factory-app/commits/e208b8b66e0258c09cf3f20632779dfad10c6699)), closes [#F2EFE4](https://bitbucket.org/labor-digital/labor-factory-app/issue/F2EFE4) [#292025](https://bitbucket.org/labor-digital/labor-factory-app/issue/292025) [#0015](https://bitbucket.org/labor-digital/labor-factory-app/issue/0015) [#024](https://bitbucket.org/labor-digital/labor-factory-app/issue/024)
 * **walkthrough:** plain-German captions, and force a single Fly machine ([4d249a8](https://bitbucket.org/labor-digital/labor-factory-app/commits/4d249a8bab879e681f82e463924025d1d129477b))
+
+
+### Performance Improvements
+
+* precompress assets with brotli, prioritise the hero image (DL [#038](https://bitbucket.org/labor-digital/labor-factory-app/issues/038) phase 1) ([50cb07f](https://bitbucket.org/labor-digital/labor-factory-app/commits/50cb07f581588e2dcf8ff5b82f840a3f5cf7b175))
 
 
 ### BREAKING CHANGES
