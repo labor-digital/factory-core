@@ -16,7 +16,15 @@
 	"variants": [
 		{
 			"value": "columns",
-			"description": "Light 4-column layout: brand + tagline left, link columns right. Default."
+			"description": "Light 4-column layout: brand + tagline left, 3 link columns right. Default."
+		},
+		{
+			"value": "columns-3",
+			"description": "As columns, narrowed to 3 total: brand + 2 link columns. Extra authored columns are dropped."
+		},
+		{
+			"value": "columns-2",
+			"description": "As columns, narrowed to 2 total: brand + 1 link column. Extra authored columns are dropped."
 		},
 		{
 			"value": "compact",
@@ -39,11 +47,13 @@
 		"desktop": "Multi-column grid; legal row spans the bottom."
 	},
 	"figma": {
-		"file": "Factory_Library_WORKING_260723",
+		"file": "Labor - Website factory PLUGIN TEST",
 		"fileKey": "avP1L4LoOxY5ukjT4bAajX",
-		"nodeId": "773:42570",
-		"dateStamp": "2026-07-23",
-		"moduleHeader": null
+		"nodeId": "1377:53228",
+		"dateStamp": "2026-09-04",
+		"moduleHeader": null,
+		"componentSet": "Modules / Footer",
+		"page": "Factory_Library_CLAUDE-WORK"
 	},
 	"composer_dependencies": [],
 	"npm_dependencies": [

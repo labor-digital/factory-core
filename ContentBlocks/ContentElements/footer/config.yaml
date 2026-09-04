@@ -10,6 +10,8 @@ fields:
     label: Variant
     items:
       - { label: Columns (4-col light), value: columns }
+      - { label: Columns (3-col light), value: columns-3 }
+      - { label: Columns (2-col light), value: columns-2 }
       - { label: Compact (single row), value: compact }
       - { label: 'Split (dark, claim + links)', value: split }
       - { label: 'Maximal (giant wordmark, dark)', value: maximal }
