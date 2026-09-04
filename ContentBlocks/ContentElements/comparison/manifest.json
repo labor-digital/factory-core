@@ -47,11 +47,13 @@
 		"desktop": "Two-column pairs; methods render as a 3-card row."
 	},
 	"figma": {
-		"file": "Factory_Library_WORKING_260723",
+		"file": "Labor - Website factory PLUGIN TEST",
 		"fileKey": "avP1L4LoOxY5ukjT4bAajX",
-		"nodeId": "773:36621",
-		"dateStamp": "2026-07-23",
-		"moduleHeader": null
+		"nodeId": "1377:44683",
+		"dateStamp": "2026-09-04",
+		"moduleHeader": null,
+		"componentSet": "Modules / Comparison",
+		"page": "Factory_Library_CLAUDE-WORK"
 	},
 	"composer_dependencies": [],
 	"npm_dependencies": [],

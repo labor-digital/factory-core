@@ -44,11 +44,13 @@
 		"desktop": "Two-column split for split/split-image; persons and tiles in a three-column grid; stacked centers an info band above a 720px form."
 	},
 	"figma": {
-		"file": "Factory_Library_WORKING_260723",
+		"file": "Labor - Website factory PLUGIN TEST",
 		"fileKey": "avP1L4LoOxY5ukjT4bAajX",
-		"nodeId": "773:37489",
-		"dateStamp": "2026-07-23",
-		"moduleHeader": null
+		"nodeId": "1377:45764",
+		"dateStamp": "2026-09-04",
+		"moduleHeader": null,
+		"componentSet": "Modules / Contact",
+		"page": "Factory_Library_CLAUDE-WORK"
 	},
 	"composer_dependencies": [],
 	"npm_dependencies": [],

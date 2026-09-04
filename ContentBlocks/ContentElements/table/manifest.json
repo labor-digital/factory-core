@@ -49,11 +49,13 @@
 		"desktop": "Full matrix / 3-card row."
 	},
 	"figma": {
-		"file": "Factory_Library_WORKING_260723",
+		"file": "Labor - Website factory PLUGIN TEST",
 		"fileKey": "avP1L4LoOxY5ukjT4bAajX",
-		"nodeId": "773:50115",
-		"dateStamp": "2026-07-23",
-		"moduleHeader": null
+		"nodeId": "1377:62239",
+		"dateStamp": "2026-09-04",
+		"moduleHeader": null,
+		"componentSet": "Modules / Table",
+		"page": "Factory_Library_CLAUDE-WORK"
 	},
 	"composer_dependencies": [],
 	"npm_dependencies": [],

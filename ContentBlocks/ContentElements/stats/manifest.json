@@ -37,11 +37,13 @@
 		"desktop": "row: 4 KPIs each under a 2px top rule. bigfour: dark 2x2 with 120px numbers + callout. inline: 4 KPIs between two rules, vertical dividers. split: 0.9/1.1 header-left + 2x2 grid-right."
 	},
 	"figma": {
-		"file": "Factory_Library_WORKING_260723",
+		"file": "Labor - Website factory PLUGIN TEST",
 		"fileKey": "avP1L4LoOxY5ukjT4bAajX",
-		"nodeId": "773:47170",
-		"dateStamp": "2026-07-23",
-		"moduleHeader": null
+		"nodeId": "1377:58982",
+		"dateStamp": "2026-09-04",
+		"moduleHeader": null,
+		"componentSet": "Modules / Stats",
+		"page": "Factory_Library_CLAUDE-WORK"
 	},
 	"composer_dependencies": [],
 	"npm_dependencies": [],

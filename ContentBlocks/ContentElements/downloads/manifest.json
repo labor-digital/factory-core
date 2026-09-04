@@ -45,11 +45,13 @@
 		"desktop": "Icon grid in 3 columns; featured splits hero + list; compact in 2 columns."
 	},
 	"figma": {
-		"file": "Factory_Library_WORKING_260723",
+		"file": "Labor - Website factory PLUGIN TEST",
 		"fileKey": "avP1L4LoOxY5ukjT4bAajX",
-		"nodeId": "773:40748",
-		"dateStamp": "2026-07-23",
-		"moduleHeader": null
+		"nodeId": "1377:50582",
+		"dateStamp": "2026-09-04",
+		"moduleHeader": null,
+		"componentSet": "Modules / Downloads",
+		"page": "Factory_Library_CLAUDE-WORK"
 	},
 	"composer_dependencies": [],
 	"npm_dependencies": [],

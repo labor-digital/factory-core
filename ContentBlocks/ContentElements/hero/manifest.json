@@ -41,11 +41,13 @@
 		"desktop": "Fixed 600px height; full alignment honored."
 	},
 	"figma": {
-		"file": "Factory_Library_WORKING_260723",
+		"file": "Labor - Website factory PLUGIN TEST",
 		"fileKey": "avP1L4LoOxY5ukjT4bAajX",
-		"nodeId": "773:43192",
-		"dateStamp": "2026-07-23",
-		"moduleHeader": "HERO · ALL VARIANTS"
+		"nodeId": "1377:54212",
+		"dateStamp": "2026-09-04",
+		"moduleHeader": "HERO · ALL VARIANTS",
+		"componentSet": "Modules / Hero",
+		"page": "Factory_Library_CLAUDE-WORK"
 	},
 	"composer_dependencies": [],
 	"npm_dependencies": [

@@ -47,11 +47,13 @@
 		"desktop": "3-4 column grid; slider shows a full page of members."
 	},
 	"figma": {
-		"file": "Factory_Library_WORKING_260723",
+		"file": "Labor - Website factory PLUGIN TEST",
 		"fileKey": "avP1L4LoOxY5ukjT4bAajX",
-		"nodeId": "773:53548",
-		"dateStamp": "2026-07-23",
-		"moduleHeader": null
+		"nodeId": "1377:66742",
+		"dateStamp": "2026-09-04",
+		"moduleHeader": null,
+		"componentSet": "Modules / Team",
+		"page": "Factory_Library_CLAUDE-WORK"
 	},
 	"composer_dependencies": [],
 	"npm_dependencies": [],

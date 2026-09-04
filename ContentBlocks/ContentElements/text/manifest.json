@@ -38,11 +38,13 @@
 		"desktop": "Two-column split for the two-col variant."
 	},
 	"figma": {
-		"file": "Factory_Library_WORKING_260723",
+		"file": "Labor - Website factory PLUGIN TEST",
 		"fileKey": "avP1L4LoOxY5ukjT4bAajX",
-		"nodeId": "773:55886",
-		"dateStamp": "2026-07-23",
-		"moduleHeader": "TEXT · ALL VARIANTS"
+		"nodeId": "1377:69673",
+		"dateStamp": "2026-09-04",
+		"moduleHeader": "TEXT · ALL VARIANTS",
+		"componentSet": "Modules / Text",
+		"page": "Factory_Library_CLAUDE-WORK"
 	},
 	"composer_dependencies": [],
 	"npm_dependencies": [],

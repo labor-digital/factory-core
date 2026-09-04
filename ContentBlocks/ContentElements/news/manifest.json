@@ -46,11 +46,13 @@
 		"desktop": "3-column grid; magazine/featured split into featured + side column."
 	},
 	"figma": {
-		"file": "Factory_Library_WORKING_260723",
+		"file": "Labor - Website factory PLUGIN TEST",
 		"fileKey": "avP1L4LoOxY5ukjT4bAajX",
-		"nodeId": "773:46055",
-		"dateStamp": "2026-07-23",
-		"moduleHeader": null
+		"nodeId": "1377:57701",
+		"dateStamp": "2026-09-04",
+		"moduleHeader": null,
+		"componentSet": "Modules / News",
+		"page": "Factory_Library_CLAUDE-WORK"
 	},
 	"composer_dependencies": [],
 	"npm_dependencies": [],
