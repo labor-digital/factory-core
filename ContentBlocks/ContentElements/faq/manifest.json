@@ -44,7 +44,10 @@
 		"dateStamp": "2026-09-04",
 		"moduleHeader": "FAQ · ALL VARIANTS",
 		"componentSet": "Modules / FAQ",
-		"page": "Factory_Library_CLAUDE-WORK"
+		"page": "Factory_Library_CLAUDE-WORK",
+		"authoredFields": [
+			"contact_mail"
+		]
 	},
 	"composer_dependencies": [],
 	"npm_dependencies": [],

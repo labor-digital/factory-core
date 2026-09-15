@@ -63,7 +63,16 @@
 		"dateStamp": "2026-09-04",
 		"moduleHeader": null,
 		"componentSet": "Modules / Modal",
-		"page": "Factory_Library_CLAUDE-WORK"
+		"page": "Factory_Library_CLAUDE-WORK",
+		"authoredFields": [
+			"confirm_action",
+			"confirm_target",
+			"cancel_action",
+			"form_action",
+			"form_method",
+			"trigger_label",
+			"trigger_variant"
+		]
 	},
 	"ai": {
 		"prompt_summary": "Modal: a dialog overlay opened by a trigger button rendered in the page. Element settings: variant (confirm|alert|lightbox|video|form|detail|wizard), trigger_label, trigger_variant (solid|outline|ghost|link), title, body, show_close. Actions are label + behaviour: confirm_label/confirm_action (close|link|submit)/confirm_to/confirm_target and cancel_label/cancel_action (close|link)/cancel_to. The form variant posts to form_action with form_method. Media variants use image/caption/counter (lightbox), video_url/poster/duration/subline (video), image/subline/specs[] (detail). form uses fields[] (field_label, field_type) plus consent_label. wizard uses steps[] (step_title, step_description, choices[]).",
