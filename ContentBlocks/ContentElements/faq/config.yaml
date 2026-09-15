@@ -15,6 +15,13 @@ fields:
       - { label: Bordered XL (large questions on cream), value: bordered }
     default: single
 
+  # Upstream exposes this as the `Divider` toggle on Modules / FAQ; we drew the
+  # rule unconditionally, so an author could not switch it off.
+  - identifier: show_divider
+    type: Checkbox
+    label: Show divider between items
+    default: 1
+
   - identifier: eyebrow
     type: Text
     label: Eyebrow

@@ -52,7 +52,9 @@
 		"dateStamp": "2026-09-04",
 		"moduleHeader": null,
 		"componentSet": "Modules / Image Slider",
-		"page": "Factory_Library_CLAUDE-WORK"
+		"page": "Factory_Library_CLAUDE-WORK",
+		"port": "rewrite",
+		"portReason": "Rebuilt in utility classes; carries no islider-* class at all."
 	},
 	"composer_dependencies": [],
 	"npm_dependencies": [
