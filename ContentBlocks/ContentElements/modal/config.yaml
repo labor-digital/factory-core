@@ -1,0 +1,154 @@
+name: factory/modal
+title: Modal
+description: Dialog overlay on a dark backdrop. Seven variants — confirm, alert, lightbox, video, form, detail, wizard. Renders a trigger in the page flow; the dialog itself opens over it.
+group: factory
+icon: content-elements-mailform
+fields:
+  - identifier: variant
+    type: Select
+    renderType: selectSingle
+    label: Variant
+    items:
+      - { label: 'Confirm (question + two actions)', value: confirm }
+      - { label: 'Alert (warning + acknowledge)', value: alert }
+      - { label: 'Lightbox (image + caption)', value: lightbox }
+      - { label: 'Video (player + meta)', value: video }
+      - { label: 'Form (fields + submit)', value: form }
+      - { label: 'Detail (image + spec list)', value: detail }
+      - { label: 'Wizard (3-step choice dialog)', value: wizard }
+    default: confirm
+
+  # A modal has no place in the page flow, so the element renders a trigger where
+  # it sits and portals the dialog to the end of <body>. Without a trigger there
+  # is no way for a visitor to open it.
+  - identifier: trigger_label
+    type: Text
+    label: Trigger label (the button shown in the page)
+    default: Mehr erfahren
+
+  - identifier: trigger_variant
+    type: Select
+    renderType: selectSingle
+    label: Trigger button style
+    items:
+      - { label: Solid, value: solid }
+      - { label: Outline, value: outline }
+      - { label: Ghost, value: ghost }
+      - { label: 'Text link', value: link }
+    default: outline
+
+  - identifier: title
+    type: Text
+    label: Dialog title
+
+  - identifier: body
+    type: Textarea
+    enableRichtext: true
+    label: Body text
+
+  - identifier: confirm_label
+    type: Text
+    label: Primary action label
+    default: Bestätigen
+
+  - identifier: cancel_label
+    type: Text
+    label: Secondary action label (leave empty to hide)
+    default: Abbrechen
+
+  - identifier: show_close
+    type: Checkbox
+    label: Show close button
+    default: 1
+
+  # --- lightbox / video / detail -------------------------------------------
+  - identifier: image
+    type: File
+    label: Image (lightbox, detail)
+    allowedFileExtensions: ['jpg', 'jpeg', 'png', 'webp', 'svg']
+    maxItems: 1
+
+  - identifier: caption
+    type: Text
+    label: Caption (lightbox)
+
+  - identifier: counter
+    type: Text
+    label: Counter, e.g. "3 / 12" (lightbox)
+
+  - identifier: video_url
+    type: Link
+    label: Video URL (video)
+
+  - identifier: poster
+    type: File
+    label: Poster image (video)
+    allowedFileExtensions: ['jpg', 'jpeg', 'png', 'webp']
+    maxItems: 1
+
+  - identifier: duration
+    type: Text
+    label: Duration, e.g. "4:21" (video)
+
+  - identifier: subline
+    type: Text
+    label: Subline (video, detail)
+
+  - identifier: specs
+    type: Collection
+    label: Specification rows (detail)
+    labelField: spec_label
+    fields:
+      - identifier: spec_label
+        type: Text
+        label: Label
+      - identifier: spec_value
+        type: Text
+        label: Value
+
+  # --- form -----------------------------------------------------------------
+  - identifier: fields
+    type: Collection
+    label: Form fields (form)
+    labelField: field_label
+    fields:
+      - identifier: field_label
+        type: Text
+        label: Label
+      - identifier: field_type
+        type: Select
+        renderType: selectSingle
+        label: Type
+        items:
+          - { label: Text, value: text }
+          - { label: Email, value: email }
+          - { label: Textarea, value: textarea }
+        default: text
+
+  - identifier: consent_label
+    type: Text
+    label: Consent checkbox label (form)
+
+  # --- wizard ---------------------------------------------------------------
+  - identifier: steps
+    type: Collection
+    label: Steps (wizard)
+    labelField: step_title
+    fields:
+      - identifier: step_title
+        type: Text
+        label: Step title
+      - identifier: step_description
+        type: Textarea
+        label: Step description
+      - identifier: choices
+        type: Collection
+        label: Choices
+        labelField: choice_label
+        fields:
+          - identifier: choice_label
+            type: Text
+            label: Choice label
+          - identifier: choice_description
+            type: Text
+            label: Choice description
