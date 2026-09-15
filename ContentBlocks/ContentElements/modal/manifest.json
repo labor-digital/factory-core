@@ -10,6 +10,7 @@
 	"capabilities": [
 		"seven variants: confirm | alert | lightbox | video | form | detail | wizard",
 		"renders an in-flow trigger button (solid | outline | ghost | link) that opens the dialog",
+		"actions carry BEHAVIOUR, not just a label: close | link (with target) | submit; the form variant posts to an authored endpoint",
 		"focus is trapped while open, restored to the trigger on close",
 		"closes on Escape and on backdrop click; page scroll is locked while open",
 		"wizard tracks step progress and a choice per step",
@@ -65,13 +66,16 @@
 		"page": "Factory_Library_CLAUDE-WORK"
 	},
 	"ai": {
-		"prompt_summary": "Modal: a dialog overlay opened by a trigger button rendered in the page. Element settings: variant (confirm|alert|lightbox|video|form|detail|wizard), trigger_label, trigger_variant (solid|outline|ghost|link), title, body, confirm_label, cancel_label, show_close. Media variants use image/caption/counter (lightbox), video_url/poster/duration/subline (video), image/subline/specs[] (detail). form uses fields[] (field_label, field_type) plus consent_label. wizard uses steps[] (step_title, step_description, choices[]).",
-		"content_guidelines": "Title at most 8 words and phrased as the decision the visitor is making. Body at most two sentences. Action labels are verbs, not 'OK' — 'Löschen', 'Termin buchen'. Always give cancel_label a value on the confirm variant; a confirmation with only one action is not a confirmation.",
+		"prompt_summary": "Modal: a dialog overlay opened by a trigger button rendered in the page. Element settings: variant (confirm|alert|lightbox|video|form|detail|wizard), trigger_label, trigger_variant (solid|outline|ghost|link), title, body, show_close. Actions are label + behaviour: confirm_label/confirm_action (close|link|submit)/confirm_to/confirm_target and cancel_label/cancel_action (close|link)/cancel_to. The form variant posts to form_action with form_method. Media variants use image/caption/counter (lightbox), video_url/poster/duration/subline (video), image/subline/specs[] (detail). form uses fields[] (field_label, field_type) plus consent_label. wizard uses steps[] (step_title, step_description, choices[]).",
+		"content_guidelines": "Title at most 8 words and phrased as the decision the visitor is making. Body at most two sentences. Action labels are verbs, not 'OK' — 'Löschen', 'Termin buchen'. Always give cancel_label a value on the confirm variant; a confirmation with only one action is not a confirmation. An action label must match what it does — do not label a button 'Jetzt buchen' and leave confirm_action on 'close'.",
 		"field_hints": {
 			"trigger_label": "What the visitor clicks in the page. Required — without it the dialog can never be opened.",
 			"cancel_label": "Leave empty ONLY on alert, where acknowledgement is the single action.",
 			"specs": "Short label/value pairs, e.g. 'Fläche' / '120 m²'. Rendered as a definition list.",
-			"steps": "Exactly three for the wizard; the progress indicator is drawn from the count."
+			"steps": "Exactly three for the wizard; the progress indicator is drawn from the count.",
+			"confirm_action": "What the primary button DOES. Figma cannot express this, so it is always authored: close dismisses, link navigates to confirm_to, submit posts the form. Defaults to close.",
+			"confirm_to": "Required when confirm_action is 'link'; ignored otherwise.",
+			"form_action": "Endpoint the form variant posts to. Empty means the dialog just closes on submit — fine for a demo, never for a live form."
 		}
 	}
 }

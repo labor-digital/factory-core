@@ -46,15 +46,55 @@ fields:
     enableRichtext: true
     label: Body text
 
+  # --- what the actions DO -------------------------------------------------
+  # Figma can describe a button's label and style but never its behaviour, so
+  # everything below is authored here and has no counterpart in the export.
+  # A dialog action is not always a link: it can dismiss, navigate, or submit.
   - identifier: confirm_label
     type: Text
     label: Primary action label
     default: Bestätigen
 
+  - identifier: confirm_action
+    type: Select
+    renderType: selectSingle
+    label: Primary action does
+    items:
+      - { label: 'Close the dialog', value: close }
+      - { label: 'Go to a link', value: link }
+      - { label: 'Submit the form (form variant)', value: submit }
+    default: close
+
+  - identifier: confirm_to
+    type: Link
+    label: Primary action link (when it goes to a link)
+
+  - identifier: confirm_target
+    type: Select
+    renderType: selectSingle
+    label: Open primary link in
+    items:
+      - { label: Same tab, value: _self }
+      - { label: New tab, value: _blank }
+    default: _self
+
   - identifier: cancel_label
     type: Text
     label: Secondary action label (leave empty to hide)
     default: Abbrechen
+
+  - identifier: cancel_action
+    type: Select
+    renderType: selectSingle
+    label: Secondary action does
+    items:
+      - { label: 'Close the dialog', value: close }
+      - { label: 'Go to a link', value: link }
+    default: close
+
+  - identifier: cancel_to
+    type: Link
+    label: Secondary action link (when it goes to a link)
 
   - identifier: show_close
     type: Checkbox
@@ -124,6 +164,20 @@ fields:
           - { label: Email, value: email }
           - { label: Textarea, value: textarea }
         default: text
+
+  - identifier: form_action
+    type: Text
+    label: Form endpoint URL (form variant)
+    description: Where the form posts. Leave empty to only close the dialog on submit.
+
+  - identifier: form_method
+    type: Select
+    renderType: selectSingle
+    label: Form method
+    items:
+      - { label: POST, value: post }
+      - { label: GET, value: get }
+    default: post
 
   - identifier: consent_label
     type: Text
