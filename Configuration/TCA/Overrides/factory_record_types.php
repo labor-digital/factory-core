@@ -32,6 +32,12 @@ $recordTables = array_filter(
 );
 
 foreach ($recordTables as $table) {
+    // Records may live on a standard page, not only in a sysfolder. A provisioned
+    // tenant has no "Records" folder, so TenantContentSeeder falls back to the
+    // tenant root (doktype 1) — and TYPO3 13 rejects any table on a standard page
+    // unless it opts in, which failed every multitenant record seed (2026-10-07).
+    $GLOBALS['TCA'][$table]['ctrl']['security']['ignorePageTypeRestriction'] = true;
+
     $GLOBALS['TCA'][$table]['columns']['content_elements']['config'] = [
         'type' => 'inline',
         'foreign_table' => 'tt_content',

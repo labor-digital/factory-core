@@ -33,8 +33,14 @@ fields:
     description: One or two sentences. Shown on the list card and used as the SEO description fallback.
     rows: 3
 
+  # `DateTime` + `format: date` + a native DATE column, NOT `type: Date` —
+  # Content Blocks 1.x has no Date type, and an unknown type stops TYPO3 from
+  # building its service container at all (found booting the multitenant
+  # instance, 2026-10-07). The value stays a plain YYYY-MM-DD.
   - identifier: date
-    type: Date
+    type: DateTime
+    format: date
+    dbType: date
     label: Date
     description: Display date. Drives the default sort order of news lists.
     required: true
