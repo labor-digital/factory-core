@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.5.3](https://bitbucket.org/labor-digital/labor-factory-app/branches/compare/factory-core-v2.5.3%0Dfactory-core-v2.5.2#diff) (2026-10-09)
+
+
+### Bug Fixes
+
+* **ci:** TYPO3 changelog headings carry their version ([37fb024](https://bitbucket.org/labor-digital/labor-factory-app/commits/37fb02443c41a59185c2f99567493660bb320a4b))
+
+
+
 ## [2.5.2](https://bitbucket.org/labor-digital/labor-factory-app/branches/compare/factory-core-v2.5.2%0Dfactory-core-v2.5.1#diff) (2026-10-09)
 
 
