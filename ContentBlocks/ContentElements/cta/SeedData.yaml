@@ -1,0 +1,8 @@
+variant: center-dark
+eyebrow: CALL TO ACTION
+title_light: Bereit für den
+title_bold: nächsten Schritt?
+body: Ein kurzer Satz, der den Nutzen klar macht und zur Handlung einlädt. Austauschbar pro Projekt.
+buttons:
+  - { label: Primäre Aktion, color: primary, variant: white-solid, button_size: md }
+  - { label: Mehr erfahren,  color: primary, variant: outline-white, button_size: md }

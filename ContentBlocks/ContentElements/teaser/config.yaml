@@ -1,0 +1,216 @@
+name: factory/teaser
+title: Teaser
+description: A polymorphic section that lists records of any active record type (Property, News, …) in one of five Figma layouts — cards, cards-compact, list, feature, or edge.
+group: factory
+icon: content-list
+fields:
+  # Variant values mirror the Figma component set exactly (773:55229).
+  - identifier: variant
+    type: Select
+    renderType: selectSingle
+    label: Variant
+    items:
+      - { label: Cards (4-column bordered cards), value: cards }
+      - { label: 'Cards Compact (3-column, borderless)', value: cards-compact }
+      - { label: List (stacked rows), value: list }
+      - { label: Feature (one lead + list), value: feature }
+      - { label: 'Edge (horizontal slider, breakout)', value: edge }
+    default: cards
+
+  # ------------------------------------------------------------
+  # Header block (identical to img_slider — editors transfer muscle memory)
+  # ------------------------------------------------------------
+  - identifier: eyebrow
+    type: Text
+    label: Eyebrow
+    description: Small uppercase label above the title.
+
+  - identifier: eyebrow_decoration
+    type: Select
+    renderType: selectSingle
+    label: Eyebrow Decoration
+    items:
+      - { label: None, value: none }
+      - { label: Bar, value: bar }
+      - { label: Dot, value: dot }
+    default: bar
+
+  - identifier: eyebrow_color
+    type: Select
+    renderType: selectSingle
+    label: Eyebrow / Accent Color
+    items:
+      - { label: Primary, value: primary }
+      - { label: Secondary, value: secondary }
+      - { label: Neutral, value: neutral }
+      - { label: Success, value: success }
+      - { label: Info, value: info }
+      - { label: Warning, value: warning }
+      - { label: Error, value: error }
+    default: primary
+
+  - identifier: title
+    type: Text
+    label: Title
+    description: Main heading. Use <strong>…</strong> to emphasise part of the title in the accent color.
+
+  - identifier: description
+    type: Textarea
+    label: Description
+
+  - identifier: text_align
+    type: Select
+    renderType: selectSingle
+    label: Header Alignment
+    items:
+      - { label: Left, value: left }
+      - { label: Center, value: center }
+      - { label: Right, value: right }
+    default: left
+
+  - identifier: buttons
+    type: Collection
+    label: Buttons
+    description: Optional CTAs shown in the header row (top-right when aligned left).
+    fields:
+      - { identifier: label, type: Text, label: Label }
+      - { identifier: to, type: Link, label: Link }
+      - identifier: target
+        type: Select
+        renderType: selectSingle
+        label: Link Target
+        items:
+          - { label: Default, value: '' }
+          - { label: New Window, value: _blank }
+          - { label: Parent, value: _parent }
+          - { label: Self, value: _self }
+          - { label: Top, value: _top }
+      - identifier: color
+        type: Select
+        renderType: selectSingle
+        label: Color
+        items:
+          - { label: Primary, value: primary }
+          - { label: Secondary, value: secondary }
+          - { label: Neutral, value: neutral }
+          - { label: Success, value: success }
+          - { label: Info, value: info }
+          - { label: Warning, value: warning }
+          - { label: Error, value: error }
+      - identifier: variant
+        type: Select
+        renderType: selectSingle
+        label: Variant
+        items:
+          - { label: Solid, value: solid }
+          - { label: Outline, value: outline }
+          - { label: Ghost, value: ghost }
+          - { label: Outline White (on-dark), value: outline-white }
+          - { label: White Solid (on-dark), value: white-solid }
+      - identifier: button_size
+        type: Select
+        renderType: selectSingle
+        label: Size
+        description: Renamed from "size" — content-blocks reserves that identifier for the input-field width TCA attribute.
+        items:
+          - { label: Extra Small, value: xs }
+          - { label: Small, value: sm }
+          - { label: Medium, value: md }
+          - { label: Large, value: lg }
+          - { label: Extra Large, value: xl }
+      - { identifier: icon, type: Text, label: Icon, description: 'Iconify icon name (e.g., i-lucide-arrow-right).' }
+      - { identifier: leading, type: Checkbox, label: Leading Icon }
+      - { identifier: trailing, type: Checkbox, label: Trailing Icon }
+      - { identifier: block, type: Checkbox, label: Full Width }
+
+  # ------------------------------------------------------------
+  # Record source
+  # ------------------------------------------------------------
+  - identifier: record_type
+    type: Select
+    renderType: selectSingle
+    label: Record Type
+    description: Which record type to display. Driven by active_record_types in factory.json.
+    itemsProcFunc: LaborDigital\FactoryCore\Tca\RecordTypeItemsProc->getItems
+    items: []
+
+  - identifier: selection_mode
+    type: Select
+    renderType: selectSingle
+    label: Selection Mode
+    items:
+      - { label: Manual — pick records, value: manual }
+      - { label: Auto — query from folder, value: auto }
+    default: manual
+
+  # Manual selection — ONE picker for every record type (DL #030).
+  #
+  # This used to be `records_property`, with the intent that a TCA pass would
+  # emit a `records_<slug>` sibling per record type. That never worked: Content
+  # Blocks creates DB columns from THIS file, so a TCA-only column has no column
+  # behind it, and generating SQL per type needs a schema event listener. One
+  # generic column sidesteps all of it — `allowed` is set to every record table
+  # by Configuration/TCA/Overrides/tt_content.php, and the processor resolves
+  # which table to read from the `record_type` field above.
+  #
+  # Declared `Text` (an opaque CSV of UIDs) for the same reason as
+  # `auto_storage_pid` below: nb-headless-content-blocks cannot serialize a
+  # relation to a table it did not define, and crashes rather than skipping it.
+  - identifier: records
+    type: Text
+    label: Records
+    description: Pick the records to show. The list is restricted to the record type selected above.
+    # Ideally this would also check record_type, but TYPO3 13's inline AND(...)
+    # displayCond syntax is unreliable, so we gate only on selection_mode.
+    displayCond: 'FIELD:selection_mode:=:manual'
+
+  # Auto selection — shared across record types.
+  # TCA config is overridden in Configuration/TCA/Overrides/tt_content.php to a
+  # native `group` field (allowed: pages, maxitems: 10). We declare `Text` in CB
+  # so Content Blocks treats the field as an opaque string — otherwise
+  # nb-headless-content-blocks tries to serialize the `pages` relation and
+  # crashes (it only knows CB-defined tables + sys_category).
+  - identifier: auto_storage_pid
+    type: Text
+    label: Storage Folders
+    description: 'Page(s) (typically the "Records" sysfolder) containing the records to list. Leave empty to query all records regardless of location.'
+    displayCond: 'FIELD:selection_mode:=:auto'
+
+  - identifier: auto_filter_listing_type
+    type: Select
+    renderType: selectSingle
+    label: Listing Filter
+    items:
+      - { label: Any, value: '' }
+      - { label: Kauf only, value: buy }
+      - { label: Miete only, value: rent }
+    default: ''
+    displayCond: 'FIELD:selection_mode:=:auto'
+
+  - identifier: auto_limit
+    type: Number
+    label: Limit
+    default: 6
+    displayCond: 'FIELD:selection_mode:=:auto'
+
+  - identifier: auto_order
+    type: Select
+    renderType: selectSingle
+    label: Order
+    items:
+      - { label: Newest first, value: 'crdate desc' }
+      - { label: Oldest first, value: 'crdate asc' }
+      - { label: Title A→Z, value: 'title asc' }
+    default: 'crdate desc'
+    displayCond: 'FIELD:selection_mode:=:auto'
+
+  - identifier: heading_level
+    type: Select
+    renderType: selectSingle
+    label: Heading level
+    description: Which HTML heading this section's main headline renders as. Use H1 once per page — the chat's SEO check reports duplicates.
+    items:
+      - { label: 'H1 — main page heading', value: h1 }
+      - { label: 'H2 — section heading', value: h2 }
+      - { label: 'H3 — sub-section', value: h3 }
+    default: h2

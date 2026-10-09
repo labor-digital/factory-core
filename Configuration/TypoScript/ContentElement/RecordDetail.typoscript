@@ -1,0 +1,8 @@
+// The record addressed by the current URL, resolved by RecordPageMiddleware and
+// serialised here (DL #030). Nested under `fields.content.dataProcessing.10`
+// because that is the nb-headless-content-blocks JSON pass — a processor at the
+// top level would not reach the element's content bag.
+tt_content.factory_recorddetail.fields.content.dataProcessing.10.dataProcessing {
+    20 = LaborDigital\FactoryCore\DataProcessing\RecordDetailProcessor
+    20.as = record
+}

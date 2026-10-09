@@ -1,0 +1,18 @@
+variant: left
+slides:
+  - eyebrow: BAUGESCHÄFT MUSTER · MUSTERSTADT · SEIT VIER GENERATIONEN
+    title: Wir bauen Häuser.
+    subline: Jeder hat eine Leidenschaft.
+    text_color: light
+    background_type: color
+    background_color: secondary
+    overlay: none
+    buttons:
+      - label: Referenzen ansehen
+        color: neutral
+        variant: outline-white
+        button_size: md
+      - label: Angebot anfordern
+        color: neutral
+        variant: white-solid
+        button_size: md

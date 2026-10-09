@@ -1,0 +1,14 @@
+categories:
+  factory:
+    label: Factory Core
+  factory.navigation:
+    label: Navigation
+    parent: factory
+
+settings:
+  footerPageUid:
+    label: Footer Page UID
+    description: UID of the SysFolder page containing footer navigation pages
+    default: '0'
+    type: int
+    category: factory.navigation

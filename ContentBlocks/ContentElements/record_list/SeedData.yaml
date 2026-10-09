@@ -1,0 +1,10 @@
+# Seeded as an "Aktuelles" list. `records` stays empty so the block queries the
+# newest records of the type — which is what a freshly seeded site wants, since
+# its records were only just created.
+eyebrow: Aktuelles
+headline: Neueste Objekte
+intro: ''
+record_type: property
+limit: 6
+layout: cards
+records: ''

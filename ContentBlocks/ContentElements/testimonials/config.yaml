@@ -1,0 +1,84 @@
+name: factory/testimonials
+title: Testimonials
+description: Customer quotes in six layouts — XL single quote, long-form flow, centered text slider, 3-col cards with stars, image+quote slider, and featured dark with portrait.
+group: factory
+icon: content-quote
+fields:
+  # Variant values mirror the Figma component set exactly (773:55689).
+  - identifier: variant
+    type: Select
+    renderType: selectSingle
+    label: Variant
+    items:
+      - { label: Quote XL (single large centered quote), value: quote-xl }
+      - { label: Quote Flow (long-form quote), value: quote-flow }
+      - { label: 'Slider — Text (centered, text-only)', value: slider-text }
+      - { label: Cards (3-col with stars), value: cards }
+      - { label: 'Slider (image left, quote right)', value: slider }
+      - { label: 'Featured (dark, portrait + quote)', value: featured }
+    default: quote-xl
+
+  - identifier: eyebrow
+    type: Text
+    label: Eyebrow
+
+  - identifier: headline
+    type: Text
+    label: Headline
+
+  - identifier: intro
+    type: Textarea
+    label: Intro
+
+  - identifier: long_quote
+    type: Textarea
+    label: Long-form Quote
+    description: Used by Quote Flow variant. Falls back to first item's quote if empty.
+    displayCond: 'FIELD:variant:=:quote-flow'
+
+  - identifier: items
+    type: Collection
+    label: Testimonials
+    minitems: 1
+    fields:
+      - identifier: quote
+        type: Textarea
+        label: Quote
+      - identifier: name
+        type: Text
+        label: Name
+      - identifier: role
+        type: Text
+        label: Role / Title
+      - identifier: company
+        type: Text
+        label: Company
+      - identifier: avatar
+        type: File
+        label: Avatar
+        allowedFileExtensions: ['jpg', 'jpeg', 'png', 'webp']
+        maxItems: 1
+      - identifier: media
+        type: File
+        label: Portrait / Media (slider & featured variants)
+        allowedFileExtensions: ['jpg', 'jpeg', 'png', 'webp']
+        maxItems: 1
+      # Optional CTA — rendered by the featured variant ("Zur Case Study →").
+      - identifier: link
+        type: Link
+        label: Link (featured variant)
+      - identifier: link_label
+        type: Text
+        label: Link Label
+        description: Text for the optional featured-variant link (e.g. "Zur Case Study").
+
+  - identifier: heading_level
+    type: Select
+    renderType: selectSingle
+    label: Heading level
+    description: Which HTML heading this section's main headline renders as. Use H1 once per page — the chat's SEO check reports duplicates.
+    items:
+      - { label: 'H1 — main page heading', value: h1 }
+      - { label: 'H2 — section heading', value: h2 }
+      - { label: 'H3 — sub-section', value: h3 }
+    default: h2

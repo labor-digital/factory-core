@@ -1,0 +1,5 @@
+name: labor-digital/factory-core
+label: Factory Core
+dependencies:
+  - friendsoftypo3/headless
+  - nb-headless-content-blocks/headless-content-blocks

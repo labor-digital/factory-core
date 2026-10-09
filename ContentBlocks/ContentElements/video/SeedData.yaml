@@ -1,0 +1,16 @@
+variant: split-left
+eyebrow: Im Gespräch
+headline: So entstehen unsere Projekte.
+body: |
+  Ein Blick hinter die Kulissen: Wie wir planen, abstimmen und Hand anlegen. Vom Erstgespräch bis zur Schlüsselübergabe — Schritt für Schritt erklärt.
+cta_label: Beratung anfragen
+speaker_name: Marie Lehmann
+speaker_role: Geschäftsführung
+video_provider: youtube
+video_id: dQw4w9WgXcQ
+duration: '4:18'
+bullets:
+  - { title: Beratung, description: 'Unverbindliches Erstgespräch, Standortbegehung, Bedarfsanalyse' }
+  - { title: Planung,  description: 'Entwurf, Statik, Genehmigung, Materialauswahl' }
+  - { title: Bauphase, description: 'Koordination der Gewerke, Qualitätsprüfung, regelmäßige Updates' }
+  - { title: Übergabe, description: 'Abnahme, Einweisung, Gewährleistungspflege' }

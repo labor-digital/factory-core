@@ -1,0 +1,14 @@
+variant: text-left
+eyebrow: Unsere Vision
+title: Wir realisieren Ihren <strong>Traum vom Wohnen.</strong>
+body: |
+  Durch langjährige Zusammenarbeit mit innovativen Architekten und bewährten Handwerksbetrieben haben wir einen hohen Qualitätsstandard erreicht. Damit werden wir den Kundenansprüchen in Modernität, Exklusivität und Komfort gerecht.
+
+  Unsere Objekte erfüllen die aktuellen Energiestandards — wir bemühen uns dennoch um ein gesundes und behagliches Raumklima.
+cta_label: Jetzt Kontakt aufnehmen
+stats_eyebrow: In Zahlen
+stats:
+  - { value: '40+', label: Jahre Erfahrung }
+  - { value: '320', label: Realisierte Projekte }
+  - { value: '18',  label: Architekten im Netzwerk }
+  - { value: '98%', label: Weiterempfehlung }

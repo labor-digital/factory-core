@@ -1,0 +1,12 @@
+name: factory/record-detail
+title: Record Detail
+description: Renders the record addressed by the current URL (/<type>/<slug>) — its typed header plus its own content body. Place it once on a record type's page; it stays silent when the URL addresses no record, so the same page can also show the list.
+prefixFields: false
+fields:
+  # The element has no editorial fields on purpose: WHICH record it shows comes
+  # from the URL, not from the editor. A record_type select would be a second,
+  # contradictable source of truth for something the middleware already resolved.
+  - identifier: headline
+    type: Text
+    label: Fallback headline
+    description: Optional. Shown by the frontend only if the record has no title.

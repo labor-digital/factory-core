@@ -1,0 +1,3 @@
+# The record-detail element carries no editorial content: which record it renders
+# comes from the URL. Seeded onto each record type's page by InitSeederCommand.
+headline: ''

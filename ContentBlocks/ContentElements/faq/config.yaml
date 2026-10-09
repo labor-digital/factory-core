@@ -1,0 +1,80 @@
+name: factory/faq
+title: FAQ
+description: Collapsible questions and answers in single-column, two-column, grouped, or bordered XL layouts.
+group: factory
+icon: content-info
+fields:
+  - identifier: variant
+    type: Select
+    renderType: selectSingle
+    label: Variant
+    items:
+      - { label: Single Column, value: single }
+      - { label: 'Two Column (intro left, FAQ right)', value: two-col }
+      - { label: Grouped (by category), value: grouped }
+      - { label: Bordered XL (large questions on cream), value: bordered }
+    default: single
+
+  # Upstream exposes this as the `Divider` toggle on Modules / FAQ; we drew the
+  # rule unconditionally, so an author could not switch it off.
+  - identifier: show_divider
+    type: Checkbox
+    label: Show divider between items
+    default: 1
+
+  - identifier: eyebrow
+    type: Text
+    label: Eyebrow
+
+  - identifier: headline
+    type: Text
+    label: Headline
+
+  - identifier: intro
+    type: Textarea
+    label: Intro
+
+  - identifier: contact_label
+    type: Text
+    label: Contact card — Label
+    description: Used by Two Column variant.
+    default: Frage nicht dabei?
+    displayCond: 'FIELD:variant:=:two-col'
+
+  - identifier: contact_mail
+    type: Text
+    label: Contact card — Mail address
+    displayCond: 'FIELD:variant:=:two-col'
+
+  - identifier: contact_button
+    type: Text
+    label: Contact card — Button Label
+    default: Kontakt aufnehmen
+    displayCond: 'FIELD:variant:=:two-col'
+
+  - identifier: items
+    type: Collection
+    label: Questions
+    minitems: 1
+    fields:
+      - identifier: q
+        type: Text
+        label: Question
+      - identifier: a
+        type: Textarea
+        label: Answer
+      - identifier: group
+        type: Text
+        label: Group (Grouped variant only)
+        description: Items with the same group label appear under that heading.
+
+  - identifier: heading_level
+    type: Select
+    renderType: selectSingle
+    label: Heading level
+    description: Which HTML heading this section's main headline renders as. Use H1 once per page — the chat's SEO check reports duplicates.
+    items:
+      - { label: 'H1 — main page heading', value: h1 }
+      - { label: 'H2 — section heading', value: h2 }
+      - { label: 'H3 — sub-section', value: h3 }
+    default: h2

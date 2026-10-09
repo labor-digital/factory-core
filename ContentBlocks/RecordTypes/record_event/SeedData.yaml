@@ -1,0 +1,30 @@
+# SeedData.yaml for RecordEvent — a LIST of demo records.
+- title: Tag der offenen Tür
+  slug: tag-der-offenen-tuer
+  excerpt: Ein Nachmittag auf der Baustelle — mit Führung durch das fertige Musterhaus.
+  start_date: '2026-09-12 14:00:00'
+  end_date: '2026-09-12 18:00:00'
+  all_day: 0
+  location_name: Musterhaus Ingelheim
+  address_street: Weingartenstraße 12
+  address_zip: '55218'
+  address_city: Ingelheim
+  price: kostenlos
+
+- title: Infoabend Sanierung im Bestand
+  slug: infoabend-sanierung
+  excerpt: Was bei einer Altbausanierung wirklich auf Sie zukommt — Vortrag und Fragerunde.
+  start_date: '2026-10-08 19:00:00'
+  all_day: 0
+  location_name: Bürogebäude Mainz
+  address_city: Mainz
+  price: kostenlos
+
+- title: Baumesse Rheinhessen
+  slug: baumesse-rheinhessen
+  excerpt: Sie finden uns an Stand 14 in Halle 2.
+  start_date: '2026-11-07 00:00:00'
+  end_date: '2026-11-09 00:00:00'
+  all_day: 1
+  location_name: Messe Rheinhessen
+  address_city: Mainz

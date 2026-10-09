@@ -1,0 +1,17 @@
+variant: single
+eyebrow: Häufige Fragen
+headline: Antworten auf Ihre Fragen
+intro: Die wichtigsten Antworten auf einen Blick. Ist Ihre Frage nicht dabei? Schreiben Sie uns gerne direkt.
+items:
+  - q: Wie lange dauert ein typisches Projekt?
+    a: Die Projektdauer hängt stark vom Umfang ab. Kleinere Websites setzen wir in 4–8 Wochen um, komplexere Plattformen brauchen 3–6 Monate.
+  - q: Arbeiten Sie nach Festpreis oder nach Aufwand?
+    a: Beides ist möglich. Für klar umrissene Leistungen bieten wir Festpreise an, bei iterativen Projekten rechnen wir nach Aufwand ab.
+  - q: Was passiert nach dem Launch?
+    a: Wir bieten Pflege- und Supportpakete, die Hosting, Updates, Monitoring und kleinere Weiterentwicklungen abdecken.
+  - q: Können wir Inhalte später selbst pflegen?
+    a: Ja. Wir setzen auf CMS-Lösungen, die von Ihrem Team intuitiv bedient werden können.
+  - q: Welche Technologien setzen Sie ein?
+    a: Je nach Projekt moderne Headless-CMS, statische Site-Generatoren oder TYPO3.
+  - q: Unterstützen Sie bei SEO und Performance?
+    a: Ja. Technisches SEO, saubere Semantik und Core Web Vitals sind fester Teil unserer Arbeit.

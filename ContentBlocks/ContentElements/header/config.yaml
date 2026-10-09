@@ -1,0 +1,78 @@
+name: factory/header
+title: Header
+description: Site-wide page header with logo, primary navigation, and optional CTA. Variants — classic, transparent (over-hero), minimal (centered logo), mega (with mega-menu).
+group: factory
+icon: content-elements-mailform
+fields:
+  - identifier: variant
+    type: Select
+    renderType: selectSingle
+    label: Variant
+    items:
+      - { label: 'Classic (white bar, bottom border)', value: classic }
+      - { label: 'Transparent (over hero, light text)', value: transparent }
+      - { label: 'Minimal (logo centered, burger + CTA)', value: minimal }
+      - { label: Mega (with mega-menu dropdowns), value: mega }
+    default: classic
+
+  - identifier: logo_text
+    type: Text
+    label: Logo Text
+    description: Used when no logo image is provided.
+
+  - identifier: logo_image
+    type: File
+    label: Logo Image
+    allowedFileExtensions: ['svg', 'png', 'webp']
+    maxItems: 1
+
+  - identifier: cta_label
+    type: Text
+    label: CTA Label
+    description: Shown by the Minimal and Mega variants (Figma has no CTA slot on Classic/Transparent).
+    displayCond: 'FIELD:variant:IN:minimal,mega'
+
+  - identifier: cta_to
+    type: Link
+    label: CTA Link
+    displayCond: 'FIELD:variant:IN:minimal,mega'
+
+  - identifier: links
+    type: Collection
+    label: Primary Navigation
+    fields:
+      - identifier: label
+        type: Text
+        label: Label
+      - identifier: to
+        type: Link
+        label: Link
+      - identifier: active
+        type: Checkbox
+        label: Mark as Active
+      - identifier: children
+        type: Collection
+        label: Mega-Menu Children
+        description: Used by the Mega variant. Group child links via the Group field.
+        fields:
+          - identifier: group
+            type: Text
+            label: Group (column heading)
+          - identifier: label
+            type: Text
+            label: Label
+          - identifier: to
+            type: Link
+            label: Link
+      - identifier: feature_title
+        type: Text
+        label: Feature Title (mega variant)
+        description: Optional highlighted teaser shown as the last column of this link's mega-menu panel.
+      - identifier: feature_body
+        type: Textarea
+        label: Feature Text (mega variant)
+      - identifier: feature_image
+        type: File
+        label: Feature Image (mega variant)
+        allowedFileExtensions: ['svg', 'png', 'webp', 'jpg', 'jpeg']
+        maxItems: 1

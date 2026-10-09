@@ -1,0 +1,31 @@
+# File-free seed (no uploads) — BaseImgSlider fills each image slide with a
+# seeded placeholder so an empty gallery still renders.
+variant: single
+eyebrow: Galerie
+eyebrow_decoration: bar
+eyebrow_color: primary
+title: Einblicke in unsere <strong>Arbeit</strong>
+description: >-
+  Eine Auswahl aktueller Projekte — vom Entwurf bis zur fertigen Übergabe.
+text_align: left
+aspect_ratio: '16/9'
+show_arrows: 1
+autoplay: 0
+loop: 1
+buttons:
+  - label: Alle anzeigen
+    color: primary
+    variant: ghost
+    button_size: md
+    icon: i-lucide-arrow-right
+    trailing: 1
+slides:
+  - type: image
+    alt: Projektansicht
+    caption: Außenansicht / Südseite
+  - type: image
+    alt: Projektansicht
+    caption: Innenraum / Wohnbereich
+  - type: image
+    alt: Projektansicht
+    caption: Detail / Fassade

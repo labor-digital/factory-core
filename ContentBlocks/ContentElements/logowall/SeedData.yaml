@@ -1,0 +1,19 @@
+variant: grid
+eyebrow: Kunden & Partner
+headline: Unternehmen, die auf uns vertrauen.
+intro: Eine Auswahl unserer Auftraggeber aus Industrie, Handwerk und der öffentlichen Hand.
+columns: '6'
+per_page: '6'
+logos:
+  - { label: Loremlogo 01 }
+  - { label: Loremlogo 02 }
+  - { label: Loremlogo 03 }
+  - { label: Loremlogo 04 }
+  - { label: Loremlogo 05 }
+  - { label: Loremlogo 06 }
+  - { label: Loremlogo 07 }
+  - { label: Loremlogo 08 }
+  - { label: Loremlogo 09 }
+  - { label: Loremlogo 10 }
+  - { label: Loremlogo 11 }
+  - { label: Loremlogo 12 }

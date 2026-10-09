@@ -1,0 +1,2 @@
+@import 'EXT:content_blocks/Configuration/TypoScript/constants.typoscript'
+@import 'EXT:nb_headless_content_blocks/Configuration/TypoScript/constants.typoscript'

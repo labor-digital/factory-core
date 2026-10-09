@@ -1,0 +1,68 @@
+name: factory/downloads
+title: Downloads
+description: A list/grid of downloadable files with format icons. List, icon-grid, featured, or grouped layouts.
+group: factory
+icon: content-download
+fields:
+  - identifier: variant
+    type: Select
+    renderType: selectSingle
+    label: Variant
+    items:
+      - { label: 'List (rows with icon, badge + size)', value: list }
+      - { label: Icons (card grid with large file icons), value: icons }
+      - { label: Featured (one highlight + secondary list), value: featured }
+      - { label: Grouped (categorised), value: grouped }
+      - { label: Compact (two-column mini list), value: compact }
+    default: list
+
+  - identifier: eyebrow
+    type: Text
+    label: Eyebrow
+
+  - identifier: headline
+    type: Text
+    label: Headline
+
+  - identifier: intro
+    type: Textarea
+    label: Intro
+
+  - identifier: items
+    type: Collection
+    label: Files
+    minitems: 1
+    fields:
+      - identifier: title
+        type: Text
+        label: Title
+      - identifier: desc
+        type: Textarea
+        label: Description (Icons / Featured only)
+      - identifier: file
+        type: File
+        label: File
+        allowedFileExtensions: ['pdf', 'doc', 'docx', 'xls', 'xlsx', 'ppt', 'pptx', 'zip', 'jpg', 'png', 'mp4', 'dwg', 'txt']
+        maxItems: 1
+      - identifier: ext
+        type: Text
+        label: Format Override (e.g. pdf, docx, zip)
+        description: Optional. Inferred from the file URL when empty.
+      - identifier: file_size
+        type: Text
+        label: Size (human readable, e.g. 4.2 MB)
+        description: Field identifier is "file_size" — "size" itself is reserved by content-blocks as the input-field width TCA attribute.
+      - identifier: group
+        type: Text
+        label: Group (Grouped variant only)
+
+  - identifier: heading_level
+    type: Select
+    renderType: selectSingle
+    label: Heading level
+    description: Which HTML heading this section's main headline renders as. Use H1 once per page — the chat's SEO check reports duplicates.
+    items:
+      - { label: 'H1 — main page heading', value: h1 }
+      - { label: 'H2 — section heading', value: h2 }
+      - { label: 'H3 — sub-section', value: h3 }
+    default: h2

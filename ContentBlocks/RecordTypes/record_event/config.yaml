@@ -1,0 +1,92 @@
+name: factory/record-event
+title: Event
+description: A dated event — open day, info evening, trade fair. Has a slug and renders as its own page at /event/<slug>, with a free content body that accepts any active Content Block.
+table: tx_factorycore_record_event
+labelField: title
+prefixFields: false
+fields:
+  - identifier: divCommon
+    type: Tab
+    label: Common
+
+  - identifier: title
+    type: Text
+    label: Title
+    required: true
+
+  - identifier: slug
+    type: Slug
+    label: Slug
+    required: true
+    generatorOptions:
+      fields: [title]
+
+  - identifier: excerpt
+    type: Textarea
+    label: Excerpt
+    description: One or two sentences for the list card.
+    rows: 3
+
+  - identifier: start_date
+    type: DateTime
+    label: Start
+    description: Date and time the event begins. Lists sort on it.
+    required: true
+
+  - identifier: end_date
+    type: DateTime
+    label: End
+    description: Leave empty for a single-moment event.
+
+  - identifier: all_day
+    type: Checkbox
+    label: All day
+    description: Hides the times and shows the date only.
+    default: 0
+
+  - identifier: location_name
+    type: Text
+    label: Location
+    description: Venue name, e.g. "Musterhaus Ingelheim".
+
+  - identifier: address_street
+    type: Text
+    label: Street
+
+  - identifier: address_zip
+    type: Text
+    label: ZIP
+    size: 10
+
+  - identifier: address_city
+    type: Text
+    label: City
+
+  - identifier: registration_link
+    type: Link
+    label: Registration link
+    description: Where to sign up. Leave empty when no registration is needed.
+
+  - identifier: price
+    type: Text
+    label: Price
+    description: Free text so "kostenlos" and "ab 12 €" both work.
+
+  - identifier: hero_image
+    type: File
+    label: Hero Image
+    maxItems: 1
+    allowedFileExtensions: ['jpg', 'jpeg', 'png', 'webp']
+
+  # ------------------------------------------------------------
+  # Content tab — the record's PAGE BODY.
+  # ------------------------------------------------------------
+  - identifier: divContent
+    type: Tab
+    label: Content
+
+  - identifier: content_elements
+    type: Relation
+    label: Content Elements
+    description: The event page's body. Drop any active Content Block here — rendered by FactoryPageRenderer below the typed header.
+    allowed: tt_content

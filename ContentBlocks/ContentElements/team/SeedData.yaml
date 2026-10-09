@@ -1,0 +1,15 @@
+variant: grid
+eyebrow: Team
+headline: Die Menschen hinter dem Projekt.
+intro: 15 Köpfe, ein gemeinsamer Anspruch — Qualität, die bleibt.
+head_align: center
+per_page: 4
+members:
+  - { name: Marie Lehmann,   role: Geschäftsführung,        department: Leitung,        bio: 'Treibt die Strategie und die Kundenbeziehungen voran.' }
+  - { name: Thomas Weber,    role: Technische Leitung,      department: Leitung,        bio: 'Koordiniert alle Bauprojekte.' }
+  - { name: Lisa Hofmann,    role: Projektleitung,          department: Projekt,        bio: 'Hält die Fäden zusammen — vom ersten Termin bis zur Schlüsselübergabe.' }
+  - { name: David Krüger,    role: Bauleitung,              department: Projekt,        bio: 'Kennt jeden Quadratmeter persönlich.' }
+  - { name: Anna Becker,     role: Architektur,             department: Planung,        bio: 'Entwirft Räume, die funktionieren und gut aussehen.' }
+  - { name: Stefan Schulz,   role: Statik & Konstruktion,   department: Planung,        bio: 'Sorgt dafür, dass alles trägt.' }
+  - { name: Julia Frank,     role: Innenarchitektur,        department: Planung,        bio: 'Bringt Materialien und Licht in Einklang.' }
+  - { name: Max Brandt,      role: Polier,                  department: Bau,            bio: 'Erste Hand auf der Baustelle.' }

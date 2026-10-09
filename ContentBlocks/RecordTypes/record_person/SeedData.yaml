@@ -1,0 +1,24 @@
+# SeedData.yaml for RecordPerson — a LIST of demo records. Placeholder people on
+# purpose: seeded content must never look like a real named employee.
+- title: Anna Muster
+  slug: anna-muster
+  role: Geschäftsführung
+  excerpt: Verantwortet Planung und Kalkulation.
+  email: a.muster@example.com
+  phone: '+49 6132 000001'
+  bio: Anna Muster führt das Büro in zweiter Generation und betreut vor allem Sanierungsprojekte im Bestand.
+
+- title: Ben Beispiel
+  slug: ben-beispiel
+  role: Bauleitung
+  excerpt: Begleitet die Projekte auf der Baustelle.
+  email: b.beispiel@example.com
+  phone: '+49 6132 000002'
+  bio: Ben Beispiel koordiniert Gewerke und Termine und ist erster Ansprechpartner vor Ort.
+
+- title: Clara Vorlage
+  slug: clara-vorlage
+  role: Planung
+  excerpt: Entwurf und Ausführungsplanung.
+  email: c.vorlage@example.com
+  bio: Clara Vorlage entwickelt Entwürfe bis zur Ausführungsreife und betreut Genehmigungsverfahren.

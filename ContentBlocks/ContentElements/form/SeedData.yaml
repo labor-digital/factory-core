@@ -1,0 +1,36 @@
+variant: stacked
+eyebrow: Kontakt
+headline: Schreiben Sie uns
+intro: Wir freuen uns auf Ihre Nachricht und melden uns innerhalb eines Werktags zurück.
+# Left empty on purpose: create_form generates a unique key per block. A seeded
+# value would make every seeded site answer to the same key.
+form_key: ''
+submit_label: Absenden
+success_text: Danke! Wir melden uns in Kürze bei Ihnen.
+consent_text: Ich bin mit der Verarbeitung meiner Daten einverstanden.
+recipients: ''
+send_confirmation: '0'
+fields:
+  - identifier: name
+    label: Name
+    type: text
+    placeholder: Ihr Name
+    required: '1'
+    width: half
+  - identifier: email
+    label: E-Mail
+    type: email
+    placeholder: name@beispiel.de
+    required: '1'
+    width: half
+  - identifier: subject
+    label: Betreff
+    type: text
+    required: '0'
+    width: full
+  - identifier: message
+    label: Nachricht
+    type: textarea
+    placeholder: Wie können wir helfen?
+    required: '1'
+    width: full

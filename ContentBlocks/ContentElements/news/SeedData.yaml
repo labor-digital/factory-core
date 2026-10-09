@@ -1,0 +1,12 @@
+variant: grid
+eyebrow: Aktuelles
+headline: Neuigkeiten aus dem Hause Heckeslmüller.
+intro: Was uns aktuell beschäftigt — neue Projekte, Auszeichnungen, Pressestimmen und Termine.
+head_align: left
+see_all_label: Alle News
+items:
+  - { title: 'Spatenstich Mehrfamilienhaus Nackenheim', excerpt: 'Mit dem ersten Spatenstich beginnt das nächste Großprojekt — fünf Wohneinheiten in zentraler Lage.', date: '2026-04-22', category: Projekt,      author: 'Marie Lehmann', is_press_release: 0 }
+  - { title: 'Baupreis Rheinhessen 2026 — Anerkennung',  excerpt: 'Unser Projekt „Weingut zum Mehrfamilienhaus" wird mit einer Anerkennung des Baupreises Rheinhessen gewürdigt.', date: '2026-04-08', category: Auszeichnung, author: 'Eva Sommer',    is_press_release: 1 }
+  - { title: 'Allgemeine Zeitung porträtiert unser Team', excerpt: 'Eine ausführliche Reportage über Generationenwechsel im Handwerk und unsere 12 Auszubildenden.', date: '2026-03-19', category: Presse,       author: 'Eva Sommer',    is_press_release: 0, source: 'Allgemeine Zeitung' }
+  - { title: 'Sanierung Hofreite Oppenheim abgeschlossen', excerpt: 'Nach 14 Monaten Bauzeit übergeben wir das denkmalgeschützte Anwesen.', date: '2026-03-04', category: Projekt, author: 'Lisa Hofmann', is_press_release: 0 }
+  - { title: 'Tag der offenen Baustelle am 14. März', excerpt: 'Werfen Sie einen Blick hinter unsere Baustellen-Türen.', date: '2026-02-12', category: Termin, author: 'Jonas Vogt', is_press_release: 0 }

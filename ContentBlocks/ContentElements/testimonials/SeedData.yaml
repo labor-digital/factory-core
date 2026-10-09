@@ -1,0 +1,24 @@
+# File-free seed (no avatar/media uploads) — renders placeholders for portraits.
+variant: cards
+eyebrow: Kundenstimmen
+headline: Was unsere Kunden sagen
+intro: Echte Stimmen aus abgeschlossenen Projekten — gekürzt, aber im Original-Tonfall.
+items:
+  - quote: >-
+      Die Zusammenarbeit war von Anfang an professionell und hat unseren Auftritt
+      auf ein neues Niveau gehoben.
+    name: Martina Keller
+    role: Leitung Marketing
+    company: Keller & Partner
+  - quote: >-
+      Klare Kommunikation, pünktliche Lieferung, hochwertiges Ergebnis. Genau das,
+      was wir gebraucht haben.
+    name: Stefan Brandl
+    role: Geschäftsführer
+    company: Brandl Industrie
+  - quote: >-
+      Ein Partner, der zuhört und dann mutig Dinge vorschlägt, die man selbst
+      nicht gesehen hat.
+    name: Julia Weiss
+    role: Head of Brand
+    company: Weiss Consulting
