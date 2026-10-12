@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+# [2.6.0](https://bitbucket.org/labor-digital/labor-factory-app/branches/compare/factory-core-v2.6.0%0Dfactory-core-v2.5.3#diff) (2026-10-12)
+
+
+### Features
+
+* **forms:** email templates per site and form, spam protection (DL [#056](https://bitbucket.org/labor-digital/labor-factory-app/issues/056), [#057](https://bitbucket.org/labor-digital/labor-factory-app/issues/057)) ([2c73080](https://bitbucket.org/labor-digital/labor-factory-app/commits/2c730804744fc1179b0c61ebc507d677eec4bcb0))
+
+
+
 ## [2.5.3](https://bitbucket.org/labor-digital/labor-factory-app/branches/compare/factory-core-v2.5.3%0Dfactory-core-v2.5.2#diff) (2026-10-09)
 
 
