@@ -121,6 +121,11 @@ fields:
     label: Send a copy to the visitor
     description: 'Consumes the same monthly email quota as the notification.'
 
+  - identifier: email_template
+    type: Text
+    label: Email template
+    description: 'Key of the site''s email template for this form''s mails (DL #056). Empty = the site''s default. Set with assign_email_template.'
+
   - identifier: heading_level
     type: Select
     renderType: selectSingle
