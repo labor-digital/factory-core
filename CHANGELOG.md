@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+# [2.7.0](https://bitbucket.org/labor-digital/labor-factory-app/branches/compare/factory-core-v2.7.0%0Dfactory-core-v2.6.0#diff) (2026-10-14)
+
+
+### Features
+
+* sync the Figma library to pos247 and declare its toggles for the seed translator (DL [#049](https://bitbucket.org/labor-digital/labor-factory-app/issues/049)) ([a039e1d](https://bitbucket.org/labor-digital/labor-factory-app/commits/a039e1d728ba59a769c557c29553e48b24b19011))
+
+
+
 # [2.6.0](https://bitbucket.org/labor-digital/labor-factory-app/branches/compare/factory-core-v2.6.0%0Dfactory-core-v2.5.3#diff) (2026-10-12)
 
 
