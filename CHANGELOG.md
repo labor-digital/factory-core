@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+# [2.8.0](https://bitbucket.org/labor-digital/labor-factory-app/branches/compare/factory-core-v2.8.0%0Dfactory-core-v2.7.0#diff) (2026-10-14)
+
+
+### Features
+
+* Teaser band button, and seed chrome that keeps the export's logo and footer links (DL [#060](https://bitbucket.org/labor-digital/labor-factory-app/issues/060)) ([2c2ee62](https://bitbucket.org/labor-digital/labor-factory-app/commits/2c2ee6289a3989ed64e0afbb6af5ee9df3e24268))
+
+
+
 # [2.7.0](https://bitbucket.org/labor-digital/labor-factory-app/branches/compare/factory-core-v2.7.0%0Dfactory-core-v2.6.0#diff) (2026-10-14)
 
 
