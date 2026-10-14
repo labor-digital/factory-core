@@ -204,6 +204,17 @@ fields:
     default: 'crdate desc'
     displayCond: 'FIELD:selection_mode:=:auto'
 
+  # The spec's "Band Button" (teaser-band-cta): one centred outline button below
+  # the records, off in Figma by default. Same pair as Features (DL #060).
+  - identifier: band_button_label
+    type: Text
+    label: Band Button Label
+    description: Optional centered outline button below the records. Leave empty to hide it.
+
+  - identifier: band_button_to
+    type: Link
+    label: Band Button Link
+
   - identifier: heading_level
     type: Select
     renderType: selectSingle
