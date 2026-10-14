@@ -2,7 +2,7 @@
 	"$schema": "../../../../../contract/schema/component-manifest.schema.json",
 	"name": "Features",
 	"type": "content-element",
-	"version": "1.3.0",
+	"version": "1.4.0",
 	"min_core_version": "1.0.0",
 	"description": "Grid of feature/service cards, each with title and text plus an optional icon, big number, or image depending on the variant. Cards can carry an individual link.",
 	"when_to_use": "Service overviews, USP lists, process steps (numbered variant). Use River for alternating text+media storytelling and Stats for pure number KPIs.",
@@ -10,7 +10,8 @@
 		"four card styles: icon cards, flat minimal with top border, big numbers, image cards",
 		"Iconify icon per item (cards/flat variants)",
 		"auto-numbering when num is empty (numbered/media variants)",
-		"optional link per card (label + target)"
+		"optional link per card (label + target)",
+		"optional centered band button below the grid (band_button_label + band_button_to)"
 	],
 	"variants": [
 		{
@@ -31,6 +32,7 @@
 		}
 	],
 	"atoms": [
+		"Button",
 		"Eyebrow",
 		"FeatureCard"
 	],
@@ -41,23 +43,47 @@
 	"figma": {
 		"file": "Labor - Website factory PLUGIN TEST",
 		"fileKey": "avP1L4LoOxY5ukjT4bAajX",
-		"nodeId": "1377:52122",
-		"dateStamp": "2026-09-04",
+		"nodeId": "1995:41967",
+		"dateStamp": "2026-10-14",
 		"moduleHeader": "Modules / Features",
 		"componentSet": "Modules / Features",
-		"page": "Factory_Library_CLAUDE-WORK"
+		"page": "Factory_Library_CLAUDE-WORK",
+		"toggles": {
+			"Band Button": {
+				"fields": [
+					"band_button_label",
+					"band_button_to"
+				]
+			},
+			"Eyebrow": {
+				"fields": [
+					"eyebrow"
+				]
+			},
+			"Headline": {
+				"fields": [
+					"headline"
+				]
+			},
+			"Intro": {
+				"fields": [
+					"intro"
+				]
+			}
+		}
 	},
 	"composer_dependencies": [],
 	"npm_dependencies": [
 		"@iconify/vue"
 	],
 	"ai": {
-		"prompt_summary": "Features: feature/service card grid. Settings: variant (cards|flat|numbered|media), eyebrow, headline, intro. Cards in items[] (min 1): { num (e.g. '01', auto-numbered if empty), title, text, icon (Iconify name, cards/flat), image (media variant), link_label, link_to }.",
+		"prompt_summary": "Features: feature/service card grid. Settings: variant (cards|flat|numbered|media), eyebrow, headline, intro. Cards in items[] (min 1): { num (e.g. '01', auto-numbered if empty), title, text, icon (Iconify name, cards/flat), image (media variant), link_label, link_to }. Optional band_button_label + band_button_to: one centered outline button below the grid (all variants; empty label hides it).",
 		"content_guidelines": "3 or 6 items for a clean grid. Titles 2-4 words, texts 1-2 sentences. Use consistent icon style (e.g. all i-lucide-*).",
 		"field_hints": {
 			"items.icon": "Iconify name like i-lucide-star; used by cards and flat variants.",
 			"items.num": "Leave empty for automatic 01/02/03 numbering.",
-			"items.image": "Only rendered by the media variant."
+			"items.image": "Only rendered by the media variant.",
+			"band_button_label": "Short CTA under the whole grid, e.g. 'Alle Leistungen'. Leave empty unless the section needs a single onward link."
 		}
 	}
 }

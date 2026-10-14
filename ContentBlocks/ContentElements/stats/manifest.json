@@ -39,11 +39,47 @@
 	"figma": {
 		"file": "Labor - Website factory PLUGIN TEST",
 		"fileKey": "avP1L4LoOxY5ukjT4bAajX",
-		"nodeId": "1377:58982",
-		"dateStamp": "2026-09-04",
+		"nodeId": "1995:50308",
+		"dateStamp": "2026-10-14",
 		"moduleHeader": null,
 		"componentSet": "Modules / Stats",
-		"page": "Factory_Library_CLAUDE-WORK"
+		"page": "Factory_Library_CLAUDE-WORK",
+		"toggles": {
+			"Eyebrow": {
+				"fields": [
+					"eyebrow"
+				]
+			},
+			"Headline": {
+				"fields": [
+					"headline"
+				]
+			},
+			"Intro": {
+				"fields": [
+					"intro"
+				]
+			},
+			"Item Border": {
+				"none": "decorative border; always drawn"
+			},
+			"Sub": {
+				"fields": [
+					"items[].sub"
+				]
+			},
+			"Callout": {
+				"fields": [
+					"callout"
+				]
+			},
+			"Top Rule": {
+				"none": "decorative rule; always drawn"
+			},
+			"Bottom Rule": {
+				"none": "decorative rule; always drawn"
+			}
+		}
 	},
 	"composer_dependencies": [],
 	"npm_dependencies": [],

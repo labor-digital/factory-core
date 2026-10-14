@@ -46,11 +46,91 @@
 	"figma": {
 		"file": "Labor - Website factory PLUGIN TEST",
 		"fileKey": "avP1L4LoOxY5ukjT4bAajX",
-		"nodeId": "1377:70406",
-		"dateStamp": "2026-09-04",
+		"nodeId": "1995:62348",
+		"dateStamp": "2026-10-14",
 		"moduleHeader": null,
 		"componentSet": "Modules / Video",
-		"page": "Factory_Library_CLAUDE-WORK"
+		"page": "Factory_Library_CLAUDE-WORK",
+		"toggles": {
+			"Image": {
+				"fields": [
+					"poster",
+					"cards[].poster"
+				]
+			},
+			"Thumbnail": {
+				"fields": [
+					"poster",
+					"cards[].poster",
+					"duration",
+					"cards[].duration"
+				]
+			},
+			"Play": {
+				"none": "decorative play button; fixed markup"
+			},
+			"Duration": {
+				"fields": [
+					"duration",
+					"cards[].duration"
+				]
+			},
+			"Eyebrow": {
+				"fields": [
+					"eyebrow"
+				]
+			},
+			"Headline": {
+				"fields": [
+					"headline"
+				]
+			},
+			"Body": {
+				"fields": [
+					"body"
+				]
+			},
+			"Bullets": {
+				"fields": [
+					"bullets"
+				]
+			},
+			"Button": {
+				"fields": [
+					"cta_label",
+					"cta_to"
+				]
+			},
+			"Overlay": {
+				"none": "decorative scrim over the background"
+			},
+			"Overlay Text": {
+				"fields": [
+					"headline",
+					"body"
+				]
+			},
+			"Divider": {
+				"none": "decorative divider between duration and speaker"
+			},
+			"Speaker": {
+				"fields": [
+					"speaker_name",
+					"speaker_role"
+				]
+			},
+			"Link": {
+				"fields": [
+					"cta_label",
+					"cta_to"
+				]
+			},
+			"Category": {
+				"fields": [
+					"cards[].category"
+				]
+			}
+		}
 	},
 	"composer_dependencies": [],
 	"npm_dependencies": [],

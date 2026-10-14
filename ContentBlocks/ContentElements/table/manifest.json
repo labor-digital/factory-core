@@ -51,11 +51,79 @@
 	"figma": {
 		"file": "Labor - Website factory PLUGIN TEST",
 		"fileKey": "avP1L4LoOxY5ukjT4bAajX",
-		"nodeId": "1377:62239",
-		"dateStamp": "2026-09-04",
+		"nodeId": "1995:53595",
+		"dateStamp": "2026-10-14",
 		"moduleHeader": null,
 		"componentSet": "Modules / Table",
-		"page": "Factory_Library_CLAUDE-WORK"
+		"page": "Factory_Library_CLAUDE-WORK",
+		"toggles": {
+			"Eyebrow": {
+				"fields": [
+					"eyebrow"
+				]
+			},
+			"Headline": {
+				"fields": [
+					"headline"
+				]
+			},
+			"Intro": {
+				"fields": [
+					"intro"
+				]
+			},
+			"Price Unit": {
+				"fields": [
+					"pricing_plans[].per"
+				]
+			},
+			"Note": {
+				"fields": [
+					"pricing_plans[].note"
+				]
+			},
+			"CTA": {
+				"fields": [
+					"pricing_plans[].cta_label",
+					"pricing_plans[].cta_to",
+					"compare_items[].cta_label",
+					"compare_items[].cta_to"
+				]
+			},
+			"Feature Tag": {
+				"none": "not modelled: an empty featured_tag falls back to 'Empfohlen'; only featured=0 hides the tag, and that also drops the column highlight"
+			},
+			"Help Icons": {
+				"fields": [
+					"pricing_rows[].help"
+				]
+			},
+			"Included Marks": {
+				"none": "not modelled: check marks are drawn from 'true' entries in pricing_rows[].values"
+			},
+			"Excluded Marks": {
+				"none": "not modelled: cross marks are drawn from 'false' entries in pricing_rows[].values"
+			},
+			"Compare Image": {
+				"fields": [
+					"compare_items[].image"
+				]
+			},
+			"Tagline": {
+				"fields": [
+					"compare_items[].tagline"
+				]
+			},
+			"Table Head": {
+				"none": "not modelled: the data-list header row is always drawn from data_columns[].label (also the mobile cell labels)"
+			},
+			"Sortable": {
+				"none": "not modelled: sort icons are fixed markup on every data column"
+			},
+			"Status": {
+				"none": "not modelled: status badges come from data_columns[].is_status plus the row JSON value"
+			}
+		}
 	},
 	"composer_dependencies": [],
 	"npm_dependencies": [],

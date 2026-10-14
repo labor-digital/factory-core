@@ -33,6 +33,16 @@ fields:
     type: Textarea
     label: Body
 
+  - identifier: contact_org
+    type: Text
+    label: Contact Organisation
+    description: Optional bold organisation name of a contact block below the body. Leave empty to hide it.
+
+  - identifier: contact_lines
+    type: Textarea
+    label: Contact Lines
+    description: Optional contact block lines (address, phone, e-mail) — one per line. Leave empty to hide them.
+
   - identifier: primary_label
     type: Text
     label: Primary CTA Label

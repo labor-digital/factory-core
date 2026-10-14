@@ -51,11 +51,75 @@
 	"figma": {
 		"file": "Labor - Website factory PLUGIN TEST",
 		"fileKey": "avP1L4LoOxY5ukjT4bAajX",
-		"nodeId": "1377:69308",
-		"dateStamp": "2026-09-04",
+		"nodeId": "1995:61157",
+		"dateStamp": "2026-10-14",
 		"moduleHeader": null,
 		"componentSet": "Modules / Testimonials",
-		"page": "Factory_Library_CLAUDE-WORK"
+		"page": "Factory_Library_CLAUDE-WORK",
+		"toggles": {
+			"Mark": {
+				"none": "decorative quote glyph; fixed markup"
+			},
+			"Quote": {
+				"fields": [
+					"items[].quote",
+					"long_quote"
+				]
+			},
+			"Avatar": {
+				"fields": [
+					"items[].avatar"
+				]
+			},
+			"Role": {
+				"fields": [
+					"items[].role",
+					"items[].company"
+				]
+			},
+			"Dots": {
+				"none": "slider chrome"
+			},
+			"Header": {
+				"fields": [
+					"eyebrow",
+					"headline",
+					"intro"
+				]
+			},
+			"Eyebrow": {
+				"fields": [
+					"eyebrow"
+				]
+			},
+			"Headline": {
+				"fields": [
+					"headline"
+				]
+			},
+			"Intro": {
+				"fields": [
+					"intro"
+				]
+			},
+			"Stars": {
+				"none": "not modelled: five stars are fixed markup"
+			},
+			"Image": {
+				"fields": [
+					"items[].media"
+				]
+			},
+			"Arrows": {
+				"none": "slider chrome"
+			},
+			"Link": {
+				"fields": [
+					"items[].link",
+					"items[].link_label"
+				]
+			}
+		}
 	},
 	"composer_dependencies": [],
 	"npm_dependencies": [],

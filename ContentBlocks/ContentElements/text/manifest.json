@@ -2,14 +2,15 @@
 	"$schema": "../../../../../contract/schema/component-manifest.schema.json",
 	"name": "Text",
 	"type": "content-element",
-	"version": "1.0.1",
+	"version": "1.1.0",
 	"min_core_version": "1.0.0",
 	"description": "Simple text section with eyebrow, title (with <strong> accent support), subline, body, and up to two CTAs. Layouts: left-aligned, centered, two-column (title left / body right), or an oversize headline that breaks the grid.",
 	"when_to_use": "Pure copy blocks — mission statements, section intros, editorial passages without media. Use Intro when an image belongs next to the text; use Cta when the block's job is conversion.",
 	"capabilities": [
 		"four layouts incl. editorial two-column and oversize display headline",
 		"title <strong> emphasis rendered in the accent color",
-		"primary + secondary CTA pair"
+		"primary + secondary CTA pair",
+		"optional contact block (organisation + address/phone/mail lines)"
 	],
 	"variants": [
 		{
@@ -26,7 +27,7 @@
 		},
 		{
 			"value": "oversize",
-			"description": "Huge display headline breaking the grid; body below."
+			"description": "Huge display headline; subline, body, contact and CTAs stacked below in one centered column."
 		}
 	],
 	"atoms": [
@@ -40,20 +41,71 @@
 	"figma": {
 		"file": "Labor - Website factory PLUGIN TEST",
 		"fileKey": "avP1L4LoOxY5ukjT4bAajX",
-		"nodeId": "1377:69673",
-		"dateStamp": "2026-09-04",
+		"nodeId": "1995:61600",
+		"dateStamp": "2026-10-14",
 		"moduleHeader": "TEXT · ALL VARIANTS",
 		"componentSet": "Modules / Text",
-		"page": "Factory_Library_CLAUDE-WORK"
+		"page": "Factory_Library_CLAUDE-WORK",
+		"toggles": {
+			"Eyebrow": {
+				"fields": [
+					"eyebrow"
+				]
+			},
+			"Subline": {
+				"fields": [
+					"subline"
+				]
+			},
+			"Body": {
+				"fields": [
+					"body"
+				]
+			},
+			"Contact": {
+				"fields": [
+					"contact_org",
+					"contact_lines"
+				]
+			},
+			"Org": {
+				"fields": [
+					"contact_org"
+				]
+			},
+			"Contact Lines": {
+				"fields": [
+					"contact_lines"
+				]
+			},
+			"CTA Primary": {
+				"fields": [
+					"primary_label",
+					"primary_to"
+				]
+			},
+			"CTA Secondary": {
+				"fields": [
+					"secondary_label",
+					"secondary_to"
+				]
+			},
+			"Oversize Eyebrow": {
+				"fields": [
+					"eyebrow"
+				]
+			}
+		}
 	},
 	"composer_dependencies": [],
 	"npm_dependencies": [],
 	"ai": {
-		"prompt_summary": "Text: copy-only section. Settings: variant (left|center|two-col|oversize), eyebrow, title (supports <strong> accent), subline (short sentence between title and body), body, primary_label + primary_to, secondary_label + secondary_to.",
+		"prompt_summary": "Text: copy-only section. Settings: variant (left|center|two-col|oversize), eyebrow, title (supports <strong> accent), subline (short sentence between title and body), body, contact_org + contact_lines (optional contact block below the body: bold organisation name, then one line per address/phone/e-mail row), primary_label + primary_to, secondary_label + secondary_to.",
 		"content_guidelines": "Title 3-8 words with at most one <strong> emphasis (oversize titles even shorter). Body 2-5 sentences. CTAs optional — primary before secondary.",
 		"field_hints": {
 			"title": "Wrap the emphasized phrase in <strong>...</strong>; it renders in the brand accent color.",
-			"subline": "One short bridging sentence — not a second paragraph."
+			"subline": "One short bridging sentence — not a second paragraph.",
+			"contact_lines": "One entry per line, e.g. 'Hauptstraße 42, 12345 Musterstadt' / 'T. +49 6135 12 34 56' / 'E. hallo@musterfirma.de'. Leave contact_org and contact_lines empty unless the section names a contact."
 		}
 	}
 }

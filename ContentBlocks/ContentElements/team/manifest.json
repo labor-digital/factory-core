@@ -49,11 +49,54 @@
 	"figma": {
 		"file": "Labor - Website factory PLUGIN TEST",
 		"fileKey": "avP1L4LoOxY5ukjT4bAajX",
-		"nodeId": "1377:66742",
-		"dateStamp": "2026-09-04",
+		"nodeId": "1995:57908",
+		"dateStamp": "2026-10-14",
 		"moduleHeader": null,
 		"componentSet": "Modules / Team",
-		"page": "Factory_Library_CLAUDE-WORK"
+		"page": "Factory_Library_CLAUDE-WORK",
+		"toggles": {
+			"Eyebrow": {
+				"fields": [
+					"eyebrow"
+				]
+			},
+			"Headline": {
+				"fields": [
+					"headline"
+				]
+			},
+			"Intro": {
+				"fields": [
+					"intro"
+				]
+			},
+			"Photo": {
+				"fields": [
+					"members[].photo"
+				]
+			},
+			"Role": {
+				"fields": [
+					"members[].role"
+				]
+			},
+			"Contact": {
+				"fields": [
+					"members[].email",
+					"members[].phone",
+					"members[].linkedin"
+				]
+			},
+			"Arrows": {
+				"none": "slider chrome"
+			},
+			"Dots": {
+				"none": "slider chrome"
+			},
+			"Group Count": {
+				"none": "computed from the member count per department; fixed markup"
+			}
+		}
 	},
 	"composer_dependencies": [],
 	"npm_dependencies": [],

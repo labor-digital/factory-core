@@ -48,13 +48,52 @@
 	"figma": {
 		"file": "Labor - Website factory PLUGIN TEST",
 		"fileKey": "avP1L4LoOxY5ukjT4bAajX",
-		"nodeId": "1377:54654",
-		"dateStamp": "2026-09-04",
+		"nodeId": "1995:45110",
+		"dateStamp": "2026-10-14",
 		"moduleHeader": null,
 		"componentSet": "Modules / Image Slider",
 		"page": "Factory_Library_CLAUDE-WORK",
 		"port": "rewrite",
-		"portReason": "Rebuilt in utility classes; carries no islider-* class at all."
+		"portReason": "Rebuilt in utility classes; carries no islider-* class at all.",
+		"toggles": {
+			"Arrows": {
+				"checkbox": "show_arrows"
+			},
+			"Body": {
+				"fields": [
+					"description"
+				]
+			},
+			"Caption": {
+				"fields": [
+					"slides[].caption"
+				]
+			},
+			"Counter": {
+				"none": "computed: 'NN / NN' from the active slide (edge variant)"
+			},
+			"Dots": {
+				"none": "slider chrome: edge progress segments derived from the slides"
+			},
+			"Eyebrow": {
+				"fields": [
+					"eyebrow"
+				]
+			},
+			"Headline": {
+				"fields": [
+					"title"
+				]
+			},
+			"Link": {
+				"fields": [
+					"buttons"
+				]
+			},
+			"Thumbnails": {
+				"none": "slider chrome: thumbnail strip built from the slides (thumbs variant)"
+			}
+		}
 	},
 	"composer_dependencies": [],
 	"npm_dependencies": [

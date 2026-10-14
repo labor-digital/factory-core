@@ -59,8 +59,8 @@
 	"figma": {
 		"file": "Labor - Website factory PLUGIN TEST",
 		"fileKey": "avP1L4LoOxY5ukjT4bAajX",
-		"nodeId": "1377:56102",
-		"dateStamp": "2026-09-04",
+		"nodeId": "1995:46569",
+		"dateStamp": "2026-10-14",
 		"moduleHeader": null,
 		"componentSet": "Modules / Modal",
 		"page": "Factory_Library_CLAUDE-WORK",
@@ -72,7 +72,70 @@
 			"form_method",
 			"trigger_label",
 			"trigger_variant"
-		]
+		],
+		"toggles": {
+			"Warn-Icon": {
+				"none": "decorative icon; drawn from fixed markup (alert variant)"
+			},
+			"Body": {
+				"fields": [
+					"body"
+				]
+			},
+			"Close": {
+				"checkbox": "show_close"
+			},
+			"Counter": {
+				"fields": [
+					"counter"
+				]
+			},
+			"Poster": {
+				"fields": [
+					"poster"
+				]
+			},
+			"Play": {
+				"none": "decorative play glyph; drawn from fixed markup"
+			},
+			"Duration": {
+				"fields": [
+					"duration"
+				]
+			},
+			"Caption": {
+				"fields": [
+					"subline"
+				]
+			},
+			"Checkbox": {
+				"fields": [
+					"consent_label"
+				]
+			},
+			"Detail Image": {
+				"fields": [
+					"image"
+				]
+			},
+			"Step Count": {
+				"none": "computed from steps; drawn from fixed markup"
+			},
+			"Choice Desc": {
+				"fields": [
+					"steps[].step_description"
+				]
+			},
+			"Step Done": {
+				"none": "decorative progress mark; one per step"
+			},
+			"Step Active": {
+				"none": "decorative progress mark; one per step"
+			},
+			"Step": {
+				"none": "decorative progress mark; one per step"
+			}
+		}
 	},
 	"ai": {
 		"prompt_summary": "Modal: a dialog overlay opened by a trigger button rendered in the page. Element settings: variant (confirm|alert|lightbox|video|form|detail|wizard), trigger_label, trigger_variant (solid|outline|ghost|link), title, body, show_close. Actions are label + behaviour: confirm_label/confirm_action (close|link|submit)/confirm_to/confirm_target and cancel_label/cancel_action (close|link)/cancel_to. The form variant posts to form_action with form_method. Media variants use image/caption/counter (lightbox), video_url/poster/duration/subline (video), image/subline/specs[] (detail). form uses fields[] (field_label, field_type) plus consent_label. wizard uses steps[] (step_title, step_description, choices[]).",

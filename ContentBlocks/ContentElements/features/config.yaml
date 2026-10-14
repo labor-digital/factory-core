@@ -59,6 +59,15 @@ fields:
         type: Link
         label: Link Target
 
+  - identifier: band_button_label
+    type: Text
+    label: Band Button Label
+    description: Optional centered outline button below the grid. Leave empty to hide it.
+
+  - identifier: band_button_to
+    type: Link
+    label: Band Button Link
+
   - identifier: heading_level
     type: Select
     renderType: selectSingle

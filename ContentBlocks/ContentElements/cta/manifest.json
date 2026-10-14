@@ -41,11 +41,49 @@
 	"figma": {
 		"file": "Labor - Website factory PLUGIN TEST",
 		"fileKey": "avP1L4LoOxY5ukjT4bAajX",
-		"nodeId": "1377:48282",
-		"dateStamp": "2026-09-04",
+		"nodeId": "1995:37835",
+		"dateStamp": "2026-10-14",
 		"moduleHeader": "Modules / CTA",
 		"componentSet": "Modules / CTA",
-		"page": "Factory_Library_CLAUDE-WORK"
+		"page": "Factory_Library_CLAUDE-WORK",
+		"toggles": {
+			"Eyebrow": {
+				"fields": [
+					"eyebrow"
+				]
+			},
+			"Body": {
+				"fields": [
+					"body"
+				]
+			},
+			"CTA Primary": {
+				"fields": [
+					"buttons[0]"
+				]
+			},
+			"CTA Secondary": {
+				"fields": [
+					"buttons[1..]"
+				]
+			},
+			"Image": {
+				"fields": [
+					"background_image"
+				]
+			},
+			"Overlay": {
+				"none": "decorative overlay; always drawn"
+			},
+			"Submit": {
+				"none": "not modelled: submit button always drawn (form_submit_label falls back to a default)"
+			},
+			"Note": {
+				"fields": [
+					"form_note"
+				]
+			}
+		}
 	},
 	"composer_dependencies": [],
 	"npm_dependencies": [

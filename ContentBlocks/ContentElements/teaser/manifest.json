@@ -47,13 +47,62 @@
 	"figma": {
 		"file": "Labor - Website factory PLUGIN TEST",
 		"fileKey": "avP1L4LoOxY5ukjT4bAajX",
-		"nodeId": "1377:68507",
-		"dateStamp": "2026-09-04",
+		"nodeId": "1995:60333",
+		"dateStamp": "2026-10-14",
 		"moduleHeader": null,
 		"componentSet": "Modules / Teaser",
 		"page": "Factory_Library_CLAUDE-WORK",
 		"port": "rewrite",
-		"portReason": "Rebuilt in utility classes; carries factory-teaser-* plus utilities, no rcard-*/chevron."
+		"portReason": "Rebuilt in utility classes; carries factory-teaser-* plus utilities, no rcard-*/chevron.",
+		"toggles": {
+			"Header": {
+				"fields": [
+					"eyebrow",
+					"title",
+					"description",
+					"buttons"
+				]
+			},
+			"Eyebrow": {
+				"fields": [
+					"eyebrow"
+				]
+			},
+			"Intro": {
+				"fields": [
+					"description"
+				]
+			},
+			"Link": {
+				"fields": [
+					"buttons"
+				]
+			},
+			"Image": {
+				"none": "record card part; drawn by the record type's card, no teaser field"
+			},
+			"Category": {
+				"none": "record card part; drawn by the record type's card, no teaser field"
+			},
+			"Address": {
+				"none": "record card part; drawn by the record type's card, no teaser field"
+			},
+			"Divider": {
+				"none": "decorative; record card divider"
+			},
+			"Meta": {
+				"none": "record card part; drawn by the record type's card, no teaser field"
+			},
+			"Pager": {
+				"none": "slider chrome"
+			},
+			"Band Button": {
+				"none": "not modelled: no CTA band below the records; header buttons are the only CTA"
+			},
+			"Thumbnails": {
+				"none": "record card part; feature thumbnails are drawn from the records, no teaser field"
+			}
+		}
 	},
 	"composer_dependencies": [],
 	"npm_dependencies": [

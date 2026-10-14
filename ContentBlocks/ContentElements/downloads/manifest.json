@@ -47,11 +47,47 @@
 	"figma": {
 		"file": "Labor - Website factory PLUGIN TEST",
 		"fileKey": "avP1L4LoOxY5ukjT4bAajX",
-		"nodeId": "1377:50582",
-		"dateStamp": "2026-09-04",
+		"nodeId": "1995:40138",
+		"dateStamp": "2026-10-14",
 		"moduleHeader": null,
 		"componentSet": "Modules / Downloads",
-		"page": "Factory_Library_CLAUDE-WORK"
+		"page": "Factory_Library_CLAUDE-WORK",
+		"toggles": {
+			"Eyebrow": {
+				"fields": [
+					"eyebrow"
+				]
+			},
+			"Headline": {
+				"fields": [
+					"headline"
+				]
+			},
+			"Intro": {
+				"fields": [
+					"intro"
+				]
+			},
+			"Badge": {
+				"none": "format badge always drawn; derived from the file (items[].ext only overrides it)"
+			},
+			"File Size": {
+				"fields": [
+					"items[].file_size"
+				]
+			},
+			"Action": {
+				"none": "decorative download arrow; always drawn"
+			},
+			"Description": {
+				"fields": [
+					"items[].desc"
+				]
+			},
+			"Group Count": {
+				"none": "derived: counted from items"
+			}
+		}
 	},
 	"composer_dependencies": [],
 	"npm_dependencies": [],

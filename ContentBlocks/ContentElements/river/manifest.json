@@ -42,11 +42,80 @@
 	"figma": {
 		"file": "Labor - Website factory PLUGIN TEST",
 		"fileKey": "avP1L4LoOxY5ukjT4bAajX",
-		"nodeId": "1377:58621",
-		"dateStamp": "2026-09-04",
+		"nodeId": "1995:49899",
+		"dateStamp": "2026-10-14",
 		"moduleHeader": null,
 		"componentSet": "Modules / River",
-		"page": "Factory_Library_CLAUDE-WORK"
+		"page": "Factory_Library_CLAUDE-WORK",
+		"toggles": {
+			"Eyebrow": {
+				"fields": [
+					"blocks[].eyebrow"
+				]
+			},
+			"Subline": {
+				"fields": [
+					"blocks[].subline"
+				]
+			},
+			"Body": {
+				"fields": [
+					"blocks[].body"
+				]
+			},
+			"Button": {
+				"fields": [
+					"blocks[].button_label",
+					"blocks[].button_to"
+				]
+			},
+			"Note": {
+				"fields": [
+					"blocks[0].note"
+				]
+			},
+			"Image": {
+				"fields": [
+					"blocks[].image"
+				]
+			},
+			"Overlay": {
+				"none": "decorative video overlay"
+			},
+			"Play": {
+				"none": "decorative play button; drawn from fixed markup (video variant)"
+			},
+			"Note 2": {
+				"fields": [
+					"blocks[1].note"
+				]
+			},
+			"Note 3": {
+				"fields": [
+					"blocks[2].note"
+				]
+			},
+			"Block 4": {
+				"fields": [
+					"blocks[3]"
+				]
+			},
+			"Note 4": {
+				"fields": [
+					"blocks[3].note"
+				]
+			},
+			"Block 5": {
+				"fields": [
+					"blocks[4]"
+				]
+			},
+			"Note 5": {
+				"fields": [
+					"blocks[4].note"
+				]
+			}
+		}
 	},
 	"composer_dependencies": [],
 	"npm_dependencies": [],

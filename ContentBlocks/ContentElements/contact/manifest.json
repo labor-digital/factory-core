@@ -46,11 +46,79 @@
 	"figma": {
 		"file": "Labor - Website factory PLUGIN TEST",
 		"fileKey": "avP1L4LoOxY5ukjT4bAajX",
-		"nodeId": "1377:45764",
-		"dateStamp": "2026-09-04",
+		"nodeId": "1995:35228",
+		"dateStamp": "2026-10-14",
 		"moduleHeader": null,
 		"componentSet": "Modules / Contact",
-		"page": "Factory_Library_CLAUDE-WORK"
+		"page": "Factory_Library_CLAUDE-WORK",
+		"toggles": {
+			"Eyebrow": {
+				"fields": [
+					"eyebrow"
+				]
+			},
+			"Headline": {
+				"fields": [
+					"headline"
+				]
+			},
+			"Intro": {
+				"fields": [
+					"intro"
+				]
+			},
+			"Org": {
+				"fields": [
+					"org"
+				]
+			},
+			"Info Icons": {
+				"none": "icons; always drawn"
+			},
+			"Socials": {
+				"fields": [
+					"linkedin_url",
+					"instagram_url"
+				]
+			},
+			"Name": {
+				"none": "not modelled: form field is fixed markup"
+			},
+			"Email": {
+				"none": "not modelled: form field is fixed markup"
+			},
+			"Phone": {
+				"none": "not modelled: form field is fixed markup"
+			},
+			"Subject": {
+				"none": "not modelled: form field is fixed markup"
+			},
+			"Message": {
+				"none": "not modelled: form field is fixed markup"
+			},
+			"Consent": {
+				"none": "not modelled: consent checkbox is fixed, required markup (privacy_link only links its text)"
+			},
+			"Button": {
+				"none": "not modelled: submit button is fixed markup"
+			},
+			"Divider": {
+				"none": "decorative rule; always drawn"
+			},
+			"Link": {
+				"none": "fixed markup: tile link text drawn from phone/email"
+			},
+			"Photo": {
+				"fields": [
+					"persons[].photo"
+				]
+			},
+			"Role": {
+				"fields": [
+					"persons[].role"
+				]
+			}
+		}
 	},
 	"composer_dependencies": [],
 	"npm_dependencies": [],

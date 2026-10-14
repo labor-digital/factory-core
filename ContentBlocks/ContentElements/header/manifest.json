@@ -44,11 +44,44 @@
 	"figma": {
 		"file": "Labor - Website factory PLUGIN TEST",
 		"fileKey": "avP1L4LoOxY5ukjT4bAajX",
-		"nodeId": "1377:53717",
-		"dateStamp": "2026-09-04",
+		"nodeId": "1995:44152",
+		"dateStamp": "2026-10-14",
 		"moduleHeader": null,
 		"componentSet": "Modules / Header",
-		"page": "Factory_Library_CLAUDE-WORK"
+		"page": "Factory_Library_CLAUDE-WORK",
+		"toggles": {
+			"Burger": {
+				"none": "decorative: mobile menu toggle, fixed markup"
+			},
+			"CTA": {
+				"fields": [
+					"cta_label",
+					"cta_to"
+				]
+			},
+			"Eyebrow": {
+				"none": "not modelled: mega column headings are links[].children[].group, which also groups the columns; empty renders 'Mehr'"
+			},
+			"Feature": {
+				"fields": [
+					"links[].feature_title",
+					"links[].feature_body",
+					"links[].feature_image"
+				]
+			},
+			"Logo Mark": {
+				"none": "decorative: the logo mark is fixed markup; logo_image replaces the whole logo, not only the mark"
+			},
+			"Mega Panel": {
+				"none": "interaction state: the panel opens on hover from links[].children; hiding it in a static frame does not mean there is no submenu"
+			},
+			"Navigation": {
+				"none": "always drawn: the navigation comes from the site menu when links is empty (site chrome strips links)"
+			},
+			"Wordmark": {
+				"none": "not modelled: the logo text comes from logo_text, which renders a 'Logo' placeholder when empty"
+			}
+		}
 	},
 	"composer_dependencies": [],
 	"npm_dependencies": [

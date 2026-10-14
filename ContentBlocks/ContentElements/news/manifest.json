@@ -48,11 +48,77 @@
 	"figma": {
 		"file": "Labor - Website factory PLUGIN TEST",
 		"fileKey": "avP1L4LoOxY5ukjT4bAajX",
-		"nodeId": "1377:57701",
-		"dateStamp": "2026-09-04",
+		"nodeId": "1995:48625",
+		"dateStamp": "2026-10-14",
 		"moduleHeader": null,
 		"componentSet": "Modules / News",
-		"page": "Factory_Library_CLAUDE-WORK"
+		"page": "Factory_Library_CLAUDE-WORK",
+		"toggles": {
+			"Eyebrow": {
+				"fields": [
+					"eyebrow"
+				]
+			},
+			"Headline": {
+				"fields": [
+					"headline"
+				]
+			},
+			"Intro": {
+				"fields": [
+					"intro"
+				]
+			},
+			"Link": {
+				"fields": [
+					"see_all_label",
+					"see_all_to"
+				]
+			},
+			"Toolbar": {
+				"none": "filter chrome; search and year tabs drawn from fixed markup"
+			},
+			"Search": {
+				"none": "filter chrome; drawn from fixed markup"
+			},
+			"Year Tabs": {
+				"none": "filter chrome; derived from item dates"
+			},
+			"Filters": {
+				"none": "filter chrome; pills derived from item categories"
+			},
+			"Image": {
+				"fields": [
+					"items[].image"
+				]
+			},
+			"Category": {
+				"fields": [
+					"items[].category",
+					"items[].is_press_release"
+				]
+			},
+			"Excerpt": {
+				"fields": [
+					"items[].excerpt"
+				]
+			},
+			"Meta": {
+				"fields": [
+					"items[].author",
+					"items[].source"
+				]
+			},
+			"Row Chevron": {
+				"none": "decorative chevron"
+			},
+			"Timeline Line": {
+				"none": "decorative timeline mark"
+			},
+			"Timeline Point": {
+				"none": "decorative timeline mark"
+			}
+		}
 	},
 	"composer_dependencies": [],
 	"npm_dependencies": [],

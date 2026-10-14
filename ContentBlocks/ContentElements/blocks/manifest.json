@@ -51,11 +51,71 @@
 	"figma": {
 		"file": "Labor - Website factory PLUGIN TEST",
 		"fileKey": "avP1L4LoOxY5ukjT4bAajX",
-		"nodeId": "1377:42757",
-		"dateStamp": "2026-09-04",
+		"nodeId": "1995:32134",
+		"dateStamp": "2026-10-14",
 		"moduleHeader": null,
 		"componentSet": "Modules / Blocks",
-		"page": "Factory_Library_CLAUDE-WORK"
+		"page": "Factory_Library_CLAUDE-WORK",
+		"toggles": {
+			"Eyebrow": {
+				"fields": [
+					"eyebrow"
+				]
+			},
+			"Headline": {
+				"fields": [
+					"headline"
+				]
+			},
+			"Intro": {
+				"fields": [
+					"intro"
+				]
+			},
+			"Toolbar": {
+				"none": "not modelled: search + sort toolbar is fixed markup, always drawn"
+			},
+			"Search": {
+				"none": "not modelled: search field is fixed markup, always drawn (search_placeholder falls back to a default)"
+			},
+			"Sort": {
+				"none": "not modelled: sort dropdown is fixed markup with built-in options"
+			},
+			"Filters": {
+				"fields": [
+					"categories",
+					"types"
+				]
+			},
+			"Active Filters": {
+				"none": "runtime filter state; nothing stored"
+			},
+			"Image": {
+				"fields": [
+					"items[].image"
+				]
+			},
+			"Category": {
+				"fields": [
+					"items[].category"
+				]
+			},
+			"Excerpt": {
+				"fields": [
+					"items[].excerpt"
+				]
+			},
+			"Meta": {
+				"fields": [
+					"items[].type",
+					"items[].date",
+					"items[].read_time"
+				]
+			},
+			"Pagination": {
+				"none": "derived from item count and per_page; drawn when there is more than one page"
+			}
+		}
 	},
 	"composer_dependencies": [],
 	"npm_dependencies": [],

@@ -40,11 +40,40 @@
 	"figma": {
 		"file": "Labor - Website factory PLUGIN TEST",
 		"fileKey": "avP1L4LoOxY5ukjT4bAajX",
-		"nodeId": "1377:54965",
-		"dateStamp": "2026-09-04",
+		"nodeId": "1995:45421",
+		"dateStamp": "2026-10-14",
 		"moduleHeader": "INTRO · ALL VARIANTS",
 		"componentSet": "Modules / Intro",
-		"page": "Factory_Library_CLAUDE-WORK"
+		"page": "Factory_Library_CLAUDE-WORK",
+		"toggles": {
+			"Eyebrow": {
+				"fields": [
+					"eyebrow",
+					"stats_eyebrow"
+				]
+			},
+			"Headline": {
+				"fields": [
+					"title"
+				]
+			},
+			"Body": {
+				"fields": [
+					"body"
+				]
+			},
+			"CTA": {
+				"fields": [
+					"cta_label",
+					"cta_to"
+				]
+			},
+			"Image": {
+				"fields": [
+					"image"
+				]
+			}
+		}
 	},
 	"composer_dependencies": [],
 	"npm_dependencies": [],

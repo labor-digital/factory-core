@@ -49,11 +49,66 @@
 	"figma": {
 		"file": "Labor - Website factory PLUGIN TEST",
 		"fileKey": "avP1L4LoOxY5ukjT4bAajX",
-		"nodeId": "1377:53228",
-		"dateStamp": "2026-09-04",
+		"nodeId": "1995:43504",
+		"dateStamp": "2026-10-14",
 		"moduleHeader": null,
 		"componentSet": "Modules / Footer",
-		"page": "Factory_Library_CLAUDE-WORK"
+		"page": "Factory_Library_CLAUDE-WORK",
+		"toggles": {
+			"Address": {
+				"fields": [
+					"address"
+				]
+			},
+			"Bottom Bar": {
+				"fields": [
+					"legal"
+				]
+			},
+			"CTAs": {
+				"fields": [
+					"cta_primary",
+					"cta_secondary"
+				]
+			},
+			"Claim": {
+				"fields": [
+					"claim"
+				]
+			},
+			"Column Title": {
+				"fields": [
+					"cols[].title"
+				]
+			},
+			"Copyright": {
+				"none": "always drawn: an empty copyright renders a generated notice"
+			},
+			"Eyebrow": {
+				"none": "fixed markup: the maximal variant draws a static 'Kontakt' eyebrow"
+			},
+			"Legal": {
+				"fields": [
+					"legal"
+				]
+			},
+			"Logo Mark": {
+				"none": "decorative: the logo mark is fixed markup; logo_image replaces the whole logo, not only the mark"
+			},
+			"Socials": {
+				"fields": [
+					"socials"
+				]
+			},
+			"Tagline": {
+				"fields": [
+					"tagline"
+				]
+			},
+			"Wordmark": {
+				"none": "not modelled: the logo text comes from logo_text, which renders a 'Logo' placeholder when empty; the maximal wordmark is derived from it"
+			}
+		}
 	},
 	"composer_dependencies": [],
 	"npm_dependencies": [
