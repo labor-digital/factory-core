@@ -2,7 +2,7 @@
 	"$schema": "../../../../../contract/schema/component-manifest.schema.json",
 	"name": "Footer",
 	"type": "content-element",
-	"version": "1.0.1",
+	"version": "1.1.0",
 	"min_core_version": "1.0.0",
 	"description": "Site footer with brand (logo text or image), nested link columns, contacts, social links, legal links, and copyright. Layouts: 4-column light, compact single row, dark split with a claim + CTAs, or maximal dark with a giant wordmark.",
 	"when_to_use": "Exactly one Footer per site, placed on the shared layout. Pick split or maximal for brands that want a bold dark closing; compact for minimal sites.",
@@ -171,7 +171,7 @@
 		"@iconify/vue"
 	],
 	"ai": {
-		"prompt_summary": "Footer: site footer. Settings: variant (columns|compact|split|maximal), logo_text, logo_image, tagline (columns), claim (split/maximal), address (one line per row), cta_primary + cta_secondary (split only), copyright. Collections: cols[] { title, links[] { label, to } }, contacts[] { label, to } (maximal, e.g. tel:/mailto:), socials[] { label (e.g. IN, LI, YT), to }, legal[] { label, to }.",
+		"prompt_summary": "Footer: site footer. Settings: variant (columns|compact|split|maximal), logo_text, logo_image, tagline (columns), claim (split/maximal), address (one line per row), cta_primary + cta_secondary (split only), copyright. Collections: cols[] { title, links[] { label, to } }, contacts[] { label, to } (maximal, e.g. tel:/mailto:), socials[] { label (e.g. IN, LI, YT), to }, legal[] { label, to }. scheme (light|dark): a light variant on the dark band.",
 		"content_guidelines": "2-4 link columns with 3-6 links each. Claim one strong sentence. Legal links: Impressum, Datenschutz, AGB. Social labels are short abbreviations, not icon names.",
 		"field_hints": {
 			"address": "Multiline — one address line per row.",

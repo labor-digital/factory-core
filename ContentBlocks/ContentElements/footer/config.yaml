@@ -17,6 +17,17 @@ fields:
       - { label: 'Maximal (giant wordmark, dark)', value: maximal }
     default: columns
 
+  # A light variant on the dark band — what a Figma section with `scheme: dark` is
+  # (heckelsmueller's compact footer). Split and maximal are dark anyway.
+  - identifier: scheme
+    type: Select
+    renderType: selectSingle
+    label: Colour scheme
+    items:
+      - { label: Light, value: light }
+      - { label: Dark band, value: dark }
+    default: light
+
   - identifier: logo_text
     type: Text
     label: Logo Text
