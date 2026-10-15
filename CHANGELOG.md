@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.9.1](https://bitbucket.org/labor-digital/labor-factory-app/branches/compare/factory-core-v2.9.1%0Dfactory-core-v2.9.0#diff) (2026-10-15)
+
+
+### Bug Fixes
+
+* sections paint their own background, the footer takes the design's dark band, Fly 502s are retried ([6f4b432](https://bitbucket.org/labor-digital/labor-factory-app/commits/6f4b432a503c45791c952dead8a163dd743db9dc))
+
+
+
 # [2.9.0](https://bitbucket.org/labor-digital/labor-factory-app/branches/compare/factory-core-v2.9.0%0Dfactory-core-v2.8.0#diff) (2026-10-15)
 
 
