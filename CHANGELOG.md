@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+# [2.9.0](https://bitbucket.org/labor-digital/labor-factory-app/branches/compare/factory-core-v2.9.0%0Dfactory-core-v2.8.0#diff) (2026-10-15)
+
+
+### Features
+
+* Figma package imports build every section by code from a content map (DL [#061](https://bitbucket.org/labor-digital/labor-factory-app/issues/061)) ([98a50c6](https://bitbucket.org/labor-digital/labor-factory-app/commits/98a50c69847b281e862e2166e6ef03a6e17e45ba))
+
+
+
 # [2.8.0](https://bitbucket.org/labor-digital/labor-factory-app/branches/compare/factory-core-v2.8.0%0Dfactory-core-v2.7.0#diff) (2026-10-14)
 
 
