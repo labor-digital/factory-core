@@ -83,7 +83,54 @@
 					"intro"
 				]
 			}
-		}
+		},
+		"content": {
+			"Eyebrow": {
+				"into": "eyebrow"
+			},
+			"Headline": {
+				"into": "headline"
+			},
+			"Intro": {
+				"into": "intro"
+			},
+			"CTA": {
+				"none": "unsure: generic button alias from the capability map; this module has no such TEXT property (the contact button label is fixed markup in the design)"
+			},
+			"Button": {
+				"none": "unsure: generic button alias from the capability map; this module has no such TEXT property (the contact button label is fixed markup in the design)"
+			},
+			"CTA Primary": {
+				"none": "unsure: generic button alias from the capability map; this module has no such TEXT property"
+			},
+			"CTA Secondary": {
+				"none": "unsure: generic button alias from the capability map; this module has no such TEXT property"
+			}
+		},
+		"items": {
+			"acc-q": {
+				"into": "items[].q"
+			},
+			"eyebrow-text": {
+				"none": "set via content Eyebrow"
+			},
+			"faq-headline": {
+				"none": "set via content Headline"
+			},
+			"faq-intro": {
+				"none": "set via content Intro"
+			},
+			"acc-body-p": {
+				"into": "items[].a"
+			},
+			"faq-group-num": {
+				"none": "computed: the group number is drawn from the group position"
+			},
+			"faq-group-title-text": {
+				"none": "unsure: one title per group, while our group is items[].group per question; the index does not line up"
+			}
+		},
+		"media": {}
 	},
 	"composer_dependencies": [],
 	"npm_dependencies": [],

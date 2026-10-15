@@ -90,6 +90,53 @@
 					"slides[].subline"
 				]
 			}
+		},
+		"content": {
+			"Eyebrow": {
+				"into": "slides[0].eyebrow"
+			},
+			"Title": {
+				"into": "slides[0].title"
+			},
+			"Subeyebrow": {
+				"into": "slides[0].subline"
+			},
+			"CTA Primary": {
+				"into": "slides[0].buttons[0].label",
+				"link": "slides[0].buttons[0].to"
+			},
+			"CTA Secondary": {
+				"into": "slides[0].buttons[1].label",
+				"link": "slides[0].buttons[1].to"
+			},
+			"CTA": {
+				"none": "unsure: generic button alias from the capability map; this module has no such TEXT property (its buttons are CTA Primary / CTA Secondary)"
+			},
+			"Button": {
+				"none": "unsure: generic button alias from the capability map; this module has no such TEXT property (its buttons are CTA Primary / CTA Secondary)"
+			}
+		},
+		"items": {
+			"btn-label": {
+				"none": "set via content CTA Primary / CTA Secondary"
+			},
+			"hero-eyebrow": {
+				"into": "slides[].eyebrow"
+			},
+			"hero-title": {
+				"into": "slides[].title"
+			},
+			"hero-subeyebrow": {
+				"into": "slides[].subline"
+			}
+		},
+		"media": {
+			"ph hero-image": {
+				"into": "slides[0].background_image",
+				"also": {
+					"slides[0].background_type": "image"
+				}
+			}
 		}
 	},
 	"composer_dependencies": [],

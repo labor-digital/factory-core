@@ -94,6 +94,118 @@
 			"Tone Icons": {
 				"none": "icons; always drawn (glyph chosen by h2h_rows[].a_tone/b_tone, fixed in methods pros/cons)"
 			}
+		},
+		"content": {
+			"Eyebrow": {
+				"into": "eyebrow"
+			}
+		},
+		"items": {
+			"cmp-rat-cell-label": {
+				"none": "repeat of rating_items[].name per cell"
+			},
+			"cmp-rat-num": {
+				"none": "per-cell score \"4/5\" in criteria-major order; rating_items[].values is comma-separated per item"
+			},
+			"li-text": {
+				"none": "pros and cons of all methods in one list; methods[].pros/cons are per-card textareas"
+			},
+			"cmp-h2h-ab-mark": {
+				"none": "fixed markup: A/B marks"
+			},
+			"eyebrow-text": {
+				"none": "set via content Eyebrow"
+			},
+			"cmp-headline h-2": {
+				"into": "headline"
+			},
+			"body-text": {
+				"into": "intro"
+			},
+			"cmp-h2h-toplabel": {
+				"none": "repeat of cmp-h2h-label (h2h_rows[].property)"
+			},
+			"val-a": {
+				"into": "h2h_rows[].a_value"
+			},
+			"cmp-h2h-label": {
+				"into": "h2h_rows[].property"
+			},
+			"val-b": {
+				"into": "h2h_rows[].b_value"
+			},
+			"lbl": {
+				"none": "metric labels interleaved per card (metric1_label, metric2_label); no per-index scalar path"
+			},
+			"val": {
+				"none": "metric values interleaved per card (metric1_value, metric2_value); no per-index scalar path"
+			},
+			"bar-label-t": {
+				"into": "bars_rows[].label"
+			},
+			"bar-label-n": {
+				"into": "bars_rows[].note"
+			},
+			"cmp-bar-value": {
+				"none": "value with unit (\"28 Einheit\"); bars_rows[].value is a decimal, the unit is bars_unit"
+			},
+			"crit-text": {
+				"into": "rating_criteria",
+				"compose": "lines"
+			},
+			"pill-text": {
+				"none": "positional [before, after] labels → before_label/after_label; no per-index scalar path"
+			},
+			"big-num": {
+				"none": "derived: column index \"01\""
+			},
+			"cmp-rat-col-name": {
+				"into": "rating_items[].name"
+			},
+			"cmp-rat-sum": {
+				"none": "derived: sum of the item scores"
+			},
+			"cmp-rat-of": {
+				"none": "fixed markup: \"/5\""
+			},
+			"cmp-meth-name": {
+				"into": "methods[].name"
+			},
+			"cmp-meth-tag": {
+				"into": "methods[].tagline"
+			},
+			"cmp-meth-section-title cmp-meth-pos": {
+				"none": "fixed markup: \"Vorteile\""
+			},
+			"cmp-meth-section-title cmp-meth-neg": {
+				"none": "fixed markup: \"Nachteile\""
+			},
+			"year-text": {
+				"none": "positional [before, after] → before_meta/after_meta; no per-index scalar path"
+			},
+			"cmp-ba-caption": {
+				"none": "positional [before, after] → before_caption/after_caption; no per-index scalar path"
+			},
+			"cmp-h2h-name": {
+				"none": "positional [A, B] → h2h_a_name/h2h_b_name; no per-index scalar path"
+			},
+			"cmp-h2h-tag": {
+				"none": "positional [A, B] → h2h_a_tagline/h2h_b_tagline; no per-index scalar path"
+			}
+		},
+		"media": {
+			"ba-img-placeholder": {
+				"into": "before_image"
+			},
+			"cmp-h2h-img ph": {
+				"into": "h2h_a_image"
+			},
+			"cmp-slider-img cmp-slider-after ph": {
+				"into": "after_image"
+			},
+			"cmp-slider-img cmp-slider-before ph": {
+				"into": "before_image"
+			}
 		}
 	},
 	"composer_dependencies": [],

@@ -135,6 +135,54 @@
 			"Step": {
 				"none": "decorative progress mark; one per step"
 			}
+		},
+		"content": {
+			"CTA": {
+				"none": "generic button alias; Modal has no button text property — button labels are per variant (btn-label)"
+			},
+			"Button": {
+				"none": "generic button alias; Modal has no button text property — button labels are per variant (btn-label)"
+			},
+			"CTA Primary": {
+				"none": "generic button alias; Modal has no button text property — button labels are per variant (btn-label)"
+			},
+			"CTA Secondary": {
+				"none": "generic button alias; Modal has no button text property — button labels are per variant (btn-label)"
+			}
+		},
+		"items": {
+			"btn-label": {
+				"none": "unsure: button order differs per variant (cancel first in confirm/form/wizard, confirm only in alert, two links in detail) — no single path for confirm_label / cancel_label"
+			},
+			"modal-title": {
+				"into": "title"
+			},
+			"body-text": {
+				"into": "body"
+			},
+			"dt": {
+				"into": "specs[].spec_label"
+			},
+			"dd": {
+				"into": "specs[].spec_value"
+			},
+			"modal-wizard-choice-label": {
+				"into": "steps[0].choices[].choice_label"
+			},
+			"ctc-label": {
+				"into": "fields[].field_label"
+			}
+		},
+		"media": {
+			"modal-detail-img": {
+				"into": "image"
+			},
+			"modal-lightbox-img": {
+				"into": "image"
+			},
+			"modal-video-poster ph": {
+				"into": "poster"
+			}
 		}
 	},
 	"ai": {

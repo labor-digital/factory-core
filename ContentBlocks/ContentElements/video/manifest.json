@@ -130,6 +130,87 @@
 					"cards[].category"
 				]
 			}
+		},
+		"content": {
+			"Eyebrow": {
+				"into": "eyebrow"
+			},
+			"Headline": {
+				"into": "headline"
+			},
+			"Body": {
+				"into": "body"
+			},
+			"CTA Primary": {
+				"into": "cta_label",
+				"link": "cta_to"
+			},
+			"CTA": {
+				"into": "cta_label",
+				"link": "cta_to"
+			},
+			"Button": {
+				"into": "cta_label",
+				"link": "cta_to"
+			},
+			"CTA Secondary": {
+				"none": "no second button; the video has one CTA (cta_label / cta_to)"
+			}
+		},
+		"items": {
+			"t": {
+				"into": "bullets[].title"
+			},
+			"d": {
+				"into": "bullets[].description"
+			},
+			"num": {
+				"none": "computed: bullet index (01, 02, …)"
+			},
+			"tag-text": {
+				"into": "cards[].category"
+			},
+			"video-card-title": {
+				"into": "cards[].title"
+			},
+			"video-speaker-name": {
+				"into": "speaker_name"
+			},
+			"video-speaker-role": {
+				"into": "speaker_role"
+			},
+			"txt-link-label": {
+				"into": "cta_label"
+			},
+			"video-duration-text": {
+				"none": "unsure: variant-dependent (duration on split / full-top / overlay, cards[].duration on cards); one path cannot cover both"
+			},
+			"eyebrow-text": {
+				"none": "covered by the Eyebrow content key"
+			},
+			"video-headline h-2": {
+				"none": "covered by the Headline content key"
+			},
+			"video-overlay-headline h-1": {
+				"none": "covered by the Headline content key"
+			},
+			"video-overlay-body body-text on-dark": {
+				"none": "covered by the Body content key"
+			},
+			"body-text": {
+				"none": "covered by the Body content key"
+			},
+			"btn-label": {
+				"none": "covered by the CTA content keys"
+			}
+		},
+		"media": {
+			"video-overlay-bg ph ph-dark": {
+				"into": "poster"
+			},
+			"video-thumb-bg ph": {
+				"none": "unsure: variant-dependent (slot #1 is the poster on split / full-top, cards[0].poster on cards); one path cannot cover both"
+			}
 		}
 	},
 	"composer_dependencies": [],

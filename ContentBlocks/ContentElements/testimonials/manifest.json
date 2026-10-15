@@ -119,6 +119,87 @@
 					"items[].link_label"
 				]
 			}
+		},
+		"content": {
+			"Eyebrow": {
+				"into": "eyebrow"
+			},
+			"Headline": {
+				"into": "headline"
+			},
+			"Intro": {
+				"into": "intro"
+			}
+		},
+		"items": {
+			"tm-name": {
+				"into": "items[].name"
+			},
+			"tm-role": {
+				"into": "items[].role"
+			},
+			"tm-card-quote": {
+				"into": "items[].quote"
+			},
+			"tm-xl-quote": {
+				"into": "items[0].quote"
+			},
+			"tm-flow-quote": {
+				"into": "long_quote"
+			},
+			"tm-slider-quote": {
+				"into": "items[0].quote"
+			},
+			"tm-feat-quote": {
+				"into": "items[0].quote"
+			},
+			"tm-name on-dark": {
+				"into": "items[0].name"
+			},
+			"tm-role on-dark": {
+				"into": "items[0].role"
+			},
+			"tm-slidertext-quote": {
+				"into": "items[0].quote"
+			},
+			"tm-slidertext-name": {
+				"into": "items[0].name"
+			},
+			"tm-slidertext-role": {
+				"into": "items[0].role"
+			},
+			"txt-link-label": {
+				"into": "items[0].link_label"
+			},
+			"tm-xl-mark": {
+				"none": "decorative quote glyph; fixed markup"
+			},
+			"tm-slidertext-mark": {
+				"none": "decorative quote glyph; fixed markup"
+			},
+			"tm-feat-mark tm-xl-mark": {
+				"none": "decorative quote glyph; fixed markup"
+			},
+			"eyebrow-text": {
+				"none": "covered by the Eyebrow content key"
+			},
+			"tm-headline": {
+				"none": "covered by the Headline content key"
+			},
+			"tm-intro": {
+				"none": "covered by the Intro content key"
+			}
+		},
+		"media": {
+			"tm-avatar ph": {
+				"into": "items[].avatar"
+			},
+			"tm-slider-media ph": {
+				"into": "items[0].media"
+			},
+			"tm-feat-media ph-dark": {
+				"into": "items[0].media"
+			}
 		}
 	},
 	"composer_dependencies": [],

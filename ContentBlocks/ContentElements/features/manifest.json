@@ -70,6 +70,75 @@
 					"intro"
 				]
 			}
+		},
+		"content": {
+			"Eyebrow": {
+				"into": "eyebrow"
+			},
+			"Headline": {
+				"into": "headline"
+			},
+			"Intro": {
+				"into": "intro"
+			},
+			"Band Button": {
+				"into": "band_button_label",
+				"link": "band_button_to"
+			},
+			"CTA": {
+				"none": "unsure: generic button alias from the capability map; this module has no such TEXT property (its only button is Band Button)"
+			},
+			"Button": {
+				"none": "unsure: generic button alias from the capability map; this module has no such TEXT property (its only button is Band Button)"
+			},
+			"CTA Primary": {
+				"none": "unsure: generic button alias from the capability map; this module has no such TEXT property (its only button is Band Button)"
+			},
+			"CTA Secondary": {
+				"none": "unsure: generic button alias from the capability map; this module has no such TEXT property (its only button is Band Button)"
+			}
+		},
+		"items": {
+			"fg-card-title": {
+				"into": "items[].title"
+			},
+			"fg-card-text": {
+				"into": "items[].text"
+			},
+			"fg-link": {
+				"into": "items[].link_label",
+				"link": "items[].link_to"
+			},
+			"fg-num": {
+				"into": "items[].num"
+			},
+			"fg-num-small": {
+				"into": "items[].num"
+			},
+			"btn-label": {
+				"none": "set via content Band Button"
+			},
+			"card-title": {
+				"into": "items[].title"
+			},
+			"card-text": {
+				"into": "items[].text"
+			},
+			"card-link": {
+				"into": "items[].link_label",
+				"link": "items[].link_to"
+			}
+		},
+		"media": {
+			"ph / icon / 40×40": {
+				"into": "items[].image"
+			},
+			"ph / icon / 48×48": {
+				"into": "items[].image"
+			},
+			"ph / image / 4:3": {
+				"into": "items[].image"
+			}
 		}
 	},
 	"composer_dependencies": [],

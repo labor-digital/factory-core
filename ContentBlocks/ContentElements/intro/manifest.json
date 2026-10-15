@@ -73,6 +73,71 @@
 					"image"
 				]
 			}
+		},
+		"content": {
+			"Eyebrow": {
+				"into": "eyebrow"
+			},
+			"Title Light": {
+				"into": "title",
+				"compose": "light"
+			},
+			"Title Bold": {
+				"into": "title",
+				"compose": "bold"
+			},
+			"Body": {
+				"into": "body"
+			},
+			"CTA": {
+				"into": "cta_label",
+				"link": "cta_to"
+			},
+			"Button": {
+				"none": "unsure: generic button alias from the capability map; this module has no such TEXT property (its only button is CTA)"
+			},
+			"CTA Primary": {
+				"none": "unsure: generic button alias from the capability map; this module has no such TEXT property (its only button is CTA)"
+			},
+			"CTA Secondary": {
+				"none": "unsure: generic button alias from the capability map; this module has no such TEXT property (its only button is CTA)"
+			},
+			"TitleLight": {
+				"into": "title",
+				"compose": "light"
+			},
+			"TitleBold": {
+				"into": "title",
+				"compose": "bold"
+			}
+		},
+		"items": {
+			"num": {
+				"into": "stats[].value"
+			},
+			"lbl": {
+				"into": "stats[].label"
+			},
+			"eyebrow-text": {
+				"none": "unsure: main eyebrow set via content Eyebrow; on stacked the 2nd value is the stats eyebrow (stats_eyebrow), not expressible per index"
+			},
+			"intro-title": {
+				"none": "set via content Title Light + Title Bold"
+			},
+			"body-text": {
+				"none": "set via content Body"
+			},
+			"btn-label": {
+				"none": "set via content CTA"
+			}
+		},
+		"media": {
+			"intro-photo intro-photo-wide": {
+				"into": "image"
+			},
+			"intro-photo": {
+				"into": "image"
+			}
 		}
 	},
 	"composer_dependencies": [],

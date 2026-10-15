@@ -123,6 +123,120 @@
 			"Status": {
 				"none": "not modelled: status badges come from data_columns[].is_status plus the row JSON value"
 			}
+		},
+		"content": {
+			"Eyebrow": {
+				"into": "eyebrow"
+			},
+			"Headline": {
+				"into": "headline"
+			},
+			"Intro": {
+				"into": "intro"
+			},
+			"CTA": {
+				"none": "generic button alias; Table has no button text property — CTA labels are per plan/card"
+			},
+			"Button": {
+				"none": "generic button alias; Table has no button text property — CTA labels are per plan/card"
+			},
+			"CTA Primary": {
+				"none": "generic button alias; Table has no button text property — CTA labels are per plan/card"
+			},
+			"CTA Secondary": {
+				"none": "generic button alias; Table has no button text property — CTA labels are per plan/card"
+			}
+		},
+		"items": {
+			"tbl-cell-label": {
+				"none": "mobile cell labels; drawn from plan names / column labels"
+			},
+			"tbl-data-val": {
+				"none": "unsure: data cells live in data_rows[].row_json (one JSON object per row), not one field per value"
+			},
+			"tbl-specs-td soft": {
+				"none": "unsure: unit and note cells interleaved under one node name (specs_rows[].unit / .note)"
+			},
+			"tbl-status-text": {
+				"none": "unsure: status badge text is a value inside data_rows[].row_json"
+			},
+			"l": {
+				"none": "unsure: nested compare_items[].specs[].label — a flat list cannot be split per card"
+			},
+			"v": {
+				"none": "unsure: nested compare_items[].specs[].value — a flat list cannot be split per card"
+			},
+			"tbl-sort-btn": {
+				"into": "data_columns[].label"
+			},
+			"dt": {
+				"into": "specs_rows[].property"
+			},
+			"dd": {
+				"into": "specs_rows[].value"
+			},
+			"tbl-specs-val": {
+				"into": "specs_rows[].property"
+			},
+			"tbl-specs-td strong": {
+				"into": "specs_rows[].value"
+			},
+			"tbl-specs-td mono": {
+				"into": "specs_rows[].norm"
+			},
+			"tbl-feat-name": {
+				"into": "pricing_rows[].feature"
+			},
+			"eyebrow-text": {
+				"none": "covered by content key Eyebrow"
+			},
+			"tbl-headline": {
+				"none": "covered by content key Headline"
+			},
+			"body-text": {
+				"none": "covered by content key Intro"
+			},
+			"btn-label": {
+				"none": "unsure: pricing_plans[].cta_label (pricing) or compare_items[].cta_label (compare) — one key, two variant-specific paths"
+			},
+			"tbl-val": {
+				"none": "unsure: only the non-boolean plan cells; stored packed in pricing_rows[].values (comma list)"
+			},
+			"tbl-specs-th": {
+				"into": "specs_columns[].label"
+			},
+			"tbl-specs-group-title": {
+				"none": "unsure: group title per group; stored per row in specs_rows[].group"
+			},
+			"tbl-plan-name": {
+				"into": "pricing_plans[].label"
+			},
+			"tbl-plan-price": {
+				"into": "pricing_plans[].price"
+			},
+			"tbl-plan-per": {
+				"into": "pricing_plans[].per"
+			},
+			"tbl-plan-note": {
+				"into": "pricing_plans[].note"
+			},
+			"tbl-compare-tagline": {
+				"into": "compare_items[].tagline"
+			},
+			"tbl-compare-name": {
+				"into": "compare_items[].name"
+			},
+			"tbl-compare-price": {
+				"into": "compare_items[].price"
+			},
+			"tbl-feat-tag-text": {
+				"none": "tag sits only on the featured plan/card, so its index is not the plan/card index; empty featured_tag falls back to \"Empfohlen\""
+			}
+		},
+		"media": {
+			"tbl-compare-img": {
+				"into": "compare_items[].image"
+			}
 		}
 	},
 	"composer_dependencies": [],

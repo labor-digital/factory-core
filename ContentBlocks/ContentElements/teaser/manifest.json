@@ -106,7 +106,92 @@
 			"Thumbnails": {
 				"none": "record card part; feature thumbnails are drawn from the records, no teaser field"
 			}
-		}
+		},
+		"content": {
+			"Eyebrow": {
+				"into": "eyebrow"
+			},
+			"Headline": {
+				"into": "title"
+			},
+			"Intro": {
+				"into": "description"
+			},
+			"Band Button": {
+				"into": "band_button_label",
+				"link": "band_button_to"
+			},
+			"CTA Primary": {
+				"into": "buttons[0].label",
+				"link": "buttons[0].to"
+			},
+			"CTA Secondary": {
+				"into": "buttons[1].label",
+				"link": "buttons[1].to"
+			},
+			"CTA": {
+				"into": "buttons[0].label",
+				"link": "buttons[0].to"
+			},
+			"Button": {
+				"into": "buttons[0].label",
+				"link": "buttons[0].to"
+			}
+		},
+		"items": {
+			"rcard-title": {
+				"into": "records[].title"
+			},
+			"rcard-addr": {
+				"into": "records[].address_street",
+				"compose": "address"
+			},
+			"tag-text": {
+				"into": "records[].tag_custom"
+			},
+			"teaser-feature-title": {
+				"into": "records[0].title"
+			},
+			"teaser-feature-thumb-title": {
+				"into": "records[].title"
+			},
+			"teaser-feature-thumb-tag": {
+				"into": "records[].tag_custom"
+			},
+			"txt-link-label": {
+				"into": "buttons[0].label"
+			},
+			"lbl": {
+				"none": "fixed meta labels (Fläche / Einh. / Jahr); drawn by the record card"
+			},
+			"val": {
+				"none": "unsure: meta cells vary per card (area / units / year as formatted text), no stable index to area_m2 / units / year_completed"
+			},
+			"eyebrow-text": {
+				"none": "covered by the Eyebrow content key"
+			},
+			"h-1": {
+				"none": "covered by the Headline content key"
+			},
+			"body-text": {
+				"none": "covered by the Intro content key"
+			},
+			"btn-label": {
+				"none": "covered by the Band Button content key"
+			}
+		},
+		"media": {
+			"rcard-img ph": {
+				"into": "records[].hero_image"
+			},
+			"teaser-feature-img ph": {
+				"into": "records[0].hero_image"
+			},
+			"teaser-feature-thumb-img ph": {
+				"into": "records[].hero_image"
+			}
+		},
+		"recordsAs": "RecordProperty"
 	},
 	"composer_dependencies": [],
 	"npm_dependencies": [

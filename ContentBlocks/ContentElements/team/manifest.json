@@ -96,6 +96,54 @@
 			"Group Count": {
 				"none": "computed from the member count per department; fixed markup"
 			}
+		},
+		"content": {
+			"Eyebrow": {
+				"into": "eyebrow"
+			},
+			"Headline": {
+				"into": "headline"
+			},
+			"Intro": {
+				"into": "intro"
+			}
+		},
+		"items": {
+			"team-card-name": {
+				"into": "members[].name"
+			},
+			"team-card-role": {
+				"into": "members[].role"
+			},
+			"team-list-name": {
+				"into": "members[].name"
+			},
+			"team-list-role": {
+				"into": "members[].role"
+			},
+			"team-list-dept": {
+				"into": "members[].department"
+			},
+			"team-group-title": {
+				"none": "computed: one heading per distinct members[].department"
+			},
+			"team-group-count": {
+				"none": "computed from the member count per department"
+			},
+			"eyebrow-text": {
+				"none": "covered by the Eyebrow content key"
+			},
+			"h-2": {
+				"none": "covered by the Headline content key"
+			},
+			"body-text": {
+				"none": "covered by the Intro content key"
+			}
+		},
+		"media": {
+			"team-photo": {
+				"into": "members[].photo"
+			}
 		}
 	},
 	"composer_dependencies": [],

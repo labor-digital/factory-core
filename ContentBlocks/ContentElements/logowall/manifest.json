@@ -75,7 +75,30 @@
 			"Dots": {
 				"none": "slider chrome; always drawn"
 			}
-		}
+		},
+		"content": {
+			"Eyebrow": {
+				"into": "eyebrow"
+			},
+			"Headline": {
+				"into": "headline"
+			},
+			"Intro": {
+				"into": "intro"
+			}
+		},
+		"items": {
+			"eyebrow-text": {
+				"none": "set via content Eyebrow"
+			},
+			"h-2": {
+				"none": "set via content Headline"
+			},
+			"body-text": {
+				"none": "set via content Intro"
+			}
+		},
+		"media": {}
 	},
 	"composer_dependencies": [],
 	"npm_dependencies": [],

@@ -118,6 +118,84 @@
 					"persons[].role"
 				]
 			}
+		},
+		"content": {
+			"Eyebrow": {
+				"into": "eyebrow"
+			},
+			"Headline": {
+				"into": "headline"
+			},
+			"Intro": {
+				"into": "intro"
+			},
+			"CTA": {
+				"none": "no CTA field: the form submit button is fixed markup"
+			},
+			"Button": {
+				"none": "no button field: the form submit button is fixed markup"
+			},
+			"CTA Primary": {
+				"none": "no CTA field: the form submit button is fixed markup"
+			},
+			"CTA Secondary": {
+				"none": "no CTA field in Contact"
+			}
+		},
+		"items": {
+			"field-value": {
+				"none": "fixed markup: form field placeholders"
+			},
+			"field-label": {
+				"none": "fixed markup: form field labels"
+			},
+			"ctc-info-val": {
+				"none": "positional [address, phone, email] → address_*/phone/email; no per-index scalar path"
+			},
+			"ctc-info-lbl": {
+				"none": "fixed markup: Adresse / Telefon / E-Mail labels"
+			},
+			"row-text": {
+				"none": "per person [email, phone] interleaved → persons[].email/phone; no per-index path"
+			},
+			"eyebrow-text": {
+				"none": "set via content Eyebrow"
+			},
+			"ctc-headline h-2": {
+				"none": "set via content Headline"
+			},
+			"body-text": {
+				"none": "set via content Intro"
+			},
+			"ctc-check-label": {
+				"none": "fixed markup: consent text"
+			},
+			"btn-label": {
+				"none": "fixed markup: submit button label"
+			},
+			"ctc-tile-label": {
+				"none": "fixed markup: tile headings"
+			},
+			"ctc-tile-value": {
+				"none": "positional [address, phone, email] → address_*/phone/email; no per-index scalar path"
+			},
+			"txt-link-label": {
+				"none": "fixed markup: tile link texts"
+			},
+			"ctc-person-name": {
+				"into": "persons[].name"
+			},
+			"ctc-person-role": {
+				"into": "persons[].role"
+			}
+		},
+		"media": {
+			"ctc-person-photo ph": {
+				"into": "persons[].photo"
+			},
+			"ctc-split-image-photo ph": {
+				"into": "photo"
+			}
 		}
 	},
 	"composer_dependencies": [],

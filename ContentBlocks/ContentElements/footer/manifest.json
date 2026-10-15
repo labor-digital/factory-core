@@ -108,7 +108,63 @@
 			"Wordmark": {
 				"none": "not modelled: the logo text comes from logo_text, which renders a 'Logo' placeholder when empty; the maximal wordmark is derived from it"
 			}
-		}
+		},
+		"content": {
+			"Logo": {
+				"none": "site chrome — built by deriveChromeFromManifest"
+			},
+			"Tagline": {
+				"none": "site chrome — built by deriveChromeFromManifest"
+			},
+			"Copyright": {
+				"none": "site chrome — built by deriveChromeFromManifest"
+			},
+			"Claim": {
+				"none": "site chrome — built by deriveChromeFromManifest"
+			},
+			"CTA": {
+				"none": "site chrome — built by deriveChromeFromManifest"
+			},
+			"Button": {
+				"none": "site chrome — built by deriveChromeFromManifest"
+			},
+			"CTA Primary": {
+				"none": "site chrome — built by deriveChromeFromManifest"
+			},
+			"CTA Secondary": {
+				"none": "site chrome — built by deriveChromeFromManifest"
+			}
+		},
+		"items": {
+			"ft-list-item": {
+				"none": "site chrome — built by deriveChromeFromManifest"
+			},
+			"ft-col-title": {
+				"none": "site chrome — built by deriveChromeFromManifest"
+			},
+			"legal-link": {
+				"none": "site chrome — built by deriveChromeFromManifest"
+			},
+			"address-line": {
+				"none": "site chrome — built by deriveChromeFromManifest"
+			},
+			"ft-copy": {
+				"none": "site chrome — built by deriveChromeFromManifest"
+			},
+			"ft-tagline": {
+				"none": "site chrome — built by deriveChromeFromManifest"
+			},
+			"nav-link": {
+				"none": "site chrome — built by deriveChromeFromManifest"
+			},
+			"btn-label": {
+				"none": "site chrome — built by deriveChromeFromManifest"
+			},
+			"ft-max-contact": {
+				"none": "site chrome — built by deriveChromeFromManifest"
+			}
+		},
+		"media": {}
 	},
 	"composer_dependencies": [],
 	"npm_dependencies": [

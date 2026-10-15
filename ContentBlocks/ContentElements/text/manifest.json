@@ -95,7 +95,78 @@
 					"eyebrow"
 				]
 			}
-		}
+		},
+		"content": {
+			"Eyebrow": {
+				"into": "eyebrow"
+			},
+			"TitleLight": {
+				"into": "title",
+				"compose": "light"
+			},
+			"TitleBold": {
+				"into": "title",
+				"compose": "bold"
+			},
+			"Title Light": {
+				"into": "title",
+				"compose": "light"
+			},
+			"Title Bold": {
+				"into": "title",
+				"compose": "bold"
+			},
+			"Subline": {
+				"into": "subline"
+			},
+			"Body": {
+				"into": "body"
+			},
+			"CTA Primary": {
+				"into": "primary_label",
+				"link": "primary_to"
+			},
+			"CTA Secondary": {
+				"into": "secondary_label",
+				"link": "secondary_to"
+			},
+			"CTA": {
+				"into": "primary_label",
+				"link": "primary_to"
+			},
+			"Button": {
+				"into": "primary_label",
+				"link": "primary_to"
+			}
+		},
+		"items": {
+			"text-mod-contact-line": {
+				"into": "contact_lines",
+				"compose": "lines"
+			},
+			"text-mod-org": {
+				"into": "contact_org"
+			},
+			"btn-label": {
+				"none": "covered by the CTA Primary / CTA Secondary content keys"
+			},
+			"eyebrow-text": {
+				"none": "covered by the Eyebrow content key"
+			},
+			"text-mod-subline": {
+				"none": "covered by the Subline content key"
+			},
+			"body-text": {
+				"none": "covered by the Body content key"
+			},
+			"text-mod-title": {
+				"none": "covered by the TitleLight / TitleBold content keys"
+			},
+			"text-mod-oversize-title": {
+				"none": "covered by the TitleLight / TitleBold content keys"
+			}
+		},
+		"media": {}
 	},
 	"composer_dependencies": [],
 	"npm_dependencies": [],

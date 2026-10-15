@@ -87,7 +87,72 @@
 			"Group Count": {
 				"none": "derived: counted from items"
 			}
-		}
+		},
+		"content": {
+			"Eyebrow": {
+				"into": "eyebrow"
+			},
+			"Headline": {
+				"into": "headline"
+			},
+			"Intro": {
+				"into": "intro"
+			},
+			"CTA": {
+				"none": "featured download button label is fixed markup; it links the file"
+			},
+			"Button": {
+				"none": "featured download button label is fixed markup; it links the file"
+			},
+			"CTA Primary": {
+				"none": "featured download button label is fixed markup; it links the file"
+			},
+			"CTA Secondary": {
+				"none": "no secondary button in Downloads"
+			}
+		},
+		"items": {
+			"badge-label": {
+				"into": "items[].ext"
+			},
+			"dl-row-title": {
+				"into": "items[].title"
+			},
+			"dl-row-size": {
+				"into": "items[].file_size"
+			},
+			"dl-card-title": {
+				"into": "items[].title"
+			},
+			"dl-card-desc": {
+				"into": "items[].desc"
+			},
+			"dl-card-size": {
+				"into": "items[].file_size"
+			},
+			"dl-compact-title": {
+				"into": "items[].title"
+			},
+			"dl-compact-size": {
+				"into": "items[].file_size"
+			},
+			"eyebrow-text": {
+				"none": "set via content Eyebrow"
+			},
+			"h-2": {
+				"none": "set via content Headline"
+			},
+			"body-text": {
+				"none": "set via content Intro"
+			},
+			"dl-group-title": {
+				"none": "one value per group, not per file; items[].group cannot be assigned by index"
+			},
+			"dl-group-count": {
+				"none": "derived: counted from items"
+			}
+		},
+		"media": {}
 	},
 	"composer_dependencies": [],
 	"npm_dependencies": [],

@@ -118,6 +118,111 @@
 			"Timeline Point": {
 				"none": "decorative timeline mark"
 			}
+		},
+		"content": {
+			"Eyebrow": {
+				"into": "eyebrow"
+			},
+			"Headline": {
+				"into": "headline"
+			},
+			"Intro": {
+				"into": "intro"
+			}
+		},
+		"items": {
+			"tag-label": {
+				"into": "items[].category"
+			},
+			"news-meta news-meta-sm": {
+				"into": "items[].author"
+			},
+			"pill-text": {
+				"none": "filter pills; derived from item categories"
+			},
+			"news-date": {
+				"none": "unsure: display date (\"22. Apr 2026\"); items[].date stores YYYY-MM-DD"
+			},
+			"news-meta-line": {
+				"into": "items[].author"
+			},
+			"news-card-excerpt": {
+				"into": "items[].excerpt"
+			},
+			"news-list-day": {
+				"none": "computed from items[].date"
+			},
+			"news-list-my": {
+				"none": "computed from items[].date"
+			},
+			"news-list-title": {
+				"into": "items[].title"
+			},
+			"news-list-excerpt": {
+				"into": "items[].excerpt"
+			},
+			"news-card-title": {
+				"into": "items[].title"
+			},
+			"tab-text": {
+				"none": "year tabs; derived from item dates"
+			},
+			"news-pr-text": {
+				"none": "fixed \"Pressemitteilung\" badge; only on press items, so its index is not the item index (items[].is_press_release)"
+			},
+			"news-tl-day": {
+				"none": "computed from items[].date"
+			},
+			"news-tl-month": {
+				"none": "computed from items[].date"
+			},
+			"news-tl-title": {
+				"into": "items[].title"
+			},
+			"news-tl-excerpt": {
+				"into": "items[].excerpt"
+			},
+			"eyebrow-text": {
+				"none": "covered by content key Eyebrow"
+			},
+			"news-headline": {
+				"none": "covered by content key Headline"
+			},
+			"news-head-intro": {
+				"none": "covered by content key Intro"
+			},
+			"news-source": {
+				"none": "unsure: only on some items, so its index is not the item index (items[].source)"
+			},
+			"news-mag-side-title": {
+				"none": "unsure: magazine side items are items[1..4]; value i would land in items[i]"
+			},
+			"news-mag-side-date": {
+				"none": "unsure: side items are items[1..4] and the value is a display date"
+			},
+			"news-feat-row-date": {
+				"none": "unsure: rows are items[1..4] and the value is a display date"
+			},
+			"news-feat-row-title": {
+				"none": "unsure: featured rows are items[1..4]; value i would land in items[i]"
+			},
+			"txt-link-label": {
+				"none": "unsure: \"Alle News\" (see_all_label) in grid/magazine but the fixed \"Artikel lesen\" CTA in featured — one key, two meanings"
+			},
+			"news-search-input": {
+				"none": "search placeholder; fixed markup"
+			}
+		},
+		"media": {
+			"news-feat-img": {
+				"into": "items[0].image"
+			},
+			"news-img": {
+				"into": "items[].image"
+			},
+			"news-list-img": {
+				"into": "items[].image"
+			}
 		}
 	},
 	"composer_dependencies": [],

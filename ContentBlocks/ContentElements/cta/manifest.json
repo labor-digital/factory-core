@@ -83,6 +83,67 @@
 					"form_note"
 				]
 			}
+		},
+		"content": {
+			"Eyebrow": {
+				"into": "eyebrow"
+			},
+			"Title Light": {
+				"into": "title_light"
+			},
+			"Title Bold": {
+				"into": "title_bold"
+			},
+			"Body": {
+				"into": "body"
+			},
+			"CTA Primary": {
+				"into": "buttons[0].label",
+				"link": "buttons[0].to"
+			},
+			"CTA Secondary": {
+				"into": "buttons[1].label",
+				"link": "buttons[1].to"
+			},
+			"CTA": {
+				"into": "buttons[0].label",
+				"link": "buttons[0].to"
+			},
+			"Button": {
+				"into": "buttons[0].label",
+				"link": "buttons[0].to"
+			},
+			"TitleLight": {
+				"into": "title_light"
+			},
+			"TitleBold": {
+				"into": "title_bold"
+			}
+		},
+		"items": {
+			"btn-label": {
+				"none": "button labels set via content CTA Primary / CTA Secondary; inline-form submit is form_submit_label"
+			},
+			"eyebrow-text": {
+				"none": "set via content Eyebrow"
+			},
+			"h-1 cta-title": {
+				"none": "set via content Title Light / Title Bold"
+			},
+			"body-text": {
+				"none": "set via content Body"
+			},
+			"body-text / on-dark": {
+				"none": "set via content Body"
+			},
+			"input placeholder": {
+				"none": "positional [name, email] → form_name_label/form_mail_label; no per-index scalar path"
+			}
+		},
+		"media": {
+			"ph / cta-bg": {
+				"into": "background_image"
+			}
 		}
 	},
 	"composer_dependencies": [],

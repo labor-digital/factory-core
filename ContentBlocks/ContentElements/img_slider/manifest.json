@@ -93,6 +93,49 @@
 			"Thumbnails": {
 				"none": "slider chrome: thumbnail strip built from the slides (thumbs variant)"
 			}
+		},
+		"content": {
+			"Eyebrow": {
+				"into": "eyebrow"
+			},
+			"Title": {
+				"into": "title"
+			},
+			"Body": {
+				"into": "description"
+			}
+		},
+		"items": {
+			"eyebrow-text": {
+				"none": "set via content Eyebrow"
+			},
+			"islider-title": {
+				"none": "set via content Title"
+			},
+			"body-text": {
+				"none": "set via content Body"
+			},
+			"txt-link-label": {
+				"into": "buttons[].label",
+				"link": "buttons[].to"
+			},
+			"islider-caption-text": {
+				"none": "unsure: the design text carries the 'n / total · ' counter ImgSlider computes itself; storing it would draw the counter twice"
+			}
+		},
+		"media": {
+			"ph islider-image": {
+				"into": "slides[0].image"
+			},
+			"islider-frame ph": {
+				"into": "slides[].image"
+			},
+			"thumb ph": {
+				"into": "slides[].image"
+			},
+			"islider-edge-card ph": {
+				"into": "slides[].image"
+			}
 		}
 	},
 	"composer_dependencies": [],

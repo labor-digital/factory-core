@@ -115,6 +115,102 @@
 			"Pagination": {
 				"none": "derived from item count and per_page; drawn when there is more than one page"
 			}
+		},
+		"content": {
+			"Eyebrow": {
+				"into": "eyebrow"
+			},
+			"Headline": {
+				"into": "headline"
+			},
+			"Intro": {
+				"into": "intro"
+			}
+		},
+		"items": {
+			"tag-label": {
+				"into": "items[].category"
+			},
+			"blocks-card-title": {
+				"into": "items[].title"
+			},
+			"blocks-card-excerpt": {
+				"into": "items[].excerpt"
+			},
+			"meta-type": {
+				"into": "items[].type"
+			},
+			"meta-date": {
+				"none": "display-formatted date (\"8. Apr 2026\"); items[].date stores an ISO date"
+			},
+			"meta-read": {
+				"none": "display-formatted (\"4 min\"); items[].read_time stores whole minutes as a Number"
+			},
+			"pag-num": {
+				"none": "derived: pagination from item count and per_page"
+			},
+			"pill-text": {
+				"none": "category filter pills incl. the fixed \"Alle\"; categories (one per line) is not filled from them"
+			},
+			"tab-text": {
+				"none": "category filter tabs incl. the fixed \"Alle\"; categories (one per line) is not filled from them"
+			},
+			"t": {
+				"into": "items[].title"
+			},
+			"cat": {
+				"into": "items[].category"
+			},
+			"dd-value": {
+				"none": "fixed markup: sort/filter dropdown values"
+			},
+			"e": {
+				"into": "items[].excerpt"
+			},
+			"type": {
+				"into": "items[].type"
+			},
+			"read": {
+				"none": "display-formatted (\"4 min\"); items[].read_time stores whole minutes as a Number"
+			},
+			"eyebrow-text": {
+				"none": "set via content Eyebrow"
+			},
+			"h-1": {
+				"none": "set via content Headline"
+			},
+			"body-text": {
+				"none": "set via content Intro"
+			},
+			"search-input": {
+				"into": "search_placeholder"
+			},
+			"blocks-pag-gap": {
+				"none": "derived: pagination ellipsis"
+			},
+			"active-label": {
+				"none": "fixed markup: active-filter label (runtime state)"
+			},
+			"chip-text": {
+				"none": "runtime filter state; nothing stored"
+			},
+			"clear-all": {
+				"none": "fixed markup: reset link"
+			},
+			"lbl": {
+				"none": "fixed markup: list-dropdown field labels"
+			},
+			"m": {
+				"none": "composite \"type · read time\" (magazine side items); no single field"
+			}
+		},
+		"media": {
+			"blocks-card-img ph": {
+				"into": "items[].image"
+			},
+			"ph": {
+				"none": "magazine side thumbnails are items[1..4] (slot #1 = items[1]); [] cannot offset"
+			}
 		}
 	},
 	"composer_dependencies": [],

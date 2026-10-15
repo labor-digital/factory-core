@@ -124,7 +124,81 @@
 			"Dots": {
 				"none": "slider chrome"
 			}
-		}
+		},
+		"content": {
+			"Eyebrow": {
+				"into": "eyebrow"
+			},
+			"Headline": {
+				"into": "headline"
+			},
+			"Intro": {
+				"into": "intro"
+			}
+		},
+		"items": {
+			"issuer": {
+				"into": "certificates[].issuer"
+			},
+			"cred-cert-logo-text": {
+				"none": "derived: initials of the name when no logo"
+			},
+			"cred-cert-name": {
+				"into": "certificates[].name"
+			},
+			"cred-cert-desc": {
+				"into": "certificates[].description"
+			},
+			"since": {
+				"none": "display-formatted (\"seit 2014\"); certificates[].since stores the year as a Number"
+			},
+			"cred-review-source": {
+				"into": "reviews[].source"
+			},
+			"cred-review-quote": {
+				"into": "reviews[].quote"
+			},
+			"cred-review-name": {
+				"into": "reviews[].name"
+			},
+			"cred-review-meta": {
+				"none": "composite \"project · date\"; no single field"
+			},
+			"eyebrow-text": {
+				"into": "eyebrow"
+			},
+			"cred-headline": {
+				"into": "headline"
+			},
+			"cred-guar-title": {
+				"into": "guarantees[].title"
+			},
+			"cred-guar-desc": {
+				"into": "guarantees[].description"
+			},
+			"cred-stat-num-val": {
+				"into": "stats[].value"
+			},
+			"cred-stat-lbl": {
+				"into": "stats[].label"
+			},
+			"cred-award-row-year": {
+				"none": "award rows are awards[1..] (awards[0] is the featured card); [] cannot offset"
+			},
+			"cred-award-row-title": {
+				"none": "award rows are awards[1..] (awards[0] is the featured card); [] cannot offset"
+			},
+			"project": {
+				"none": "award rows are awards[1..] (awards[0] is the featured card); [] cannot offset"
+			},
+			"body-text": {
+				"none": "set via content Intro"
+			},
+			"suffix": {
+				"none": "suffix node is missing on stats without one, so values do not align with stats[] by index"
+			}
+		},
+		"media": {}
 	},
 	"composer_dependencies": [],
 	"npm_dependencies": [],

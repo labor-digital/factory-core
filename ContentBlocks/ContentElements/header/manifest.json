@@ -81,6 +81,48 @@
 			"Wordmark": {
 				"none": "not modelled: the logo text comes from logo_text, which renders a 'Logo' placeholder when empty"
 			}
+		},
+		"content": {
+			"Logo": {
+				"none": "site chrome — built by deriveChromeFromManifest"
+			},
+			"CTA": {
+				"none": "site chrome — built by deriveChromeFromManifest"
+			},
+			"Button": {
+				"none": "site chrome — built by deriveChromeFromManifest"
+			},
+			"CTA Primary": {
+				"none": "site chrome — built by deriveChromeFromManifest"
+			},
+			"CTA Secondary": {
+				"none": "site chrome — built by deriveChromeFromManifest"
+			}
+		},
+		"items": {
+			"nav-label": {
+				"none": "site chrome — built by deriveChromeFromManifest"
+			},
+			"hdr-logo-text": {
+				"none": "site chrome — built by deriveChromeFromManifest"
+			},
+			"eyebrow / no-bar": {
+				"none": "site chrome — built by deriveChromeFromManifest"
+			},
+			"btn-label": {
+				"none": "site chrome — built by deriveChromeFromManifest"
+			},
+			"nav": {
+				"none": "site chrome — built by deriveChromeFromManifest"
+			}
+		},
+		"media": {
+			"ph / feature-visual": {
+				"none": "site chrome — built by deriveChromeFromManifest"
+			},
+			"logo ph": {
+				"none": "site chrome — built by deriveChromeFromManifest"
+			}
 		}
 	},
 	"composer_dependencies": [],

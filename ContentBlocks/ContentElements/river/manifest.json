@@ -115,6 +115,77 @@
 					"blocks[4].note"
 				]
 			}
+		},
+		"content": {
+			"Eyebrow": {
+				"into": "blocks[0].eyebrow"
+			},
+			"TitleLight": {
+				"into": "blocks[0].title",
+				"compose": "light"
+			},
+			"TitleBold": {
+				"into": "blocks[0].title",
+				"compose": "bold"
+			},
+			"Subline": {
+				"into": "blocks[0].subline"
+			},
+			"Body": {
+				"into": "blocks[0].body"
+			},
+			"Button": {
+				"into": "blocks[0].button_label",
+				"link": "blocks[0].button_to"
+			},
+			"Note": {
+				"into": "blocks[0].note"
+			},
+			"CTA": {
+				"into": "blocks[0].button_label",
+				"link": "blocks[0].button_to"
+			},
+			"CTA Primary": {
+				"into": "blocks[0].button_label",
+				"link": "blocks[0].button_to"
+			},
+			"CTA Secondary": {
+				"none": "River has one button per block (the Button key); no second button field"
+			},
+			"Title Light": {
+				"into": "blocks[0].title",
+				"compose": "light"
+			},
+			"Title Bold": {
+				"into": "blocks[0].title",
+				"compose": "bold"
+			}
+		},
+		"items": {
+			"eyebrow-text": {
+				"into": "blocks[].eyebrow"
+			},
+			"river-title": {
+				"into": "blocks[].title"
+			},
+			"river-subline": {
+				"into": "blocks[].subline"
+			},
+			"body-text": {
+				"into": "blocks[].body"
+			},
+			"btn-label": {
+				"into": "blocks[].button_label",
+				"link": "blocks[].button_to"
+			},
+			"river-note": {
+				"into": "blocks[].note"
+			}
+		},
+		"media": {
+			"ph river-media": {
+				"into": "blocks[].image"
+			}
 		}
 	},
 	"composer_dependencies": [],

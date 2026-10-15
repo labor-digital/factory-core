@@ -79,7 +79,54 @@
 			"Bottom Rule": {
 				"none": "decorative rule; always drawn"
 			}
-		}
+		},
+		"content": {
+			"Eyebrow": {
+				"into": "eyebrow"
+			},
+			"Headline": {
+				"into": "headline"
+			},
+			"Intro": {
+				"into": "intro"
+			},
+			"Callout": {
+				"into": "callout"
+			}
+		},
+		"items": {
+			"st-label": {
+				"into": "items[].label"
+			},
+			"st-sub": {
+				"into": "items[].sub"
+			},
+			"eyebrow-text": {
+				"none": "covered by content key Eyebrow"
+			},
+			"st-headline": {
+				"none": "covered by content key Headline"
+			},
+			"st-value-md": {
+				"into": "items[].value"
+			},
+			"st-value-xl": {
+				"into": "items[].value"
+			},
+			"st-value-inline": {
+				"into": "items[].value"
+			},
+			"st-inline-label": {
+				"into": "items[].label"
+			},
+			"st-value-split": {
+				"into": "items[].value"
+			},
+			"st-intro": {
+				"none": "covered by content key Intro"
+			}
+		},
+		"media": {}
 	},
 	"composer_dependencies": [],
 	"npm_dependencies": [],
