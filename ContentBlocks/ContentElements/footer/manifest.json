@@ -2,7 +2,7 @@
 	"$schema": "../../../../../contract/schema/component-manifest.schema.json",
 	"name": "Footer",
 	"type": "content-element",
-	"version": "1.1.0",
+	"version": "1.2.0",
 	"min_core_version": "1.0.0",
 	"description": "Site footer with brand (logo text or image), nested link columns, contacts, social links, legal links, and copyright. Layouts: 4-column light, compact single row, dark split with a claim + CTAs, or maximal dark with a giant wordmark.",
 	"when_to_use": "Exactly one Footer per site, placed on the shared layout. Pick split or maximal for brands that want a bold dark closing; compact for minimal sites.",
@@ -11,7 +11,9 @@
 		"nested link columns (cols[] with links[] inside)",
 		"claim / call-out line with primary + secondary CTA (split variant)",
 		"giant wordmark treatment with contact links (maximal variant)",
-		"social, legal, and copyright rows"
+		"social, legal, and copyright rows",
+		"appearance switches show_logo, show_bottom_bar, show_copyright, show_eyebrow (maximal), show_wordmark (maximal), default on",
+		"split CTAs link via cta_primary_to / cta_secondary_to"
 	],
 	"variants": [
 		{
@@ -61,14 +63,14 @@
 				]
 			},
 			"Bottom Bar": {
-				"fields": [
-					"legal"
-				]
+				"checkbox": "show_bottom_bar"
 			},
 			"CTAs": {
 				"fields": [
 					"cta_primary",
-					"cta_secondary"
+					"cta_primary_to",
+					"cta_secondary",
+					"cta_secondary_to"
 				]
 			},
 			"Claim": {
@@ -82,10 +84,10 @@
 				]
 			},
 			"Copyright": {
-				"none": "always drawn: an empty copyright renders a generated notice"
+				"checkbox": "show_copyright"
 			},
 			"Eyebrow": {
-				"none": "fixed markup: the maximal variant draws a static 'Kontakt' eyebrow"
+				"checkbox": "show_eyebrow"
 			},
 			"Legal": {
 				"fields": [
@@ -93,7 +95,7 @@
 				]
 			},
 			"Logo Mark": {
-				"none": "decorative: the logo mark is fixed markup; logo_image replaces the whole logo, not only the mark"
+				"checkbox": "show_logo"
 			},
 			"Socials": {
 				"fields": [
@@ -106,7 +108,7 @@
 				]
 			},
 			"Wordmark": {
-				"none": "not modelled: the logo text comes from logo_text, which renders a 'Logo' placeholder when empty; the maximal wordmark is derived from it"
+				"checkbox": "show_wordmark"
 			}
 		},
 		"content": {
@@ -171,8 +173,8 @@
 		"@iconify/vue"
 	],
 	"ai": {
-		"prompt_summary": "Footer: site footer. Settings: variant (columns|compact|split|maximal), logo_text, logo_image, tagline (columns), claim (split/maximal), address (one line per row), cta_primary + cta_secondary (split only), copyright. Collections: cols[] { title, links[] { label, to } }, contacts[] { label, to } (maximal, e.g. tel:/mailto:), socials[] { label (e.g. IN, LI, YT), to }, legal[] { label, to }. scheme (light|dark): a light variant on the dark band.",
-		"content_guidelines": "2-4 link columns with 3-6 links each. Claim one strong sentence. Legal links: Impressum, Datenschutz, AGB. Social labels are short abbreviations, not icon names.",
+		"prompt_summary": "Footer: site footer. Settings: variant (columns|compact|split|maximal), logo_text, logo_image, tagline (columns), claim (split/maximal), address (one line per row), cta_primary + cta_secondary with cta_primary_to / cta_secondary_to (split only), copyright. Switches ('1' default, '0' hides): show_logo, show_bottom_bar (the whole bar: copyright, legal, socials), show_copyright, show_eyebrow + show_wordmark (maximal). Collections: cols[] { title, links[] { label, to } }, contacts[] { label, to } (maximal, e.g. tel:/mailto:), socials[] { label (e.g. IN, LI, YT), to }, legal[] { label, to }. scheme (light|dark): a light variant on the dark band.",
+		"content_guidelines": "2-4 link columns with 3-6 links each. Claim one strong sentence. Legal links: Impressum, Datenschutz, AGB. Social labels are short abbreviations, not icon names; the icon comes from the link's host (instagram.com, linkedin.com, xing.com, youtube.com, …) or the label (IN, LI, XI, YT).",
 		"field_hints": {
 			"address": "Multiline — one address line per row.",
 			"contacts": "Only rendered by the maximal variant; use tel:/mailto: links.",

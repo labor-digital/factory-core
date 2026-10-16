@@ -2,7 +2,7 @@
 	"$schema": "../../../../../contract/schema/component-manifest.schema.json",
 	"name": "Features",
 	"type": "content-element",
-	"version": "1.4.0",
+	"version": "1.5.0",
 	"min_core_version": "1.0.0",
 	"description": "Grid of feature/service cards, each with title and text plus an optional icon, big number, or image depending on the variant. Cards can carry an individual link.",
 	"when_to_use": "Service overviews, USP lists, process steps (numbered variant). Use River for alternating text+media storytelling and Stats for pure number KPIs.",
@@ -11,7 +11,9 @@
 		"Iconify icon per item (cards/flat variants)",
 		"auto-numbering when num is empty (numbered/media variants)",
 		"optional link per card (label + target)",
-		"optional centered band button below the grid (band_button_label + band_button_to)"
+		"optional centered band button below the grid (band_button_label + band_button_to)",
+		"atom switches: show_top_rule (flat) and show_divider (numbered), default on",
+		"design overrides: content_align (default|left|center), heading_case (default|upper), heading_weight (default|light|bold)"
 	],
 	"variants": [
 		{
@@ -68,6 +70,29 @@
 			"Intro": {
 				"fields": [
 					"intro"
+				]
+			},
+			"Feature Card.Top Rule": {
+				"checkbox": "show_top_rule"
+			},
+			"Feature Card.Divider": {
+				"checkbox": "show_divider"
+			},
+			"Feature Card.Icon": {
+				"fields": [
+					"items[].icon",
+					"items[].image"
+				]
+			},
+			"Feature Card.Link": {
+				"fields": [
+					"items[].link_label",
+					"items[].link_to"
+				]
+			},
+			"Feature Card.Image": {
+				"fields": [
+					"items[].image"
 				]
 			}
 		},
@@ -139,6 +164,16 @@
 			"ph / image / 4:3": {
 				"into": "items[].image"
 			}
+		},
+		"style": {
+			"fg-flat-body.counterAxisAlign": { "into": "content_align", "values": { "CENTER": "center", "MIN": "left" } },
+			"fg-card-title.textAlign": { "into": "content_align", "values": { "CENTER": "center", "LEFT": "left" } },
+			"fg-card-text.textAlign": { "into": "content_align", "values": { "CENTER": "center", "LEFT": "left" } },
+			"fg-head / fg-head-center.counterAxisAlign": { "into": "content_align", "values": { "CENTER": "center" } },
+			"fg-headline.textAlign": { "into": "content_align", "values": { "CENTER": "center" } },
+			"fg-intro.textAlign": { "into": "content_align", "values": { "CENTER": "center" } },
+			"fg-headline.textCase": { "into": "heading_case", "values": { "UPPER": "upper" } },
+			"fg-headline.fontWeight": { "into": "heading_weight", "values": { "Bold": "bold", "Light": "light" } }
 		}
 	},
 	"composer_dependencies": [],
@@ -146,7 +181,7 @@
 		"@iconify/vue"
 	],
 	"ai": {
-		"prompt_summary": "Features: feature/service card grid. Settings: variant (cards|flat|numbered|media), eyebrow, headline, intro. Cards in items[] (min 1): { num (e.g. '01', auto-numbered if empty), title, text, icon (Iconify name, cards/flat), image (media variant), link_label, link_to }. Optional band_button_label + band_button_to: one centered outline button below the grid (all variants; empty label hides it).",
+		"prompt_summary": "Features: feature/service card grid. Settings: variant (cards|flat|numbered|media), eyebrow, headline, intro. Cards in items[] (min 1): { num (e.g. '01', auto-numbered if empty), title, text, icon (Iconify name, cards/flat), image (media variant), link_label, link_to }. Optional band_button_label + band_button_to: one centered outline button below the grid (all variants; empty label hides it). show_top_rule (flat) / show_divider (numbered): '1' default, '0' hides the rule / the dividers. Optional design overrides: content_align (default|left|center — head and cards together), heading_case (default|upper), heading_weight (default|light|bold); leave 'default' unless the design asks.",
 		"content_guidelines": "3 or 6 items for a clean grid. Titles 2-4 words, texts 1-2 sentences. Use consistent icon style (e.g. all i-lucide-*).",
 		"field_hints": {
 			"items.icon": "Iconify name like i-lucide-star; used by cards and flat variants.",

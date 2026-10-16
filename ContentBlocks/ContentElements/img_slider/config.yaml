@@ -143,7 +143,7 @@ fields:
     type: Select
     renderType: selectSingle
     label: Slide Aspect Ratio
-    description: 'Applies to single / grid / thumbs. Fullbleed is always 21:9 and Edge is always square.'
+    description: 'Applies to single / thumbs. Grid tiles are square, Fullbleed is always 21:9 and Edge cards are 520 × 360.'
     items:
       - { label: Auto (native), value: auto }
       - { label: Widescreen (16:9), value: '16/9' }
@@ -156,6 +156,26 @@ fields:
     type: Checkbox
     label: Show Navigation Arrows
     description: 'Applies to single / fullbleed / edge (grid is static; thumbs navigates via thumbnails).'
+    default: 1
+
+  # Appearance switches (DL #063 D1) — the Figma "Thumbnails" / "Dots" / "Counter"
+  # toggles. Default on.
+  - identifier: show_thumbnails
+    type: Checkbox
+    label: Show thumbnails
+    description: 'Thumbs variant: the thumbnail grid below the image. Off = a single image with no navigation.'
+    default: 1
+
+  - identifier: show_dots
+    type: Checkbox
+    label: Show progress dots
+    description: Edge variant.
+    default: 1
+
+  - identifier: show_counter
+    type: Checkbox
+    label: Show counter
+    description: 'Edge variant: "01 / 05".'
     default: 1
 
   - identifier: autoplay

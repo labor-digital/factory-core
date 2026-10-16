@@ -2,7 +2,7 @@
 	"$schema": "../../../../../contract/schema/component-manifest.schema.json",
 	"name": "Cta",
 	"type": "content-element",
-	"version": "2.1.0",
+	"version": "2.2.0",
 	"min_core_version": "1.0.0",
 	"description": "Call-to-action banner with eyebrow, a two-tone headline (light line + bold line), body text, and up to two buttons — or an inline name+email form. Backgrounds: soft brand, dark, or a full-bleed image.",
 	"when_to_use": "Conversion moments mid-page or before the footer. Use the inline-form variant for lightweight lead capture; use Contact for a full contact section, and Hero for page openers.",
@@ -73,10 +73,10 @@
 				]
 			},
 			"Overlay": {
-				"none": "decorative overlay; always drawn"
+				"checkbox": "show_overlay"
 			},
 			"Submit": {
-				"none": "not modelled: submit button always drawn (form_submit_label falls back to a default)"
+				"none": "a form without its submit button cannot be sent; the button is always drawn (form_submit_label falls back to 'Absenden')"
 			},
 			"Note": {
 				"fields": [
@@ -151,7 +151,7 @@
 		"@iconify/vue"
 	],
 	"ai": {
-		"prompt_summary": "Cta: conversion banner. Settings: variant (split|center-dark|fullbleed-image|inline-form), eyebrow, title_light (light-weight line), title_bold (bold line), body; fullbleed-image only: background_image; inline-form only: form_name_label, form_mail_label, form_submit_label, form_note. buttons[] (max 2 — primary first, optional secondary second; ignored by inline-form): { label, to, target, color (primary|secondary), variant (solid|outline|ghost|white-solid|outline-white), button_size, icon, leading, trailing, block }.",
+		"prompt_summary": "Cta: conversion banner. Settings: variant (split|center-dark|fullbleed-image|inline-form), eyebrow, title_light (light-weight line), title_bold (bold line), body; fullbleed-image only: background_image; inline-form only: form_name_label, form_mail_label, form_submit_label, form_note. buttons[] (max 2 — primary first, optional secondary second; ignored by inline-form): { label, to, target, color (primary|secondary), variant (solid|outline|ghost|white-solid|outline-white), button_size, icon, leading, trailing, block }. show_overlay (checkbox, default 1): the gradient over the fullbleed-image background.",
 		"content_guidelines": "Headline lines 2-5 words each; body at most 2 sentences. Primary button first. On center-dark and fullbleed-image use white-solid or outline-white button variants.",
 		"field_hints": {
 			"title_light": "First headline line, rendered in light weight — set up the bold line.",

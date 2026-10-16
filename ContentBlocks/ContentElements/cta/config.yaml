@@ -137,3 +137,11 @@ fields:
       - { label: 'H2 — section heading', value: h2 }
       - { label: 'H3 — sub-section', value: h3 }
     default: h2
+
+  # Figma "Overlay" toggle (DL #063 D1): the gradient over the fullbleed-image
+  # background. Default on — it was always drawn before.
+  - identifier: show_overlay
+    type: Checkbox
+    label: Show image overlay
+    description: fullbleed-image variant.
+    default: 1

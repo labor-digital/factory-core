@@ -2,7 +2,7 @@
 	"$schema": "../../../../../contract/schema/component-manifest.schema.json",
 	"name": "Team",
 	"type": "content-element",
-	"version": "1.1.0",
+	"version": "1.2.0",
 	"min_core_version": "1.0.0",
 	"description": "Team / people section over a members collection. Layouts: photo grid with hover overlay and a click-to-open bio modal, flat card grid, paginated slider, edge slider overflowing to the right, table-like list rows, or grouped by department.",
 	"when_to_use": "About/team pages and 'your contacts' sections. Use Contact (persons variant) when the people are primarily reachable contacts with a form next to them.",
@@ -94,7 +94,7 @@
 				"none": "slider chrome"
 			},
 			"Group Count": {
-				"none": "computed from the member count per department; fixed markup"
+				"checkbox": "show_group_count"
 			}
 		},
 		"content": {
@@ -149,7 +149,7 @@
 	"composer_dependencies": [],
 	"npm_dependencies": [],
 	"ai": {
-		"prompt_summary": "Team: people section. Settings: variant (grid|featured|slider|edge-slider|list|group), eyebrow, headline, intro, head_align (left|center), per_page (slider only, default 4). People in members[] (min 1): { name (required), role, department (group variant), bio, photo, email, phone, linkedin }.",
+		"prompt_summary": "Team: people section. Settings: variant (grid|featured|slider|edge-slider|list|group), eyebrow, headline, intro, head_align (auto|left|center; auto = centred on grid, left otherwise), show_group_count (group variant, default on), per_page (slider only, default 4). People in members[] (min 1): { name (required), role, department (group variant), bio, photo, email, phone, linkedin }.",
 		"content_guidelines": "4-8 members. Roles 1-3 words; bios 2-3 sentences (shown in the modal / list). Consistent portrait crops.",
 		"field_hints": {
 			"members.department": "Only used by the group variant — members sharing a department appear under that heading.",

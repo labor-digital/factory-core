@@ -2,7 +2,7 @@
 	"$schema": "../../../../../contract/schema/component-manifest.schema.json",
 	"name": "Downloads",
 	"type": "content-element",
-	"version": "1.2.0",
+	"version": "1.3.0",
 	"min_core_version": "1.0.0",
 	"description": "List or grid of downloadable files with colour-coded format badges, file-type icons, sizes, and descriptions. Layouts: rows list, icon card grid, one featured download + secondary list, grouped by category, or a two-column compact mini-list.",
 	"when_to_use": "Document sections — brochures, data sheets, price lists, press kits. Use one Downloads block per page region; the grouped variant replaces multiple blocks when files span categories; compact suits dense footers/sidebars.",
@@ -69,7 +69,7 @@
 				]
 			},
 			"Badge": {
-				"none": "format badge always drawn; derived from the file (items[].ext only overrides it)"
+				"checkbox": "show_badge"
 			},
 			"File Size": {
 				"fields": [
@@ -85,7 +85,7 @@
 				]
 			},
 			"Group Count": {
-				"none": "derived: counted from items"
+				"checkbox": "show_group_count"
 			}
 		},
 		"content": {
@@ -157,7 +157,7 @@
 	"composer_dependencies": [],
 	"npm_dependencies": [],
 	"ai": {
-		"prompt_summary": "Downloads: file list/grid aligned to Figma 773:40748. Settings: variant (list|icons|featured|grouped|compact), eyebrow, headline, intro. Files in items[] (min 1): { title, desc (icons/featured only), file (pdf/doc/xls/ppt/zip/img/mp4/dwg/txt), ext (format override, inferred from file URL when empty), file_size (human readable, e.g. '4.2 MB'), group (grouped variant only) }. Format badge colour + file icon come from ext.",
+		"prompt_summary": "Downloads: file list/grid aligned to Figma 773:40748. Settings: variant (list|icons|featured|grouped|compact), eyebrow, headline, intro, show_badge and show_group_count (grouped) — checkboxes, default on. Files in items[] (min 1): { title, desc (icons/featured only), file (pdf/doc/xls/ppt/zip/img/mp4/dwg/txt), ext (format override, inferred from file URL when empty), file_size (human readable, e.g. '4.2 MB'), group (grouped variant only) }. Format badge colour + file icon come from ext.",
 		"content_guidelines": "Titles are document names, not sentences. 3-8 files; descriptions one line. Group labels short nouns (e.g. Broschüren, Technik).",
 		"field_hints": {
 			"items.ext": "Only set when the format cannot be inferred from the file URL.",

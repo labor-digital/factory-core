@@ -15,6 +15,18 @@ fields:
       - { label: Media (with image), value: media }
     default: cards
 
+  # Atom switches on Atoms / Feature Card (DL #063 D1). Both were drawn
+  # unconditionally before, so they default on.
+  - identifier: show_top_rule
+    type: Checkbox
+    label: Show top rule (Flat)
+    default: 1
+
+  - identifier: show_divider
+    type: Checkbox
+    label: Show divider between items (Numbered)
+    default: 1
+
   - identifier: eyebrow
     type: Text
     label: Eyebrow
@@ -78,3 +90,34 @@ fields:
       - { label: 'H2 — section heading', value: h2 }
       - { label: 'H3 — sub-section', value: h3 }
     default: h2
+
+  # Design overrides (DL #063 D3) — "default" keeps the variant's library look.
+  - identifier: content_align
+    type: Select
+    renderType: selectSingle
+    label: Content alignment
+    description: Aligns the section head and the cards together. Default = the variant's look (Flat centres the head, cards are left-aligned).
+    items:
+      - { label: Default, value: default }
+      - { label: Left, value: left }
+      - { label: Center, value: center }
+    default: default
+
+  - identifier: heading_case
+    type: Select
+    renderType: selectSingle
+    label: Headline case
+    items:
+      - { label: Default, value: default }
+      - { label: Uppercase, value: upper }
+    default: default
+
+  - identifier: heading_weight
+    type: Select
+    renderType: selectSingle
+    label: Headline weight
+    items:
+      - { label: Default, value: default }
+      - { label: Light, value: light }
+      - { label: Bold, value: bold }
+    default: default

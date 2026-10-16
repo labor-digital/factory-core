@@ -28,6 +28,19 @@ fields:
     type: Textarea
     label: Intro
 
+  # Upstream `Badge` switch on Modules / Downloads: the coloured format chip (PDF, DOCX, …).
+  - identifier: show_badge
+    type: Checkbox
+    label: Show format badge
+    default: 1
+
+  # Upstream `Group Count` switch: the "2 Dateien" count in each group heading.
+  - identifier: show_group_count
+    type: Checkbox
+    label: Show group count
+    default: 1
+    displayCond: 'FIELD:variant:=:grouped'
+
   - identifier: items
     type: Collection
     label: Files

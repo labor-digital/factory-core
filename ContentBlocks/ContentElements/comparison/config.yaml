@@ -28,6 +28,12 @@ fields:
     label: Intro
 
   # ----- Before/After + Slider -----
+  # Upstream `Pills` switch on Modules / Comparison: the Vorher/Nachher chips on the image.
+  - identifier: show_pills
+    type: Checkbox
+    label: Show pills (before/after labels on the image)
+    default: 1
+    displayCond: 'FIELD:variant:IN:before-after,slider'
   - identifier: before_label
     type: Text
     label: Before label
@@ -94,6 +100,13 @@ fields:
     maxItems: 1
     allowedFileExtensions: ['jpg', 'jpeg', 'png', 'webp']
     displayCond: 'FIELD:variant:=:head-to-head'
+
+  # Upstream `Tone Icons` switch: the ✓ / ✕ / – discs in the h2h cells and methods lists.
+  - identifier: show_tone_icons
+    type: Checkbox
+    label: Show tone icons
+    default: 1
+    displayCond: 'FIELD:variant:IN:head-to-head,methods'
 
   - identifier: h2h_rows
     type: Collection

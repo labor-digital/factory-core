@@ -27,6 +27,30 @@ fields:
     type: Textarea
     label: Intro
 
+  # Appearance switches — the library's `Feature Tag`, `Included Marks`,
+  # `Excluded Marks`, `Table Head` and `Sortable` toggles on Modules / Table
+  # (DL #063 D1). On unless switched off.
+  - identifier: show_feature_tag
+    type: Checkbox
+    label: Show featured tag ("Empfohlen")
+    default: 1
+  - identifier: show_included_marks
+    type: Checkbox
+    label: Show included marks (✓, Pricing)
+    default: 1
+  - identifier: show_excluded_marks
+    type: Checkbox
+    label: Show excluded marks (✕, Pricing)
+    default: 1
+  - identifier: show_table_head
+    type: Checkbox
+    label: Show table head row (Data list)
+    default: 1
+  - identifier: show_sorting
+    type: Checkbox
+    label: Show sort controls (Data list)
+    default: 1
+
   # ----- Pricing -----
   - identifier: pricing_plans
     type: Collection
@@ -183,6 +207,12 @@ fields:
       - identifier: suffix
         type: Text
         label: Suffix (e.g. " m²")
+      - identifier: mono
+        type: Checkbox
+        label: Monospace (reference numbers, ids)
+      - identifier: width
+        type: Text
+        label: Column width (e.g. "120px", optional)
 
   - identifier: data_rows
     type: Collection

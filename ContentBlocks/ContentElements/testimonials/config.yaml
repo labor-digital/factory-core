@@ -36,6 +36,18 @@ fields:
     description: Used by Quote Flow variant. Falls back to first item's quote if empty.
     displayCond: 'FIELD:variant:=:quote-flow'
 
+  # Appearance switches — the library's `Mark` and `Stars` toggles on
+  # Modules / Testimonials (DL #063 D1). On unless switched off.
+  - identifier: show_mark
+    type: Checkbox
+    label: Show quote mark
+    default: 1
+
+  - identifier: show_stars
+    type: Checkbox
+    label: Show star rating (Cards)
+    default: 1
+
   - identifier: items
     type: Collection
     label: Testimonials
@@ -71,6 +83,17 @@ fields:
         type: Text
         label: Link Label
         description: Text for the optional featured-variant link (e.g. "Zur Case Study").
+      - identifier: rating
+        type: Select
+        renderType: selectSingle
+        label: Star rating (Cards)
+        items:
+          - { label: '5 stars', value: '5' }
+          - { label: '4 stars', value: '4' }
+          - { label: '3 stars', value: '3' }
+          - { label: '2 stars', value: '2' }
+          - { label: '1 star', value: '1' }
+        default: '5'
 
   - identifier: heading_level
     type: Select

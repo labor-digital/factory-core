@@ -28,6 +28,33 @@ fields:
       - { label: Dark band, value: dark }
     default: light
 
+  # Appearance switches (DL #063 D1): parts the component composes itself, so an
+  # empty field cannot hide them. All default on, as they were drawn before.
+  - identifier: show_logo
+    type: Checkbox
+    label: Show logo
+    default: 1
+
+  - identifier: show_bottom_bar
+    type: Checkbox
+    label: Show bottom bar (copyright, legal links)
+    default: 1
+
+  - identifier: show_copyright
+    type: Checkbox
+    label: Show copyright
+    default: 1
+
+  - identifier: show_eyebrow
+    type: Checkbox
+    label: Show eyebrow (maximal variant)
+    default: 1
+
+  - identifier: show_wordmark
+    type: Checkbox
+    label: Show wordmark row (maximal variant)
+    default: 1
+
   - identifier: logo_text
     type: Text
     label: Logo Text
@@ -55,9 +82,19 @@ fields:
     label: CTA Primary (split variant)
     displayCond: 'FIELD:variant:=:split'
 
+  - identifier: cta_primary_to
+    type: Link
+    label: CTA Primary Link (split variant)
+    displayCond: 'FIELD:variant:=:split'
+
   - identifier: cta_secondary
     type: Text
     label: CTA Secondary (split variant)
+    displayCond: 'FIELD:variant:=:split'
+
+  - identifier: cta_secondary_to
+    type: Link
+    label: CTA Secondary Link (split variant)
     displayCond: 'FIELD:variant:=:split'
 
   - identifier: cols

@@ -2,7 +2,7 @@
 	"$schema": "../../../../../contract/schema/component-manifest.schema.json",
 	"name": "Faq",
 	"type": "content-element",
-	"version": "1.2.0",
+	"version": "1.3.0",
 	"min_core_version": "1.0.0",
 	"description": "Collapsible questions and answers in single-column, two-column, grouped, or bordered XL layouts. The two-column variant includes a contact card for unanswered questions.",
 	"when_to_use": "Lower page regions to resolve objections and support questions. Use grouped when questions span multiple topics; use two-col when a contact escalation path should be visible.",
@@ -65,10 +65,10 @@
 				]
 			},
 			"Group Num": {
-				"none": "computed: the group number is drawn from the group's position, no stored value"
+				"checkbox": "show_group_num"
 			},
 			"Group Rule": {
-				"none": "decorative: rule under each group title, always drawn"
+				"checkbox": "show_group_rule"
 			},
 			"Headline": {
 				"fields": [
@@ -76,7 +76,7 @@
 				]
 			},
 			"Icon": {
-				"none": "decorative: accordion +/x badge, fixed markup"
+				"checkbox": "show_icon"
 			},
 			"Intro": {
 				"fields": [
@@ -135,7 +135,7 @@
 	"composer_dependencies": [],
 	"npm_dependencies": [],
 	"ai": {
-		"prompt_summary": "Faq: accordion Q&A. Settings: variant (single|two-col|grouped|bordered). Fields: eyebrow, headline, intro; two-col only: contact_label, contact_mail, contact_button; items[] (min 1): { q, a, group (grouped variant only) }.",
+		"prompt_summary": "Faq: accordion Q&A. Settings: variant (single|two-col|grouped|bordered). Fields: eyebrow, headline, intro; two-col only: contact_label, contact_mail, contact_button; items[] (min 1): { q, a, group (grouped variant only) }. Switches (checkbox, default 1): show_divider, show_icon, show_group_rule / show_group_num (grouped).",
 		"content_guidelines": "5-8 questions. Questions phrased from the visitor's perspective, answers 1-3 sentences. Group labels short nouns (e.g. Preise, Ablauf).",
 		"field_hints": {
 			"items.group": "Only rendered by the grouped variant; items sharing a label appear under that heading.",

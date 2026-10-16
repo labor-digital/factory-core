@@ -27,6 +27,22 @@ fields:
     type: Textarea
     label: Intro
 
+  - identifier: show_icon
+    type: Checkbox
+    label: Show icons (guarantees)
+    default: 1
+    displayCond: 'FIELD:variant:=:guarantees'
+  - identifier: show_award_mark
+    type: Checkbox
+    label: Show award mark (awards)
+    default: 1
+    displayCond: 'FIELD:variant:=:awards'
+  - identifier: show_stars
+    type: Checkbox
+    label: Show stars (reviews)
+    default: 1
+    displayCond: 'FIELD:variant:IN:reviews,reviews-slider'
+
   # ----- certificates -----
   - identifier: certificates
     type: Collection

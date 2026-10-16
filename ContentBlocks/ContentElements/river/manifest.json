@@ -2,16 +2,17 @@
 	"$schema": "../../../../../contract/schema/component-manifest.schema.json",
 	"name": "River",
 	"type": "content-element",
-	"version": "1.1.0",
+	"version": "1.2.0",
 	"min_core_version": "1.0.0",
 	"description": "Alternating text-and-media rows ('riverflow'). Renders a single block with the image left or right (or with a video play overlay), or stacks multiple blocks that alternate sides automatically. Media aspect ratio is set section-wide with per-block overrides.",
 	"when_to_use": "Storytelling sequences — services, process steps, or project chapters where each row pairs a paragraph with an image. Use Section for one richer block with gallery/background; use Features for compact card grids.",
 	"capabilities": [
 		"single row or stacked riverflow with automatic left/right alternation",
-		"video treatment with play overlay (video variant)",
+		"video treatment: overlay + play control that opens blocks[].video_url (YouTube / Vimeo / mp4) in place",
 		"per-block CTA button plus a small footnote line",
 		"aspect-ratio presets incl. golden ratio, overridable per block",
-		"title <strong> emphasis in the accent color"
+		"title: light line + <strong> bold line",
+		"switches show_overlay, show_play; design override content_align"
 	],
 	"variants": [
 		{
@@ -36,8 +37,9 @@
 		"Eyebrow"
 	],
 	"breakpoints": {
-		"mobile": "Each row stacks text above media.",
-		"desktop": "Two-column rows, media side alternating in the stacked variant."
+		"mobile": "≤640: rows stack (image-left keeps media first), side padding 20, stacked rows 72 apart.",
+		"tablet": "≤1024: rows stack with a 28 gap, side padding 40, stacked rows 90 apart.",
+		"desktop": "Two-column rows (1 : 1.1) capped at 1320, padding 80; stacked rows 120 apart, alternating sides."
 	},
 	"figma": {
 		"file": "Labor - Website factory PLUGIN TEST",
@@ -80,10 +82,10 @@
 				]
 			},
 			"Overlay": {
-				"none": "decorative video overlay"
+				"checkbox": "show_overlay"
 			},
 			"Play": {
-				"none": "decorative play button; drawn from fixed markup (video variant)"
+				"checkbox": "show_play"
 			},
 			"Note 2": {
 				"fields": [
@@ -186,17 +188,35 @@
 			"ph river-media": {
 				"into": "blocks[].image"
 			}
+		},
+		"style": {
+			"river-text.counterAxisAlign": {
+				"into": "content_align",
+				"values": {
+					"CENTER": "center",
+					"MIN": "left"
+				}
+			},
+			"river-title.textAlign": {
+				"into": "content_align",
+				"values": {
+					"CENTER": "center",
+					"LEFT": "left"
+				}
+			}
 		}
 	},
 	"composer_dependencies": [],
 	"npm_dependencies": [],
 	"ai": {
-		"prompt_summary": "River: alternating text+media rows. Settings: variant (image-right|image-left|video|stacked), aspect_ratio (1/1|16/9|3/2|4/5|21/9|golden, default 3/2). Rows in blocks[] (min 1; single-block variants use the first): { eyebrow, title (supports <strong> accent), subline, body, button_label, button_to, note (footnote below the button), aspect_ratio (empty = inherit), image, image_alt }.",
+		"prompt_summary": "River: alternating text+media rows. Settings: variant (image-right|image-left|video|stacked), aspect_ratio (1/1|16/9|3/2|4/5|21/9|golden, default 3/2), show_overlay / show_play (checkbox, default 1, video variant), content_align (default|left|center). Rows in blocks[] (min 1; single-block variants use the first): { eyebrow, title (light text + <strong>bold line</strong>), subline, body, button_label, button_to, note (footnote below the button), aspect_ratio (empty = inherit), image, image_alt, video_url (YouTube/Vimeo/mp4, video variant) }.",
 		"content_guidelines": "2-4 blocks for the stacked variant. Bodies 2-4 sentences; one <strong> emphasis per title. Footnotes short (availability, disclaimers).",
 		"field_hints": {
 			"blocks": "Single-block variants read only the first entry; stacked renders all, alternating sides.",
 			"blocks.aspect_ratio": "Leave empty to inherit the section-level ratio.",
-			"blocks.note": "Small line rendered below the button."
+			"blocks.note": "Small line rendered below the button.",
+			"blocks.video_url": "Video variant only: the play button opens this. Empty = no play button on the live site.",
+			"content_align": "Design override: center centres the text column."
 		}
 	}
 }

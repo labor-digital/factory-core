@@ -2,7 +2,7 @@
 	"$schema": "../../../../../contract/schema/component-manifest.schema.json",
 	"name": "Testimonials",
 	"type": "content-element",
-	"version": "1.2.0",
+	"version": "1.3.0",
 	"min_core_version": "1.0.0",
 	"description": "Customer quotes in six layouts: an XL single centered quote, a long-form quote flow, a centered text-only quote slider, a 3-column card grid with stars, an image+quote slider, and a featured dark treatment with portrait.",
 	"when_to_use": "Narrative social proof from named customers. Use Credibility (reviews) for star-rated review volumes with aggregate scores instead of individual stories.",
@@ -58,7 +58,7 @@
 		"page": "Factory_Library_CLAUDE-WORK",
 		"toggles": {
 			"Mark": {
-				"none": "decorative quote glyph; fixed markup"
+				"checkbox": "show_mark"
 			},
 			"Quote": {
 				"fields": [
@@ -103,7 +103,7 @@
 				]
 			},
 			"Stars": {
-				"none": "not modelled: five stars are fixed markup"
+				"checkbox": "show_stars"
 			},
 			"Image": {
 				"fields": [
@@ -205,7 +205,7 @@
 	"composer_dependencies": [],
 	"npm_dependencies": [],
 	"ai": {
-		"prompt_summary": "Testimonials: customer quotes. Settings: variant (quote-xl|quote-flow|slider-text|cards|slider|featured, matching Figma), eyebrow, headline, intro (used by cards/slider header), long_quote (quote-flow only). Quotes in items[] (min 1): { quote, name, role, company, avatar (small round image), media (portrait for slider/featured), link + link_label (optional CTA for the featured variant) }. All quotes render in the sans face with an accent-coloured quote mark.",
+		"prompt_summary": "Testimonials: customer quotes. Settings: variant (quote-xl|quote-flow|slider-text|cards|slider|featured, matching Figma), eyebrow, headline, intro (used by cards/slider header), long_quote (quote-flow only), show_mark (quote glyph), show_stars (cards star row) — appearance switches, default on. Quotes in items[] (min 1): { quote, name, role, company, avatar (small round image), media (portrait for slider/featured), link + link_label (optional CTA for the featured variant), rating (1-5 stars on cards, default 5) }. All quotes render in the sans face with an accent-coloured quote mark.",
 		"content_guidelines": "Quotes in first person, 1-3 sentences (long_quote may run 1-2 paragraphs). Always attribute with name + role/company. 3 items for cards; several for slider-text/slider. Add a per-item link only on the featured variant.",
 		"field_hints": {
 			"long_quote": "Only read by quote-flow; falls back to the first item's quote when empty.",

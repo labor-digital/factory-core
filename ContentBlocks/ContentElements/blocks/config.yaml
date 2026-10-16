@@ -45,7 +45,30 @@ fields:
   - identifier: per_page
     type: Number
     label: Items per page
-    default: 9
+    description: Empty = the layout's default (cards 6, compact 9, list 8, magazine 5).
+
+  - identifier: show_toolbar
+    type: Checkbox
+    label: Show toolbar (search + sort)
+    default: 1
+  - identifier: show_search
+    type: Checkbox
+    label: Show search
+    default: 1
+  - identifier: show_sort
+    type: Checkbox
+    label: Show sort
+    default: 1
+  - identifier: show_category
+    type: Checkbox
+    label: Show category label
+    description: Hides the category tag only — filtering by category keeps working.
+    default: 1
+  - identifier: show_meta
+    type: Checkbox
+    label: Show meta line (type, date, read time)
+    description: Hides the meta line only — sorting and the type filter keep working.
+    default: 1
 
   - identifier: items
     type: Collection

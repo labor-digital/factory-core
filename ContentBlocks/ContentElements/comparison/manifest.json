@@ -2,7 +2,7 @@
 	"$schema": "../../../../../contract/schema/component-manifest.schema.json",
 	"name": "Comparison",
 	"type": "content-element",
-	"version": "1.1.0",
+	"version": "1.2.0",
 	"min_core_version": "1.0.0",
 	"description": "Side-by-side comparison section in six shapes: before/after images (static or with a draggable reveal slider), a head-to-head A-vs-B property table, method cards with pros/cons, a horizontal bar chart, or a multi-criteria star-rating matrix. Each variant reads its own field group.",
 	"when_to_use": "Whenever two or more options, states, or methods must be contrasted — renovation before/after, product A vs. B, alternative approaches, or benchmark values. Use Table for pricing/spec data without a comparative framing.",
@@ -71,7 +71,7 @@
 				]
 			},
 			"Pills": {
-				"none": "not modelled: before/after pills always drawn; before_label/after_label fall back to Vorher/Nachher when empty"
+				"checkbox": "show_pills"
 			},
 			"Year": {
 				"fields": [
@@ -92,7 +92,7 @@
 				]
 			},
 			"Tone Icons": {
-				"none": "icons; always drawn (glyph chosen by h2h_rows[].a_tone/b_tone, fixed in methods pros/cons)"
+				"checkbox": "show_tone_icons"
 			}
 		},
 		"content": {
@@ -211,7 +211,7 @@
 	"composer_dependencies": [],
 	"npm_dependencies": [],
 	"ai": {
-		"prompt_summary": "Comparison: contrast section. Settings: variant (before-after|slider|head-to-head|methods|bars|ratings), eyebrow, headline, intro. Per variant: before_/after_ label+caption+meta+image (before-after, slider); h2h_a_/h2h_b_ name+tagline+image plus h2h_rows[] { property, a_value, a_tone (pos|neg|neu), b_value, b_tone } (head-to-head); methods[] { name, tagline, metric1/2 label+value, pros, cons — one per line } (methods); bars_unit, bars_max plus bars_rows[] { label, value, note, highlight } (bars); rating_criteria (one per line) plus rating_items[] { name, values (comma-separated 1-5) } (ratings).",
+		"prompt_summary": "Comparison: contrast section. Settings: variant (before-after|slider|head-to-head|methods|bars|ratings), eyebrow, headline, intro, show_pills (before-after, slider) and show_tone_icons (head-to-head, methods) — checkboxes, default on. Per variant: before_/after_ label+caption+meta+image (before-after, slider); h2h_a_/h2h_b_ name+tagline+image plus h2h_rows[] { property, a_value, a_tone (pos|neg|neu), b_value, b_tone } (head-to-head); methods[] { name, tagline, metric1/2 label+value, pros, cons — one per line } (methods); bars_unit, bars_max plus bars_rows[] { label, value, note, highlight } (bars); rating_criteria (one per line) plus rating_items[] { name, values (comma-separated 1-5) } (ratings).",
 		"content_guidelines": "Keep row/criteria labels to 2-4 words. 4-7 h2h rows or bars; 3 method cards; 3-6 rating criteria. Tones: pos for the advantage, neg for the drawback, neu otherwise.",
 		"field_hints": {
 			"rating_items.values": "Comma-separated 1-5 scores in the exact order of the rating_criteria lines.",

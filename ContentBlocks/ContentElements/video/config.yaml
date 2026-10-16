@@ -84,6 +84,24 @@ fields:
     maxItems: 1
     allowedFileExtensions: ['jpg', 'jpeg', 'png', 'webp']
 
+  # Appearance switches — the library's `Play`, `Overlay` and `Divider` toggles
+  # on Modules / Video (DL #063 D1). On unless switched off.
+  - identifier: show_play
+    type: Checkbox
+    label: Show play button
+    description: Off hides the play glyph; the thumbnail itself still starts the video.
+    default: 1
+
+  - identifier: show_overlay
+    type: Checkbox
+    label: Show dark scrim (Overlay)
+    default: 1
+
+  - identifier: show_divider
+    type: Checkbox
+    label: Show divider between duration and speaker (Overlay)
+    default: 1
+
   - identifier: cards
     type: Collection
     label: Video Cards (cards variant)

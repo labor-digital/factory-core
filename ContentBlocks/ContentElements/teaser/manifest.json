@@ -2,33 +2,37 @@
 	"$schema": "../../../../../contract/schema/component-manifest.schema.json",
 	"name": "Teaser",
 	"type": "content-element",
-	"version": "2.3.0",
+	"version": "2.4.0",
 	"min_core_version": "1.0.0",
 	"description": "Polymorphic record teaser: lists records of any active record type (Property, ...) in one of five Figma layouts — cards, cards-compact, list, feature, or edge. Records are picked manually via relation fields or queried automatically from a storage folder with filter, limit, and order; each record renders through its record type's card component.",
 	"when_to_use": "Reference/portfolio rows fed by structured records — 'Unsere Referenzen', latest properties. Use Blocks or News for hand-authored inline items instead of records.",
 	"capabilities": [
-		"five layout variants: cards (4-col grid), cards-compact (3-col grid), list (stacked rows), feature (lead card + list), edge (horizontal breakout slider)",
+		"five layout variants: cards (one paged row of 4), cards-compact (paged row of 2), list (horizontal rows), feature (lead card + thumbnails that switch it), edge (horizontal breakout track)",
+		"Figma Columns axis: columns = 3 gives a three-card row on cards",
 		"record source per active record type (dropdown driven by factory.json active_record_types)",
 		"manual record picking or auto query (storage folder, listing-type filter, limit, order)",
-		"header block identical to ImgSlider (eyebrow + decoration + accent color, <strong> title, buttons)",
+		"header: eyebrow (+ decoration, accent color), title, intro, text-link(s) bottom-right",
+		"card part switches handed to every record card: show_image, show_category, show_address, show_divider, show_meta; card text link (card_link_label) on list/feature",
+		"show_pager (arrows; off = every card, wrapped), show_thumbnails (feature)",
+		"design overrides: content_align, heading_case, heading_weight",
 		"optional centred band button below the records (band_button_label / band_button_to)"
 	],
 	"variants": [
 		{
 			"value": "cards",
-			"description": "4-column bordered card grid. Default."
+			"description": "One row of 4 bordered cards (3 with columns = 3); extra cards page with the arrows. Default."
 		},
 		{
 			"value": "cards-compact",
-			"description": "3-column card grid."
+			"description": "One row of 2 larger cards (16:9 image, larger title); pages like cards."
 		},
 		{
 			"value": "list",
-			"description": "Single-column stacked rows."
+			"description": "Horizontal rows: image left, tag/title/address, meta, card text link."
 		},
 		{
 			"value": "feature",
-			"description": "First record as a lead card plus the remaining records as a side list."
+			"description": "A lead card (large title, card text link) plus a thumbnail list that switches it."
 		},
 		{
 			"value": "edge",
@@ -38,12 +42,13 @@
 	"atoms": [
 		"Button",
 		"Eyebrow",
-		"SliderArrow"
+		"SliderArrow",
+		"TextLink"
 	],
 	"breakpoints": {
-		"mobile": "Grids collapse to one column; edge scrolls horizontally; feature stacks.",
-		"tablet": "cards/cards-compact collapse to 2 columns.",
-		"desktop": "Full variant layout (4/3/1 columns, feature split, edge peek)."
+		"mobile": "≤640: one card per view with a peek; list rows stack their info beside a 96px image; feature stacks with a scrolling thumb row; edge cards 280.",
+		"tablet": "≤1024: cards/cards-compact two per view; feature stacks; edge cards 380.",
+		"desktop": "Full variant layout (4/2/3 per row, feature 1.6 : 1, edge cards 460)."
 	},
 	"figma": {
 		"file": "Labor - Website factory PLUGIN TEST",
@@ -54,7 +59,7 @@
 		"componentSet": "Modules / Teaser",
 		"page": "Factory_Library_CLAUDE-WORK",
 		"port": "rewrite",
-		"portReason": "Rebuilt in utility classes; carries factory-teaser-* plus utilities, no rcard-*/chevron.",
+		"portReason": "Rebuilt on the spec node names (teaser-*, rcard-*) with token values; paging is a native scroll-snap track instead of a slider library.",
 		"toggles": {
 			"Header": {
 				"fields": [
@@ -76,26 +81,27 @@
 			},
 			"Link": {
 				"fields": [
-					"buttons"
+					"buttons",
+					"card_link_label"
 				]
 			},
 			"Image": {
-				"none": "record card part; drawn by the record type's card, no teaser field"
+				"checkbox": "show_image"
 			},
 			"Category": {
-				"none": "record card part; drawn by the record type's card, no teaser field"
+				"checkbox": "show_category"
 			},
 			"Address": {
-				"none": "record card part; drawn by the record type's card, no teaser field"
+				"checkbox": "show_address"
 			},
 			"Divider": {
-				"none": "decorative; record card divider"
+				"checkbox": "show_divider"
 			},
 			"Meta": {
-				"none": "record card part; drawn by the record type's card, no teaser field"
+				"checkbox": "show_meta"
 			},
 			"Pager": {
-				"none": "slider chrome"
+				"checkbox": "show_pager"
 			},
 			"Band Button": {
 				"fields": [
@@ -104,7 +110,7 @@
 				]
 			},
 			"Thumbnails": {
-				"none": "record card part; feature thumbnails are drawn from the records, no teaser field"
+				"checkbox": "show_thumbnails"
 			}
 		},
 		"content": {
@@ -191,22 +197,63 @@
 				"into": "records[].hero_image"
 			}
 		},
-		"recordsAs": "RecordProperty"
+		"style": {
+			"teaser-inner.counterAxisAlign": {
+				"into": "content_align",
+				"values": {
+					"CENTER": "center",
+					"MIN": "left"
+				}
+			},
+			"left.counterAxisAlign": {
+				"into": "content_align",
+				"values": {
+					"CENTER": "center",
+					"MIN": "left"
+				}
+			},
+			"h-1.textCase": {
+				"into": "heading_case",
+				"values": {
+					"UPPER": "upper"
+				}
+			},
+			"h-1.fontWeight": {
+				"into": "heading_weight",
+				"values": {
+					"Bold": "bold",
+					"Light": "light"
+				}
+			}
+		},
+		"recordsAs": "RecordProperty",
+		"axes": {
+			"Columns": {
+				"into": "columns",
+				"values": {
+					"auto": "auto",
+					"3": "3"
+				}
+			}
+		}
 	},
 	"composer_dependencies": [],
 	"npm_dependencies": [
-		"@splidejs/vue-splide",
 		"@iconify/vue"
 	],
 	"ai": {
-		"prompt_summary": "Teaser: polymorphic record listing. Settings: variant (cards|cards-compact|list|feature|edge, matching Figma). Header: eyebrow, eyebrow_decoration (none|bar|dot), eyebrow_color (7 semantic tokens), title (supports <strong> accent), description, text_align (left|center|right), buttons[] (shared Factory Button spec, typically one 'Alle anzeigen' link); band_button_label + band_button_to (one centred outline button below the records, empty = off). Source: record_type (dynamic, from active_record_types), selection_mode (manual|auto); manual: records (one picker covering every record type; the record_type field decides which table is read); auto: auto_storage_pid (folder, empty = all), auto_filter_listing_type (''|buy|rent), auto_limit (default 6), auto_order ('crdate desc'|'crdate asc'|'title asc').",
-		"content_guidelines": "Header title short with one <strong> emphasis; usually a single ghost/link 'Alle anzeigen' button. 4-8 records; auto mode with a limit is the common default. cards/cards-compact/edge are the primary layouts; list and feature reuse the same record card.",
+		"prompt_summary": "Teaser: polymorphic record listing. Settings: variant (cards|cards-compact|list|feature|edge, matching Figma), columns (auto|3). Header: eyebrow, eyebrow_decoration (none|bar|dot), eyebrow_color (7 semantic tokens), title, description, text_align (left|center|right), buttons[] (rendered as text links, typically one 'Alle anzeigen'); band_button_label + band_button_to (one centred outline button below the records, empty = off). Card switches (checkbox, default 1): show_image, show_category, show_address, show_divider, show_meta; card_link_label (list/feature card link, '' = none). show_pager (arrows; 0 = all cards wrapped), show_thumbnails (feature). Overrides: content_align (default|left|center), heading_case (default|upper), heading_weight (default|light|bold). Source: record_type (dynamic, from active_record_types), selection_mode (manual|auto); manual: records (one picker covering every record type); auto: auto_storage_pid (folder, empty = all), auto_filter_listing_type (''|buy|rent), auto_limit (default 6), auto_order ('crdate desc'|'crdate asc'|'title asc').",
+		"content_guidelines": "Header title short; one text link 'Alle anzeigen' at most. 4-8 records; auto mode with a limit is the common default. Switch card parts off with the show_* checkboxes rather than leaving record fields empty.",
 		"field_hints": {
 			"variant": "Layout family; the record card interior is owned by the record type's card component.",
 			"record_type": "Options come from factory.json active_record_types at runtime — not a fixed list.",
 			"auto_storage_pid": "Page/folder holding the records; leave empty to query all locations.",
 			"records": "Only read in manual mode. A CSV of record UIDs; the picker is restricted to the active record tables.",
-			"band_button_label": "The Figma \"Band Button\": a single call to action under the cards (e.g. \"Alle Referenzen ansehen\"). Leave empty when the design has none."
+			"band_button_label": "The Figma \"Band Button\": a single call to action under the cards (e.g. \"Alle Referenzen ansehen\"). Leave empty when the design has none.",
+			"columns": "Figma's Columns axis: '3' renders three cards per row on cards; auto keeps the variant's count.",
+			"card_link_label": "Card text link on list ('Details') and feature ('Zum Projekt'). Empty = no card link.",
+			"show_pager": "0 removes the arrows and shows every record, wrapped into rows.",
+			"content_align": "Design override: center centres the header block; default keeps text_align."
 		}
 	},
 	"migrations": {

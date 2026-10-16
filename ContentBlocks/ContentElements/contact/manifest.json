@@ -2,7 +2,7 @@
 	"$schema": "../../../../../contract/schema/component-manifest.schema.json",
 	"name": "Contact",
 	"type": "content-element",
-	"version": "2.1.0",
+	"version": "2.2.0",
 	"min_core_version": "1.0.0",
 	"description": "Contact section combining an info block (organisation, address, phone, email, hours, social links) with a contact form. Layouts: split info/form, stacked with centered form, three info tiles, contact-person cards, or a split with photo.",
 	"when_to_use": "Contact pages and page-end conversion sections where visitors should reach out. Use Cta with the inline-form variant for a lightweight name+email capture instead of a full contact section.",
@@ -11,7 +11,8 @@
 		"organisation info block: address, phone (auto tel: link), email, opening hours",
 		"LinkedIn / Instagram social links and privacy-policy link",
 		"contact-person cards with photo, role, email, phone (persons variant)",
-		"photo column beside the form (split-image variant)"
+		"photo column beside the form (split-image variant)",
+		"appearance switches: info icons, stacked dividers, tile links, phone/subject form fields"
 	],
 	"variants": [
 		{
@@ -73,7 +74,7 @@
 				]
 			},
 			"Info Icons": {
-				"none": "icons; always drawn"
+				"checkbox": "show_info_icons"
 			},
 			"Socials": {
 				"fields": [
@@ -88,10 +89,10 @@
 				"none": "not modelled: form field is fixed markup"
 			},
 			"Phone": {
-				"none": "not modelled: form field is fixed markup"
+				"checkbox": "show_phone_field"
 			},
 			"Subject": {
-				"none": "not modelled: form field is fixed markup"
+				"checkbox": "show_subject_field"
 			},
 			"Message": {
 				"none": "not modelled: form field is fixed markup"
@@ -103,10 +104,10 @@
 				"none": "not modelled: submit button is fixed markup"
 			},
 			"Divider": {
-				"none": "decorative rule; always drawn"
+				"checkbox": "show_divider"
 			},
 			"Link": {
-				"none": "fixed markup: tile link text drawn from phone/email"
+				"checkbox": "show_tile_links"
 			},
 			"Photo": {
 				"fields": [
@@ -201,7 +202,7 @@
 	"composer_dependencies": [],
 	"npm_dependencies": [],
 	"ai": {
-		"prompt_summary": "Contact: info + form section aligned to Figma 773:37489. Settings: variant (split|stacked|tiles|persons|split-image), eyebrow, headline, intro, org, address_street, address_zip, address_city, phone, email, hours, linkedin_url, instagram_url, success_text, form_endpoint (POST URL, empty = demo no-op), privacy_link; split-image only: photo. persons[] (persons variant): { name (required), role, email, phone, photo }. Header alignment is variant-driven (split/persons/split-image left; stacked/tiles centered) — there is no alignment field. Form fields are underline-only.",
+		"prompt_summary": "Contact: info + form section aligned to Figma 773:37489. Settings: variant (split|stacked|tiles|persons|split-image), eyebrow, headline, intro, org, address_street, address_zip, address_city, phone, email, hours, linkedin_url, instagram_url, success_text, form_endpoint (POST URL, empty = demo no-op), privacy_link; switches (checkbox, default on): show_info_icons, show_divider (stacked), show_tile_links (tiles), show_phone_field, show_subject_field; split-image only: photo. persons[] (persons variant): { name (required), role, email, phone, photo }. Header alignment is variant-driven (split/persons/split-image left; stacked/tiles centered) — there is no alignment field. Form fields are underline-only.",
 		"content_guidelines": "Headline short and inviting (e.g. 'Sprechen wir über Ihr Projekt'). Intro 1-2 sentences. 2-4 contact persons. Keep success_text reassuring with a concrete response time.",
 		"field_hints": {
 			"phone": "Display format with spaces is fine — the tel: link strips them automatically.",

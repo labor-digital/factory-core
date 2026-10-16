@@ -78,6 +78,12 @@ fields:
       - identifier: image_alt
         type: Text
         label: Image alt text override
+      # The video variant's play control opens this in place (DL #063). Without it
+      # a live site draws no play button — there is nothing to play.
+      - identifier: video_url
+        type: Link
+        label: Video URL
+        description: 'YouTube or Vimeo page URL, or a direct .mp4 / .webm file. Video variant only.'
 
   - identifier: heading_level
     type: Select
@@ -89,3 +95,26 @@ fields:
       - { label: 'H2 — section heading', value: h2 }
       - { label: 'H3 — sub-section', value: h3 }
     default: h2
+
+  # Appearance switches (DL #063 D1) — the Figma "Overlay" / "Play" toggles of the
+  # video variant. Default on.
+  - identifier: show_overlay
+    type: Checkbox
+    label: Show video overlay
+    default: 1
+
+  - identifier: show_play
+    type: Checkbox
+    label: Show play button
+    default: 1
+
+  # Design override (DL #063 D3) — "Default" keeps the library's left-aligned text.
+  - identifier: content_align
+    type: Select
+    renderType: selectSingle
+    label: Content alignment
+    items:
+      - { label: Default, value: default }
+      - { label: Left, value: left }
+      - { label: Center, value: center }
+    default: default

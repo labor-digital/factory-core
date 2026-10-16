@@ -101,6 +101,18 @@ fields:
     label: Show close button
     default: 1
 
+  # Appearance switches — the library's `Warn-Icon` (confirm) and `Step Count`
+  # (wizard) toggles on Modules / Modal (DL #063 D1). On unless switched off.
+  - identifier: show_icon
+    type: Checkbox
+    label: Show warning icon (confirm)
+    default: 1
+
+  - identifier: show_step_count
+    type: Checkbox
+    label: Show step count (wizard)
+    default: 1
+
   # --- lightbox / video / detail -------------------------------------------
   - identifier: image
     type: File
@@ -132,7 +144,7 @@ fields:
 
   - identifier: subline
     type: Text
-    label: Subline (video, detail)
+    label: Subline (video, detail; second caption line on lightbox)
 
   - identifier: specs
     type: Collection

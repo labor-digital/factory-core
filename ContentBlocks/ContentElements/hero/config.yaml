@@ -206,3 +206,14 @@ fields:
       - { label: 'H2 — section heading', value: h2 }
       - { label: 'H3 — sub-section', value: h3 }
     default: h1
+
+  # Design override (DL #063 D3) — "default" keeps the library's light title.
+  - identifier: heading_weight
+    type: Select
+    renderType: selectSingle
+    label: Title weight
+    items:
+      - { label: Default, value: default }
+      - { label: Light, value: light }
+      - { label: Bold, value: bold }
+    default: default

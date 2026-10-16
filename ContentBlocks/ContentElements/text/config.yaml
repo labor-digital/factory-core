@@ -58,3 +58,24 @@ fields:
   - identifier: secondary_to
     type: Link
     label: Secondary CTA Link
+
+  - identifier: heading_level
+    type: Select
+    renderType: selectSingle
+    label: Heading level
+    description: Which HTML heading this section's title renders as. Use H1 once per page — the chat's SEO check reports duplicates.
+    items:
+      - { label: 'H1 — main page heading', value: h1 }
+      - { label: 'H2 — section heading', value: h2 }
+      - { label: 'H3 — sub-section', value: h3 }
+    default: h2
+
+  # Design override (DL #063 D3) — "default" keeps the variant's library look.
+  - identifier: heading_case
+    type: Select
+    renderType: selectSingle
+    label: Title case
+    items:
+      - { label: Default, value: default }
+      - { label: Uppercase, value: upper }
+    default: default

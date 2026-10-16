@@ -11,11 +11,22 @@ fields:
     label: Variant
     items:
       - { label: Cards (4-column bordered cards), value: cards }
-      - { label: 'Cards Compact (3-column, borderless)', value: cards-compact }
+      - { label: 'Cards Compact (2-column, larger cards)', value: cards-compact }
       - { label: List (stacked rows), value: list }
       - { label: Feature (one lead + list), value: feature }
       - { label: 'Edge (horizontal slider, breakout)', value: edge }
     default: cards
+
+  # Figma's second variant axis on Modules / Teaser (`Columns: auto / 3`). Auto = the
+  # variant's own count (cards 4, compact 2); 3 = a three-card row on `cards`.
+  - identifier: columns
+    type: Select
+    renderType: selectSingle
+    label: Columns
+    items:
+      - { label: Auto (variant default), value: auto }
+      - { label: '3 per row', value: '3' }
+    default: auto
 
   # ------------------------------------------------------------
   # Header block (identical to img_slider — editors transfer muscle memory)
@@ -225,3 +236,82 @@ fields:
       - { label: 'H2 — section heading', value: h2 }
       - { label: 'H3 — sub-section', value: h3 }
     default: h2
+
+  # ------------------------------------------------------------
+  # Appearance switches (DL #063 D1) — the Figma "Show …" toggles. Default on;
+  # the card parts are handed to every record card as its `show` prop.
+  # ------------------------------------------------------------
+  - identifier: show_image
+    type: Checkbox
+    label: Show card image
+    default: 1
+
+  - identifier: show_category
+    type: Checkbox
+    label: Show card category
+    default: 1
+
+  - identifier: show_address
+    type: Checkbox
+    label: Show card address
+    default: 1
+
+  - identifier: show_divider
+    type: Checkbox
+    label: Show card divider
+    default: 1
+
+  - identifier: show_meta
+    type: Checkbox
+    label: Show card meta (area, units, year)
+    default: 1
+
+  - identifier: show_pager
+    type: Checkbox
+    label: Show pager
+    description: Prev/next arrows (cards, cards-compact, edge). Off = every card is shown, wrapped into rows.
+    default: 1
+
+  - identifier: show_thumbnails
+    type: Checkbox
+    label: Show thumbnails
+    description: The feature layout's thumbnail list that switches the lead card.
+    default: 1
+
+  # The card text link (list "Details →", feature "Zum Projekt →"). Emptied together
+  # with the header link when the design switches "Link" off.
+  - identifier: card_link_label
+    type: Text
+    label: Card link label
+    description: 'Text link on each card in the list and feature layouts. Leave empty for no card link.'
+    default: Details
+
+  # Design overrides (DL #063 D3) — "Default" keeps the variant's library look.
+  - identifier: content_align
+    type: Select
+    renderType: selectSingle
+    label: Content alignment
+    items:
+      - { label: Default, value: default }
+      - { label: Left, value: left }
+      - { label: Center, value: center }
+    default: default
+
+  - identifier: heading_case
+    type: Select
+    renderType: selectSingle
+    label: Heading case
+    items:
+      - { label: Default, value: default }
+      - { label: Uppercase, value: upper }
+    default: default
+
+  - identifier: heading_weight
+    type: Select
+    renderType: selectSingle
+    label: Heading weight
+    items:
+      - { label: Default, value: default }
+      - { label: Light, value: light }
+      - { label: Bold, value: bold }
+    default: default

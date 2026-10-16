@@ -2,17 +2,18 @@
 	"$schema": "../../../../../contract/schema/component-manifest.schema.json",
 	"name": "ImgSlider",
 	"type": "content-element",
-	"version": "2.1.0",
+	"version": "2.2.0",
 	"min_core_version": "1.0.0",
 	"description": "A text header (eyebrow with decoration + accent color, title with <strong> accent, description, optional CTA buttons) above an image/video gallery in one of five Figma layouts: single, grid, thumbs, fullbleed, or edge.",
 	"when_to_use": "Project showcases, client galleries, or teaser rows where a headline introduces a set of visuals. For a single in-section image next to a paragraph use Section; for a full-bleed opener use Hero.",
 	"capabilities": [
-		"five layout variants: single (1 image + arrows), grid (1 lead + tile grid, static), thumbs (main + thumbnail strip), fullbleed (viewport-wide 21:9), edge (cards peek past the right edge with a progress bar)",
-		"header alignment left/center/right — left pulls buttons top-right opposite the title",
+		"five layout variants: single (1 image + arrows), grid (2 × 2 lead + square tiles, static), thumbs (main + 6-column thumbnail grid), fullbleed (section-wide 21:9), edge (520 × 360 cards past the right edge, dots + counter)",
+		"header alignment left/center/right; header link(s) render as text links (Alle anzeigen →)",
 		"slides of image, uploaded video, or external video URL, with poster and caption overlay (\"index / total · caption\")",
-		"aspect ratio (auto, 16:9, 4:3, 21:9, 1:1) for single/grid/thumbs; fullbleed is 21:9, edge is square",
-		"arrows (single/fullbleed centered below, edge top-right), autoplay (6s, pauses on hover), loop",
-		"title <strong> emphasis rendered in the brand accent color"
+		"aspect ratio (auto, 16:9, 4:3, 21:9, 1:1) for single/thumbs; grid tiles square, fullbleed 21:9, edge 520 × 360",
+		"arrows (single/fullbleed centered below, edge in the head), autoplay (6s, pauses on hover), loop, swipe",
+		"switches show_arrows, show_thumbnails (thumbs), show_dots / show_counter (edge)",
+		"empty image slides draw a placeholder only in the playground / editor; a live site drops them"
 	],
 	"variants": [
 		{
@@ -21,29 +22,30 @@
 		},
 		{
 			"value": "grid",
-			"description": "Static gallery: one large lead image plus a grid of square tiles (first 5 slides). No slider controls."
+			"description": "Static gallery: a 2 × 2 lead image plus four square tiles in three columns (first 5 slides). No slider controls."
 		},
 		{
 			"value": "thumbs",
-			"description": "Main slide with a caption overlay and a thumbnail strip below; clicking a thumbnail changes the main image."
+			"description": "Main slide with a caption overlay and a 6-column thumbnail grid below; clicking a thumbnail changes the main image."
 		},
 		{
 			"value": "fullbleed",
-			"description": "Slide track breaks out to the full viewport width at 21:9, caption overlay, arrows centered below."
+			"description": "The 21:9 frame spans the whole section; head and arrows stay in the content width."
 		},
 		{
 			"value": "edge",
-			"description": "Square cards run past the right container edge; arrows sit in the header row, a segmented progress bar + counter below."
+			"description": "520 × 360 cards run past the right edge; arrows sit in the head, progress dots + counter below."
 		}
 	],
 	"atoms": [
-		"Button",
 		"Eyebrow",
-		"SliderArrow"
+		"SliderArrow",
+		"TextLink"
 	],
 	"breakpoints": {
-		"mobile": "Header stacks above the gallery; grid collapses to 2 columns; edge/thumbs scroll horizontally.",
-		"desktop": "Left-aligned header renders buttons (and edge arrows) in the top-right of the header row."
+		"mobile": "≤640: head stacks; grid becomes 2 columns with a 4:3 lead; edge cards 300, gap 16.",
+		"tablet": "≤1024: edge cards 420.",
+		"desktop": "Head row with the link bottom-right (edge: arrows); content width 1100; edge cards 520."
 	},
 	"figma": {
 		"file": "Labor - Website factory PLUGIN TEST",
@@ -54,7 +56,7 @@
 		"componentSet": "Modules / Image Slider",
 		"page": "Factory_Library_CLAUDE-WORK",
 		"port": "rewrite",
-		"portReason": "Rebuilt in utility classes; carries no islider-* class at all.",
+		"portReason": "Rebuilt on the spec node names (islider-*) with token values; no slider library (fade stage + native scroll-snap track).",
 		"toggles": {
 			"Arrows": {
 				"checkbox": "show_arrows"
@@ -70,10 +72,10 @@
 				]
 			},
 			"Counter": {
-				"none": "computed: 'NN / NN' from the active slide (edge variant)"
+				"checkbox": "show_counter"
 			},
 			"Dots": {
-				"none": "slider chrome: edge progress segments derived from the slides"
+				"checkbox": "show_dots"
 			},
 			"Eyebrow": {
 				"fields": [
@@ -91,7 +93,7 @@
 				]
 			},
 			"Thumbnails": {
-				"none": "slider chrome: thumbnail strip built from the slides (thumbs variant)"
+				"checkbox": "show_thumbnails"
 			}
 		},
 		"content": {
@@ -140,11 +142,10 @@
 	},
 	"composer_dependencies": [],
 	"npm_dependencies": [
-		"@splidejs/vue-splide",
 		"@iconify/vue"
 	],
 	"ai": {
-		"prompt_summary": "ImgSlider: header + media gallery. Settings: variant (single|grid|thumbs|fullbleed|edge, matching Figma), eyebrow, eyebrow_decoration (none|bar|dot), eyebrow_color (7 semantic tokens), title (supports <strong> accent), description, text_align (left|center|right), aspect_ratio (auto|16/9|4/3|21/9|1/1; ignored by fullbleed=21/9 and edge=square), show_arrows, autoplay, loop; buttons[] (shared Factory Button spec). Content in slides[] (min 1): { type (image|video|video_url), image, video, video_url, poster, alt, caption }.",
+		"prompt_summary": "ImgSlider: header + media gallery. Settings: variant (single|grid|thumbs|fullbleed|edge, matching Figma), eyebrow, eyebrow_decoration (none|bar|dot), eyebrow_color (7 semantic tokens), title, description, text_align (left|center|right), aspect_ratio (auto|16/9|4/3|21/9|1/1; single/thumbs only), show_arrows, show_thumbnails (thumbs), show_dots / show_counter (edge), autoplay, loop; buttons[] (rendered as text links, typically one 'Alle anzeigen'; not shown on edge). Content in slides[] (min 1): { type (image|video|video_url), image, video, video_url, poster, alt, caption }.",
 		"content_guidelines": "3-6 slides. Captions one line, rendered as an overlay pill with an index counter. Keep <strong> emphasis to one phrase. Grid uses the first 5 slides (1 lead + 4 tiles).",
 		"field_hints": {
 			"variant": "Layout family; single/thumbs/fullbleed/edge are sliders, grid is a static composition.",

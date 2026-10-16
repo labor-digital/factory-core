@@ -22,6 +22,25 @@ fields:
     label: Show divider between items
     default: 1
 
+  # The other appearance switches of Modules / FAQ (DL #063 D1). Default on —
+  # all three were drawn unconditionally before.
+  - identifier: show_icon
+    type: Checkbox
+    label: Show +/× icon
+    default: 1
+
+  - identifier: show_group_rule
+    type: Checkbox
+    label: Show rule under group titles
+    description: Grouped variant.
+    default: 1
+
+  - identifier: show_group_num
+    type: Checkbox
+    label: Show group numbers
+    description: 'Grouped variant: "01", "02" …'
+    default: 1
+
   - identifier: eyebrow
     type: Text
     label: Eyebrow

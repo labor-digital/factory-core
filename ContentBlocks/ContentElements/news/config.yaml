@@ -46,6 +46,28 @@ fields:
     type: Link
     label: Top-right link target
 
+  # Appearance switches — the library's `Meta`, `Link`, `Toolbar` and `Filters`
+  # toggles on Modules / News (DL #063 D1). On unless switched off.
+  - identifier: show_meta
+    type: Checkbox
+    label: Show meta (date, author, source)
+    default: 1
+
+  - identifier: show_link
+    type: Checkbox
+    label: Show links (top-right link, "Artikel lesen" on Featured)
+    default: 1
+
+  - identifier: show_toolbar
+    type: Checkbox
+    label: Show toolbar (search and year tabs, Grid and List)
+    default: 1
+
+  - identifier: show_filters
+    type: Checkbox
+    label: Show category filters
+    default: 1
+
   - identifier: items
     type: Collection
     label: News items

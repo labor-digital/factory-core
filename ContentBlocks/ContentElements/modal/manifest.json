@@ -1,6 +1,6 @@
 {
 	"name": "Modal",
-	"version": "1.0.0",
+	"version": "1.1.0",
 	"min_core_version": "1.0.0",
 	"composer_dependencies": [],
 	"npm_dependencies": [],
@@ -75,7 +75,7 @@
 		],
 		"toggles": {
 			"Warn-Icon": {
-				"none": "decorative icon; drawn from fixed markup (alert variant)"
+				"checkbox": "show_icon"
 			},
 			"Body": {
 				"fields": [
@@ -105,6 +105,7 @@
 			},
 			"Caption": {
 				"fields": [
+					"caption",
 					"subline"
 				]
 			},
@@ -119,7 +120,7 @@
 				]
 			},
 			"Step Count": {
-				"none": "computed from steps; drawn from fixed markup"
+				"checkbox": "show_step_count"
 			},
 			"Choice Desc": {
 				"fields": [
@@ -127,7 +128,7 @@
 				]
 			},
 			"Step Done": {
-				"none": "decorative progress mark; one per step"
+				"none": "decorative progress bar per completed step; the library hides it by default (toggleDefault false), treated as a library quirk — completed steps stay drawn so the bar has no gaps"
 			},
 			"Step Active": {
 				"none": "decorative progress mark; one per step"
@@ -186,7 +187,7 @@
 		}
 	},
 	"ai": {
-		"prompt_summary": "Modal: a dialog overlay opened by a trigger button rendered in the page. Element settings: variant (confirm|alert|lightbox|video|form|detail|wizard), trigger_label, trigger_variant (solid|outline|ghost|link), title, body, show_close. Actions are label + behaviour: confirm_label/confirm_action (close|link|submit)/confirm_to/confirm_target and cancel_label/cancel_action (close|link)/cancel_to. The form variant posts to form_action with form_method. Media variants use image/caption/counter (lightbox), video_url/poster/duration/subline (video), image/subline/specs[] (detail). form uses fields[] (field_label, field_type) plus consent_label. wizard uses steps[] (step_title, step_description, choices[]).",
+		"prompt_summary": "Modal: a dialog overlay opened by a trigger button rendered in the page. Element settings: variant (confirm|alert|lightbox|video|form|detail|wizard), trigger_label, trigger_variant (solid|outline|ghost|link), title, body, show_close, show_icon (warning icon on confirm), show_step_count (wizard). Actions are label + behaviour: confirm_label/confirm_action (close|link|submit)/confirm_to/confirm_target and cancel_label/cancel_action (close|link)/cancel_to. The form variant posts to form_action with form_method. Media variants use image/caption/subline/counter (lightbox; subline = second caption line), video_url/poster/duration/subline (video), image/subline/specs[] (detail). form uses fields[] (field_label, field_type) plus consent_label. wizard uses steps[] (step_title, step_description, choices[]).",
 		"content_guidelines": "Title at most 8 words and phrased as the decision the visitor is making. Body at most two sentences. Action labels are verbs, not 'OK' — 'Löschen', 'Termin buchen'. Always give cancel_label a value on the confirm variant; a confirmation with only one action is not a confirmation. An action label must match what it does — do not label a button 'Jetzt buchen' and leave confirm_action on 'close'.",
 		"field_hints": {
 			"trigger_label": "What the visitor clicks in the page. Required — without it the dialog can never be opened.",

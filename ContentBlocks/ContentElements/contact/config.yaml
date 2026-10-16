@@ -16,6 +16,34 @@ fields:
       - { label: Split with image · photo left, value: split-image }
     default: split
 
+  # Appearance switches (DL #063 D1) — the design's Info Icons / Divider / Link /
+  # Phone / Subject toggles. On by default, so stored content keeps its look.
+  - identifier: show_info_icons
+    type: Checkbox
+    label: Show info icons
+    default: 1
+    displayCond: 'FIELD:variant:IN:split,stacked,tiles,persons'
+  - identifier: show_divider
+    type: Checkbox
+    label: Show divider above and below the info band
+    default: 1
+    displayCond: 'FIELD:variant:=:stacked'
+  - identifier: show_tile_links
+    type: Checkbox
+    label: Show tile links (route, call, e-mail)
+    default: 1
+    displayCond: 'FIELD:variant:=:tiles'
+  - identifier: show_phone_field
+    type: Checkbox
+    label: Show phone field in the form
+    default: 1
+    displayCond: 'FIELD:variant:IN:split,stacked,split-image'
+  - identifier: show_subject_field
+    type: Checkbox
+    label: Show subject field in the form
+    default: 1
+    displayCond: 'FIELD:variant:IN:split,stacked,split-image'
+
   - identifier: eyebrow
     type: Text
     label: Eyebrow

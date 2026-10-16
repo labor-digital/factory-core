@@ -14,7 +14,6 @@ types: |
   Studie
   Interview
 search_placeholder: 'Inhalte durchsuchen …'
-per_page: 9
 items:
   - { title: 'Was bedeutet KfW-EH 55?',     excerpt: 'Eine kurze Erklärung des Energiestandards.', category: Technik,  type: Leitfaden, date: '2026-04-22', read_time: 4 }
   - { title: 'Holzbau vs. Massivbau',       excerpt: 'Wann lohnt sich welches Verfahren?',         category: Konzept,  type: Artikel,   date: '2026-04-08', read_time: 6 }

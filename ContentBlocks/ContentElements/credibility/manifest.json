@@ -2,7 +2,7 @@
 	"$schema": "../../../../../contract/schema/component-manifest.schema.json",
 	"name": "Credibility",
 	"type": "content-element",
-	"version": "1.1.0",
+	"version": "1.2.0",
 	"min_core_version": "1.0.0",
 	"description": "Trust-building section with five proof formats: certificate logo grid, guarantee icon cards, a 4-KPI stats banner, awards (one featured + list), or customer reviews as a star grid or horizontal slider. Each variant reads its own collection.",
 	"when_to_use": "Mid or lower page to back up claims with third-party proof — certifications, guarantees, awards, review scores. Use Testimonials for narrative customer quotes; use Stats for company KPIs without a trust framing.",
@@ -83,7 +83,7 @@
 				]
 			},
 			"Icon": {
-				"none": "icon; always drawn (guarantees[].icon only picks the glyph, defaults to shield)"
+				"checkbox": "show_icon"
 			},
 			"Stat Label": {
 				"fields": [
@@ -96,10 +96,13 @@
 				]
 			},
 			"Award Mark": {
-				"none": "decorative mark; always drawn"
+				"checkbox": "show_award_mark"
 			},
 			"Award Meta": {
-				"none": "not modelled: featured-card-only meta; awards[].year/project also feed the list rows, which the design keeps"
+				"fields": [
+					"awards[0].year",
+					"awards[0].project"
+				]
 			},
 			"Summary": {
 				"fields": [
@@ -109,7 +112,7 @@
 				]
 			},
 			"Stars": {
-				"none": "stars always drawn (reviews[].rating falls back to 5)"
+				"checkbox": "show_stars"
 			},
 			"Review Meta": {
 				"fields": [
@@ -203,7 +206,7 @@
 	"composer_dependencies": [],
 	"npm_dependencies": [],
 	"ai": {
-		"prompt_summary": "Credibility: trust/proof section. Settings: variant (certificates|guarantees|stats-banner|awards|reviews|reviews-slider), eyebrow, headline, intro. Per variant: certificates[] { name (required), description, issuer, since (year), logo }; guarantees[] { icon (shield|clock|euro|handshake), title, description }; stats[] { value, suffix, label }; awards[] { year, title, project, issuer, featured }; reviews variants: reviews_summary_avg, reviews_summary_count, reviews_summary_source plus reviews[] { name (required), project, rating (0-5), quote, date, source }.",
+		"prompt_summary": "Credibility: trust/proof section. Settings: variant (certificates|guarantees|stats-banner|awards|reviews|reviews-slider), eyebrow, headline, intro (not drawn by stats-banner and the review variants); switches show_icon (guarantees), show_award_mark (awards), show_stars (reviews), default on. Per variant: certificates[] { name (required), description, issuer, since (year), logo }; guarantees[] { icon (shield|clock|euro|handshake), title, description }; stats[] { value, suffix, label }; awards[] { year, title, project, issuer, featured }; reviews variants: reviews_summary_avg, reviews_summary_count, reviews_summary_source plus reviews[] { name (required), project, rating (0-5), quote, date, source }.",
 		"content_guidelines": "4-8 items per collection. Review quotes 1-3 sentences, ratings mostly 4-5. Use realistic issuers/sources (TÜV, Google, Trustpilot). Exactly one featured award.",
 		"field_hints": {
 			"reviews_summary_avg": "Display string with locale decimal comma, e.g. '4,9'.",

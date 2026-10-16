@@ -26,6 +26,19 @@ fields:
     allowedFileExtensions: ['svg', 'png', 'webp']
     maxItems: 1
 
+  # Figma "Logo Mark" / "Wordmark" (DL #063 D1). Default on: both were drawn
+  # before these fields existed. The wordmark is the logo text next to the mark
+  # (only without a logo image).
+  - identifier: show_logo
+    type: Checkbox
+    label: Show logo
+    default: 1
+
+  - identifier: show_wordmark
+    type: Checkbox
+    label: Show wordmark (logo text)
+    default: 1
+
   - identifier: cta_label
     type: Text
     label: CTA Label

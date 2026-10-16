@@ -2,7 +2,7 @@
 	"$schema": "../../../../../contract/schema/component-manifest.schema.json",
 	"name": "Header",
 	"type": "content-element",
-	"version": "1.2.0",
+	"version": "1.3.0",
 	"min_core_version": "1.0.0",
 	"description": "Site-wide page header with logo (text or image), primary navigation with subpage dropdowns, an optional CTA button, and a burger-toggled mobile menu. The mega variant shows a full-width panel with grouped columns plus an optional featured teaser column.",
 	"when_to_use": "Exactly one Header per site, on the shared layout. Pick transparent when it sits over a Hero with imagery; mega when the navigation needs grouped second-level links.",
@@ -70,7 +70,7 @@
 				]
 			},
 			"Logo Mark": {
-				"none": "decorative: the logo mark is fixed markup; logo_image replaces the whole logo, not only the mark"
+				"checkbox": "show_logo"
 			},
 			"Mega Panel": {
 				"none": "interaction state: the panel opens on hover from links[].children; hiding it in a static frame does not mean there is no submenu"
@@ -79,7 +79,7 @@
 				"none": "always drawn: the navigation comes from the site menu when links is empty (site chrome strips links)"
 			},
 			"Wordmark": {
-				"none": "not modelled: the logo text comes from logo_text, which renders a 'Logo' placeholder when empty"
+				"checkbox": "show_wordmark"
 			}
 		},
 		"content": {
@@ -130,7 +130,7 @@
 		"@iconify/vue"
 	],
 	"ai": {
-		"prompt_summary": "Header: site header/navigation. Settings: variant (classic|transparent|minimal|mega), logo_text (fallback when no image), logo_image, cta_label, cta_to (CTA shows only in minimal/mega). Navigation in links[]: { label, to, active, children[] (mega variant): { group (column heading), label, to }, feature_title/feature_body/feature_image (optional mega teaser column) }.",
+		"prompt_summary": "Header: site header/navigation. Settings: variant (classic|transparent|minimal|mega), logo_text (fallback when no image), logo_image, cta_label, cta_to (CTA shows only in minimal/mega). Switches ('1' default, '0' hides): show_logo (the mark / logo image), show_wordmark (the logo text beside the mark; not drawn next to a logo image). Navigation in links[]: { label, to, active, children[] (mega variant): { group (column heading), label, to }, feature_title/feature_body/feature_image (optional mega teaser column) }.",
 		"content_guidelines": "4-6 primary links with 1-2 word labels. One CTA at most (e.g. 'Kontakt'). Mega children: 2-3 groups with 3-5 links each; add a feature_title/feature_image to spotlight one topic.",
 		"field_hints": {
 			"links.active": "Marks the link as the current page (brand-primary underline).",

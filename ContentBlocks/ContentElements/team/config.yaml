@@ -33,10 +33,19 @@ fields:
     type: Select
     renderType: selectSingle
     label: Header Alignment
+    description: Variant default = centred on Grid, left everywhere else.
     items:
+      - { label: Variant default, value: auto }
       - { label: Left, value: left }
       - { label: Center, value: center }
-    default: left
+    default: auto
+
+  # Appearance switch — the library's `Group Count` toggle on Modules / Team
+  # (DL #063 D1). On unless switched off.
+  - identifier: show_group_count
+    type: Checkbox
+    label: Show member count per group (Grouped)
+    default: 1
 
   - identifier: per_page
     type: Number

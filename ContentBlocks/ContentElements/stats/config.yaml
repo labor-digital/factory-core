@@ -58,3 +58,23 @@ fields:
       - { label: 'H2 — section heading', value: h2 }
       - { label: 'H3 — sub-section', value: h3 }
     default: h2
+
+  # Appearance switches (DL #063 D1) — the Figma "Item Border", "Top Rule" and
+  # "Bottom Rule" toggles. Default on: the rules were always drawn before.
+  - identifier: show_item_border
+    type: Checkbox
+    label: Show rule above each figure
+    description: 'row, bigfour, split.'
+    default: 1
+
+  - identifier: show_top_rule
+    type: Checkbox
+    label: Show top rule
+    description: Inline variant.
+    default: 1
+
+  - identifier: show_bottom_rule
+    type: Checkbox
+    label: Show bottom rule
+    description: Inline variant.
+    default: 1
