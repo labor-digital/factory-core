@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+# [2.10.0](https://bitbucket.org/labor-digital/labor-factory-app/branches/compare/factory-core-v2.10.0%0Dfactory-core-v2.9.1#diff) (2026-10-17)
+
+
+### Features
+
+* module sweep — every variant to the Figma spec, show_* switches the import sets (DL [#063](https://bitbucket.org/labor-digital/labor-factory-app/issues/063)) ([695323e](https://bitbucket.org/labor-digital/labor-factory-app/commits/695323e503ea5fec01d3878e9bee0737a5ffe00a))
+
+
+
 ## [2.9.1](https://bitbucket.org/labor-digital/labor-factory-app/branches/compare/factory-core-v2.9.1%0Dfactory-core-v2.9.0#diff) (2026-10-15)
 
 
