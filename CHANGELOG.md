@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+# [2.11.0](https://bitbucket.org/labor-digital/labor-factory-app/branches/compare/factory-core-v2.11.0%0Dfactory-core-v2.10.0#diff) (2026-10-18)
+
+
+### Features
+
+* the brand's type scale reaches the tenant, and headlines take the size the design picks (DL [#065](https://bitbucket.org/labor-digital/labor-factory-app/issues/065)) ([e7d37e9](https://bitbucket.org/labor-digital/labor-factory-app/commits/e7d37e9a0d471dd7677af353f993c07cb82fda8c))
+
+
+
 # [2.10.0](https://bitbucket.org/labor-digital/labor-factory-app/branches/compare/factory-core-v2.10.0%0Dfactory-core-v2.9.1#diff) (2026-10-17)
 
 
