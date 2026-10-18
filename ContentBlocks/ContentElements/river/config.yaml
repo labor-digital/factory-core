@@ -98,6 +98,17 @@ fields:
 
   # Appearance switches (DL #063 D1) — the Figma "Overlay" / "Play" toggles of the
   # video variant. Default on.
+  - identifier: heading_size
+    type: Select
+    renderType: selectSingle
+    label: Headline size
+    description: Default = the variant's own size; H1–H3 use the site's type scale (DL #065).
+    items:
+      - { label: Default, value: default }
+      - { label: H1, value: h1 }
+      - { label: H2, value: h2 }
+      - { label: H3, value: h3 }
+    default: default
   - identifier: show_overlay
     type: Checkbox
     label: Show video overlay

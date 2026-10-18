@@ -2,7 +2,7 @@
 	"$schema": "../../../../../contract/schema/component-manifest.schema.json",
 	"name": "Text",
 	"type": "content-element",
-	"version": "1.2.0",
+	"version": "1.3.0",
 	"min_core_version": "1.0.0",
 	"description": "Simple text section with eyebrow, title (with <strong> accent support), subline, body, and up to two CTAs. Layouts: left-aligned, centered, two-column (title left / body right), or an oversize headline that breaks the grid.",
 	"when_to_use": "Pure copy blocks — mission statements, section intros, editorial passages without media. Use Intro when an image belongs next to the text; use Cta when the block's job is conversion.",
@@ -168,8 +168,26 @@
 		},
 		"media": {},
 		"style": {
-			"text-mod-title.textCase": { "into": "heading_case", "values": { "UPPER": "upper" } },
-			"text-mod-oversize-title.textCase": { "into": "heading_case", "values": { "UPPER": "upper" } }
+			"text-mod-title.textCase": {
+				"into": "heading_case",
+				"values": {
+					"UPPER": "upper"
+				}
+			},
+			"text-mod-oversize-title.textCase": {
+				"into": "heading_case",
+				"values": {
+					"UPPER": "upper"
+				}
+			},
+			"text-mod-title.fontSize": {
+				"into": "heading_size",
+				"values": {
+					"{font-size.h1}": "h1",
+					"{font-size.h2}": "h2",
+					"{font-size.h3}": "h3"
+				}
+			}
 		}
 	},
 	"composer_dependencies": [],

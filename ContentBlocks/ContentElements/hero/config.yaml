@@ -208,6 +208,17 @@ fields:
     default: h1
 
   # Design override (DL #063 D3) — "default" keeps the library's light title.
+  - identifier: heading_size
+    type: Select
+    renderType: selectSingle
+    label: Headline size
+    description: Default = the variant's own size; H1–H3 use the site's type scale (DL #065).
+    items:
+      - { label: Default, value: default }
+      - { label: H1, value: h1 }
+      - { label: H2, value: h2 }
+      - { label: H3, value: h3 }
+    default: default
   - identifier: heading_weight
     type: Select
     renderType: selectSingle

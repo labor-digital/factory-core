@@ -2,7 +2,7 @@
 	"$schema": "../../../../../contract/schema/component-manifest.schema.json",
 	"name": "Features",
 	"type": "content-element",
-	"version": "1.5.0",
+	"version": "1.6.0",
 	"min_core_version": "1.0.0",
 	"description": "Grid of feature/service cards, each with title and text plus an optional icon, big number, or image depending on the variant. Cards can carry an individual link.",
 	"when_to_use": "Service overviews, USP lists, process steps (numbered variant). Use River for alternating text+media storytelling and Stats for pure number KPIs.",
@@ -166,14 +166,66 @@
 			}
 		},
 		"style": {
-			"fg-flat-body.counterAxisAlign": { "into": "content_align", "values": { "CENTER": "center", "MIN": "left" } },
-			"fg-card-title.textAlign": { "into": "content_align", "values": { "CENTER": "center", "LEFT": "left" } },
-			"fg-card-text.textAlign": { "into": "content_align", "values": { "CENTER": "center", "LEFT": "left" } },
-			"fg-head / fg-head-center.counterAxisAlign": { "into": "content_align", "values": { "CENTER": "center" } },
-			"fg-headline.textAlign": { "into": "content_align", "values": { "CENTER": "center" } },
-			"fg-intro.textAlign": { "into": "content_align", "values": { "CENTER": "center" } },
-			"fg-headline.textCase": { "into": "heading_case", "values": { "UPPER": "upper" } },
-			"fg-headline.fontWeight": { "into": "heading_weight", "values": { "Bold": "bold", "Light": "light" } }
+			"fg-flat-body.counterAxisAlign": {
+				"into": "content_align",
+				"values": {
+					"CENTER": "center",
+					"MIN": "left"
+				}
+			},
+			"fg-card-title.textAlign": {
+				"into": "content_align",
+				"values": {
+					"CENTER": "center",
+					"LEFT": "left"
+				}
+			},
+			"fg-card-text.textAlign": {
+				"into": "content_align",
+				"values": {
+					"CENTER": "center",
+					"LEFT": "left"
+				}
+			},
+			"fg-head / fg-head-center.counterAxisAlign": {
+				"into": "content_align",
+				"values": {
+					"CENTER": "center"
+				}
+			},
+			"fg-headline.textAlign": {
+				"into": "content_align",
+				"values": {
+					"CENTER": "center"
+				}
+			},
+			"fg-intro.textAlign": {
+				"into": "content_align",
+				"values": {
+					"CENTER": "center"
+				}
+			},
+			"fg-headline.textCase": {
+				"into": "heading_case",
+				"values": {
+					"UPPER": "upper"
+				}
+			},
+			"fg-headline.fontWeight": {
+				"into": "heading_weight",
+				"values": {
+					"Bold": "bold",
+					"Light": "light"
+				}
+			},
+			"fg-headline.fontSize": {
+				"into": "heading_size",
+				"values": {
+					"{font-size.h1}": "h1",
+					"{font-size.h2}": "h2",
+					"{font-size.h3}": "h3"
+				}
+			}
 		}
 	},
 	"composer_dependencies": [],

@@ -2,7 +2,7 @@
 	"$schema": "../../../../../contract/schema/component-manifest.schema.json",
 	"name": "Teaser",
 	"type": "content-element",
-	"version": "2.4.0",
+	"version": "2.5.0",
 	"min_core_version": "1.0.0",
 	"description": "Polymorphic record teaser: lists records of any active record type (Property, ...) in one of five Figma layouts — cards, cards-compact, list, feature, or edge. Records are picked manually via relation fields or queried automatically from a storage folder with filter, limit, and order; each record renders through its record type's card component.",
 	"when_to_use": "Reference/portfolio rows fed by structured records — 'Unsere Referenzen', latest properties. Use Blocks or News for hand-authored inline items instead of records.",
@@ -223,6 +223,42 @@
 				"values": {
 					"Bold": "bold",
 					"Light": "light"
+				}
+			},
+			"h-1.fontSize": {
+				"into": "heading_size",
+				"values": {
+					"{font-size.h1}": "h1",
+					"{font-size.h2}": "h2",
+					"{font-size.h3}": "h3"
+				}
+			},
+			"h-1.textAlign": {
+				"into": "content_align",
+				"values": {
+					"CENTER": "center",
+					"LEFT": "left"
+				}
+			},
+			"teaser-head.primaryAxisAlign": {
+				"into": "content_align",
+				"values": {
+					"CENTER": "center",
+					"MIN": "left"
+				}
+			},
+			"teaser-heading.counterAxisAlign": {
+				"into": "content_align",
+				"values": {
+					"CENTER": "center",
+					"MIN": "left"
+				}
+			},
+			"body-text.textAlign": {
+				"into": "content_align",
+				"values": {
+					"CENTER": "center",
+					"LEFT": "left"
 				}
 			}
 		},
