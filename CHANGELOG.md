@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+# [2.12.0](https://bitbucket.org/labor-digital/labor-factory-app/branches/compare/factory-core-v2.12.0%0Dfactory-core-v2.11.0#diff) (2026-11-10)
+
+
+### Features
+
+* Divider and Embed, consent before external services, pos268 ports (DL [#073](https://bitbucket.org/labor-digital/labor-factory-app/issues/073)) ([852e3c8](https://bitbucket.org/labor-digital/labor-factory-app/commits/852e3c8c47e160be7ddfb6a9700f4a76debc5cda))
+
+
+
 # [2.11.0](https://bitbucket.org/labor-digital/labor-factory-app/branches/compare/factory-core-v2.11.0%0Dfactory-core-v2.10.0#diff) (2026-10-18)
 
 
