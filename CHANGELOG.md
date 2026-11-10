@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+# [2.13.0](https://bitbucket.org/labor-digital/labor-factory-app/branches/compare/factory-core-v2.13.0%0Dfactory-core-v2.12.0#diff) (2026-11-10)
+
+
+### Features
+
+* import Simon's "Export for IT (ZIP)" — pictures by path, hidden content, map share links (DL [#074](https://bitbucket.org/labor-digital/labor-factory-app/issues/074)) ([a8c4ab1](https://bitbucket.org/labor-digital/labor-factory-app/commits/a8c4ab1fe370b16a2472802cc7ba20128e8f8bef))
+
+
+
 # [2.12.0](https://bitbucket.org/labor-digital/labor-factory-app/branches/compare/factory-core-v2.12.0%0Dfactory-core-v2.11.0#diff) (2026-11-10)
 
 
