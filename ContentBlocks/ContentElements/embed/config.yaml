@@ -1,0 +1,86 @@
+name: factory/embed
+title: Embed
+description: A map or other external page embedded in the site, behind a consent panel.
+group: factory
+icon: content-media
+fields:
+  # Figma "Modules / Embed" (pos268, one variant `contained`): an optional title,
+  # a static picture in Atoms / Media and an optional caption. The live embed is
+  # the export's `behavior: embed { provider, src }` (DL #073 §3). Nothing loads
+  # from the provider until the visitor allows it (DL #073 §5).
+  - identifier: variant
+    type: Select
+    renderType: selectSingle
+    label: Variant
+    items:
+      - { label: 'Contained (title, picture or embed, caption)', value: contained }
+    default: contained
+
+  - identifier: kind
+    type: Select
+    renderType: selectSingle
+    label: Kind
+    description: 'Videos (YouTube, Vimeo) belong in the Video element, not here.'
+    items:
+      - { label: Map, value: map }
+      - { label: 'Other page (iframe)', value: iframe }
+    default: map
+
+  - identifier: title
+    type: Text
+    label: Title
+
+  - identifier: caption
+    type: Text
+    label: Caption
+    description: 'Shown below, e.g. "Karte: OpenStreetMap".'
+
+  - identifier: src
+    type: Link
+    label: Embed address
+    description: 'The https address the provider gives for embedding (e.g. Google Maps "Karte einbetten" → the src of its iframe). Loaded only after the visitor allows it.'
+
+  - identifier: provider
+    type: Text
+    label: Provider name (optional)
+    description: 'Named in the consent text. Left empty, it is derived from the address (Google Maps, OpenStreetMap, …).'
+
+  - identifier: image
+    type: File
+    label: Picture shown before loading
+    description: 'A map screenshot or a preview. Shown behind the consent panel, and on its own when no address is set.'
+    maxItems: 1
+    allowedFileExtensions: ['jpg', 'jpeg', 'png', 'webp']
+
+  - identifier: aspect_ratio
+    type: Select
+    renderType: selectSingle
+    label: Aspect ratio
+    items:
+      - { label: '16:9 Wide', value: '16/9' }
+      - { label: '4:3', value: '4/3' }
+      - { label: '3:2 Landscape', value: '3/2' }
+      - { label: '1:1 Square', value: '1/1' }
+      - { label: '21:9 Cinema', value: '21/9' }
+    default: '16/9'
+
+  - identifier: heading_level
+    type: Select
+    renderType: selectSingle
+    label: Heading level
+    description: Which HTML heading the title renders as. Use H1 once per page — the chat's SEO check reports duplicates.
+    items:
+      - { label: 'H1 — main page heading', value: h1 }
+      - { label: 'H2 — section heading', value: h2 }
+      - { label: 'H3 — sub-section', value: h3 }
+    default: h2
+
+  - identifier: show_title
+    type: Checkbox
+    label: Show title
+    default: 1
+
+  - identifier: show_caption
+    type: Checkbox
+    label: Show caption
+    default: 1

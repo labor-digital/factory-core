@@ -15,6 +15,17 @@ fields:
       - { label: Media (with image), value: media }
     default: cards
 
+  # pos268 Columns axis (DL #073): auto = 3 / 2 / 1 per row (desktop / tablet /
+  # mobile); 3-1-1 = three on desktop, one per row below.
+  - identifier: columns
+    type: Select
+    renderType: selectSingle
+    label: Columns
+    items:
+      - { label: 'Auto (3, 2 on tablet, 1 on mobile)', value: auto }
+      - { label: '3 on desktop, 1 below', value: 3-1-1 }
+    default: auto
+
   # Atom switches on Atoms / Feature Card (DL #063 D1). Both were drawn
   # unconditionally before, so they default on.
   - identifier: show_top_rule

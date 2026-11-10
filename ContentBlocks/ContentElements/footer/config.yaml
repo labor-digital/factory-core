@@ -55,6 +55,19 @@ fields:
     label: Show wordmark row (maximal variant)
     default: 1
 
+  # pos268 (DL #073): the Figma "Separators" and "Legal Separators" switches —
+  # a "|" between the compact footer's links and between the maximal footer's
+  # legal links. On in the library, so on by default here too.
+  - identifier: show_separators
+    type: Checkbox
+    label: Show separators between links (compact variant)
+    default: 1
+
+  - identifier: show_legal_separators
+    type: Checkbox
+    label: Show separators between legal links (maximal variant)
+    default: 1
+
   - identifier: logo_text
     type: Text
     label: Logo Text

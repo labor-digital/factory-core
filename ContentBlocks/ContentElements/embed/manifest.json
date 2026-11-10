@@ -1,0 +1,88 @@
+{
+	"$schema": "../../../../../contract/schema/component-manifest.schema.json",
+	"name": "Embed",
+	"type": "content-element",
+	"version": "1.0.0",
+	"min_core_version": "1.0.0",
+	"description": "A map or another external page embedded in the site: optional title, a picture shown before loading, the live embed after the visitor allows it, optional caption. Nothing loads from the provider before that click.",
+	"when_to_use": "Show where the business is (a map) or embed another site's page (a booking widget, a form hosted elsewhere). Not for videos: YouTube and Vimeo go in the Video element. Not for images: use the Image Slider or a section's media.",
+	"capabilities": [
+		"one layout: title, 16:9 (or 4:3, 3:2, 1:1, 21:9) box, caption",
+		"two-click consent: picture + provider notice + 'Inhalt laden' + 'always load {provider}' (remembered in the browser)",
+		"kind: map or iframe; the provider is named from the address (Google Maps, OpenStreetMap, Apple Maps, else the host) unless set",
+		"https addresses only; YouTube/Vimeo are refused (Video element)",
+		"switches: show_title, show_caption"
+	],
+	"variants": [
+		{
+			"value": "contained",
+			"description": "Title, the embed box at content width, caption. The only variant upstream (pos268)."
+		}
+	],
+	"atoms": [],
+	"breakpoints": {
+		"mobile": "Full width; while the consent panel shows, the box grows to fit it (min 260px), the loaded embed keeps its ratio.",
+		"desktop": "Content width; consent panel centred over the picture."
+	},
+	"ai": {
+		"prompt_summary": "Embed: a map or external page behind a consent panel. Settings: variant (contained), kind (map|iframe), title, caption, src (https embed address, e.g. the src of Google Maps' 'Karte einbetten' iframe or an OpenStreetMap export/embed.html URL), provider (optional display name), image (picture shown before loading), aspect_ratio ('16/9'|'4/3'|'3/2'|'1/1'|'21/9'), heading_level, show_title, show_caption.",
+		"content_guidelines": "Always set src to the provider's EMBED address, not the page address (Google Maps: maps/embed?pb=…; OpenStreetMap: export/embed.html?bbox=…). A caption naming the provider ('Karte: OpenStreetMap') is good practice. Never put a YouTube/Vimeo link here.",
+		"field_hints": {
+			"src": "https only. The embed address, loaded after consent.",
+			"image": "Optional: a screenshot of the map; otherwise a neutral box behind the consent panel.",
+			"provider": "Leave empty unless the derived name is wrong."
+		}
+	},
+	"figma": {
+		"file": "Labor - Website factory PLUGIN TEST",
+		"fileKey": "avP1L4LoOxY5ukjT4bAajX",
+		"nodeId": null,
+		"dateStamp": "2026-11-10",
+		"moduleHeader": null,
+		"componentSet": "Modules / Embed",
+		"page": "Factory_Library_CLAUDE-WORK",
+		"toggles": {
+			"Title": {
+				"checkbox": "show_title"
+			},
+			"Caption": {
+				"checkbox": "show_caption"
+			},
+			"Image": {
+				"fields": [
+					"image"
+				]
+			}
+		},
+		"content": {
+			"Title": {
+				"into": "title"
+			},
+			"Caption": {
+				"into": "caption"
+			},
+			"Kind": {
+				"into": "kind"
+			}
+		},
+		"items": {
+			"embed-title h-2": {
+				"none": "covered by content key Title"
+			},
+			"embed-caption": {
+				"none": "covered by content key Caption"
+			}
+		},
+		"media": {
+			"embed-media ph": {
+				"into": "image"
+			}
+		},
+		"behavior": {
+			"embed": {
+				"src": "src",
+				"provider": "provider"
+			}
+		}
+	}
+}

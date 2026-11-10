@@ -1,0 +1,9 @@
+variant: contained
+kind: map
+title: So finden Sie uns
+caption: 'Karte: OpenStreetMap'
+src: 'https://www.openstreetmap.org/export/embed.html?bbox=8.2650%2C49.9920%2C8.2850%2C50.0020&layer=mapnik&marker=49.9970%2C8.2750'
+aspect_ratio: '16/9'
+heading_level: h2
+show_title: 1
+show_caption: 1

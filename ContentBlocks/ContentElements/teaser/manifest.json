@@ -2,7 +2,7 @@
 	"$schema": "../../../../../contract/schema/component-manifest.schema.json",
 	"name": "Teaser",
 	"type": "content-element",
-	"version": "2.5.0",
+	"version": "2.6.0",
 	"min_core_version": "1.0.0",
 	"description": "Polymorphic record teaser: lists records of any active record type (Property, ...) in one of five Figma layouts — cards, cards-compact, list, feature, or edge. Records are picked manually via relation fields or queried automatically from a storage folder with filter, limit, and order; each record renders through its record type's card component.",
 	"when_to_use": "Reference/portfolio rows fed by structured records — 'Unsere Referenzen', latest properties. Use Blocks or News for hand-authored inline items instead of records.",
@@ -15,7 +15,9 @@
 		"card part switches handed to every record card: show_image, show_category, show_address, show_divider, show_meta; card text link (card_link_label) on list/feature",
 		"show_pager (arrows; off = every card, wrapped), show_thumbnails (feature)",
 		"design overrides: content_align, heading_case, heading_weight",
-		"optional centred band button below the records (band_button_label / band_button_to)"
+		"optional centred band button below the records (band_button_label / band_button_to)",
+		"arrows_position (cards): foot (default) / image edges / card edges",
+		"columns 3-1-1: three per row on desktop, one per view below"
 	],
 	"variants": [
 		{
@@ -111,6 +113,12 @@
 			},
 			"Thumbnails": {
 				"checkbox": "show_thumbnails"
+			},
+			"Arrows On Image": {
+				"none": "runtime: an ON switch the toggle pass cannot set (it only switches parts off); the editor sets arrows_position = image"
+			},
+			"Arrows On Slide": {
+				"none": "runtime: an ON switch the toggle pass cannot set; the editor sets arrows_position = slide"
 			}
 		},
 		"content": {
@@ -268,7 +276,8 @@
 				"into": "columns",
 				"values": {
 					"auto": "auto",
-					"3": "3"
+					"3": "3",
+					"3-1-1": "3-1-1"
 				}
 			}
 		}

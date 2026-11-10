@@ -1,0 +1,67 @@
+{
+	"$schema": "../../../../../contract/schema/component-manifest.schema.json",
+	"name": "Divider",
+	"type": "content-element",
+	"version": "1.0.0",
+	"min_core_version": "1.0.0",
+	"description": "A thin horizontal rule between two sections, at content width. Space above and below, line thickness and colour are token-backed settings.",
+	"when_to_use": "Separate two sections that share a background and would otherwise run into each other. Not for decoration inside a section; most sections already carry their own rules (Stats, FAQ, Features).",
+	"capabilities": [
+		"one rule at content width (container max), no content",
+		"spacing: small (12 px) / default (24 px) / large (48 px) above and below",
+		"thickness: 1 / 2 / 4 px",
+		"colour: border (default), strong, primary, secondary"
+	],
+	"variants": [
+		{
+			"value": "contained",
+			"description": "A rule at content width. The only variant upstream (pos268)."
+		}
+	],
+	"atoms": [],
+	"breakpoints": {
+		"mobile": "Same rule; the side padding follows the section padding of the tier.",
+		"desktop": "1 px rule in {color.neutral.border}, {space.24} above and below, container width."
+	},
+	"ai": {
+		"prompt_summary": "Divider: a horizontal rule between sections. Settings: variant (contained), spacing (small|default|large), thickness ('1'|'2'|'4' px), color (border|strong|primary|secondary). No text.",
+		"content_guidelines": "Use sparingly: only where two sections on the same background need a visible break.",
+		"field_hints": {
+			"spacing": "Space above and below the line.",
+			"color": "border is the quiet default; primary for a brand accent."
+		}
+	},
+	"figma": {
+		"file": "Labor - Website factory PLUGIN TEST",
+		"fileKey": "avP1L4LoOxY5ukjT4bAajX",
+		"nodeId": null,
+		"dateStamp": "2026-11-10",
+		"moduleHeader": null,
+		"componentSet": "Modules / Divider",
+		"page": "Factory_Library_CLAUDE-WORK",
+		"toggles": {},
+		"content": {},
+		"items": {},
+		"media": {},
+		"style": {
+			"divider-line.fill": {
+				"into": "color",
+				"values": {
+					"{color.neutral.border}": "border",
+					"{color.neutral.divider}": "border",
+					"{color.neutral.text-strong}": "strong",
+					"{color.brand.primary}": "primary",
+					"{color.brand.secondary}": "secondary"
+				}
+			},
+			"mod / divider / contained.paddingTop": {
+				"into": "spacing",
+				"values": {
+					"{space.12}": "small",
+					"{space.24}": "default",
+					"{space.48}": "large"
+				}
+			}
+		}
+	}
+}

@@ -33,6 +33,27 @@ fields:
     type: Textarea
     label: Body
 
+  # pos268 (DL #073): an optional picture above the heading in the left and
+  # center variants (Figma "Image" switch, `ph text-mod-media`, 16:9 in the library).
+  - identifier: image
+    type: File
+    label: Image (left and center variants)
+    description: Shown above the heading. Leave empty for text only.
+    maxItems: 1
+    allowedFileExtensions: ['jpg', 'jpeg', 'png', 'webp']
+
+  - identifier: image_ratio
+    type: Select
+    renderType: selectSingle
+    label: Image aspect ratio
+    items:
+      - { label: '16:9 Wide', value: '16/9' }
+      - { label: '3:2 Landscape', value: '3/2' }
+      - { label: '4:3', value: '4/3' }
+      - { label: '1:1 Square', value: '1/1' }
+      - { label: '21:9 Cinema', value: '21/9' }
+    default: '16/9'
+
   - identifier: contact_org
     type: Text
     label: Contact Organisation

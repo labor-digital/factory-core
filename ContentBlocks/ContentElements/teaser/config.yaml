@@ -26,7 +26,21 @@ fields:
     items:
       - { label: Auto (variant default), value: auto }
       - { label: '3 per row', value: '3' }
+      # pos268 Columns=3-1-1 (DL #073): three on desktop, one per view below.
+      - { label: '3 per row on desktop, 1 below', value: 3-1-1 }
     default: auto
+
+  # pos268 "Arrows On Image" / "Arrows On Slide" (DL #073), cards variant: where
+  # the pager arrows sit. Below the cards is the library default.
+  - identifier: arrows_position
+    type: Select
+    renderType: selectSingle
+    label: Arrow position (cards)
+    items:
+      - { label: Below the cards, value: foot }
+      - { label: On the image edges, value: image }
+      - { label: On the card edges, value: slide }
+    default: foot
 
   # ------------------------------------------------------------
   # Header block (identical to img_slider — editors transfer muscle memory)

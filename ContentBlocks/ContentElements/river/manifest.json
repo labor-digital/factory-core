@@ -116,6 +116,11 @@
 				"fields": [
 					"blocks[4].note"
 				]
+			},
+			"Title": {
+				"fields": [
+					"blocks[].title"
+				]
 			}
 		},
 		"content": {

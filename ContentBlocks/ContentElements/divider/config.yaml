@@ -1,0 +1,48 @@
+name: factory/divider
+title: Divider
+description: A thin rule between two sections, at content width.
+group: factory
+icon: content-divider
+fields:
+  # Upstream pos268 has one variant (`contained`, Figma "Modules / Divider") and
+  # no content; it moves the space and the colour only through its style channel.
+  # The three settings below are that channel as fields (DL #073 Q3): every one
+  # is token-backed, and its default is the Figma library's rule.
+  - identifier: variant
+    type: Select
+    renderType: selectSingle
+    label: Variant
+    items:
+      - { label: Contained (rule at content width), value: contained }
+    default: contained
+
+  - identifier: spacing
+    type: Select
+    renderType: selectSingle
+    label: Space above and below
+    items:
+      - { label: 'Small (12 px)', value: small }
+      - { label: 'Default (24 px)', value: default }
+      - { label: 'Large (48 px)', value: large }
+    default: default
+
+  - identifier: thickness
+    type: Select
+    renderType: selectSingle
+    label: Line thickness
+    items:
+      - { label: '1 px', value: '1' }
+      - { label: '2 px', value: '2' }
+      - { label: '4 px', value: '4' }
+    default: '1'
+
+  - identifier: color
+    type: Select
+    renderType: selectSingle
+    label: Line colour
+    items:
+      - { label: Border (light grey), value: border }
+      - { label: Strong (text colour), value: strong }
+      - { label: Primary brand colour, value: primary }
+      - { label: Secondary brand colour, value: secondary }
+    default: border

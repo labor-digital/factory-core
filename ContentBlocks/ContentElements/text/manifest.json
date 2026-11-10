@@ -2,7 +2,7 @@
 	"$schema": "../../../../../contract/schema/component-manifest.schema.json",
 	"name": "Text",
 	"type": "content-element",
-	"version": "1.3.0",
+	"version": "1.4.0",
 	"min_core_version": "1.0.0",
 	"description": "Simple text section with eyebrow, title (with <strong> accent support), subline, body, and up to two CTAs. Layouts: left-aligned, centered, two-column (title left / body right), or an oversize headline that breaks the grid.",
 	"when_to_use": "Pure copy blocks — mission statements, section intros, editorial passages without media. Use Intro when an image belongs next to the text; use Cta when the block's job is conversion.",
@@ -10,7 +10,8 @@
 		"four layouts incl. editorial two-column and oversize display headline",
 		"title <strong> emphasis rendered in the accent color",
 		"primary + secondary CTA pair",
-		"optional contact block (organisation + address/phone/mail lines)"
+		"optional contact block (organisation + address/phone/mail lines)",
+		"optional image above the heading (left, center), aspect ratio image_ratio (default 16/9)"
 	],
 	"variants": [
 		{
@@ -94,6 +95,16 @@
 				"fields": [
 					"eyebrow"
 				]
+			},
+			"Title": {
+				"fields": [
+					"title"
+				]
+			},
+			"Image": {
+				"fields": [
+					"image"
+				]
 			}
 		},
 		"content": {
@@ -166,7 +177,11 @@
 				"none": "covered by the TitleLight / TitleBold content keys"
 			}
 		},
-		"media": {},
+		"media": {
+			"ph text-mod-media": {
+				"into": "image"
+			}
+		},
 		"style": {
 			"text-mod-title.textCase": {
 				"into": "heading_case",
@@ -193,7 +208,7 @@
 	"composer_dependencies": [],
 	"npm_dependencies": [],
 	"ai": {
-		"prompt_summary": "Text: copy-only section. Settings: variant (left|center|two-col|oversize), eyebrow, title (supports <strong> accent), subline (short sentence between title and body), body, contact_org + contact_lines (optional contact block below the body: bold organisation name, then one line per address/phone/e-mail row), primary_label + primary_to, secondary_label + secondary_to. heading_level (h1|h2|h3, default h2) sets the title's tag. Optional design override heading_case (default|upper); leave 'default' unless the design asks.",
+		"prompt_summary": "Text: text section, optionally with an image above the heading (left/center). Settings: variant (left|center|two-col|oversize), eyebrow, title (supports <strong> accent), subline (short sentence between title and body), body, contact_org + contact_lines (optional contact block below the body: bold organisation name, then one line per address/phone/e-mail row), primary_label + primary_to, secondary_label + secondary_to. heading_level (h1|h2|h3, default h2) sets the title's tag. Optional design override heading_case (default|upper); leave 'default' unless the design asks. image (left/center only, above the heading) + image_ratio (16/9|3/2|4/3|1/1|21/9).",
 		"content_guidelines": "Title 3-8 words with at most one <strong> emphasis (oversize titles even shorter). Body 2-5 sentences. CTAs optional — primary before secondary.",
 		"field_hints": {
 			"title": "Wrap the emphasized phrase in <strong>...</strong>; it renders in the brand accent color.",

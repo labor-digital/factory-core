@@ -82,6 +82,12 @@
 				"fields": [
 					"form_note"
 				]
+			},
+			"Title": {
+				"fields": [
+					"title_light",
+					"title_bold"
+				]
 			}
 		},
 		"content": {

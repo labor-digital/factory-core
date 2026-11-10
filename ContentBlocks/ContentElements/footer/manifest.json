@@ -2,7 +2,7 @@
 	"$schema": "../../../../../contract/schema/component-manifest.schema.json",
 	"name": "Footer",
 	"type": "content-element",
-	"version": "1.2.0",
+	"version": "1.3.0",
 	"min_core_version": "1.0.0",
 	"description": "Site footer with brand (logo text or image), nested link columns, contacts, social links, legal links, and copyright. Layouts: 4-column light, compact single row, dark split with a claim + CTAs, or maximal dark with a giant wordmark.",
 	"when_to_use": "Exactly one Footer per site, placed on the shared layout. Pick split or maximal for brands that want a bold dark closing; compact for minimal sites.",
@@ -13,7 +13,8 @@
 		"giant wordmark treatment with contact links (maximal variant)",
 		"social, legal, and copyright rows",
 		"appearance switches show_logo, show_bottom_bar, show_copyright, show_eyebrow (maximal), show_wordmark (maximal), default on",
-		"split CTAs link via cta_primary_to / cta_secondary_to"
+		"split CTAs link via cta_primary_to / cta_secondary_to",
+		"switches show_separators (compact: | between links) and show_legal_separators (maximal: | between legal links), default on"
 	],
 	"variants": [
 		{
@@ -109,6 +110,12 @@
 			},
 			"Wordmark": {
 				"checkbox": "show_wordmark"
+			},
+			"Separators": {
+				"checkbox": "show_separators"
+			},
+			"Legal Separators": {
+				"checkbox": "show_legal_separators"
 			}
 		},
 		"content": {
@@ -164,6 +171,12 @@
 			},
 			"ft-max-contact": {
 				"none": "site chrome — built by deriveChromeFromManifest"
+			},
+			"ft-nav-sep": {
+				"none": "decorative: drawn by show_separators"
+			},
+			"ft-legal-sep": {
+				"none": "decorative: drawn by show_legal_separators"
 			}
 		},
 		"media": {}

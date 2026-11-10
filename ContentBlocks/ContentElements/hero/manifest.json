@@ -89,6 +89,11 @@
 				"fields": [
 					"slides[].subline"
 				]
+			},
+			"Title": {
+				"fields": [
+					"slides[].title"
+				]
 			}
 		},
 		"content": {

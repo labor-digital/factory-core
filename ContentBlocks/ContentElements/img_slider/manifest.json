@@ -2,7 +2,7 @@
 	"$schema": "../../../../../contract/schema/component-manifest.schema.json",
 	"name": "ImgSlider",
 	"type": "content-element",
-	"version": "2.2.0",
+	"version": "2.3.0",
 	"min_core_version": "1.0.0",
 	"description": "A text header (eyebrow with decoration + accent color, title with <strong> accent, description, optional CTA buttons) above an image/video gallery in one of five Figma layouts: single, grid, thumbs, fullbleed, or edge.",
 	"when_to_use": "Project showcases, client galleries, or teaser rows where a headline introduces a set of visuals. For a single in-section image next to a paragraph use Section; for a full-bleed opener use Hero.",
@@ -13,7 +13,8 @@
 		"aspect ratio (auto, 16:9, 4:3, 21:9, 1:1) for single/thumbs; grid tiles square, fullbleed 21:9, edge 520 × 360",
 		"arrows (single/fullbleed centered below, edge in the head), autoplay (6s, pauses on hover), loop, swipe",
 		"switches show_arrows, show_thumbnails (thumbs), show_dots / show_counter (edge)",
-		"empty image slides draw a placeholder only in the playground / editor; a live site drops them"
+		"empty image slides draw a placeholder only in the playground / editor; a live site drops them",
+		"gallery variant: paged 4:3 tile grid (12 per page), page numbers, next-page link, address / facts in the head, body_below under the photos; switches show_page_line, show_forward_link"
 	],
 	"variants": [
 		{
@@ -35,6 +36,10 @@
 		{
 			"value": "edge",
 			"description": "520 × 360 cards run past the right edge; arrows sit in the head, progress dots + counter below."
+		},
+		{
+			"value": "gallery",
+			"description": "Equal 4:3 tiles, 4 / 3 / 1 per row (desktop / tablet / mobile), 12 per page with page numbers and a next-page link; address and facts under the title, a text below the photos. A project page (pos268)."
 		}
 	],
 	"atoms": [
@@ -94,6 +99,27 @@
 			},
 			"Thumbnails": {
 				"checkbox": "show_thumbnails"
+			},
+			"Address": {
+				"fields": [
+					"address"
+				]
+			},
+			"Facts": {
+				"fields": [
+					"facts"
+				]
+			},
+			"Body Below": {
+				"fields": [
+					"body_below"
+				]
+			},
+			"Forward Link": {
+				"checkbox": "show_forward_link"
+			},
+			"Page Line": {
+				"checkbox": "show_page_line"
 			}
 		},
 		"content": {
@@ -105,6 +131,18 @@
 			},
 			"Body": {
 				"into": "description"
+			},
+			"Address": {
+				"into": "address"
+			},
+			"Facts": {
+				"into": "facts"
+			},
+			"Body Below": {
+				"into": "body_below"
+			},
+			"Forward Label": {
+				"into": "forward_label"
 			}
 		},
 		"items": {
@@ -123,6 +161,9 @@
 			},
 			"islider-caption-text": {
 				"none": "unsure: the design text carries the 'n / total · ' counter ImgSlider computes itself; storing it would draw the counter twice"
+			},
+			"pager-num": {
+				"none": "computed: the gallery numbers its pages itself"
 			}
 		},
 		"media": {
@@ -137,6 +178,9 @@
 			},
 			"islider-edge-card ph": {
 				"into": "slides[].image"
+			},
+			"islider-gallery-img ph": {
+				"into": "slides[].image"
 			}
 		}
 	},
@@ -145,7 +189,7 @@
 		"@iconify/vue"
 	],
 	"ai": {
-		"prompt_summary": "ImgSlider: header + media gallery. Settings: variant (single|grid|thumbs|fullbleed|edge, matching Figma), eyebrow, eyebrow_decoration (none|bar|dot), eyebrow_color (7 semantic tokens), title, description, text_align (left|center|right), aspect_ratio (auto|16/9|4/3|21/9|1/1; single/thumbs only), show_arrows, show_thumbnails (thumbs), show_dots / show_counter (edge), autoplay, loop; buttons[] (rendered as text links, typically one 'Alle anzeigen'; not shown on edge). Content in slides[] (min 1): { type (image|video|video_url), image, video, video_url, poster, alt, caption }.",
+		"prompt_summary": "ImgSlider: header + media gallery. Settings: variant (single|grid|thumbs|fullbleed|edge|gallery, matching Figma), eyebrow, eyebrow_decoration (none|bar|dot), eyebrow_color (7 semantic tokens), title, description, text_align (left|center|right), aspect_ratio (auto|16/9|4/3|21/9|1/1; single/thumbs only), show_arrows, show_thumbnails (thumbs), show_dots / show_counter (edge), autoplay, loop; buttons[] (rendered as text links, typically one 'Alle anzeigen'; not shown on edge). Content in slides[] (min 1): { type (image|video|video_url), image, video, video_url, poster, alt, caption }. Gallery variant (a project page): address, facts (one line), body_below (text under the photos), forward_label (next-page link, default Weiter), show_page_line, show_forward_link; up to 12 photos per page, more pages get page numbers.",
 		"content_guidelines": "3-6 slides. Captions one line, rendered as an overlay pill with an index counter. Keep <strong> emphasis to one phrase. Grid uses the first 5 slides (1 lead + 4 tiles).",
 		"field_hints": {
 			"variant": "Layout family; single/thumbs/fullbleed/edge are sliders, grid is a static composition.",

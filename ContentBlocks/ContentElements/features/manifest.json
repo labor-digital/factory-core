@@ -2,7 +2,7 @@
 	"$schema": "../../../../../contract/schema/component-manifest.schema.json",
 	"name": "Features",
 	"type": "content-element",
-	"version": "1.6.0",
+	"version": "1.7.0",
 	"min_core_version": "1.0.0",
 	"description": "Grid of feature/service cards, each with title and text plus an optional icon, big number, or image depending on the variant. Cards can carry an individual link.",
 	"when_to_use": "Service overviews, USP lists, process steps (numbered variant). Use River for alternating text+media storytelling and Stats for pure number KPIs.",
@@ -13,7 +13,8 @@
 		"optional link per card (label + target)",
 		"optional centered band button below the grid (band_button_label + band_button_to)",
 		"atom switches: show_top_rule (flat) and show_divider (numbered), default on",
-		"design overrides: content_align (default|left|center), heading_case (default|upper), heading_weight (default|light|bold)"
+		"design overrides: content_align (default|left|center), heading_case (default|upper), heading_weight (default|light|bold)",
+		"columns: auto (3/2/1) or 3-1-1 (3 on desktop, 1 below)"
 	],
 	"variants": [
 		{
@@ -224,6 +225,15 @@
 					"{font-size.h1}": "h1",
 					"{font-size.h2}": "h2",
 					"{font-size.h3}": "h3"
+				}
+			}
+		},
+		"axes": {
+			"Columns": {
+				"into": "columns",
+				"values": {
+					"auto": "auto",
+					"3-1-1": "3-1-1"
 				}
 			}
 		}
