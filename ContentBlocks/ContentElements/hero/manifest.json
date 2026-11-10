@@ -143,9 +143,9 @@
 		},
 		"media": {
 			"ph hero-image": {
-				"into": "slides[0].background_image",
+				"into": "slides[].background_image",
 				"also": {
-					"slides[0].background_type": "image"
+					"slides[].background_type": "image"
 				}
 			}
 		},
