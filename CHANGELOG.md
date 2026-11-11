@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+# [2.17.0](https://bitbucket.org/labor-digital/labor-factory-app/branches/compare/factory-core-v2.17.0%0Dfactory-core-v2.16.0#diff) (2026-11-11)
+
+
+### Features
+
+* sync Simon's Figma contract to pos271 (formatVersion 1) ([8d5b956](https://bitbucket.org/labor-digital/labor-factory-app/commits/8d5b9568b0ddeb1944a59ec884486c0a353133d5))
+
+
+
 # [2.16.0](https://bitbucket.org/labor-digital/labor-factory-app/branches/compare/factory-core-v2.16.0%0Dfactory-core-v2.15.0#diff) (2026-11-11)
 
 
