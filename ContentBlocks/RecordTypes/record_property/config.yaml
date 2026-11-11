@@ -131,6 +131,13 @@ fields:
     description: Rendered as "FERTIG" on the card.
     nullable: true
 
+  # DL #078: the project's own facts, as the source states them. On the record page
+  # they replace the computed Preis / Fläche / Zimmer / Fertig row under the hero.
+  - identifier: facts
+    type: Textarea
+    label: Facts
+    description: 'One "Label: value" per line, e.g. "Bauzeit: ca. 2 Jahre". Shown under the head image instead of price, area and year.'
+
   - identifier: hero_image
     type: File
     label: Hero Image

@@ -14,6 +14,7 @@
 		"listing type buy/rent controlling price display (total vs. monthly), 'Preis auf Anfrage' when price is empty",
 		"status (new, available, reserved, sold) and tag presets with free-text tag_custom override for the card pill",
 		"address, price, area, rooms, units, construction years; card meta shows year_completed, ca. area m2, and units when > 1",
+		"facts: the project's own 'Label: value' lines, one per line; when set, the page header shows them under the hero instead of the price / area / rooms / year row",
 		"hero image (card + header) and page-only gallery (up to 30 images/videos)",
 		"content_elements: inline tt_content body — editors drop any active Content Block onto the property page, exactly as on a normal page"
 	],
@@ -34,11 +35,12 @@
 		}
 	},
 	"ai": {
-		"prompt_summary": "Property record (tx_factorycore_record_property, type slug 'property'): title (required), slug (required, auto from title — the record's URL segment in /property/<slug>), teaser (1-3 sentences, page only), listing_type (buy|rent), status (new|available|reserved|sold), tag (neubau|umbau|sanierung|bestand|denkmal|gewerbe|mfh) + tag_custom override, address_street/zip/city/country, price (nullable — empty renders 'Preis auf Anfrage') + price_type (total|monthly), area_m2, rooms, units (WE), year_built, year_completed (card 'FERTIG'), hero_image, gallery (max 30), content_elements (the page body — any block).",
+		"prompt_summary": "Property record (tx_factorycore_record_property, type slug 'property'): title (required), slug (required, auto from title — the record's URL segment in /property/<slug>), teaser (1-3 sentences, page only), listing_type (buy|rent), status (new|available|reserved|sold), tag (neubau|umbau|sanierung|bestand|denkmal|gewerbe|mfh) + tag_custom override, address_street/zip/city/country, price (nullable — empty renders 'Preis auf Anfrage') + price_type (total|monthly), area_m2, rooms, units (WE), year_built, year_completed (card 'FERTIG'), facts (one 'Label: value' per line, shown under the page hero instead of the computed row), hero_image, gallery (max 30), content_elements (the page body — any block).",
 		"content_guidelines": "Titles are project/property names, not sentences. Teaser 1-3 sentences. Use tag_custom only for combined labels like 'NEUBAU & UMBAU'. Use status sold for rented-out listings too.",
 		"field_hints": {
 			"price": "Leave empty for 'Preis auf Anfrage'; price_type monthly makes it read as EUR/Monat.",
 			"units": "Only shown on the card when greater than 1 (as '{units} WE').",
+			"facts": "Verbatim lines like 'Bauzeit: ca. 2 Jahre', one per line. When set, the page header shows these instead of price, area, rooms and year.",
 			"content_elements": "The record's page body. Any active Content Block, rendered by FactoryPageRenderer below the typed header — same as a page's content."
 		}
 	}
