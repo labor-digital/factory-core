@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+# [2.14.0](https://bitbucket.org/labor-digital/labor-factory-app/branches/compare/factory-core-v2.14.0%0Dfactory-core-v2.13.0#diff) (2026-11-11)
+
+
+### Features
+
+* export fidelity and record plan for Figma imports (DL [#075](https://bitbucket.org/labor-digital/labor-factory-app/issues/075), [#076](https://bitbucket.org/labor-digital/labor-factory-app/issues/076)) ([9729c80](https://bitbucket.org/labor-digital/labor-factory-app/commits/9729c80b2eacd5152add7100ebbc9999d25c78c0))
+
+
+
 # [2.13.0](https://bitbucket.org/labor-digital/labor-factory-app/branches/compare/factory-core-v2.13.0%0Dfactory-core-v2.12.0#diff) (2026-11-10)
 
 
