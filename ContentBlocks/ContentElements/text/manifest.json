@@ -2,7 +2,7 @@
 	"$schema": "../../../../../contract/schema/component-manifest.schema.json",
 	"name": "Text",
 	"type": "content-element",
-	"version": "1.4.0",
+	"version": "1.5.0",
 	"min_core_version": "1.0.0",
 	"description": "Simple text section with eyebrow, title (with <strong> accent support), subline, body, and up to two CTAs. Layouts: left-aligned, centered, two-column (title left / body right), or an oversize headline that breaks the grid.",
 	"when_to_use": "Pure copy blocks — mission statements, section intros, editorial passages without media. Use Intro when an image belongs next to the text; use Cta when the block's job is conversion.",
@@ -131,7 +131,11 @@
 				"into": "subline"
 			},
 			"Body": {
-				"into": "body"
+				"into": "body",
+				"inline": [
+					"strong",
+					"a"
+				]
 			},
 			"CTA Primary": {
 				"into": "primary_label",
@@ -203,7 +207,11 @@
 					"{font-size.h3}": "h3"
 				}
 			}
-		}
+		},
+		"ratio": {
+			"ph text-mod-media": "image_ratio"
+		},
+		"recordLink": "title_to"
 	},
 	"composer_dependencies": [],
 	"npm_dependencies": [],

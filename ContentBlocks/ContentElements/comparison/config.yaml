@@ -26,6 +26,7 @@ fields:
   - identifier: intro
     type: Textarea
     label: Intro
+    description: "Plain text. Inline <strong>…</strong>, <a href=\"…\">…</a> and <span class=\"accent\">…</span> (brand colour) are kept; nothing else."
 
   # ----- Before/After + Slider -----
   # Upstream `Pills` switch on Modules / Comparison: the Vorher/Nachher chips on the image.
@@ -34,6 +35,18 @@ fields:
     label: Show pills (before/after labels on the image)
     default: 1
     displayCond: 'FIELD:variant:IN:before-after,slider'
+
+  - identifier: show_handle
+    type: Checkbox
+    label: Show slider handle
+    description: Figma switch (DL #075) — off hides the handle; the picture itself stays draggable.
+    default: 1
+
+  - identifier: show_progress
+    type: Checkbox
+    label: Show slider progress bar
+    description: Figma switch (DL #075) — off hides it.
+    default: 1
   - identifier: before_label
     type: Text
     label: Before label

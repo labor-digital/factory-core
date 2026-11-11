@@ -32,6 +32,7 @@ fields:
   - identifier: body
     type: Textarea
     label: Body
+    description: "Plain text. Inline <strong>…</strong>, <a href=\"…\">…</a> and <span class=\"accent\">…</span> (brand colour) are kept; nothing else."
 
   - identifier: background_image
     type: File

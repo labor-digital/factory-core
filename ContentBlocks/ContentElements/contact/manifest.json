@@ -2,7 +2,7 @@
 	"$schema": "../../../../../contract/schema/component-manifest.schema.json",
 	"name": "Contact",
 	"type": "content-element",
-	"version": "2.2.0",
+	"version": "2.2.1",
 	"min_core_version": "1.0.0",
 	"description": "Contact section combining an info block (organisation, address, phone, email, hours, social links) with a contact form. Layouts: split info/form, stacked with centered form, three info tiles, contact-person cards, or a split with photo.",
 	"when_to_use": "Contact pages and page-end conversion sections where visitors should reach out. Use Cta with the inline-form variant for a lightweight name+email capture instead of a full contact section.",
@@ -128,7 +128,11 @@
 				"into": "headline"
 			},
 			"Intro": {
-				"into": "intro"
+				"into": "intro",
+				"inline": [
+					"strong",
+					"a"
+				]
 			},
 			"CTA": {
 				"none": "no CTA field: the form submit button is fixed markup"

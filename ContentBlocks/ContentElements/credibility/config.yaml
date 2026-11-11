@@ -26,6 +26,7 @@ fields:
   - identifier: intro
     type: Textarea
     label: Intro
+    description: "Plain text. Inline <strong>…</strong>, <a href=\"…\">…</a> and <span class=\"accent\">…</span> (brand colour) are kept; nothing else."
 
   - identifier: show_icon
     type: Checkbox
@@ -42,6 +43,18 @@ fields:
     label: Show stars (reviews)
     default: 1
     displayCond: 'FIELD:variant:IN:reviews,reviews-slider'
+
+  - identifier: show_arrows
+    type: Checkbox
+    label: Show slider arrows
+    description: Figma switch (DL #075) — off hides it.
+    default: 1
+
+  - identifier: show_dots
+    type: Checkbox
+    label: Show slider dots
+    description: Figma switch (DL #075) — off hides it.
+    default: 1
 
   # ----- certificates -----
   - identifier: certificates

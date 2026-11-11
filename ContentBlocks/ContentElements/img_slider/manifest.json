@@ -2,7 +2,7 @@
 	"$schema": "../../../../../contract/schema/component-manifest.schema.json",
 	"name": "ImgSlider",
 	"type": "content-element",
-	"version": "2.3.0",
+	"version": "2.4.0",
 	"min_core_version": "1.0.0",
 	"description": "A text header (eyebrow with decoration + accent color, title with <strong> accent, description, optional CTA buttons) above an image/video gallery in one of five Figma layouts: single, grid, thumbs, fullbleed, or edge.",
 	"when_to_use": "Project showcases, client galleries, or teaser rows where a headline introduces a set of visuals. For a single in-section image next to a paragraph use Section; for a full-bleed opener use Hero.",
@@ -130,7 +130,11 @@
 				"into": "title"
 			},
 			"Body": {
-				"into": "description"
+				"into": "description",
+				"inline": [
+					"strong",
+					"a"
+				]
 			},
 			"Address": {
 				"into": "address"
@@ -139,7 +143,11 @@
 				"into": "facts"
 			},
 			"Body Below": {
-				"into": "body_below"
+				"into": "body_below",
+				"inline": [
+					"strong",
+					"a"
+				]
 			},
 			"Forward Label": {
 				"into": "forward_label"
@@ -182,7 +190,16 @@
 			"islider-gallery-img ph": {
 				"into": "slides[].image"
 			}
-		}
+		},
+		"ratio": {
+			"ph islider-image": "aspect_ratio"
+		},
+		"behavior": {
+			"pager": {
+				"perPage": "gallery_per_page"
+			}
+		},
+		"recordLink": "title_to"
 	},
 	"composer_dependencies": [],
 	"npm_dependencies": [

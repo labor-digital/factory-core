@@ -29,6 +29,7 @@ fields:
   - identifier: intro
     type: Textarea
     label: Intro
+    description: "Plain text. Inline <strong>…</strong>, <a href=\"…\">…</a> and <span class=\"accent\">…</span> (brand colour) are kept; nothing else."
 
   - identifier: long_quote
     type: Textarea
@@ -46,6 +47,18 @@ fields:
   - identifier: show_stars
     type: Checkbox
     label: Show star rating (Cards)
+    default: 1
+
+  - identifier: show_arrows
+    type: Checkbox
+    label: Show slider arrows
+    description: Figma switch (DL #075) — off hides it.
+    default: 1
+
+  - identifier: show_dots
+    type: Checkbox
+    label: Show slider dots
+    description: Figma switch (DL #075) — off hides it.
     default: 1
 
   - identifier: items

@@ -24,6 +24,11 @@ fields:
     label: Title
     description: Main heading. Use <strong>…</strong> to emphasise part of the title in the accent color.
 
+  - identifier: title_to
+    type: Link
+    label: Title link
+    description: Optional — makes the title a link. An import sets it when this section is the detail of a record (DL #076), pointing at the record's page.
+
   - identifier: subline
     type: Text
     label: Subline
@@ -32,6 +37,7 @@ fields:
   - identifier: body
     type: Textarea
     label: Body
+    description: Plain text, one paragraph per line. Inline <strong>…</strong>, <a href="…">…</a> and <span class="accent">…</span> (brand colour) are kept; nothing else.
 
   # pos268 (DL #073): an optional picture above the heading in the left and
   # center variants (Figma "Image" switch, `ph text-mod-media`, 16:9 in the library).
@@ -72,6 +78,21 @@ fields:
     type: Link
     label: Primary CTA Link
 
+  # The button's style (Atoms / Button Style). Empty = the block's own default; a
+  # Figma export sets it from its `buttons` channel (DL #075).
+  - identifier: primary_variant
+    type: Select
+    renderType: selectSingle
+    label: Primary CTA Style
+    items:
+      - { label: 'Default (solid)', value: '' }
+      - { label: Solid, value: solid }
+      - { label: Outline, value: outline }
+      - { label: Ghost, value: ghost }
+      - { label: Outline on dark, value: outline-white }
+      - { label: White solid, value: white-solid }
+    default: ''
+
   - identifier: secondary_label
     type: Text
     label: Secondary CTA Label
@@ -79,6 +100,21 @@ fields:
   - identifier: secondary_to
     type: Link
     label: Secondary CTA Link
+
+  # The button's style (Atoms / Button Style). Empty = the block's own default; a
+  # Figma export sets it from its `buttons` channel (DL #075).
+  - identifier: secondary_variant
+    type: Select
+    renderType: selectSingle
+    label: Secondary CTA Style
+    items:
+      - { label: 'Default (outline)', value: '' }
+      - { label: Solid, value: solid }
+      - { label: Outline, value: outline }
+      - { label: Ghost, value: ghost }
+      - { label: Outline on dark, value: outline-white }
+      - { label: White solid, value: white-solid }
+    default: ''
 
   - identifier: heading_level
     type: Select

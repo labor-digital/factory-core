@@ -55,9 +55,15 @@ fields:
     label: Title
     description: Main heading. Use <strong>…</strong> to emphasise part of the title in the accent color.
 
+  - identifier: title_to
+    type: Link
+    label: Title link
+    description: Optional — makes the title a link. An import sets it when this section is the detail of a record (DL #076), pointing at the record's page.
+
   - identifier: description
     type: Textarea
     label: Description
+    description: "Plain text. Inline <strong>…</strong>, <a href=\"…\">…</a> and <span class=\"accent\">…</span> (brand colour) are kept; nothing else."
 
   # pos268 gallery variant (DL #073): a project's facts in the head and a text
   # under the photos — Figma "Address", "Facts", "Body Below", "Forward Link".
@@ -74,6 +80,7 @@ fields:
   - identifier: body_below
     type: Textarea
     label: Text below the gallery
+    description: Plain text, one paragraph per line. Inline <strong>…</strong>, <a href="…">…</a> and <span class="accent">…</span> (brand colour) are kept; nothing else.
 
   - identifier: forward_label
     type: Text
@@ -187,6 +194,13 @@ fields:
     label: Show thumbnails
     description: 'Thumbs variant: the thumbnail grid below the image. Off = a single image with no navigation.'
     default: 1
+
+  # Figma behaviour "pager" (DL #075): how many pictures one gallery page shows.
+  - identifier: gallery_per_page
+    type: Number
+    label: Pictures per page (gallery)
+    description: The gallery shows this many pictures per page, with page numbers below. Default 12.
+    default: 12
 
   - identifier: show_dots
     type: Checkbox

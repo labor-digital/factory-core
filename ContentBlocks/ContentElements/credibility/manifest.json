@@ -2,7 +2,7 @@
 	"$schema": "../../../../../contract/schema/component-manifest.schema.json",
 	"name": "Credibility",
 	"type": "content-element",
-	"version": "1.2.0",
+	"version": "1.3.0",
 	"min_core_version": "1.0.0",
 	"description": "Trust-building section with five proof formats: certificate logo grid, guarantee icon cards, a 4-KPI stats banner, awards (one featured + list), or customer reviews as a star grid or horizontal slider. Each variant reads its own collection.",
 	"when_to_use": "Mid or lower page to back up claims with third-party proof — certifications, guarantees, awards, review scores. Use Testimonials for narrative customer quotes; use Stats for company KPIs without a trust framing.",
@@ -122,10 +122,10 @@
 				]
 			},
 			"Arrows": {
-				"none": "slider chrome"
+				"checkbox": "show_arrows"
 			},
 			"Dots": {
-				"none": "slider chrome"
+				"checkbox": "show_dots"
 			}
 		},
 		"content": {
@@ -136,7 +136,11 @@
 				"into": "headline"
 			},
 			"Intro": {
-				"into": "intro"
+				"into": "intro",
+				"inline": [
+					"strong",
+					"a"
+				]
 			}
 		},
 		"items": {

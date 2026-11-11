@@ -2,7 +2,7 @@
 	"$schema": "../../../../../contract/schema/component-manifest.schema.json",
 	"name": "Features",
 	"type": "content-element",
-	"version": "1.7.0",
+	"version": "1.8.0",
 	"min_core_version": "1.0.0",
 	"description": "Grid of feature/service cards, each with title and text plus an optional icon, big number, or image depending on the variant. Cards can carry an individual link.",
 	"when_to_use": "Service overviews, USP lists, process steps (numbered variant). Use River for alternating text+media storytelling and Stats for pure number KPIs.",
@@ -105,7 +105,11 @@
 				"into": "headline"
 			},
 			"Intro": {
-				"into": "intro"
+				"into": "intro",
+				"inline": [
+					"strong",
+					"a"
+				]
 			},
 			"Band Button": {
 				"into": "band_button_label",
@@ -129,7 +133,11 @@
 				"into": "items[].title"
 			},
 			"fg-card-text": {
-				"into": "items[].text"
+				"into": "items[].text",
+				"inline": [
+					"strong",
+					"a"
+				]
 			},
 			"fg-link": {
 				"into": "items[].link_label",
@@ -148,7 +156,11 @@
 				"into": "items[].title"
 			},
 			"card-text": {
-				"into": "items[].text"
+				"into": "items[].text",
+				"inline": [
+					"strong",
+					"a"
+				]
 			},
 			"card-link": {
 				"into": "items[].link_label",

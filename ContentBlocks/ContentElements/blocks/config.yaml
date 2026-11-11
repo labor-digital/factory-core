@@ -26,6 +26,7 @@ fields:
   - identifier: intro
     type: Textarea
     label: Intro
+    description: "Plain text. Inline <strong>…</strong>, <a href=\"…\">…</a> and <span class=\"accent\">…</span> (brand colour) are kept; nothing else."
 
   - identifier: categories
     type: Textarea

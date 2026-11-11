@@ -2,7 +2,7 @@
 	"$schema": "../../../../../contract/schema/component-manifest.schema.json",
 	"name": "Hero",
 	"type": "content-element",
-	"version": "2.3.0",
+	"version": "2.4.0",
 	"min_core_version": "1.0.0",
 	"description": "Full-bleed hero banner for the top of a page. Fixed-height (600px), vertically centered, dark olive fallback background. Renders one static slide or a rotating Splide.js slider; each slide has its own background (theme color, image, or self-hosted/external video), eyebrow + headline + supporting text, and CTA buttons.",
 	"when_to_use": "First block on landing and campaign pages. Use left/center/right for a static hero; the slider variant for rotating campaign banners with more than one slide. Do not use mid-page — use Section or Cta instead.",
@@ -11,7 +11,9 @@
 		"slider variant adds side navigation arrows; slideshow dots appear automatically when there is more than one slide",
 		"background per slide: theme color | image | video (upload or external URL)",
 		"readability gradient by default over image/video, or an explicit dark/light overlay",
-		"0..n CTA buttons per slide (shared Factory Button spec)"
+		"0..n CTA buttons per slide (shared Factory Button spec)",
+		"one text block over a background slideshow (slides without own text keep slide 1’s), as Figma draws the slider",
+		"show_arrows / arrows_visibility (always | hover), show_dots / dots_style (bar | dot), autoplay_interval, per-slide overlay_opacity"
 	],
 	"variants": [
 		{
@@ -50,7 +52,7 @@
 		"page": "Factory_Library_CLAUDE-WORK",
 		"toggles": {
 			"Arrows": {
-				"none": "slider chrome: drawn by the slider variant"
+				"checkbox": "show_arrows"
 			},
 			"CTA Primary": {
 				"fields": [
@@ -68,7 +70,7 @@
 				]
 			},
 			"Dots": {
-				"none": "slider chrome: shown automatically for more than one slide"
+				"checkbox": "show_dots"
 			},
 			"Eyebrow": {
 				"fields": [
@@ -98,7 +100,8 @@
 		},
 		"content": {
 			"Eyebrow": {
-				"into": "slides[0].eyebrow"
+				"into": "slides[0].eyebrow",
+				"link": "slides[0].eyebrow_to"
 			},
 			"Title": {
 				"into": "slides[0].title"
@@ -132,7 +135,8 @@
 				"none": "set via content CTA Primary / CTA Secondary"
 			},
 			"hero-eyebrow": {
-				"into": "slides[].eyebrow"
+				"into": "slides[].eyebrow",
+				"link": "slides[].eyebrow_to"
 			},
 			"hero-title": {
 				"into": "slides[].title"
@@ -164,6 +168,19 @@
 					"{font-size.h2}": "h2",
 					"{font-size.h3}": "h3"
 				}
+			}
+		},
+		"behavior": {
+			"slider": {
+				"autoplay": "autoplay_interval",
+				"loop": "loop",
+				"controls.arrows": "arrows_visibility",
+				"slidesData[].overlay": "slides[].overlay_opacity"
+			}
+		},
+		"atomAxes": {
+			"dot": {
+				"Style": "dots_style"
 			}
 		}
 	},

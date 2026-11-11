@@ -28,6 +28,7 @@ fields:
   - identifier: intro
     type: Textarea
     label: Intro
+    description: "Plain text. Inline <strong>…</strong>, <a href=\"…\">…</a> and <span class=\"accent\">…</span> (brand colour) are kept; nothing else."
 
   - identifier: head_align
     type: Select
@@ -45,6 +46,18 @@ fields:
   - identifier: show_group_count
     type: Checkbox
     label: Show member count per group (Grouped)
+    default: 1
+
+  - identifier: show_arrows
+    type: Checkbox
+    label: Show slider arrows
+    description: Figma switch (DL #075) — off hides it.
+    default: 1
+
+  - identifier: show_dots
+    type: Checkbox
+    label: Show slider dots
+    description: Figma switch (DL #075) — off hides it.
     default: 1
 
   - identifier: per_page

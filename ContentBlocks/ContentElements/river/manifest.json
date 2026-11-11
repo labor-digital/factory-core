@@ -2,7 +2,7 @@
 	"$schema": "../../../../../contract/schema/component-manifest.schema.json",
 	"name": "River",
 	"type": "content-element",
-	"version": "1.3.0",
+	"version": "1.4.0",
 	"min_core_version": "1.0.0",
 	"description": "Alternating text-and-media rows ('riverflow'). Renders a single block with the image left or right (or with a video play overlay), or stacks multiple blocks that alternate sides automatically. Media aspect ratio is set section-wide with per-block overrides.",
 	"when_to_use": "Storytelling sequences — services, process steps, or project chapters where each row pairs a paragraph with an image. Use Section for one richer block with gallery/background; use Features for compact card grids.",
@@ -139,7 +139,11 @@
 				"into": "blocks[0].subline"
 			},
 			"Body": {
-				"into": "blocks[0].body"
+				"into": "blocks[0].body",
+				"inline": [
+					"strong",
+					"a"
+				]
 			},
 			"Button": {
 				"into": "blocks[0].button_label",
@@ -179,7 +183,11 @@
 				"into": "blocks[].subline"
 			},
 			"body-text": {
-				"into": "blocks[].body"
+				"into": "blocks[].body",
+				"inline": [
+					"strong",
+					"a"
+				]
 			},
 			"btn-label": {
 				"into": "blocks[].button_label",
@@ -231,6 +239,9 @@
 					"LEFT": "left"
 				}
 			}
+		},
+		"ratio": {
+			"ph river-media": "blocks[].aspect_ratio"
 		}
 	},
 	"composer_dependencies": [],

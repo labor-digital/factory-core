@@ -2,7 +2,7 @@
 	"$schema": "../../../../../contract/schema/component-manifest.schema.json",
 	"name": "Teaser",
 	"type": "content-element",
-	"version": "2.6.0",
+	"version": "2.7.0",
 	"min_core_version": "1.0.0",
 	"description": "Polymorphic record teaser: lists records of any active record type (Property, ...) in one of five Figma layouts — cards, cards-compact, list, feature, or edge. Records are picked manually via relation fields or queried automatically from a storage folder with filter, limit, and order; each record renders through its record type's card component.",
 	"when_to_use": "Reference/portfolio rows fed by structured records — 'Unsere Referenzen', latest properties. Use Blocks or News for hand-authored inline items instead of records.",
@@ -115,10 +115,12 @@
 				"checkbox": "show_thumbnails"
 			},
 			"Arrows On Image": {
-				"none": "runtime: an ON switch the toggle pass cannot set (it only switches parts off); the editor sets arrows_position = image"
+				"select": "arrows_position",
+				"on": "image"
 			},
 			"Arrows On Slide": {
-				"none": "runtime: an ON switch the toggle pass cannot set; the editor sets arrows_position = slide"
+				"select": "arrows_position",
+				"on": "slide"
 			}
 		},
 		"content": {
@@ -129,7 +131,11 @@
 				"into": "title"
 			},
 			"Intro": {
-				"into": "description"
+				"into": "description",
+				"inline": [
+					"strong",
+					"a"
+				]
 			},
 			"Band Button": {
 				"into": "band_button_label",

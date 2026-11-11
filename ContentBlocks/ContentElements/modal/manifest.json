@@ -1,6 +1,6 @@
 {
 	"name": "Modal",
-	"version": "1.1.0",
+	"version": "1.1.1",
 	"min_core_version": "1.0.0",
 	"composer_dependencies": [],
 	"npm_dependencies": [],
@@ -159,7 +159,11 @@
 				"into": "title"
 			},
 			"body-text": {
-				"into": "body"
+				"into": "body",
+				"inline": [
+					"strong",
+					"a"
+				]
 			},
 			"dt": {
 				"into": "specs[].spec_label"

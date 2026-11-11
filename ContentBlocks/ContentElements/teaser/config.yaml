@@ -82,6 +82,7 @@ fields:
   - identifier: description
     type: Textarea
     label: Description
+    description: "Plain text. Inline <strong>…</strong>, <a href=\"…\">…</a> and <span class=\"accent\">…</span> (brand colour) are kept; nothing else."
 
   - identifier: text_align
     type: Select
@@ -239,6 +240,21 @@ fields:
   - identifier: band_button_to
     type: Link
     label: Band Button Link
+
+  # The button's style (Atoms / Button Style). Empty = the block's own default; a
+  # Figma export sets it from its `buttons` channel (DL #075).
+  - identifier: band_button_variant
+    type: Select
+    renderType: selectSingle
+    label: Band Button Style
+    items:
+      - { label: 'Default (outline)', value: '' }
+      - { label: Solid, value: solid }
+      - { label: Outline, value: outline }
+      - { label: Ghost, value: ghost }
+      - { label: Outline on dark, value: outline-white }
+      - { label: White solid, value: white-solid }
+    default: ''
 
   - identifier: heading_level
     type: Select

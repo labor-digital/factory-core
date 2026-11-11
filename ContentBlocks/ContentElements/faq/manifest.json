@@ -2,7 +2,7 @@
 	"$schema": "../../../../../contract/schema/component-manifest.schema.json",
 	"name": "Faq",
 	"type": "content-element",
-	"version": "1.3.0",
+	"version": "1.3.1",
 	"min_core_version": "1.0.0",
 	"description": "Collapsible questions and answers in single-column, two-column, grouped, or bordered XL layouts. The two-column variant includes a contact card for unanswered questions.",
 	"when_to_use": "Lower page regions to resolve objections and support questions. Use grouped when questions span multiple topics; use two-col when a contact escalation path should be visible.",
@@ -92,7 +92,11 @@
 				"into": "headline"
 			},
 			"Intro": {
-				"into": "intro"
+				"into": "intro",
+				"inline": [
+					"strong",
+					"a"
+				]
 			},
 			"CTA": {
 				"none": "unsure: generic button alias from the capability map; this module has no such TEXT property (the contact button label is fixed markup in the design)"
@@ -121,7 +125,11 @@
 				"none": "set via content Intro"
 			},
 			"acc-body-p": {
-				"into": "items[].a"
+				"into": "items[].a",
+				"inline": [
+					"strong",
+					"a"
+				]
 			},
 			"faq-group-num": {
 				"none": "computed: the group number is drawn from the group position"

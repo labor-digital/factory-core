@@ -2,7 +2,7 @@
 	"$schema": "../../../../../contract/schema/component-manifest.schema.json",
 	"name": "Team",
 	"type": "content-element",
-	"version": "1.2.0",
+	"version": "1.3.0",
 	"min_core_version": "1.0.0",
 	"description": "Team / people section over a members collection. Layouts: photo grid with hover overlay and a click-to-open bio modal, flat card grid, paginated slider, edge slider overflowing to the right, table-like list rows, or grouped by department.",
 	"when_to_use": "About/team pages and 'your contacts' sections. Use Contact (persons variant) when the people are primarily reachable contacts with a form next to them.",
@@ -88,10 +88,10 @@
 				]
 			},
 			"Arrows": {
-				"none": "slider chrome"
+				"checkbox": "show_arrows"
 			},
 			"Dots": {
-				"none": "slider chrome"
+				"checkbox": "show_dots"
 			},
 			"Group Count": {
 				"checkbox": "show_group_count"
@@ -105,7 +105,11 @@
 				"into": "headline"
 			},
 			"Intro": {
-				"into": "intro"
+				"into": "intro",
+				"inline": [
+					"strong",
+					"a"
+				]
 			}
 		},
 		"items": {

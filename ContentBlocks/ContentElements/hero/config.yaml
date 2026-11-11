@@ -33,6 +33,43 @@ fields:
     default: 1
     displayCond: 'FIELD:variant:=:slider'
 
+  # pos268 / DL #075: what the Figma hero lets a designer switch, and the export's
+  # slider behaviour. Defaults keep every existing hero as it looked.
+  - identifier: autoplay_interval
+    type: Number
+    label: Autoplay interval (ms)
+    description: 'Time per slide when autoplay is on. Default 6000.'
+    default: 6000
+
+  - identifier: show_arrows
+    type: Checkbox
+    label: Show arrows (slider)
+    default: 1
+
+  - identifier: arrows_visibility
+    type: Select
+    renderType: selectSingle
+    label: Arrows visible
+    items:
+      - { label: Always, value: always }
+      - { label: On hover, value: hover }
+    default: always
+
+  - identifier: show_dots
+    type: Checkbox
+    label: Show slide dots
+    description: Shown when there is more than one slide.
+    default: 1
+
+  - identifier: dots_style
+    type: Select
+    renderType: selectSingle
+    label: Dot style
+    items:
+      - { label: 'Bar (progress line)', value: bar }
+      - { label: 'Dot (round)', value: dot }
+    default: bar
+
   # ------------------------------------------------------------
   # Slides collection (min 1 slide required, 1 is auto-seeded)
   # ------------------------------------------------------------
@@ -46,6 +83,11 @@ fields:
         type: Text
         label: Eyebrow
         description: Small label above the title. Supports " · " separators for a location/tagline line.
+
+      - identifier: eyebrow_to
+        type: Link
+        label: Eyebrow link
+        description: Optional — makes the eyebrow a link (a Figma export sets it from the eyebrow's own link, DL #075).
 
       - identifier: title
         type: Text
@@ -127,6 +169,12 @@ fields:
           - { label: Dark, value: dark }
           - { label: Light, value: light }
         default: none
+
+      - identifier: overlay_opacity
+        type: Number
+        label: Overlay strength (0–1)
+        format: decimal
+        description: 'How dark the image is shaded, e.g. 0.35. Empty = the overlay setting above.'
 
       # Per-slide CTA buttons
       - identifier: buttons

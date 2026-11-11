@@ -2,7 +2,7 @@
 	"$schema": "../../../../../contract/schema/component-manifest.schema.json",
 	"name": "Embed",
 	"type": "content-element",
-	"version": "1.0.0",
+	"version": "1.0.1",
 	"min_core_version": "1.0.0",
 	"description": "A map or another external page embedded in the site: optional title, a picture shown before loading, the live embed after the visitor allows it, optional caption. Nothing loads from the provider before that click.",
 	"when_to_use": "Show where the business is (a map) or embed another site's page (a booking widget, a form hosted elsewhere). Not for videos: YouTube and Vimeo go in the Video element. Not for images: use the Image Slider or a section's media.",
@@ -83,6 +83,9 @@
 				"src": "src",
 				"provider": "provider"
 			}
+		},
+		"ratio": {
+			"embed-media ph": "aspect_ratio"
 		}
 	}
 }

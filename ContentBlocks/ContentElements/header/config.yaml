@@ -39,6 +39,30 @@ fields:
     label: Show wordmark (logo text)
     default: 1
 
+  # Nav Link "Show Underline" (DL #075): the active page's underline.
+  - identifier: show_nav_underline
+    type: Checkbox
+    label: Underline the active menu entry
+    default: 1
+
+  # Figma behaviour "stickyHeader" (DL #075): the bar stays at the top and, once the
+  # page scrolls, shrinks to sticky_height with the logo at sticky_logo_height.
+  - identifier: sticky
+    type: Checkbox
+    label: Sticky header
+    description: Keeps the header at the top while scrolling.
+    default: 0
+
+  - identifier: sticky_height
+    type: Number
+    label: Height when scrolled (px)
+    description: Optional — the sticky header shrinks to this height once the page scrolls. Empty = it keeps its height.
+
+  - identifier: sticky_logo_height
+    type: Number
+    label: Logo height when scrolled (px)
+    description: Optional — the logo's height in the shrunk sticky header.
+
   - identifier: cta_label
     type: Text
     label: CTA Label

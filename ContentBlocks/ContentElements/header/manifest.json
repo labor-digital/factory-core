@@ -2,7 +2,7 @@
 	"$schema": "../../../../../contract/schema/component-manifest.schema.json",
 	"name": "Header",
 	"type": "content-element",
-	"version": "1.3.0",
+	"version": "1.4.0",
 	"min_core_version": "1.0.0",
 	"description": "Site-wide page header with logo (text or image), primary navigation with subpage dropdowns, an optional CTA button, and a burger-toggled mobile menu. The mega variant shows a full-width panel with grouped columns plus an optional featured teaser column.",
 	"when_to_use": "Exactly one Header per site, on the shared layout. Pick transparent when it sits over a Hero with imagery; mega when the navigation needs grouped second-level links.",
@@ -122,6 +122,18 @@
 			},
 			"logo ph": {
 				"none": "site chrome — built by deriveChromeFromManifest"
+			}
+		},
+		"behavior": {
+			"stickyHeader": {
+				"*": "sticky",
+				"heightScrolled": "sticky_height",
+				"logoScrolled.height": "sticky_logo_height"
+			}
+		},
+		"atomAxes": {
+			"Atoms / Nav Link": {
+				"Show Underline": "show_nav_underline"
 			}
 		}
 	},
