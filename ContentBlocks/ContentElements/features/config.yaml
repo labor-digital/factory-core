@@ -49,7 +49,7 @@ fields:
   - identifier: intro
     type: Textarea
     label: Intro
-    description: "Plain text. Inline <strong>…</strong>, <a href=\"…\">…</a> and <span class=\"accent\">…</span> (brand colour) are kept; nothing else."
+    description: "Plain text. Inline <strong>…</strong>, <a href=\"…\">…</a>, <span class=\"accent\">…</span> (brand colour) and <mark data-tone=\"peach\">…</mark> (highlight pill; tones peach, marigold, coral, sky, blue, midnight, white) are kept; nothing else."
 
   - identifier: items
     type: Collection
@@ -66,7 +66,7 @@ fields:
       - identifier: text
         type: Textarea
         label: Text
-        description: "Plain text. Inline <strong>…</strong>, <a href=\"…\">…</a> and <span class=\"accent\">…</span> (brand colour) are kept; nothing else."
+        description: "Plain text. Inline <strong>…</strong>, <a href=\"…\">…</a>, <span class=\"accent\">…</span> (brand colour) and <mark data-tone=\"peach\">…</mark> (highlight pill; tones peach, marigold, coral, sky, blue, midnight, white) are kept; nothing else."
       - identifier: icon
         type: Text
         label: Icon (Iconify name, e.g. i-lucide-star)
@@ -83,6 +83,23 @@ fields:
       - identifier: link_to
         type: Link
         label: Link Target
+      # Card colour (DL #080): a named tone from the layer's --tone-* tokens. Empty =
+      # the variant's own look. Cards and Media variants only.
+      - identifier: tone
+        type: Select
+        renderType: selectSingle
+        label: Card colour
+        description: Background colour of this card (Cards and Media variants). Default = the variant's look.
+        items:
+          - { label: Default, value: '' }
+          - { label: Peach, value: peach }
+          - { label: Marigold, value: marigold }
+          - { label: Coral, value: coral }
+          - { label: Sky, value: sky }
+          - { label: Blue, value: blue }
+          - { label: Midnight, value: midnight }
+          - { label: White, value: white }
+        default: ''
 
   - identifier: band_button_label
     type: Text

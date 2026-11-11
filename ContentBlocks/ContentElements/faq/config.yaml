@@ -52,7 +52,7 @@ fields:
   - identifier: intro
     type: Textarea
     label: Intro
-    description: "Plain text. Inline <strong>…</strong>, <a href=\"…\">…</a> and <span class=\"accent\">…</span> (brand colour) are kept; nothing else."
+    description: "Plain text. Inline <strong>…</strong>, <a href=\"…\">…</a>, <span class=\"accent\">…</span> (brand colour) and <mark data-tone=\"peach\">…</mark> (highlight pill; tones peach, marigold, coral, sky, blue, midnight, white) are kept; nothing else."
 
   - identifier: contact_label
     type: Text
@@ -83,7 +83,7 @@ fields:
       - identifier: a
         type: Textarea
         label: Answer
-        description: "Plain text. Inline <strong>…</strong>, <a href=\"…\">…</a> and <span class=\"accent\">…</span> (brand colour) are kept; nothing else."
+        description: "Plain text. Inline <strong>…</strong>, <a href=\"…\">…</a>, <span class=\"accent\">…</span> (brand colour) and <mark data-tone=\"peach\">…</mark> (highlight pill; tones peach, marigold, coral, sky, blue, midnight, white) are kept; nothing else."
       - identifier: group
         type: Text
         label: Group (Grouped variant only)

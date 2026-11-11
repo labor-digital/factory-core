@@ -63,7 +63,7 @@ fields:
   - identifier: description
     type: Textarea
     label: Description
-    description: "Plain text. Inline <strong>…</strong>, <a href=\"…\">…</a> and <span class=\"accent\">…</span> (brand colour) are kept; nothing else."
+    description: "Plain text. Inline <strong>…</strong>, <a href=\"…\">…</a>, <span class=\"accent\">…</span> (brand colour) and <mark data-tone=\"peach\">…</mark> (highlight pill; tones peach, marigold, coral, sky, blue, midnight, white) are kept; nothing else."
 
   # pos268 gallery variant (DL #073): a project's facts in the head and a text
   # under the photos — Figma "Address", "Facts", "Body Below", "Forward Link".

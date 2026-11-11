@@ -2,7 +2,7 @@
 	"$schema": "../../../../../contract/schema/component-manifest.schema.json",
 	"name": "Features",
 	"type": "content-element",
-	"version": "1.8.0",
+	"version": "1.9.0",
 	"min_core_version": "1.0.0",
 	"description": "Grid of feature/service cards, each with title and text plus an optional icon, big number, or image depending on the variant. Cards can carry an individual link.",
 	"when_to_use": "Service overviews, USP lists, process steps (numbered variant). Use River for alternating text+media storytelling and Stats for pure number KPIs.",
@@ -14,7 +14,9 @@
 		"optional centered band button below the grid (band_button_label + band_button_to)",
 		"atom switches: show_top_rule (flat) and show_divider (numbered), default on",
 		"design overrides: content_align (default|left|center), heading_case (default|upper), heading_weight (default|light|bold)",
-		"columns: auto (3/2/1) or 3-1-1 (3 on desktop, 1 below)"
+		"columns: auto (3/2/1) or 3-1-1 (3 on desktop, 1 below)",
+		"per-card colour: items[].tone (peach|marigold|coral|sky|blue|midnight|white) paints a cards/media card; empty = default look (DL #080)",
+		"inline highlight pill in intro and item text: <mark data-tone=\"peach\">word</mark> (DL #080)"
 	],
 	"variants": [
 		{
@@ -255,13 +257,14 @@
 		"@iconify/vue"
 	],
 	"ai": {
-		"prompt_summary": "Features: feature/service card grid. Settings: variant (cards|flat|numbered|media), eyebrow, headline, intro. Cards in items[] (min 1): { num (e.g. '01', auto-numbered if empty), title, text, icon (Iconify name, cards/flat), image (media variant), link_label, link_to }. Optional band_button_label + band_button_to: one centered outline button below the grid (all variants; empty label hides it). show_top_rule (flat) / show_divider (numbered): '1' default, '0' hides the rule / the dividers. Optional design overrides: content_align (default|left|center — head and cards together), heading_case (default|upper), heading_weight (default|light|bold); leave 'default' unless the design asks.",
+		"prompt_summary": "Features: feature/service card grid. Settings: variant (cards|flat|numbered|media), eyebrow, headline, intro. Cards in items[] (min 1): { num (e.g. '01', auto-numbered if empty), title, text, icon (Iconify name, cards/flat), image (media variant), link_label, link_to, tone (optional card colour: peach|marigold|coral|sky|blue|midnight|white; cards/media variants) }. Optional band_button_label + band_button_to: one centered outline button below the grid (all variants; empty label hides it). show_top_rule (flat) / show_divider (numbered): '1' default, '0' hides the rule / the dividers. Optional design overrides: content_align (default|left|center — head and cards together), heading_case (default|upper), heading_weight (default|light|bold); leave 'default' unless the design asks.",
 		"content_guidelines": "3 or 6 items for a clean grid. Titles 2-4 words, texts 1-2 sentences. Use consistent icon style (e.g. all i-lucide-*).",
 		"field_hints": {
 			"items.icon": "Iconify name like i-lucide-star; used by cards and flat variants.",
 			"items.num": "Leave empty for automatic 01/02/03 numbering.",
 			"items.image": "Only rendered by the media variant.",
-			"band_button_label": "Short CTA under the whole grid, e.g. 'Alle Leistungen'. Leave empty unless the section needs a single onward link."
+			"band_button_label": "Short CTA under the whole grid, e.g. 'Alle Leistungen'. Leave empty unless the section needs a single onward link.",
+			"items.tone": "Optional card colour for a playful, colourful grid. Use 2–4 different tones in one grid, or none. Ignored by flat and numbered."
 		}
 	}
 }
