@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+# [2.16.0](https://bitbucket.org/labor-digital/labor-factory-app/branches/compare/factory-core-v2.16.0%0Dfactory-core-v2.15.0#diff) (2026-11-11)
+
+
+### Features
+
+* card tones, highlight pill, serif lead font (DL [#080](https://bitbucket.org/labor-digital/labor-factory-app/issues/080)) ([4bada3f](https://bitbucket.org/labor-digital/labor-factory-app/commits/4bada3fcf8d6dbde5b3bb2e0317ad3ccdf56c7d5))
+
+
+
 # [2.15.0](https://bitbucket.org/labor-digital/labor-factory-app/branches/compare/factory-core-v2.15.0%0Dfactory-core-v2.14.0#diff) (2026-11-11)
 
 
