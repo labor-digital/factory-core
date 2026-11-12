@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.17.1](https://bitbucket.org/labor-digital/labor-factory-app/branches/compare/factory-core-v2.17.1%0Dfactory-core-v2.17.0#diff) (2026-11-12)
+
+
+### Bug Fixes
+
+* **factory-core:** logowall logos in the Figma mapping (DL [#085](https://bitbucket.org/labor-digital/labor-factory-app/issues/085)) ([89017e7](https://bitbucket.org/labor-digital/labor-factory-app/commits/89017e7a3993a589964f0159ce7acbec8b822ee8))
+
+
+
 # [2.17.0](https://bitbucket.org/labor-digital/labor-factory-app/branches/compare/factory-core-v2.17.0%0Dfactory-core-v2.16.0#diff) (2026-11-11)
 
 
