@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.17.2](https://bitbucket.org/labor-digital/labor-factory-app/branches/compare/factory-core-v2.17.2%0Dfactory-core-v2.17.1#diff) (2026-11-24)
+
+
+### Bug Fixes
+
+* **factory-core:** title descriptions name the highlight pill ([7051374](https://bitbucket.org/labor-digital/labor-factory-app/commits/7051374e42551fc7af0ea260250dab01e3e06852)), closes [#080](https://bitbucket.org/labor-digital/labor-factory-app/issue/080)
+
+
+
 ## [2.17.1](https://bitbucket.org/labor-digital/labor-factory-app/branches/compare/factory-core-v2.17.1%0Dfactory-core-v2.17.0#diff) (2026-11-12)
 
 
