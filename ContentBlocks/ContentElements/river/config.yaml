@@ -41,7 +41,7 @@ fields:
       - identifier: title
         type: Text
         label: Title
-        description: Use <strong>…</strong> to emphasise part of the title in the accent color.
+        description: 'Use <strong>…</strong> to emphasise part of the title in the accent color; <mark data-tone="peach">…</mark> puts a coloured highlight pill behind words (tones peach, marigold, coral, sky, blue, midnight, white).'
       - identifier: subline
         type: Text
         label: Subline

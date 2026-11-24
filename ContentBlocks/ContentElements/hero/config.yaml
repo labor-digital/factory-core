@@ -92,7 +92,7 @@ fields:
       - identifier: title
         type: Text
         label: Title
-        description: Main heading. Use <strong>…</strong> to emphasise part of the title.
+        description: 'Main heading. Use <strong>…</strong> to emphasise part of the title; <mark data-tone="peach">…</mark> puts a coloured highlight pill behind words (tones peach, marigold, coral, sky, blue, midnight, white).'
 
       - identifier: subline
         type: Textarea
